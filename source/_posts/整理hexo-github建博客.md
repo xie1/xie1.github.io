@@ -1,7 +1,8 @@
 ---
 title: 整理hexo+github建博客
 date: 2018-11-17 18:30:48
-tags: 
+tags: hexo
+categories: 工具
 ---
 ####0、安装使用过程需要提前了解点
 		1、GitHub在去对GitHub page项目进行建立分支及主干，以供不同地方使用
