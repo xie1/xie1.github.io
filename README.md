@@ -1,2 +1,2 @@
-## Welcome to GitHub 1
+## Welcome to GitHub 2
 
