@@ -35,27 +35,27 @@
   </entry>
   
   <entry>
-    <title>JavaWeb_JSP</title>
-    <link href="http://yoursite.com/2018/11/19/JavaWeb_JSP/"/>
-    <id>http://yoursite.com/2018/11/19/JavaWeb_JSP/</id>
+    <title>JVM</title>
+    <link href="http://yoursite.com/2018/11/19/JVM/"/>
+    <id>http://yoursite.com/2018/11/19/JVM/</id>
     <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-21T12:28:02.278Z</updated>
+    <updated>2018-11-20T12:19:18.543Z</updated>
     
     <summary type="html">
     
     </summary>
     
-      <category term="Java应用开发扩展" scheme="http://yoursite.com/categories/Java%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%A9%E5%B1%95/"/>
+      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="JSP" scheme="http://yoursite.com/tags/JSP/"/>
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
     
   </entry>
   
   <entry>
-    <title>JavaWeb_Tomcat</title>
-    <link href="http://yoursite.com/2018/11/19/JavaWeb_Tomcat/"/>
-    <id>http://yoursite.com/2018/11/19/JavaWeb_Tomcat/</id>
+    <title>JavaWeb_Servlet</title>
+    <link href="http://yoursite.com/2018/11/19/JavaWeb_Servlet/"/>
+    <id>http://yoursite.com/2018/11/19/JavaWeb_Servlet/</id>
     <published>2018-11-19T06:17:59.000Z</published>
     <updated>2018-11-21T12:28:02.279Z</updated>
     
@@ -66,7 +66,7 @@
       <category term="Java应用开发扩展" scheme="http://yoursite.com/categories/Java%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%A9%E5%B1%95/"/>
     
     
-      <category term="Tomcat" scheme="http://yoursite.com/tags/Tomcat/"/>
+      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
     
   </entry>
   
@@ -89,6 +89,24 @@
   </entry>
   
   <entry>
+    <title>JavaWeb_Tomcat</title>
+    <link href="http://yoursite.com/2018/11/19/JavaWeb_Tomcat/"/>
+    <id>http://yoursite.com/2018/11/19/JavaWeb_Tomcat/</id>
+    <published>2018-11-19T06:17:59.000Z</published>
+    <updated>2018-11-21T12:28:02.279Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Java应用开发扩展" scheme="http://yoursite.com/categories/Java%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%A9%E5%B1%95/"/>
+    
+    
+      <category term="Tomcat" scheme="http://yoursite.com/tags/Tomcat/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java_基本特性</title>
     <link href="http://yoursite.com/2018/11/19/Java_%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/"/>
     <id>http://yoursite.com/2018/11/19/Java_基本特性/</id>
@@ -103,24 +121,6 @@
     
     
       <category term="基本特性" scheme="http://yoursite.com/tags/%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM</title>
-    <link href="http://yoursite.com/2018/11/19/JVM/"/>
-    <id>http://yoursite.com/2018/11/19/JVM/</id>
-    <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-20T12:19:18.543Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
     
   </entry>
   
