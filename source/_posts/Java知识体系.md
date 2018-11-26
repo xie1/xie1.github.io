@@ -302,4 +302,4 @@ Java知识导图（持续更新）：[http://naotu.baidu.com/file/b468ed58b8af30
 ## 7、*架构*
 
 ####三、*参考资料*
-	http://www.hollischuang.com/archives/489
+[http://www.hollischuang.com/archives/489](http://www.hollischuang.com/archives/489)
