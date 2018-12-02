@@ -83,7 +83,6 @@ categories: Java基础
 ##### 2.1.2、第二步
 			1、设置对象信息
 			2、初始化类信息
-
 #### 2.2、对象的内存布局
 		1、对象头
 			1、自身信息
@@ -101,24 +100,15 @@ categories: Java基础
 			1、句柄
 			2、直接指针
 		2、区别
-
 ### 3、实战：OutOfMemoryError异常
 #### 3.1、Java堆溢出
-
 		-Xms
-		
 		-Xmx
-
 #### 3.2、虚拟机栈和本地方法栈溢出
-
 		1、参数：-Xss
-		
 		2、单线程： 实际一般抛出的异常都是StackOverflowError
-		
 		3、 多线程
-		
 			StackOverflowError
-			
 			OutOfMemoryError
 
 #### 3.3、方法区和运行时常量池溢出
