@@ -99,6 +99,9 @@ categories: Java基础
 		1、方式
 			1、句柄
 			2、直接指针
+![](https://i.imgur.com/2ATxWAC.png)
+![](https://i.imgur.com/TplB2oA.png)
+
 		2、区别
 ### 3、实战：OutOfMemoryError异常
 #### 3.1、Java堆溢出
