@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-27T12:40:18.170Z</updated>
+  <updated>2018-11-27T12:40:18.171Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>JVM_Java内存模型与线程(七)</title>
-    <link href="http://yoursite.com/2018/11/27/JVM_Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/"/>
-    <id>http://yoursite.com/2018/11/27/JVM_Java内存模型与线程/</id>
+    <title>JVM_垃圾收集机制(二)</title>
+    <link href="http://yoursite.com/2018/11/27/JVM_%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6/"/>
+    <id>http://yoursite.com/2018/11/27/JVM_垃圾收集机制/</id>
     <published>2018-11-27T07:02:55.000Z</published>
-    <updated>2018-11-27T12:40:18.170Z</updated>
+    <updated>2018-11-27T12:40:18.171Z</updated>
     
     <summary type="html">
     
@@ -49,11 +49,11 @@
   </entry>
   
   <entry>
-    <title>JVM_虚拟机字节码执行栈帧(五)</title>
-    <link href="http://yoursite.com/2018/11/27/JVM_%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AD%97%E8%8A%82%E7%A0%81%E6%89%A7%E8%A1%8C%E6%A0%88%E5%B8%A7/"/>
-    <id>http://yoursite.com/2018/11/27/JVM_虚拟机字节码执行栈帧/</id>
+    <title>JVM_早期编译及晚期优化(六)</title>
+    <link href="http://yoursite.com/2018/11/27/JVM_%E6%97%A9%E6%9C%9F%E7%BC%96%E8%AF%91%E5%8F%8A%E6%99%9A%E6%9C%9F%E4%BC%98%E5%8C%96/"/>
+    <id>http://yoursite.com/2018/11/27/JVM_早期编译及晚期优化/</id>
     <published>2018-11-27T07:02:55.000Z</published>
-    <updated>2018-11-27T12:40:18.172Z</updated>
+    <updated>2018-11-27T12:40:18.171Z</updated>
     
     <summary type="html">
     
@@ -85,16 +85,16 @@
     <link href="http://yoursite.com/2018/11/27/JVM_%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/"/>
     <id>http://yoursite.com/2018/11/27/JVM_虚拟内存区域/</id>
     <published>2018-11-27T07:02:55.000Z</published>
-    <updated>2018-11-27T14:27:05.507Z</updated>
+    <updated>2018-12-02T11:29:33.308Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="问题分析："><a href="#问题分析：" class="headerlink" title="问题分析："></a>问题分析：</h3><pre><code>1、理解运行的数据区域划分为几块--&gt;概念2、每一块区域主要存放的是什么，有什么功能--&gt;特性的理解3、每一块最有可能出现的问题，例如内存溢出或泄露之类的--&gt;异常4、如何定位这类问题的出现及解决，如何调整区域的设置--&gt;扩展5、此块区域与其他模块的之间的关系（垃圾回收机制等）--&gt;关系</code></pre>]]></content>
+    <content type="html"><![CDATA[<h2 id="虚拟机内存区域与内存溢出异常"><a href="#虚拟机内存区域与内存溢出异常" class="headerlink" title="虚拟机内存区域与内存溢出异常"></a>虚拟机内存区域与内存溢出异常</h2><pre><code>问题分析：1、理解运行的数据区域划分为几块--&gt;概念2、每一块区域主要存放的是什么，有什么功能--&gt;特性的理解3、每一块最有可能出现的问题，例如内存溢出或泄露之类的--&gt;异常4、如何定位这类问题的出现及解决，如何调整区域的设置--&gt;扩展5、此块区域与其他模块的之间的关系（垃圾回收机制等）--&gt;关系</code></pre><h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><p><a href="http://naotu.baidu.com/file/424e5783104cee1155554921f0ca3cd7" target="_blank" rel="noopener">http://naotu.baidu.com/file/424e5783104cee1155554921f0ca3cd7</a>    </p><h1 id="二、总知识点"><a href="#二、总知识点" class="headerlink" title="二、总知识点"></a>二、<em>总知识点</em></h1><h3 id="1、运行时的数据区域划分"><a href="#1、运行时的数据区域划分" class="headerlink" title="1、运行时的数据区域划分"></a>1、运行时的数据区域划分</h3><p><img src="https://i.imgur.com/2OEJXlr.png" alt=""></p><h4 id="1-1、程序计数器"><a href="#1-1、程序计数器" class="headerlink" title="1.1、程序计数器"></a>1.1、程序计数器</h4><pre><code>    1、存放内容：正在执行的虚拟机字节码指令的地址    2、特点：线程私有，每个线程都有自己的程序计数器    </code></pre><h4 id="1-2、Java虚拟机栈"><a href="#1-2、Java虚拟机栈" class="headerlink" title="1.2、Java虚拟机栈"></a>1.2、Java虚拟机栈</h4><pre><code>    1、存放内容        1、描述Java方法执行的内存模型（栈帧）：                1、局部变量表                2、操作数栈                    字节码指令，先入后出                     调用其它的方法的时候是通过操作数栈来传递参数的                3、动态连接                4、返回地址，方法退出的过程实际上就等于把当前栈帧出栈，退出可能执行的操作                    退出种类                        执行引擎遇到人员一个方法返回的字节码指令                        方法执行过程中遇到了异常，而且这个异常没有在方法体内得到处理        2、局部变量表：                1、存放编译期间可知的各种基本类型，对象引用和returnAdress类型（指向字节码地址）                2、单位64位的long和double占2slots的局部变量空间，其他类型1slot    2、特点：线程私用    3、异常状况            1、请求栈深度大于虚拟机允许的深度，将抛出StackOverflowError异常            2、无法申请到足够的内存，将抛出OutOfMemoryError异常</code></pre><h4 id="1-3、本地方法栈"><a href="#1-3、本地方法栈" class="headerlink" title="1.3、本地方法栈"></a>1.3、本地方法栈</h4><pre><code>    类似于虚拟机栈，而本地方法则为虚拟机使用到的Native方法服务</code></pre><h4 id="1-4、Java堆"><a href="#1-4、Java堆" class="headerlink" title="1.4、Java堆"></a>1.4、Java堆</h4><pre><code>    存放对象实例（通过-Xmx（最大值）和-Xms（初始值）控制）    1、存放内容：对象实例及几乎所有的对象实例和数组都要再堆上分配    2、分区        1、新生代         Eden空间         From Survivor空间         To Survivor空间        2、老年代    3、特点:线程共享    4、异常状况：将抛出OutOfMemoryError异常</code></pre><h4 id="1-5、方法区"><a href="#1-5、方法区" class="headerlink" title="1.5、方法区"></a>1.5、方法区</h4><pre><code>    存储已被虚拟机加载的类信息、常量、静态方法    1、存放内容        已被虚拟机加载类信息        常量        静态变量        即时编译后的代码    2、特点 :线程共享,可以选择不实现垃圾收集    3、异常状况 : 将抛出OutOfMemoryError异常    4、运行时常量池</code></pre><h3 id="2、HotSpot虚拟机对象"><a href="#2、HotSpot虚拟机对象" class="headerlink" title="2、HotSpot虚拟机对象"></a>2、HotSpot虚拟机对象</h3><h4 id="2-1、对象的创建"><a href="#2-1、对象的创建" class="headerlink" title="2.1、对象的创建"></a>2.1、对象的创建</h4><h5 id="2-1-1、第一步"><a href="#2-1-1、第一步" class="headerlink" title="2.1.1、第一步"></a>2.1.1、第一步</h5><pre><code>        1、检查常量池        2、检查类加载，解析，初始化        3、指针策略 :CAS 和 TLAB         4、空间分配 ：指针碰撞 和 空闲列表        5、初始化内存空间为零值        6、设置对象属性        7、完成对象创建</code></pre><h5 id="2-1-2、第二步"><a href="#2-1-2、第二步" class="headerlink" title="2.1.2、第二步"></a>2.1.2、第二步</h5><pre><code>        1、设置对象信息        2、初始化类信息</code></pre><h4 id="2-2、对象的内存布局"><a href="#2-2、对象的内存布局" class="headerlink" title="2.2、对象的内存布局"></a>2.2、对象的内存布局</h4><pre><code>    1、对象头        1、自身信息            1、哈希码            2、 GC分代年龄            3、 锁状态标志            4、 线程持有的锁            5、 偏向线程ID            6、 偏向时间戳        2、类型指针：指向它的类元数据的指针    2、实例数据    3、对齐填充</code></pre><h4 id="2-3、对象的访问定位"><a href="#2-3、对象的访问定位" class="headerlink" title="2.3、对象的访问定位"></a>2.3、对象的访问定位</h4><pre><code>    1、方式        1、句柄        2、直接指针</code></pre><p><img src="https://i.imgur.com/2ATxWAC.png" alt=""><br><img src="https://i.imgur.com/TplB2oA.png" alt=""></p><pre><code>    2、区别</code></pre><h3 id="3、实战：OutOfMemoryError异常"><a href="#3、实战：OutOfMemoryError异常" class="headerlink" title="3、实战：OutOfMemoryError异常"></a>3、实战：OutOfMemoryError异常</h3><h4 id="3-1、Java堆溢出"><a href="#3-1、Java堆溢出" class="headerlink" title="3.1、Java堆溢出"></a>3.1、Java堆溢出</h4><pre><code>    -Xms    -Xmx</code></pre><h4 id="3-2、虚拟机栈和本地方法栈溢出"><a href="#3-2、虚拟机栈和本地方法栈溢出" class="headerlink" title="3.2、虚拟机栈和本地方法栈溢出"></a>3.2、虚拟机栈和本地方法栈溢出</h4><pre><code>    1、参数：-Xss    2、单线程： 实际一般抛出的异常都是StackOverflowError    3、 多线程        StackOverflowError        OutOfMemoryError</code></pre><h4 id="3-3、方法区和运行时常量池溢出"><a href="#3-3、方法区和运行时常量池溢出" class="headerlink" title="3.3、方法区和运行时常量池溢出"></a>3.3、方法区和运行时常量池溢出</h4><h4 id="3-4、本机直接内存溢出"><a href="#3-4、本机直接内存溢出" class="headerlink" title="3.4、本机直接内存溢出"></a>3.4、本机直接内存溢出</h4><pre><code>    -XX：MaxDirectMemorySize    特点</code></pre><h1 id="三、重点知识点实例"><a href="#三、重点知识点实例" class="headerlink" title="三、重点知识点实例"></a>三、<em>重点知识点实例</em></h1><h1 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h1><h1 id="五、思维扩展"><a href="#五、思维扩展" class="headerlink" title="五、思维扩展"></a>五、<em>思维扩展</em></h1><h1 id="六、存在疑问"><a href="#六、存在疑问" class="headerlink" title="六、存在疑问"></a>六、<em>存在疑问</em></h1>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;问题分析：&quot;&gt;&lt;a href=&quot;#问题分析：&quot; class=&quot;headerlink&quot; title=&quot;问题分析：&quot;&gt;&lt;/a&gt;问题分析：&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;1、理解运行的数据区域划分为几块--&amp;gt;概念
-2、每一块区域主要存放的是什么，有什么功能--&amp;g
+        &lt;h2 id=&quot;虚拟机内存区域与内存溢出异常&quot;&gt;&lt;a href=&quot;#虚拟机内存区域与内存溢出异常&quot; class=&quot;headerlink&quot; title=&quot;虚拟机内存区域与内存溢出异常&quot;&gt;&lt;/a&gt;虚拟机内存区域与内存溢出异常&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;问题分析：
+1、理解运行的数
       
     
     </summary>
@@ -103,6 +103,22 @@
     
     
       <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM_虚拟机字节码执行栈帧(五)</title>
+    <link href="http://yoursite.com/2018/11/27/JVM_%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AD%97%E8%8A%82%E7%A0%81%E6%89%A7%E8%A1%8C%E6%A0%88%E5%B8%A7/"/>
+    <id>http://yoursite.com/2018/11/27/JVM_虚拟机字节码执行栈帧/</id>
+    <published>2018-11-27T07:02:55.000Z</published>
+    <updated>2018-11-27T12:40:18.172Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
     
   </entry>
   
@@ -123,11 +139,11 @@
   </entry>
   
   <entry>
-    <title>JVM_早期编译及晚期优化(六)</title>
-    <link href="http://yoursite.com/2018/11/27/JVM_%E6%97%A9%E6%9C%9F%E7%BC%96%E8%AF%91%E5%8F%8A%E6%99%9A%E6%9C%9F%E4%BC%98%E5%8C%96/"/>
-    <id>http://yoursite.com/2018/11/27/JVM_早期编译及晚期优化/</id>
+    <title>JVM_Java内存模型与线程(七)</title>
+    <link href="http://yoursite.com/2018/11/27/JVM_Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://yoursite.com/2018/11/27/JVM_Java内存模型与线程/</id>
     <published>2018-11-27T07:02:55.000Z</published>
-    <updated>2018-11-27T12:40:18.171Z</updated>
+    <updated>2018-11-27T12:40:18.170Z</updated>
     
     <summary type="html">
     
@@ -139,27 +155,54 @@
   </entry>
   
   <entry>
-    <title>JVM_垃圾收集机制(二)</title>
-    <link href="http://yoursite.com/2018/11/27/JVM_%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6/"/>
-    <id>http://yoursite.com/2018/11/27/JVM_垃圾收集机制/</id>
-    <published>2018-11-27T07:02:55.000Z</published>
-    <updated>2018-11-27T12:40:18.171Z</updated>
+    <title>Java_基本特性</title>
+    <link href="http://yoursite.com/2018/11/21/Java_%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/"/>
+    <id>http://yoursite.com/2018/11/21/Java_基本特性/</id>
+    <published>2018-11-21T06:17:59.000Z</published>
+    <updated>2018-12-05T14:07:23.697Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h4><h5 id="1、http-naotu-baidu-com-file-37b9cf3780060bebda0bfa6ab2900caa"><a href="#1、http-naotu-baidu-com-file-37b9cf3780060bebda0bfa6ab2900caa" class="headerlink" title="1、http://naotu.baidu.com/file/37b9cf3780060bebda0bfa6ab2900caa"></a>1、<a href="http://naotu.baidu.com/file/37b9cf3780060bebda0bfa6ab2900caa" target="_blank" rel="noopener">http://naotu.baidu.com/file/37b9cf3780060bebda0bfa6ab2900caa</a></h5><h5 id="2、http-naotu-baidu-com-file-c534c86874171144be621388f1b10848"><a href="#2、http-naotu-baidu-com-file-c534c86874171144be621388f1b10848" class="headerlink" title="2、http://naotu.baidu.com/file/c534c86874171144be621388f1b10848"></a>2、<a href="http://naotu.baidu.com/file/c534c86874171144be621388f1b10848" target="_blank" rel="noopener">http://naotu.baidu.com/file/c534c86874171144be621388f1b10848</a></h5><h4 id="二、总知识点"><a href="#二、总知识点" class="headerlink" title="二、总知识点"></a>二、<em>总知识点</em></h4><h4 id="面向对象之类-对象"><a href="#面向对象之类-对象" class="headerlink" title="面向对象之类/对象"></a>面向对象之类/对象</h4><h5 id="1、类"><a href="#1、类" class="headerlink" title="1、类"></a>1、类</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public void static main(String[] args)&#123;</span><br><span class="line">System.out.println(&quot;now!!!&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><pre><code>1、概念：类可以被定义为描述对象支持类型的行为、状态的的模板、蓝图    1.1、构造器         无参构造器：默认构造器         有参构造器    1.2、变量        1.2.1、成员变量：类中，方法体之外        1.2.2、静态变量：类变量也声明在类中，方法体之外，但必须声明为static类型        1.2.3、局部变量：方法体内        成员变量和静态变量的之间区别：            类的每个实例共享一个类变量的单个副本。            您可在类本身上调用类方法，而无需拥有实例。            实例方法可访问类变量，但类方法无法访问实例变量。            类方法只能访问类变量。2、分类    2.1、抽象类        概念：如果一个类没有足够的信息来描述一个具体的对象，而需要其他具体的类来支撑它，那么这样的类我们称它为抽象类        注意事项:        1、抽象类不能被实例化，实例化的工作应该交由它的子类来完成，它只需要有一个引用即可。        2、抽象方法必须由子类来进行重写。        3、只要包含一个抽象方法的抽象类，该方法必须要定义成抽象类，不管是否还包含有其他方法。        4、抽象类中可以包含具体的方法，当然也可以不包含抽象方法。        5、子类中的抽象方法不能与父类的抽象方法同名。        6、abstract 不能与 final 并列修饰同一个类。        7、abstract 不能与 private、static、final 或 native 并列修饰同一个方法。    2.2、接口        概念:接口是用来建立类与类之间的协议，它所提供的只是一种形式，而没有具体的实现。同时实现该接口的实现类必须要实现该接口的所有方法，通过使用 implements 关键字，他表示该类在遵循某个或某组特定的接口        注意事项:        1、1个 Interface 的方所有法访问权限自动被声明为 public。确切的说只能为 public，当然你可以显示的声明为 protected、private，但是编译会出错！        2、接口中可以定义“成员变量”，或者说是不可变的常量，因为接口中的“成员变量”会自动变为为 public static final。可以通过类命名直接访问：ImplementClass.name。        3、接口中不存在实现的方法。        4、实现接口的非抽象类必须要实现该接口的所有方法。抽象类可以不用实现。        5、不能使用 new 操作符实例化一个接口，但可以声明一个接口变量，该变量必须引用 (refer to) 一个实现该接口的类的对象。可以使用 instanceof 检查一个对象是否实现了某个特定的接口。例如：if(anObject instanceof Comparable){}。        6、在实现多接口的时候一定要避免方法名的重复。    2.3、内部类        2.3.1、成员内部类        外围类的一个成员，所以他是可以无限制的访问外围类的所有 成员属性和方法，尽管是 private 的，但是外围类要访问内部类的成员属性和方法则需要通过内部类实例来访问        第一：成员内部类中不能存在任何 static 的变量和方法；第二：成员内部类是依附于外围类的，所以只有先创建了外围类才能够创建内部类        2.3.1、局部内部类        2.3.1、匿名内部类        2.3.1、静态内部类</code></pre><h5 id="2、对象"><a href="#2、对象" class="headerlink" title="2、对象"></a>2、对象</h5><pre><code>    对象具有状态和行为    创建一个对象    声明：变量声明可以声明其所代表的对象类型。    实例化：“新的”关键词用来创造对象。    初始化：“新的”关键词伴随着一个构造器的启用，这个将新的对象初始化。    访问实体变量/方法    JVM垃圾回收机制回收对象</code></pre><h4 id="Java基本特性"><a href="#Java基本特性" class="headerlink" title="Java基本特性"></a>Java基本特性</h4><h5 id="1、封装"><a href="#1、封装" class="headerlink" title="1、封装"></a>1、封装</h5><pre><code>1、封装是指隐藏对象的属性和细节，但对外提供公共的访问方式2、方法    1、方法重载（方法名称相同，参数项不相同，重载只跟参数有关，与返回类型无关）        注意：            使用重载方法时，记住这两条重要的规则：            不能仅通过更改一个方法的返回类型来重载该方法。            不能有两个名称和参数列表都相同的方法    2、构造方法重载    3、this关键字（代表对象，this就是所在函数的所属对象的引用）        a、当成员变量和局部变量重名，可以用关键字this来区分。        b、this也可以用于在构造函数中调用其它构造函数。（this只能定义在构造函数的第一行，因为初始化动作必须要先执行）</code></pre><h5 id="2、-继承"><a href="#2、-继承" class="headerlink" title="2、 继承"></a>2、 继承</h5><pre><code>1、继承可以被定义为一个对象获取另一个对象属性的过程2、方法 1、方法覆写（1）子类的方法的名称、参数签名和返回类型必须与父类的方法的名称、参数签名和返回类型一致（2）子类方法不能缩小父类的访问权限。（3）子类方法不能抛出比父类更多的异常（4）方法覆盖只存在于子类和父类（包括直接父类和间接父类）之间（5）父类的静态方法不能被子类覆盖为非静态方法。（6）子类可以定义与父类的静态方法同名的静态方法，以便在子类中隐藏父类的静态方法（7）父类的非静态方法不能被子类覆盖为静态方法（8）父类的私有方法不能被子类覆盖。（9）父类的抽象方法可以被子类通过两种途径覆盖：一是子类实现父类的抽象方法；二是子类重新声明父类的抽象方法（例如，扩大访问权限）（10）父类的非抽象方法可以被覆盖为抽象方法3、super关键字访问成员变量：super.成员变量访问构造方法：super（……）访问成员方法：super.成员方法()</code></pre><h5 id="3、-多态"><a href="#3、-多态" class="headerlink" title="3、 多态"></a>3、 多态</h5><pre><code>1、多态性是指对象能够有多种形态。在 OOP 中最常用的多态性发生在当父类引用指向孩子类对象时2、转型向上类型转换（upcast）比如说将Cat类型转换为Animal类型，即将子类型转换为父类型向下类型转换（downcast）比如将Animal类型转换为Cat类型</code></pre><h5 id="4、-抽象"><a href="#4、-抽象" class="headerlink" title="4、 抽象"></a>4、 抽象</h5><pre><code>1、抽象类有抽象方法的类就叫抽象类2、抽象方法在类中没有方法体的方法，就是抽象方法3、接口</code></pre><h4 id="三、重点知识点实例"><a href="#三、重点知识点实例" class="headerlink" title="三、重点知识点实例"></a>三、<em>重点知识点实例</em></h4><h4 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h4><h4 id="五、思维扩展"><a href="#五、思维扩展" class="headerlink" title="五、思维扩展"></a>五、<em>思维扩展</em></h4><h4 id="六、存在疑问"><a href="#六、存在疑问" class="headerlink" title="六、存在疑问"></a>六、<em>存在疑问</em></h4><pre><code>1、覆盖父类的方法和子类的方法加载顺序？</code></pre>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;一、思维导图&quot;&gt;&lt;a href=&quot;#一、思维导图&quot; class=&quot;headerlink&quot; title=&quot;一、思维导图&quot;&gt;&lt;/a&gt;一、&lt;em&gt;思维导图&lt;/em&gt;&lt;/h4&gt;&lt;h5 id=&quot;1、http-naotu-baidu-com-file-37b9cf378006
+      
     
     </summary>
     
       <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
     
     
+      <category term="基本特性" scheme="http://yoursite.com/tags/%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/"/>
+    
   </entry>
   
   <entry>
-    <title>数据库_MySQL</title>
-    <link href="http://yoursite.com/2018/11/19/%E6%95%B0%E6%8D%AE%E5%BA%93_MySQL/"/>
-    <id>http://yoursite.com/2018/11/19/数据库_MySQL/</id>
+    <title>架构_ZooKeeper</title>
+    <link href="http://yoursite.com/2018/11/19/%E6%9E%B6%E6%9E%84_ZooKeeper/"/>
+    <id>http://yoursite.com/2018/11/19/架构_ZooKeeper/</id>
     <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-21T12:28:02.280Z</updated>
+    <updated>2018-11-21T12:28:02.301Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="架构" scheme="http://yoursite.com/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="ZooKeeper" scheme="http://yoursite.com/tags/ZooKeeper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb_Servlet</title>
+    <link href="http://yoursite.com/2018/11/19/JavaWeb_Servlet/"/>
+    <id>http://yoursite.com/2018/11/19/JavaWeb_Servlet/</id>
+    <published>2018-11-19T06:17:59.000Z</published>
+    <updated>2018-11-21T12:28:02.279Z</updated>
     
     <summary type="html">
     
@@ -168,50 +211,7 @@
       <category term="Java应用开发扩展" scheme="http://yoursite.com/categories/Java%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%A9%E5%B1%95/"/>
     
     
-      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM</title>
-    <link href="http://yoursite.com/2018/11/19/JVM/"/>
-    <id>http://yoursite.com/2018/11/19/JVM/</id>
-    <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-27T13:09:44.717Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><p><a href="http://naotu.baidu.com/file/b9498e3305b1f1e0f23ba2545bcc3893" target="_blank" rel="noopener">http://naotu.baidu.com/file/b9498e3305b1f1e0f23ba2545bcc3893</a></p><h1 id="二、JVM知识点"><a href="#二、JVM知识点" class="headerlink" title="二、JVM知识点"></a>二、<em>JVM知识点</em></h1><h2 id="1、自动内存管理机制"><a href="#1、自动内存管理机制" class="headerlink" title="1、自动内存管理机制"></a>1、自动内存管理机制</h2><h3 id="1-1、虚拟机内存区域与内存溢出异常"><a href="#1-1、虚拟机内存区域与内存溢出异常" class="headerlink" title="1.1、虚拟机内存区域与内存溢出异常"></a>1.1、虚拟机内存区域与内存溢出异常</h3><h4 id="1-1-1、运行时的数据区域"><a href="#1-1-1、运行时的数据区域" class="headerlink" title="1.1.1、运行时的数据区域"></a>1.1.1、运行时的数据区域</h4><pre><code>         1、程序计数器         2、Java虚拟机栈         3、本地方法栈         4、Java堆 ：存放对象实例（通过-Xmx和-Xms控制）         5、方法区：存储已被虚拟机加载的类信息、常量、静态方法</code></pre><h4 id="1-1-2、HotSpot虚拟机对象"><a href="#1-1-2、HotSpot虚拟机对象" class="headerlink" title="1.1.2、HotSpot虚拟机对象"></a>1.1.2、HotSpot虚拟机对象</h4><pre><code>    1、对象的创建    2、对象的内存布局    3、对象的访问定位</code></pre><h4 id="1-1-3、实战：OutOfMemoryError异常"><a href="#1-1-3、实战：OutOfMemoryError异常" class="headerlink" title="1.1.3、实战：OutOfMemoryError异常"></a>1.1.3、实战：OutOfMemoryError异常</h4><pre><code>     1、Java堆溢出     2、虚拟机栈和本地方法栈溢出     3、方法区和运行时常量池溢出     4、本机直接内存溢出</code></pre><h3 id="1-2、垃圾收集算法与内存分配策略"><a href="#1-2、垃圾收集算法与内存分配策略" class="headerlink" title="1.2、垃圾收集算法与内存分配策略"></a>1.2、垃圾收集算法与内存分配策略</h3><h4 id="1-2-1、判断对象是否已经死："><a href="#1-2-1、判断对象是否已经死：" class="headerlink" title="1.2.1、判断对象是否已经死："></a>1.2.1、判断对象是否已经死：</h4><pre><code>    1、引用计数算法        2、根搜索算法    3、引用：         1、强引用         2、软引用         3、弱引用         4、虚引用</code></pre><h4 id="1-2-2、垃圾收集算法"><a href="#1-2-2、垃圾收集算法" class="headerlink" title="1.2.2、垃圾收集算法"></a>1.2.2、垃圾收集算法</h4><pre><code>     1、标记-清除算法     2、复制算法     3、标记-整理算法     4、分代收集算法</code></pre><h3 id="1-2-3、内存分配与回收策略"><a href="#1-2-3、内存分配与回收策略" class="headerlink" title="1.2.3、内存分配与回收策略"></a>1.2.3、内存分配与回收策略</h3><h4 id="1-2-4、虚拟机性能监控与故障处理工具"><a href="#1-2-4、虚拟机性能监控与故障处理工具" class="headerlink" title="1.2.4、虚拟机性能监控与故障处理工具"></a>1.2.4、虚拟机性能监控与故障处理工具</h4><h5 id="1-2-4-1、JDK命令"><a href="#1-2-4-1、JDK命令" class="headerlink" title="1.2.4.1、JDK命令"></a>1.2.4.1、JDK命令</h5><pre><code>    1、jps:虚拟机进程状况工具    2、jstat:虚拟机统计信息工具    3、jinfo:Java配置信息工具    4、jmap:Java内存映像工具    5、jhat:虚拟机堆转储快照分析工具    6、jstack:Java堆栈跟踪工具</code></pre><h5 id="1-2-4-2、可视化工具"><a href="#1-2-4-2、可视化工具" class="headerlink" title="1.2.4.2、可视化工具"></a>1.2.4.2、可视化工具</h5><h4 id="1-2-5、调优案例分析与实战"><a href="#1-2-5、调优案例分析与实战" class="headerlink" title="1.2.5、调优案例分析与实战"></a>1.2.5、调优案例分析与实战</h4><h2 id="2、虚拟机执行子系统"><a href="#2、虚拟机执行子系统" class="headerlink" title="2、虚拟机执行子系统"></a>2、虚拟机执行子系统</h2><h3 id="2-1、类文件结构"><a href="#2-1、类文件结构" class="headerlink" title="2.1、类文件结构"></a>2.1、类文件结构</h3><h4 id="2-1-1、Class文件结构"><a href="#2-1-1、Class文件结构" class="headerlink" title="2.1.1、Class文件结构"></a>2.1.1、Class文件结构</h4><pre><code>    1、魔数与Class类文件的版本    2、常量池    3、访问标志    4、类索引、父类索引与接口索引集合    5、字段表集合    6、方法表集合    7、属性表集合</code></pre><h3 id="2-2、虚拟机类加载机制"><a href="#2-2、虚拟机类加载机制" class="headerlink" title="2.2、虚拟机类加载机制"></a>2.2、虚拟机类加载机制</h3><h4 id="2-2-1、类加载的时机"><a href="#2-2-1、类加载的时机" class="headerlink" title="2.2.1、类加载的时机"></a>2.2.1、类加载的时机</h4><h4 id="2-2-2、类加载的过程"><a href="#2-2-2、类加载的过程" class="headerlink" title="2.2.2、类加载的过程"></a>2.2.2、类加载的过程</h4><pre><code>    1、加载，验证，准备，解析，初始化（4个触发点），使用，卸载    2、虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化最终形成可以被虚拟机直接使用的Java类型，这就是虚拟机的类加载机制</code></pre><h4 id="2-2-3、类加载器"><a href="#2-2-3、类加载器" class="headerlink" title="2.2.3、类加载器"></a>2.2.3、类加载器</h4><pre><code>     1、类与类加载器     2、双亲委派模型     3、破坏双亲委派模型</code></pre><h3 id="2-3、虚拟机字节码执行引擎"><a href="#2-3、虚拟机字节码执行引擎" class="headerlink" title="2.3、虚拟机字节码执行引擎"></a>2.3、虚拟机字节码执行引擎</h3><h4 id="2-3-1、运行时栈帧结构"><a href="#2-3-1、运行时栈帧结构" class="headerlink" title="2.3.1、运行时栈帧结构"></a>2.3.1、运行时栈帧结构</h4><pre><code>     1、局部变量表     2、操作数栈     3、动态连接     4、方法返回址     5、附加信息</code></pre><h4 id="2-3-2、方法调用"><a href="#2-3-2、方法调用" class="headerlink" title="2.3.2、方法调用"></a>2.3.2、方法调用</h4><h2 id="3、程序编译与代码优化"><a href="#3、程序编译与代码优化" class="headerlink" title="3、程序编译与代码优化"></a>3、程序编译与代码优化</h2><h3 id="3-1、早期（编译期）优化"><a href="#3-1、早期（编译期）优化" class="headerlink" title="3.1、早期（编译期）优化"></a>3.1、早期（编译期）优化</h3><h4 id="3-1-1、Javac编译器"><a href="#3-1-1、Javac编译器" class="headerlink" title="3.1.1、Javac编译器"></a>3.1.1、Javac编译器</h4><pre><code>     1、Javac的源码与调试         1、字节码编译过程，javac 通过把java文件编译成Class文件，其中编译过程中存在着语法及结构关系对应     2、解析与填充符号表     3、注解处理器     4、语义分析与字节码生成</code></pre><h4 id="3-1-2、Java语法糖的味道"><a href="#3-1-2、Java语法糖的味道" class="headerlink" title="3.1.2、Java语法糖的味道"></a>3.1.2、Java语法糖的味道</h4><pre><code>    1、java语言中泛型、自动装箱及拆箱、遍历循环与变长参数</code></pre><h3 id="3-2、晚期（运行期）优化"><a href="#3-2、晚期（运行期）优化" class="headerlink" title="3.2、晚期（运行期）优化"></a>3.2、晚期（运行期）优化</h3><h4 id="3-2-1、HotSpot-虚拟机内的即时编译器"><a href="#3-2-1、HotSpot-虚拟机内的即时编译器" class="headerlink" title="3.2.1、HotSpot 虚拟机内的即时编译器"></a>3.2.1、HotSpot 虚拟机内的即时编译器</h4><h2 id="4、高效并发"><a href="#4、高效并发" class="headerlink" title="4、高效并发"></a>4、高效并发</h2><h3 id="4-1、Java内存模型与线程"><a href="#4-1、Java内存模型与线程" class="headerlink" title="4.1、Java内存模型与线程"></a>4.1、Java内存模型与线程</h3><h4 id="4-1-1、Java内存模型"><a href="#4-1-1、Java内存模型" class="headerlink" title="4.1.1、Java内存模型"></a>4.1.1、Java内存模型</h4><pre><code>1、主内存与工作内存2、内存间交互操作3、对于volatile型变量的特殊规则4、对于long和double型变量的特殊规则5、原子性，可见性与有序性6、先行发生原则</code></pre><h4 id="4-1-2、Java与线程"><a href="#4-1-2、Java与线程" class="headerlink" title="4.1.2、Java与线程"></a>4.1.2、Java与线程</h4><h3 id="4-2、线程安全与锁优化"><a href="#4-2、线程安全与锁优化" class="headerlink" title="4.2、线程安全与锁优化"></a>4.2、线程安全与锁优化</h3><h4 id="4-2-1、线程安全"><a href="#4-2-1、线程安全" class="headerlink" title="4.2.1、线程安全"></a>4.2.1、线程安全</h4><pre><code> 1、java语言中的线程安全 2、线程安全的实现方法</code></pre><h4 id="4-2-2、锁优化"><a href="#4-2-2、锁优化" class="headerlink" title="4.2.2、锁优化"></a>4.2.2、锁优化</h4><pre><code>1、自旋锁与自适应自旋2、锁消除3、锁粗化4、轻量级锁5、偏向锁</code></pre><h1 id="三、重点分析JVM知识点"><a href="#三、重点分析JVM知识点" class="headerlink" title="三、重点分析JVM知识点"></a>三、<em>重点分析JVM知识点</em></h1><pre><code>这块会重点分析以下几个方面的知识：    JVM的系列文章：    1、虚拟内存区域（运行时的数据区域）    2、垃圾收集机制    3、Class文件结构    4、虚拟机类加载机制    5、虚拟机字节码执行（栈帧）    6、早期编译及晚期优化    7、Java内存模型与线程    8、线程安全与锁优化</code></pre><h1 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h1>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;一、思维导图&quot;&gt;&lt;a href=&quot;#一、思维导图&quot; class=&quot;headerlink&quot; title=&quot;一、思维导图&quot;&gt;&lt;/a&gt;一、&lt;em&gt;思维导图&lt;/em&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://naotu.baidu.com/file/b9498e33
-      
-    
-    </summary>
-    
-      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaWeb_JSP</title>
-    <link href="http://yoursite.com/2018/11/19/JavaWeb_JSP/"/>
-    <id>http://yoursite.com/2018/11/19/JavaWeb_JSP/</id>
-    <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-21T12:28:02.278Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Java应用开发扩展" scheme="http://yoursite.com/categories/Java%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%A9%E5%B1%95/"/>
-    
-    
-      <category term="JSP" scheme="http://yoursite.com/tags/JSP/"/>
+      <category term="Servlet" scheme="http://yoursite.com/tags/Servlet/"/>
     
   </entry>
   
@@ -252,6 +252,31 @@
   </entry>
   
   <entry>
+    <title>JVM</title>
+    <link href="http://yoursite.com/2018/11/19/JVM/"/>
+    <id>http://yoursite.com/2018/11/19/JVM/</id>
+    <published>2018-11-19T06:17:59.000Z</published>
+    <updated>2018-11-27T13:09:44.717Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><p><a href="http://naotu.baidu.com/file/b9498e3305b1f1e0f23ba2545bcc3893" target="_blank" rel="noopener">http://naotu.baidu.com/file/b9498e3305b1f1e0f23ba2545bcc3893</a></p><h1 id="二、JVM知识点"><a href="#二、JVM知识点" class="headerlink" title="二、JVM知识点"></a>二、<em>JVM知识点</em></h1><h2 id="1、自动内存管理机制"><a href="#1、自动内存管理机制" class="headerlink" title="1、自动内存管理机制"></a>1、自动内存管理机制</h2><h3 id="1-1、虚拟机内存区域与内存溢出异常"><a href="#1-1、虚拟机内存区域与内存溢出异常" class="headerlink" title="1.1、虚拟机内存区域与内存溢出异常"></a>1.1、虚拟机内存区域与内存溢出异常</h3><h4 id="1-1-1、运行时的数据区域"><a href="#1-1-1、运行时的数据区域" class="headerlink" title="1.1.1、运行时的数据区域"></a>1.1.1、运行时的数据区域</h4><pre><code>         1、程序计数器         2、Java虚拟机栈         3、本地方法栈         4、Java堆 ：存放对象实例（通过-Xmx和-Xms控制）         5、方法区：存储已被虚拟机加载的类信息、常量、静态方法</code></pre><h4 id="1-1-2、HotSpot虚拟机对象"><a href="#1-1-2、HotSpot虚拟机对象" class="headerlink" title="1.1.2、HotSpot虚拟机对象"></a>1.1.2、HotSpot虚拟机对象</h4><pre><code>    1、对象的创建    2、对象的内存布局    3、对象的访问定位</code></pre><h4 id="1-1-3、实战：OutOfMemoryError异常"><a href="#1-1-3、实战：OutOfMemoryError异常" class="headerlink" title="1.1.3、实战：OutOfMemoryError异常"></a>1.1.3、实战：OutOfMemoryError异常</h4><pre><code>     1、Java堆溢出     2、虚拟机栈和本地方法栈溢出     3、方法区和运行时常量池溢出     4、本机直接内存溢出</code></pre><h3 id="1-2、垃圾收集算法与内存分配策略"><a href="#1-2、垃圾收集算法与内存分配策略" class="headerlink" title="1.2、垃圾收集算法与内存分配策略"></a>1.2、垃圾收集算法与内存分配策略</h3><h4 id="1-2-1、判断对象是否已经死："><a href="#1-2-1、判断对象是否已经死：" class="headerlink" title="1.2.1、判断对象是否已经死："></a>1.2.1、判断对象是否已经死：</h4><pre><code>    1、引用计数算法        2、根搜索算法    3、引用：         1、强引用         2、软引用         3、弱引用         4、虚引用</code></pre><h4 id="1-2-2、垃圾收集算法"><a href="#1-2-2、垃圾收集算法" class="headerlink" title="1.2.2、垃圾收集算法"></a>1.2.2、垃圾收集算法</h4><pre><code>     1、标记-清除算法     2、复制算法     3、标记-整理算法     4、分代收集算法</code></pre><h3 id="1-2-3、内存分配与回收策略"><a href="#1-2-3、内存分配与回收策略" class="headerlink" title="1.2.3、内存分配与回收策略"></a>1.2.3、内存分配与回收策略</h3><h4 id="1-2-4、虚拟机性能监控与故障处理工具"><a href="#1-2-4、虚拟机性能监控与故障处理工具" class="headerlink" title="1.2.4、虚拟机性能监控与故障处理工具"></a>1.2.4、虚拟机性能监控与故障处理工具</h4><h5 id="1-2-4-1、JDK命令"><a href="#1-2-4-1、JDK命令" class="headerlink" title="1.2.4.1、JDK命令"></a>1.2.4.1、JDK命令</h5><pre><code>    1、jps:虚拟机进程状况工具    2、jstat:虚拟机统计信息工具    3、jinfo:Java配置信息工具    4、jmap:Java内存映像工具    5、jhat:虚拟机堆转储快照分析工具    6、jstack:Java堆栈跟踪工具</code></pre><h5 id="1-2-4-2、可视化工具"><a href="#1-2-4-2、可视化工具" class="headerlink" title="1.2.4.2、可视化工具"></a>1.2.4.2、可视化工具</h5><h4 id="1-2-5、调优案例分析与实战"><a href="#1-2-5、调优案例分析与实战" class="headerlink" title="1.2.5、调优案例分析与实战"></a>1.2.5、调优案例分析与实战</h4><h2 id="2、虚拟机执行子系统"><a href="#2、虚拟机执行子系统" class="headerlink" title="2、虚拟机执行子系统"></a>2、虚拟机执行子系统</h2><h3 id="2-1、类文件结构"><a href="#2-1、类文件结构" class="headerlink" title="2.1、类文件结构"></a>2.1、类文件结构</h3><h4 id="2-1-1、Class文件结构"><a href="#2-1-1、Class文件结构" class="headerlink" title="2.1.1、Class文件结构"></a>2.1.1、Class文件结构</h4><pre><code>    1、魔数与Class类文件的版本    2、常量池    3、访问标志    4、类索引、父类索引与接口索引集合    5、字段表集合    6、方法表集合    7、属性表集合</code></pre><h3 id="2-2、虚拟机类加载机制"><a href="#2-2、虚拟机类加载机制" class="headerlink" title="2.2、虚拟机类加载机制"></a>2.2、虚拟机类加载机制</h3><h4 id="2-2-1、类加载的时机"><a href="#2-2-1、类加载的时机" class="headerlink" title="2.2.1、类加载的时机"></a>2.2.1、类加载的时机</h4><h4 id="2-2-2、类加载的过程"><a href="#2-2-2、类加载的过程" class="headerlink" title="2.2.2、类加载的过程"></a>2.2.2、类加载的过程</h4><pre><code>    1、加载，验证，准备，解析，初始化（4个触发点），使用，卸载    2、虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化最终形成可以被虚拟机直接使用的Java类型，这就是虚拟机的类加载机制</code></pre><h4 id="2-2-3、类加载器"><a href="#2-2-3、类加载器" class="headerlink" title="2.2.3、类加载器"></a>2.2.3、类加载器</h4><pre><code>     1、类与类加载器     2、双亲委派模型     3、破坏双亲委派模型</code></pre><h3 id="2-3、虚拟机字节码执行引擎"><a href="#2-3、虚拟机字节码执行引擎" class="headerlink" title="2.3、虚拟机字节码执行引擎"></a>2.3、虚拟机字节码执行引擎</h3><h4 id="2-3-1、运行时栈帧结构"><a href="#2-3-1、运行时栈帧结构" class="headerlink" title="2.3.1、运行时栈帧结构"></a>2.3.1、运行时栈帧结构</h4><pre><code>     1、局部变量表     2、操作数栈     3、动态连接     4、方法返回址     5、附加信息</code></pre><h4 id="2-3-2、方法调用"><a href="#2-3-2、方法调用" class="headerlink" title="2.3.2、方法调用"></a>2.3.2、方法调用</h4><h2 id="3、程序编译与代码优化"><a href="#3、程序编译与代码优化" class="headerlink" title="3、程序编译与代码优化"></a>3、程序编译与代码优化</h2><h3 id="3-1、早期（编译期）优化"><a href="#3-1、早期（编译期）优化" class="headerlink" title="3.1、早期（编译期）优化"></a>3.1、早期（编译期）优化</h3><h4 id="3-1-1、Javac编译器"><a href="#3-1-1、Javac编译器" class="headerlink" title="3.1.1、Javac编译器"></a>3.1.1、Javac编译器</h4><pre><code>     1、Javac的源码与调试         1、字节码编译过程，javac 通过把java文件编译成Class文件，其中编译过程中存在着语法及结构关系对应     2、解析与填充符号表     3、注解处理器     4、语义分析与字节码生成</code></pre><h4 id="3-1-2、Java语法糖的味道"><a href="#3-1-2、Java语法糖的味道" class="headerlink" title="3.1.2、Java语法糖的味道"></a>3.1.2、Java语法糖的味道</h4><pre><code>    1、java语言中泛型、自动装箱及拆箱、遍历循环与变长参数</code></pre><h3 id="3-2、晚期（运行期）优化"><a href="#3-2、晚期（运行期）优化" class="headerlink" title="3.2、晚期（运行期）优化"></a>3.2、晚期（运行期）优化</h3><h4 id="3-2-1、HotSpot-虚拟机内的即时编译器"><a href="#3-2-1、HotSpot-虚拟机内的即时编译器" class="headerlink" title="3.2.1、HotSpot 虚拟机内的即时编译器"></a>3.2.1、HotSpot 虚拟机内的即时编译器</h4><h2 id="4、高效并发"><a href="#4、高效并发" class="headerlink" title="4、高效并发"></a>4、高效并发</h2><h3 id="4-1、Java内存模型与线程"><a href="#4-1、Java内存模型与线程" class="headerlink" title="4.1、Java内存模型与线程"></a>4.1、Java内存模型与线程</h3><h4 id="4-1-1、Java内存模型"><a href="#4-1-1、Java内存模型" class="headerlink" title="4.1.1、Java内存模型"></a>4.1.1、Java内存模型</h4><pre><code>1、主内存与工作内存2、内存间交互操作3、对于volatile型变量的特殊规则4、对于long和double型变量的特殊规则5、原子性，可见性与有序性6、先行发生原则</code></pre><h4 id="4-1-2、Java与线程"><a href="#4-1-2、Java与线程" class="headerlink" title="4.1.2、Java与线程"></a>4.1.2、Java与线程</h4><h3 id="4-2、线程安全与锁优化"><a href="#4-2、线程安全与锁优化" class="headerlink" title="4.2、线程安全与锁优化"></a>4.2、线程安全与锁优化</h3><h4 id="4-2-1、线程安全"><a href="#4-2-1、线程安全" class="headerlink" title="4.2.1、线程安全"></a>4.2.1、线程安全</h4><pre><code> 1、java语言中的线程安全 2、线程安全的实现方法</code></pre><h4 id="4-2-2、锁优化"><a href="#4-2-2、锁优化" class="headerlink" title="4.2.2、锁优化"></a>4.2.2、锁优化</h4><pre><code>1、自旋锁与自适应自旋2、锁消除3、锁粗化4、轻量级锁5、偏向锁</code></pre><h1 id="三、重点分析JVM知识点"><a href="#三、重点分析JVM知识点" class="headerlink" title="三、重点分析JVM知识点"></a>三、<em>重点分析JVM知识点</em></h1><pre><code>这块会重点分析以下几个方面的知识：    JVM的系列文章：    1、虚拟内存区域（运行时的数据区域）    2、垃圾收集机制    3、Class文件结构    4、虚拟机类加载机制    5、虚拟机字节码执行（栈帧）    6、早期编译及晚期优化    7、Java内存模型与线程    8、线程安全与锁优化</code></pre><h1 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;一、思维导图&quot;&gt;&lt;a href=&quot;#一、思维导图&quot; class=&quot;headerlink&quot; title=&quot;一、思维导图&quot;&gt;&lt;/a&gt;一、&lt;em&gt;思维导图&lt;/em&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://naotu.baidu.com/file/b9498e33
+      
+    
+    </summary>
+    
+      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java_多线程并发</title>
     <link href="http://yoursite.com/2018/11/19/Java_%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/"/>
     <id>http://yoursite.com/2018/11/19/Java_多线程并发/</id>
@@ -270,38 +295,27 @@
   </entry>
   
   <entry>
-    <title>Java_基本特性</title>
-    <link href="http://yoursite.com/2018/11/19/Java_%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/"/>
-    <id>http://yoursite.com/2018/11/19/Java_基本特性/</id>
+    <title>Java_整体结构</title>
+    <link href="http://yoursite.com/2018/11/19/Java_%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84/"/>
+    <id>http://yoursite.com/2018/11/19/Java_整体结构/</id>
     <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-20T12:19:18.543Z</updated>
+    <updated>2018-12-04T14:15:10.449Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h4><p><a href="http://naotu.baidu.com/file/b321382655c8e78fdcc4a5b9a0618b6e" target="_blank" rel="noopener">http://naotu.baidu.com/file/b321382655c8e78fdcc4a5b9a0618b6e</a></p><h4 id="二、总知识点"><a href="#二、总知识点" class="headerlink" title="二、总知识点"></a>二、<em>总知识点</em></h4><h2 id="1、语法基础"><a href="#1、语法基础" class="headerlink" title="1、语法基础"></a>1、语法基础</h2><h3 id="1、数据类型"><a href="#1、数据类型" class="headerlink" title="1、数据类型"></a>1、数据类型</h3><h4 id="1、基本类型"><a href="#1、基本类型" class="headerlink" title="1、基本类型"></a>1、基本类型</h4><pre><code>整型：byte short int long浮点类型 ： float doublebooleanchar</code></pre><h4 id="2、引用类型"><a href="#2、引用类型" class="headerlink" title="2、引用类型"></a>2、引用类型</h4><pre><code> 类  接口 数组</code></pre><h4 id="3、字符串"><a href="#3、字符串" class="headerlink" title="3、字符串"></a>3、字符串</h4><pre><code>String</code></pre><h3 id="2、-基本语法"><a href="#2、-基本语法" class="headerlink" title="2、 基本语法"></a>2、 基本语法</h3><h4 id="1、运算符"><a href="#1、运算符" class="headerlink" title="1、运算符"></a>1、运算符</h4><pre><code> 自增自减</code></pre><h4 id="2、循环条件"><a href="#2、循环条件" class="headerlink" title="2、循环条件"></a>2、循环条件</h4><pre><code> if else while for break</code></pre><h2 id="2、基本特性"><a href="#2、基本特性" class="headerlink" title="2、基本特性"></a>2、基本特性</h2><h3 id="1、封装"><a href="#1、封装" class="headerlink" title="1、封装"></a>1、封装</h3><pre><code>1、访问控制     public private protect 默认2、get/set方法</code></pre><h3 id="2、多态"><a href="#2、多态" class="headerlink" title="2、多态"></a>2、多态</h3><pre><code> 1、同父类 2、同接口 3、理解：工厂模式</code></pre><h3 id="3、继承"><a href="#3、继承" class="headerlink" title="3、继承"></a>3、继承</h3><pre><code>1、Object类     所有对象的根     重要方法     toString()     equals()     hashCode()     clone()2、 单点继承3、 覆盖(Overriding)4、 终结修饰符final5、静态static</code></pre><h3 id="4、抽象"><a href="#4、抽象" class="headerlink" title="4、抽象"></a>4、抽象</h3><pre><code>abstract</code></pre><h3 id="5、接口"><a href="#5、接口" class="headerlink" title="5、接口"></a>5、接口</h3><pre><code>interface</code></pre><h3 id="6、特殊类"><a href="#6、特殊类" class="headerlink" title="6、特殊类"></a>6、特殊类</h3><pre><code>1、局部类2、匿名类</code></pre><h2 id="3、常用API"><a href="#3、常用API" class="headerlink" title="3、常用API"></a>3、常用API</h2><pre><code> 1、常用工具类 字符串     String     StringBuilder(优先)     StringBuffer(线程安全) 包装类     8种基本类型包装类 Date/Calendar SimpleDateFormat Math</code></pre><h2 id="4、数据结构"><a href="#4、数据结构" class="headerlink" title="4、数据结构"></a>4、数据结构</h2><h2 id="5、集合框架"><a href="#5、集合框架" class="headerlink" title="5、集合框架"></a>5、集合框架</h2><h4 id="1、collection"><a href="#1、collection" class="headerlink" title="1、collection"></a>1、collection</h4><h5 id="1、list"><a href="#1、list" class="headerlink" title="1、list"></a>1、list</h5><h6 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h6><h5 id="2、queue"><a href="#2、queue" class="headerlink" title="2、queue"></a>2、queue</h5><h6 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h6><h5 id="3、set"><a href="#3、set" class="headerlink" title="3、set"></a>3、set</h5><h6 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h6><h4 id="2、map"><a href="#2、map" class="headerlink" title="2、map"></a>2、map</h4><h5 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h5><h4 id="3、collections工具类"><a href="#3、collections工具类" class="headerlink" title="3、collections工具类"></a>3、collections工具类</h4><h4 id="4、comparable接口"><a href="#4、comparable接口" class="headerlink" title="4、comparable接口"></a>4、comparable接口</h4><h4 id="5、comparator接口"><a href="#5、comparator接口" class="headerlink" title="5、comparator接口"></a>5、comparator接口</h4><h2 id="6、IO流"><a href="#6、IO流" class="headerlink" title="6、IO流"></a>6、IO流</h2><h3 id="1、-文件操作"><a href="#1、-文件操作" class="headerlink" title="1、 文件操作"></a>1、 文件操作</h3><h4 id="1、进制转化"><a href="#1、进制转化" class="headerlink" title="1、进制转化"></a>1、进制转化</h4><h4 id="2、IO操作"><a href="#2、IO操作" class="headerlink" title="2、IO操作"></a>2、IO操作</h4><pre><code> 编码问题 File类使用 RandomAccessFile类 字节流使用 字符流使用</code></pre><h4 id="3、-XML读写"><a href="#3、-XML读写" class="headerlink" title="3、 XML读写"></a>3、 XML读写</h4><pre><code> DOM解析 SAX解析 JDOM解析 DOM4J解析</code></pre><h3 id="2、IO"><a href="#2、IO" class="headerlink" title="2、IO"></a>2、IO</h3><h4 id="1、-NIO"><a href="#1、-NIO" class="headerlink" title="1、 NIO"></a>1、 NIO</h4><pre><code>SelectorChannel</code></pre><h4 id="2、NIO2"><a href="#2、NIO2" class="headerlink" title="2、NIO2"></a>2、NIO2</h4><pre><code> 操作系统级别的并发 Rector/Proactor netty/mina</code></pre><h4 id="3、对象序列化"><a href="#3、对象序列化" class="headerlink" title="3、对象序列化"></a>3、对象序列化</h4><pre><code>原理自定义序列化方式</code></pre><h2 id="7、多线程并发"><a href="#7、多线程并发" class="headerlink" title="7、多线程并发"></a>7、多线程并发</h2><h3 id="1、线程"><a href="#1、线程" class="headerlink" title="1、线程"></a>1、线程</h3><h3 id="2、并发"><a href="#2、并发" class="headerlink" title="2、并发"></a>2、并发</h3><h4 id="1、Excutors"><a href="#1、Excutors" class="headerlink" title="1、Excutors"></a>1、Excutors</h4><h5 id="1、Callable"><a href="#1、Callable" class="headerlink" title="1、Callable"></a>1、Callable</h5><h5 id="2、Future"><a href="#2、Future" class="headerlink" title="2、Future"></a>2、Future</h5><h5 id="3、线程中断"><a href="#3、线程中断" class="headerlink" title="3、线程中断"></a>3、线程中断</h5><h5 id="4、ThreadFactory"><a href="#4、ThreadFactory" class="headerlink" title="4、ThreadFactory"></a>4、ThreadFactory</h5><h5 id="5、newFixedThreadPool"><a href="#5、newFixedThreadPool" class="headerlink" title="5、newFixedThreadPool"></a>5、newFixedThreadPool</h5><h5 id="6、newCachedThreadPool"><a href="#6、newCachedThreadPool" class="headerlink" title="6、newCachedThreadPool"></a>6、newCachedThreadPool</h5><h5 id="7、newScheduledThreadPool"><a href="#7、newScheduledThreadPool" class="headerlink" title="7、newScheduledThreadPool"></a>7、newScheduledThreadPool</h5><h5 id="8、ExecutorCompletionService"><a href="#8、ExecutorCompletionService" class="headerlink" title="8、ExecutorCompletionService"></a>8、ExecutorCompletionService</h5><h5 id="9、Fork-Join"><a href="#9、Fork-Join" class="headerlink" title="9、Fork/Join"></a>9、Fork/Join</h5><h4 id="2、Actor模式"><a href="#2、Actor模式" class="headerlink" title="2、Actor模式"></a>2、Actor模式</h4><h4 id="3、线程间安全共享"><a href="#3、线程间安全共享" class="headerlink" title="3、线程间安全共享"></a>3、线程间安全共享</h4><h5 id="1、Lock"><a href="#1、Lock" class="headerlink" title="1、Lock"></a>1、Lock</h5><h5 id="2、Atomic"><a href="#2、Atomic" class="headerlink" title="2、Atomic"></a>2、Atomic</h5><h6 id="1、ReentrantLock"><a href="#1、ReentrantLock" class="headerlink" title="1、ReentrantLock"></a>1、ReentrantLock</h6><h6 id="2、ReadWriteLock"><a href="#2、ReadWriteLock" class="headerlink" title="2、ReadWriteLock"></a>2、ReadWriteLock</h6><h6 id="3、ReentrantReadWriteLock"><a href="#3、ReentrantReadWriteLock" class="headerlink" title="3、ReentrantReadWriteLock"></a>3、ReentrantReadWriteLock</h6><h6 id="4、Condition"><a href="#4、Condition" class="headerlink" title="4、Condition"></a>4、Condition</h6><h5 id="3、volatile的原理"><a href="#3、volatile的原理" class="headerlink" title="3、volatile的原理"></a>3、volatile的原理</h5><h4 id="4、线程内共享"><a href="#4、线程内共享" class="headerlink" title="4、线程内共享"></a>4、线程内共享</h4><h5 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h5><h4 id="5、concurrent包"><a href="#5、concurrent包" class="headerlink" title="5、concurrent包"></a>5、concurrent包</h4><h5 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h5><h5 id="countdownlatch"><a href="#countdownlatch" class="headerlink" title="countdownlatch"></a>countdownlatch</h5><h2 id="8、Java网络编程"><a href="#8、Java网络编程" class="headerlink" title="8、Java网络编程"></a>8、Java网络编程</h2><h4 id="1、-Socket编程"><a href="#1、-Socket编程" class="headerlink" title="1、 Socket编程"></a>1、 Socket编程</h4><h5 id="网络基础知识"><a href="#网络基础知识" class="headerlink" title="网络基础知识"></a>网络基础知识</h5><h5 id="InetAddress类"><a href="#InetAddress类" class="headerlink" title="InetAddress类"></a>InetAddress类</h5><h5 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h5><h5 id="TCP编程（Sockets）可靠"><a href="#TCP编程（Sockets）可靠" class="headerlink" title="TCP编程（Sockets）可靠"></a>TCP编程（Sockets）可靠</h5><pre><code> 客户端的Socket类 服务器的ServerSocket类</code></pre><h5 id="UDP编程（Datagram）"><a href="#UDP编程（Datagram）" class="headerlink" title="UDP编程（Datagram）"></a>UDP编程（Datagram）</h5><h2 id="9、Java高级特性"><a href="#9、Java高级特性" class="headerlink" title="9、Java高级特性"></a>9、Java高级特性</h2><h3 id="1、反射"><a href="#1、反射" class="headerlink" title="1、反射"></a>1、反射</h3><pre><code> class.getInstance() getMethod(是否带declare有何区别) getField setAccess method.invoke()</code></pre><h3 id="2、泛型"><a href="#2、泛型" class="headerlink" title="2、泛型"></a>2、泛型</h3><h4 id="1、申明在对象上"><a href="#1、申明在对象上" class="headerlink" title="1、申明在对象上"></a>1、申明在对象上</h4><h4 id="2、方法返回值"><a href="#2、方法返回值" class="headerlink" title="2、方法返回值"></a>2、方法返回值</h4><h4 id="3、方法参数"><a href="#3、方法参数" class="headerlink" title="3、方法参数"></a>3、方法参数</h4><h4 id="4、泛型的继承"><a href="#4、泛型的继承" class="headerlink" title="4、泛型的继承"></a>4、泛型的继承</h4><h4 id="5、通配符"><a href="#5、通配符" class="headerlink" title="5、通配符"></a>5、通配符</h4><h4 id="6、发生在编译时，运行时不存在"><a href="#6、发生在编译时，运行时不存在" class="headerlink" title="6、发生在编译时，运行时不存在"></a>6、发生在编译时，运行时不存在</h4><h3 id="3、枚举及注解"><a href="#3、枚举及注解" class="headerlink" title="3、枚举及注解"></a>3、枚举及注解</h3><h3 id="4、异常"><a href="#4、异常" class="headerlink" title="4、异常"></a>4、异常</h3><h4 id="1、java异常体系结构-Throwable"><a href="#1、java异常体系结构-Throwable" class="headerlink" title="1、java异常体系结构(Throwable)"></a>1、java异常体系结构(Throwable)</h4><pre><code>ErrorException非检查异常（RuntimeException）检查异常</code></pre><h4 id="2、处理异常"><a href="#2、处理异常" class="headerlink" title="2、处理异常"></a>2、处理异常</h4><pre><code>try—catch以及try—catch—finally抛出异常    throws    throw 方法体内抛出自定义异常异常链</code></pre><h4 id="三、重点知识点实例"><a href="#三、重点知识点实例" class="headerlink" title="三、重点知识点实例"></a>三、<em>重点知识点实例</em></h4><h4 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h4><h4 id="五、思维扩展"><a href="#五、思维扩展" class="headerlink" title="五、思维扩展"></a>五、<em>思维扩展</em></h4><h4 id="六、存在疑问"><a href="#六、存在疑问" class="headerlink" title="六、存在疑问"></a>六、<em>存在疑问</em></h4>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;一、思维导图&quot;&gt;&lt;a href=&quot;#一、思维导图&quot; class=&quot;headerlink&quot; title=&quot;一、思维导图&quot;&gt;&lt;/a&gt;一、&lt;em&gt;思维导图&lt;/em&gt;&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://naotu.baidu.com/file/b3213826
+      
     
     </summary>
     
       <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="基本特性" scheme="http://yoursite.com/tags/%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java_常用API</title>
-    <link href="http://yoursite.com/2018/11/19/Java_%E5%B8%B8%E7%94%A8API/"/>
-    <id>http://yoursite.com/2018/11/19/Java_常用API/</id>
-    <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-20T12:19:18.543Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="API" scheme="http://yoursite.com/tags/API/"/>
+      <category term="结构" scheme="http://yoursite.com/tags/%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
@@ -320,24 +334,6 @@
     
     
       <category term="数据结构" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java_整体结构</title>
-    <link href="http://yoursite.com/2018/11/19/Java_%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84/"/>
-    <id>http://yoursite.com/2018/11/19/Java_整体结构/</id>
-    <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-20T12:19:18.544Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="结构" scheme="http://yoursite.com/tags/%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
@@ -364,6 +360,31 @@
     <link href="http://yoursite.com/2018/11/19/Java_%E8%AF%AD%E6%B3%95/"/>
     <id>http://yoursite.com/2018/11/19/Java_语法/</id>
     <published>2018-11-19T06:17:59.000Z</published>
+    <updated>2018-12-05T13:06:25.461Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h4><p><a href="http://naotu.baidu.com/file/da472d2f515deceab707037d58688348" target="_blank" rel="noopener">http://naotu.baidu.com/file/da472d2f515deceab707037d58688348</a></p><h4 id="二、总知识点"><a href="#二、总知识点" class="headerlink" title="二、总知识点"></a>二、<em>总知识点</em></h4><h2 id="1、基本语法"><a href="#1、基本语法" class="headerlink" title="1、基本语法"></a>1、基本语法</h2><h3 id="1、Java标识符"><a href="#1、Java标识符" class="headerlink" title="1、Java标识符"></a>1、Java标识符</h3><h4 id="1、所有标识符必须以字母（-A-到-Z-或者-a-到-z-）、货币字符（-）或者下划线-开头。"><a href="#1、所有标识符必须以字母（-A-到-Z-或者-a-到-z-）、货币字符（-）或者下划线-开头。" class="headerlink" title="1、所有标识符必须以字母（ A 到 Z 或者 a 到 z ）、货币字符（ $ ）或者下划线( _ )开头。"></a>1、所有标识符必须以字母（ A 到 Z 或者 a 到 z ）、货币字符（ $ ）或者下划线( _ )开头。</h4><p>2、在第一个标识符之后可以有任意字母组合。<br>3、关键字不能被用作标识符。<br>4、大多数标识符需要区分大小写。<br>5、合法标识符的例子： age, $salary, _value, __1_value<br>6、非法标识符的例子： 123abc, -salary</p><h3 id="2、Java修饰符"><a href="#2、Java修饰符" class="headerlink" title="2、Java修饰符"></a>2、Java修饰符</h3><h4 id="1、访问修饰符：default-public-protected-private"><a href="#1、访问修饰符：default-public-protected-private" class="headerlink" title="1、访问修饰符：default, public , protected, private"></a>1、访问修饰符：default, public , protected, private</h4><p>2、非访问修饰符：final, abstract, strictfp</p><h3 id="3、Java变量"><a href="#3、Java变量" class="headerlink" title="3、Java变量"></a>3、Java变量</h3><h4 id="1、本地变量"><a href="#1、本地变量" class="headerlink" title="1、本地变量"></a>1、本地变量</h4><h5 id="本地变量在方法、构造器或者块中声明"><a href="#本地变量在方法、构造器或者块中声明" class="headerlink" title="本地变量在方法、构造器或者块中声明"></a>本地变量在方法、构造器或者块中声明</h5><p>本地变量在方法、构造器或者块进入时被创建，一旦退出该变量就会被摧毁<br>可访问描述符不能用于本地变量<br>本地变量仅在已经声明的方法、构造器或者块中可见<br>本地变量在栈深度内部实施<br>本地变量没有默认值，因此本地变量必须被声明并且在第一次使用前要给它赋值</p><h4 id="2、类变量（静态变量）"><a href="#2、类变量（静态变量）" class="headerlink" title="2、类变量（静态变量）"></a>2、类变量（静态变量）</h4><h5 id="实例变量在类中声明，但是它在方法、构造器或者块外。"><a href="#实例变量在类中声明，但是它在方法、构造器或者块外。" class="headerlink" title="实例变量在类中声明，但是它在方法、构造器或者块外。"></a>实例变量在类中声明，但是它在方法、构造器或者块外。</h5><p>当堆中的对象被分配了一个空间时，每个实例变量的位置就被创建了。<br>当对象采用关键字“ new ”创建时实例变量就被创建了，当对象被销毁时它也就被销毁了。<br>实例变量的值必须被一个以上的方法、构造器或者块，或者类中必须出现的对象的状态的重要部分所引用。<br>实例变量可以在类水平上在使用前或者使用后声明。<br>实例变量可以用可访问描述符。<br>实例变量对类中的所有方法、构造器或者块可见。一般来讲，推荐将这些变量私有（访问层面）。然而子类的可见性可用可访问描述符给予那些变量。<br>实例变量有默认值。数字的默认值为零，布尔型默认值为假，对象引用默认值为空。在声明或者构造器内可以进行赋值。<br>实例变量可以采用直接在类中叫名字方式访问。然而在静态方法和不同的类（实例变量可以被访问）中应当使用完全限定名称。ObjectReference.VariableName</p><h4 id="3、实例变量（非静态变量）"><a href="#3、实例变量（非静态变量）" class="headerlink" title="3、实例变量（非静态变量）"></a>3、实例变量（非静态变量）</h4><h5 id="类变量也叫静态变量，它是在类中用-static-关键字声明的，但是它在方法、构造器或者块之外。"><a href="#类变量也叫静态变量，它是在类中用-static-关键字声明的，但是它在方法、构造器或者块之外。" class="headerlink" title="类变量也叫静态变量，它是在类中用 static 关键字声明的，但是它在方法、构造器或者块之外。"></a>类变量也叫静态变量，它是在类中用 static 关键字声明的，但是它在方法、构造器或者块之外。</h5><p>每个类中只有一个类变量，不管这个类有多少对象。<br>除了作为常量被声明之外，类变量很少被应用。常量是被作为 public、private, final 和 static 被声明的变量。实例变量的初始值不会被改变。<br>静态变量存储在静态内存中，很少采用静态变量而不是声明结束或者用常量public 或 private 之一。<br>静态变量随着程序的开始和结束而开始和结束。<br>可见性和实例变量相似。然而大多数静态变量被声明为public由于他们必须为类的使用者所用。<br>默认值和实例变量相似。对于数字的默认值为零，布尔型默认值为假，对象引用默认值为空。在声明或者构造器内可以进行赋值。除此之外，可以在特殊的静态初始化区赋值。<br>静态变量可以用类的名称访问。ClassName.VariableName<br>当静态变量被作为 public static final 声明时，变量（常量）名称都要用大写字母。如果静态变量不是 public 和 final，它的命名方法和实例变量和本地变量相同。</p><h3 id="4、Java枚举值"><a href="#4、Java枚举值" class="headerlink" title="4、Java枚举值"></a>4、Java枚举值</h3><h3 id="5、Java关键字（java保留关键字）"><a href="#5、Java关键字（java保留关键字）" class="headerlink" title="5、Java关键字（java保留关键字）"></a>5、Java关键字（java保留关键字）</h3><h2 id="2、基本数据类型"><a href="#2、基本数据类型" class="headerlink" title="2、基本数据类型"></a>2、基本数据类型</h2><h3 id="1、8种原始数据类型"><a href="#1、8种原始数据类型" class="headerlink" title="1、8种原始数据类型"></a>1、8种原始数据类型</h3><h4 id="1、字节型（byte）"><a href="#1、字节型（byte）" class="headerlink" title="1、字节型（byte）"></a>1、字节型（byte）</h4><p>字节型是一种 8 位有正负的二进制整数<br>最小值是 -128(-2^7)<br>最大值是 127(2^7-1)<br>默认值为 0<br>字节型数据类型主要是为了在大型数组内节省空间，主要是替代整数由于字节型比整数小 4 倍。<br>例如：byte a = 100 , byte b = -50</p><h4 id="2、短整数（short）"><a href="#2、短整数（short）" class="headerlink" title="2、短整数（short）"></a>2、短整数（short）</h4><p>短整数是一种 16 位有正负的二进制整数<br>最小值是 -32768(-2^15)<br>最大值是 32767(2^15-1)<br>短整数类型的数据也可以像字节型一样用于节省空间。短整数比整数小两倍<br>默认值为 0<br>例如：short s = 10000, short r = -20000</p><h4 id="3、整数型（int）"><a href="#3、整数型（int）" class="headerlink" title="3、整数型（int）"></a>3、整数型（int）</h4><p>整数型是一种 32 位有正负的二进制整数<br>最小值是 - 2,147,483,648(-2^31)<br>最大值是 2,147,483,647(2^31 -1)<br>整数型一般默认被应用于整数值除非担心内存不够用。<br>默认值为 0<br>例如：int a = 100000, int b = -200000</p><h4 id="4、长整型（long）"><a href="#4、长整型（long）" class="headerlink" title="4、长整型（long）"></a>4、长整型（long）</h4><p>长整型是一种 64 位有正负的二进制整数<br>最小值是 -9,223,372,036,854,775,808(-2^63)<br>最大值是 9,223,372,036,854,775,807 (2^63 -1)<br>这种数据类型一般是在需要比整数型范围更大时应用。<br>默认值为 0L<br>例如：long a = 100000L, int b = -200000L</p><h4 id="5、浮点型（float）"><a href="#5、浮点型（float）" class="headerlink" title="5、浮点型（float）"></a>5、浮点型（float）</h4><p>浮点型数据是一种单精度的 32 位 IEEE 754 标准下的浮点数据。<br>浮点型数据主要是为了在大型浮点数字数组中节约内存。<br>默认值是 0.0f。<br>浮点型数据不能用于如货币这样的精确数据。<br>例如：float f1 = 234.5f</p><h4 id="6、双精度型（double）"><a href="#6、双精度型（double）" class="headerlink" title="6、双精度型（double）"></a>6、双精度型（double）</h4><p>双精度型数据是一种双精度的 64 位 IEEE 754 标准下的浮点数据。<br>这种数据类型主要是默认被用于表示小数的值，一般是默认的选择。<br>双精度型数据不能用于如货币这样的精确数据。<br>默认值是 0.0d<br>例如：double d1 = 123.4</p><h4 id="7、布尔型（boolean）"><a href="#7、布尔型（boolean）" class="headerlink" title="7、布尔型（boolean）"></a>7、布尔型（boolean）</h4><p>布尔型数据代表一个信息比特。<br>它只有两个可能的值：真（true）和假（false）<br>这种数据类型用于真假条件下的简单标记。<br>默认值是假（false）<br>例如：boolean one = true</p><h4 id="8、字符型（char）"><a href="#8、字符型（char）" class="headerlink" title="8、字符型（char）"></a>8、字符型（char）</h4><p>字符型数据是简单的 16 位 Unicode 标准下的字符。<br>最小值是： ‘\u0000’ (或 0)。<br>最大值是： ‘\uffff’ (或 65,535 )。<br>字符型数据可以用来储存任意字母。<br>例如： char letter A（字符型的字母A） =’A’</p><h3 id="2、引用数据类型：类对象和数组变量"><a href="#2、引用数据类型：类对象和数组变量" class="headerlink" title="2、引用数据类型：类对象和数组变量"></a>2、引用数据类型：类对象和数组变量</h3><h2 id="3、基本运算符"><a href="#3、基本运算符" class="headerlink" title="3、基本运算符"></a>3、基本运算符</h2><h3 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h3><p>关系运算符<br>位运算符<br>逻辑运算符<br>赋值运算符<br>其他运算符</p><h2 id="4、流程控制语句"><a href="#4、流程控制语句" class="headerlink" title="4、流程控制语句"></a>4、流程控制语句</h2><h3 id="1、条件判断"><a href="#1、条件判断" class="headerlink" title="1、条件判断"></a>1、条件判断</h3><h4 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h4><h4 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h4><h5 id="在-switch-语句中使用的变量只能是一个字节，short，int-或-char。"><a href="#在-switch-语句中使用的变量只能是一个字节，short，int-或-char。" class="headerlink" title="在 switch 语句中使用的变量只能是一个字节，short，int 或 char。"></a>在 switch 语句中使用的变量只能是一个字节，short，int 或 char。</h5><p>在一个 switch 语句中可以有任何数量的 case 语句。每个 case 后跟着即将被比较的值和一个冒号。<br>对于 case 的值必须是相同的数据类型作为开关变量，它必须是一个常量或文字。<br>当被启动了的变量与 case 是相等的，那 case 后的语句将执行，一直到 break 为止。<br>当达到一个 break 语句，switch 终止，并且控制流跳转到跟着 switch 语句的下一行。<br>不是每一个 case 需要包含一个 break。如果没有出现 break，控制流将贯穿到后面的 case 直到 break 为止。<br>switch 语句可以有一个可选默认 case ，它必须出现在 switch 的结束处。在执行一项任务时没有任何 case 是真，那默认 case 可被使用。在默认 case 中不需要 break</p><h3 id="2、循环控制"><a href="#2、循环控制" class="headerlink" title="2、循环控制"></a>2、循环控制</h3><h4 id="while-循环"><a href="#while-循环" class="headerlink" title="while 循环"></a>while 循环</h4><h4 id="do…while-循环"><a href="#do…while-循环" class="headerlink" title="do…while 循环"></a>do…while 循环</h4><h4 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h4><h2 id="5、字符串"><a href="#5、字符串" class="headerlink" title="5、字符串"></a>5、字符串</h2><h3 id="1、String"><a href="#1、String" class="headerlink" title="1、String"></a>1、String</h3><h4 id="1、连接字符串"><a href="#1、连接字符串" class="headerlink" title="1、连接字符串"></a>1、连接字符串</h4><p>2、获取字符串信息<br>3、字符串操作<br>4、格式化字符串<br>5、使用正则表达式<br>6、字符串生成器</p><h3 id="2、StringBuffer"><a href="#2、StringBuffer" class="headerlink" title="2、StringBuffer"></a>2、StringBuffer</h3><h3 id="3、StringBuilder"><a href="#3、StringBuilder" class="headerlink" title="3、StringBuilder"></a>3、StringBuilder</h3><h2 id="6、数组"><a href="#6、数组" class="headerlink" title="6、数组"></a>6、数组</h2><h3 id="1、声明数组变量-：dataType-arrayRefVar"><a href="#1、声明数组变量-：dataType-arrayRefVar" class="headerlink" title="1、声明数组变量 ：dataType[] arrayRefVar"></a>1、声明数组变量 ：dataType[] arrayRefVar</h3><h3 id="2、创建数组：arrayRefVar-new-dataType-arraySize"><a href="#2、创建数组：arrayRefVar-new-dataType-arraySize" class="headerlink" title="2、创建数组：arrayRefVar = new dataType[arraySize];"></a>2、创建数组：arrayRefVar = new dataType[arraySize];</h3><h4 id="三、重点知识点实例"><a href="#三、重点知识点实例" class="headerlink" title="三、重点知识点实例"></a>三、<em>重点知识点实例</em></h4><h4 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h4><h4 id="五、思维扩展"><a href="#五、思维扩展" class="headerlink" title="五、思维扩展"></a>五、<em>思维扩展</em></h4><h4 id="六、存在疑问"><a href="#六、存在疑问" class="headerlink" title="六、存在疑问"></a>六、<em>存在疑问</em></h4>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;一、思维导图&quot;&gt;&lt;a href=&quot;#一、思维导图&quot; class=&quot;headerlink&quot; title=&quot;一、思维导图&quot;&gt;&lt;/a&gt;一、&lt;em&gt;思维导图&lt;/em&gt;&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://naotu.baidu.com/file/da472d2f
+      
+    
+    </summary>
+    
+      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="语法" scheme="http://yoursite.com/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java_集合框架</title>
+    <link href="http://yoursite.com/2018/11/19/Java_%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/"/>
+    <id>http://yoursite.com/2018/11/19/Java_集合框架/</id>
+    <published>2018-11-19T06:17:59.000Z</published>
     <updated>2018-11-20T12:19:18.544Z</updated>
     
     <summary type="html">
@@ -373,7 +394,7 @@
       <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="语法" scheme="http://yoursite.com/tags/%E8%AF%AD%E6%B3%95/"/>
+      <category term="集合框架" scheme="http://yoursite.com/tags/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
