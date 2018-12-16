@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-27T12:40:18.171Z</updated>
+  <updated>2018-11-27T12:40:18.170Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>JVM_垃圾收集机制(二)</title>
-    <link href="http://yoursite.com/2018/11/27/JVM_%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6/"/>
-    <id>http://yoursite.com/2018/11/27/JVM_垃圾收集机制/</id>
+    <title>JVM_Class文件结构(三)</title>
+    <link href="http://yoursite.com/2018/11/27/JVM_Class%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"/>
+    <id>http://yoursite.com/2018/11/27/JVM_Class文件结构/</id>
     <published>2018-11-27T07:02:55.000Z</published>
-    <updated>2018-11-27T12:40:18.171Z</updated>
+    <updated>2018-11-27T12:40:18.170Z</updated>
     
     <summary type="html">
     
@@ -33,11 +33,27 @@
   </entry>
   
   <entry>
-    <title>JVM_Class文件结构(三)</title>
-    <link href="http://yoursite.com/2018/11/27/JVM_Class%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"/>
-    <id>http://yoursite.com/2018/11/27/JVM_Class文件结构/</id>
+    <title>JVM_Java内存模型与线程(七)</title>
+    <link href="http://yoursite.com/2018/11/27/JVM_Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://yoursite.com/2018/11/27/JVM_Java内存模型与线程/</id>
     <published>2018-11-27T07:02:55.000Z</published>
     <updated>2018-11-27T12:40:18.170Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JVM_垃圾收集机制(二)</title>
+    <link href="http://yoursite.com/2018/11/27/JVM_%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6/"/>
+    <id>http://yoursite.com/2018/11/27/JVM_垃圾收集机制/</id>
+    <published>2018-11-27T07:02:55.000Z</published>
+    <updated>2018-11-27T12:40:18.171Z</updated>
     
     <summary type="html">
     
@@ -139,22 +155,6 @@
   </entry>
   
   <entry>
-    <title>JVM_Java内存模型与线程(七)</title>
-    <link href="http://yoursite.com/2018/11/27/JVM_Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/"/>
-    <id>http://yoursite.com/2018/11/27/JVM_Java内存模型与线程/</id>
-    <published>2018-11-27T07:02:55.000Z</published>
-    <updated>2018-11-27T12:40:18.170Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Java_基本特性</title>
     <link href="http://yoursite.com/2018/11/21/Java_%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/"/>
     <id>http://yoursite.com/2018/11/21/Java_基本特性/</id>
@@ -180,20 +180,20 @@
   </entry>
   
   <entry>
-    <title>架构_ZooKeeper</title>
-    <link href="http://yoursite.com/2018/11/19/%E6%9E%B6%E6%9E%84_ZooKeeper/"/>
-    <id>http://yoursite.com/2018/11/19/架构_ZooKeeper/</id>
+    <title>JavaWeb_JSP</title>
+    <link href="http://yoursite.com/2018/11/19/JavaWeb_JSP/"/>
+    <id>http://yoursite.com/2018/11/19/JavaWeb_JSP/</id>
     <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-21T12:28:02.301Z</updated>
+    <updated>2018-11-21T12:28:02.278Z</updated>
     
     <summary type="html">
     
     </summary>
     
-      <category term="架构" scheme="http://yoursite.com/categories/%E6%9E%B6%E6%9E%84/"/>
+      <category term="Java应用开发扩展" scheme="http://yoursite.com/categories/Java%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%A9%E5%B1%95/"/>
     
     
-      <category term="ZooKeeper" scheme="http://yoursite.com/tags/ZooKeeper/"/>
+      <category term="JSP" scheme="http://yoursite.com/tags/JSP/"/>
     
   </entry>
   
@@ -238,9 +238,16 @@
     <link href="http://yoursite.com/2018/11/19/Java_IO%E6%B5%81/"/>
     <id>http://yoursite.com/2018/11/19/Java_IO流/</id>
     <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-20T12:19:18.543Z</updated>
+    <updated>2018-12-16T14:04:19.240Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h4><h5 id="1、http-naotu-baidu-com-file-b930dac74f4d0908c263cc59ff21341c"><a href="#1、http-naotu-baidu-com-file-b930dac74f4d0908c263cc59ff21341c" class="headerlink" title="1、http://naotu.baidu.com/file/b930dac74f4d0908c263cc59ff21341c"></a>1、<a href="http://naotu.baidu.com/file/b930dac74f4d0908c263cc59ff21341c" target="_blank" rel="noopener">http://naotu.baidu.com/file/b930dac74f4d0908c263cc59ff21341c</a></h5><h4 id="二、总知识点"><a href="#二、总知识点" class="headerlink" title="二、总知识点"></a>二、<em>总知识点</em></h4><h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><h2 id="1、定义"><a href="#1、定义" class="headerlink" title="1、定义"></a>1、定义</h2><h3 id="流可以被定义为一个序列的数据。输入流用来从一个源中读数据，输出流用来向一个目的地写数据"><a href="#流可以被定义为一个序列的数据。输入流用来从一个源中读数据，输出流用来向一个目的地写数据" class="headerlink" title="流可以被定义为一个序列的数据。输入流用来从一个源中读数据，输出流用来向一个目的地写数据"></a>流可以被定义为一个序列的数据。输入流用来从一个源中读数据，输出流用来向一个目的地写数据</h3><h3 id="1、用于处理设备之间的数据传输"><a href="#1、用于处理设备之间的数据传输" class="headerlink" title="1、用于处理设备之间的数据传输"></a>1、用于处理设备之间的数据传输</h3><h3 id="2、Java对数据的操作时通过流的方式"><a href="#2、Java对数据的操作时通过流的方式" class="headerlink" title="2、Java对数据的操作时通过流的方式"></a>2、Java对数据的操作时通过流的方式</h3><h3 id="3、流只能操作数据"><a href="#3、流只能操作数据" class="headerlink" title="3、流只能操作数据"></a>3、流只能操作数据</h3><h2 id="2、流对象的基本规律"><a href="#2、流对象的基本规律" class="headerlink" title="2、流对象的基本规律"></a>2、流对象的基本规律</h2><h3 id="1、-明确源和目的"><a href="#1、-明确源和目的" class="headerlink" title="1、 明确源和目的"></a>1、 明确源和目的</h3><h4 id="源：输入流"><a href="#源：输入流" class="headerlink" title="源：输入流"></a>源：输入流</h4><h5 id="InputStream"><a href="#InputStream" class="headerlink" title="InputStream"></a>InputStream</h5><h5 id="Reader"><a href="#Reader" class="headerlink" title="Reader"></a>Reader</h5><h4 id="目的：输出流"><a href="#目的：输出流" class="headerlink" title="目的：输出流"></a>目的：输出流</h4><h5 id="OutputStream"><a href="#OutputStream" class="headerlink" title="OutputStream"></a>OutputStream</h5><h5 id="Writer"><a href="#Writer" class="headerlink" title="Writer"></a>Writer</h5><h3 id="2、明确操作的数据是否为纯文本"><a href="#2、明确操作的数据是否为纯文本" class="headerlink" title="2、明确操作的数据是否为纯文本"></a>2、明确操作的数据是否为纯文本</h3><h4 id="纯文本，字符流"><a href="#纯文本，字符流" class="headerlink" title="纯文本，字符流"></a>纯文本，字符流</h4><h4 id="非纯文本，字节流"><a href="#非纯文本，字节流" class="headerlink" title="非纯文本，字节流"></a>非纯文本，字节流</h4><h3 id="3、当体系明确后，在明确要使用的那个具体对象"><a href="#3、当体系明确后，在明确要使用的那个具体对象" class="headerlink" title="3、当体系明确后，在明确要使用的那个具体对象"></a>3、当体系明确后，在明确要使用的那个具体对象</h3><h2 id="3、IO异常处理"><a href="#3、IO异常处理" class="headerlink" title="3、IO异常处理"></a>3、IO异常处理</h2><h3 id="处理方式"><a href="#处理方式" class="headerlink" title="处理方式"></a>处理方式</h3><h4 id="在外建立引用，在try内建立对象"><a href="#在外建立引用，在try内建立对象" class="headerlink" title="在外建立引用，在try内建立对象"></a>在外建立引用，在try内建立对象</h4><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><h4 id="家人存在多个流，一定要分别去判断关闭流，不能只判断一次"><a href="#家人存在多个流，一定要分别去判断关闭流，不能只判断一次" class="headerlink" title="家人存在多个流，一定要分别去判断关闭流，不能只判断一次"></a>家人存在多个流，一定要分别去判断关闭流，不能只判断一次</h4><h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h4 id="log4j-可以完成日志信息的建立"><a href="#log4j-可以完成日志信息的建立" class="headerlink" title="log4j,可以完成日志信息的建立"></a>log4j,可以完成日志信息的建立</h4><h2 id="4、分类"><a href="#4、分类" class="headerlink" title="4、分类"></a>4、分类</h2><h3 id="1、按流向分类"><a href="#1、按流向分类" class="headerlink" title="1、按流向分类"></a>1、按流向分类</h3><h4 id="输入流"><a href="#输入流" class="headerlink" title="输入流"></a>输入流</h4><h5 id="程序从输入流中读取数据"><a href="#程序从输入流中读取数据" class="headerlink" title="程序从输入流中读取数据"></a>程序从输入流中读取数据</h5><h4 id="输出流"><a href="#输出流" class="headerlink" title="输出流"></a>输出流</h4><h5 id="程序向输出流中写入数据"><a href="#程序向输出流中写入数据" class="headerlink" title="程序向输出流中写入数据"></a>程序向输出流中写入数据</h5><h3 id="2、按操作数据分类"><a href="#2、按操作数据分类" class="headerlink" title="2、按操作数据分类"></a>2、按操作数据分类</h3><h4 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h4><h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><h6 id="用于处理文字"><a href="#用于处理文字" class="headerlink" title="用于处理文字"></a>用于处理文字</h6><h5 id="抽象基类"><a href="#抽象基类" class="headerlink" title="抽象基类"></a>抽象基类</h5><h6 id="InputStream-1"><a href="#InputStream-1" class="headerlink" title="InputStream"></a>InputStream</h6><h6 id="是字节输入流的所有类的超类"><a href="#是字节输入流的所有类的超类" class="headerlink" title="# 是字节输入流的所有类的超类"></a># 是字节输入流的所有类的超类</h6><h6 id="已知直接子类"><a href="#已知直接子类" class="headerlink" title="# 已知直接子类"></a># 已知直接子类</h6><h6 id="FileInputStream"><a href="#FileInputStream" class="headerlink" title="## FileInputStream"></a>## FileInputStream</h6><h6 id="FillterInputStream"><a href="#FillterInputStream" class="headerlink" title="## FillterInputStream"></a>## FillterInputStream</h6><h6 id="AudioInputStream"><a href="#AudioInputStream" class="headerlink" title="## AudioInputStream"></a>## AudioInputStream</h6><h6 id="ByteArrayInputStream"><a href="#ByteArrayInputStream" class="headerlink" title="## ByteArrayInputStream"></a>## ByteArrayInputStream</h6><h6 id="操作字节数组"><a href="#操作字节数组" class="headerlink" title="### 操作字节数组"></a>### 操作字节数组</h6><h6 id="ObjectInputStream"><a href="#ObjectInputStream" class="headerlink" title="## ObjectInputStream"></a>## ObjectInputStream</h6><h6 id="PipedInputStream"><a href="#PipedInputStream" class="headerlink" title="## PipedInputStream"></a>## PipedInputStream</h6><h6 id="SequenceInputStream"><a href="#SequenceInputStream" class="headerlink" title="##   SequenceInputStream"></a>##   SequenceInputStream</h6><h6 id="OutputStream-1"><a href="#OutputStream-1" class="headerlink" title="OutputStream"></a>OutputStream</h6><h6 id="输出字节流的所有类的超类"><a href="#输出字节流的所有类的超类" class="headerlink" title="# 输出字节流的所有类的超类"></a># 输出字节流的所有类的超类</h6><h6 id="不需要刷新。一般不需要缓冲区"><a href="#不需要刷新。一般不需要缓冲区" class="headerlink" title="# 不需要刷新。一般不需要缓冲区"></a># 不需要刷新。一般不需要缓冲区</h6><h6 id="已知直接子类-1"><a href="#已知直接子类-1" class="headerlink" title="# 已知直接子类"></a># 已知直接子类</h6><h6 id="FileOutputStream"><a href="#FileOutputStream" class="headerlink" title="## FileOutputStream"></a>## FileOutputStream</h6><h6 id="FillteOutputStream"><a href="#FillteOutputStream" class="headerlink" title="## FillteOutputStream"></a>## FillteOutputStream</h6><h6 id="ByteArrayOutputStream"><a href="#ByteArrayOutputStream" class="headerlink" title="## ByteArrayOutputStream"></a>## ByteArrayOutputStream</h6><h6 id="操作字节数组-1"><a href="#操作字节数组-1" class="headerlink" title="### 操作字节数组"></a>### 操作字节数组</h6><h6 id="ObjectOutputStream"><a href="#ObjectOutputStream" class="headerlink" title="## ObjectOutputStream"></a>## ObjectOutputStream</h6><h6 id="PipedOutputStream"><a href="#PipedOutputStream" class="headerlink" title="## PipedOutputStream"></a>## PipedOutputStream</h6><h5 id="缓冲区"><a href="#缓冲区" class="headerlink" title="缓冲区"></a>缓冲区</h5><h6 id="BuffedOutputStream"><a href="#BuffedOutputStream" class="headerlink" title="BuffedOutputStream"></a>BuffedOutputStream</h6><h6 id="BufferedInputStream"><a href="#BufferedInputStream" class="headerlink" title="BufferedInputStream"></a>BufferedInputStream</h6><h4 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h4><h5 id="1、作用"><a href="#1、作用" class="headerlink" title="1、作用"></a>1、作用</h5><h6 id="用于处理文字-1"><a href="#用于处理文字-1" class="headerlink" title="用于处理文字"></a>用于处理文字</h6><h5 id="2、抽象基类"><a href="#2、抽象基类" class="headerlink" title="2、抽象基类"></a>2、抽象基类</h5><h6 id="Reader-1"><a href="#Reader-1" class="headerlink" title="Reader"></a>Reader</h6><h6 id="读取字符流"><a href="#读取字符流" class="headerlink" title="# 读取字符流"></a># 读取字符流</h6><h6 id="已知直接子类-2"><a href="#已知直接子类-2" class="headerlink" title="# 已知直接子类"></a># 已知直接子类</h6><h6 id="FileReader"><a href="#FileReader" class="headerlink" title="## FileReader"></a>## FileReader</h6><h6 id="CharArrayReader"><a href="#CharArrayReader" class="headerlink" title="## CharArrayReader"></a>## CharArrayReader</h6><h6 id="InputStreamReader"><a href="#InputStreamReader" class="headerlink" title="## InputStreamReader"></a>## InputStreamReader</h6><h6 id="PipedReader"><a href="#PipedReader" class="headerlink" title="## PipedReader"></a>## PipedReader</h6><h6 id="PrintReader"><a href="#PrintReader" class="headerlink" title="## PrintReader"></a>## PrintReader</h6><h6 id="StringReader"><a href="#StringReader" class="headerlink" title="## StringReader"></a>## StringReader</h6><h6 id="BufferedReader"><a href="#BufferedReader" class="headerlink" title="##  BufferedReader"></a>##  BufferedReader</h6><h6 id="操作字符串"><a href="#操作字符串" class="headerlink" title="### 操作字符串"></a>### 操作字符串</h6><h6 id="Writer-1"><a href="#Writer-1" class="headerlink" title="Writer"></a>Writer</h6><h6 id="写入字符流"><a href="#写入字符流" class="headerlink" title="# 写入字符流"></a># 写入字符流</h6><h6 id="已知直接子类-3"><a href="#已知直接子类-3" class="headerlink" title="# 已知直接子类"></a># 已知直接子类</h6><h6 id="FileWriter"><a href="#FileWriter" class="headerlink" title="## FileWriter"></a>## FileWriter</h6><h6 id="继承OutputStreamWriter类"><a href="#继承OutputStreamWriter类" class="headerlink" title="###  继承OutputStreamWriter类"></a>###  继承OutputStreamWriter类</h6><h6 id="用于操作文件"><a href="#用于操作文件" class="headerlink" title="### 用于操作文件"></a>### 用于操作文件</h6><h6 id="步骤"><a href="#步骤" class="headerlink" title="### 步骤"></a>### 步骤</h6><h6 id="1、创建文件（FileWriter对象）"><a href="#1、创建文件（FileWriter对象）" class="headerlink" title="#### 1、创建文件（FileWriter对象）"></a>#### 1、创建文件（FileWriter对象）</h6><h6 id="2、调用writer方法，将字符串写入（内存）流中"><a href="#2、调用writer方法，将字符串写入（内存）流中" class="headerlink" title="#### 2、调用writer方法，将字符串写入（内存）流中"></a>#### 2、调用writer方法，将字符串写入（内存）流中</h6><h6 id="3、刷新流对象中的缓冲区数据：fw-flush"><a href="#3、刷新流对象中的缓冲区数据：fw-flush" class="headerlink" title="#### 3、刷新流对象中的缓冲区数据：fw.flush()"></a>#### 3、刷新流对象中的缓冲区数据：fw.flush()</h6><h6 id="4、关闭流资源-fw-close"><a href="#4、关闭流资源-fw-close" class="headerlink" title="#### 4、关闭流资源:fw.close()"></a>#### 4、关闭流资源:fw.close()</h6><h6 id="flush与close的区别"><a href="#flush与close的区别" class="headerlink" title="### flush与close的区别"></a>### flush与close的区别</h6><h6 id="flush刷新后，流一直存在，可以继续写入数据"><a href="#flush刷新后，流一直存在，可以继续写入数据" class="headerlink" title="#### flush刷新后，流一直存在，可以继续写入数据"></a>#### flush刷新后，流一直存在，可以继续写入数据</h6><h6 id="close刷新后会将流关闭，不能再继续写入数据，关闭资源"><a href="#close刷新后会将流关闭，不能再继续写入数据，关闭资源" class="headerlink" title="#### close刷新后会将流关闭，不能再继续写入数据，关闭资源"></a>#### close刷新后会将流关闭，不能再继续写入数据，关闭资源</h6><h6 id="CharArrayWriter"><a href="#CharArrayWriter" class="headerlink" title="## CharArrayWriter"></a>## CharArrayWriter</h6><h6 id="操作字符数组"><a href="#操作字符数组" class="headerlink" title="### 操作字符数组"></a>### 操作字符数组</h6><h6 id="不用进行close关闭"><a href="#不用进行close关闭" class="headerlink" title="### 不用进行close关闭"></a>### 不用进行close关闭</h6><h6 id="OutputStreamWriter"><a href="#OutputStreamWriter" class="headerlink" title="## OutputStreamWriter"></a>## OutputStreamWriter</h6><h6 id="PipedWriter"><a href="#PipedWriter" class="headerlink" title="## PipedWriter"></a>## PipedWriter</h6><h6 id="PrintWriter"><a href="#PrintWriter" class="headerlink" title="## PrintWriter"></a>## PrintWriter</h6><h6 id="StringWriter"><a href="#StringWriter" class="headerlink" title="## StringWriter"></a>## StringWriter</h6><h6 id="操作字符串-1"><a href="#操作字符串-1" class="headerlink" title="### 操作字符串"></a>### 操作字符串</h6><h6 id="BufferedWriter"><a href="#BufferedWriter" class="headerlink" title="## BufferedWriter"></a>## BufferedWriter</h6><h5 id="3、缓冲区"><a href="#3、缓冲区" class="headerlink" title="3、缓冲区"></a>3、缓冲区</h5><h6 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h6><h6 id="将数组封装，变成对象再使用"><a href="#将数组封装，变成对象再使用" class="headerlink" title="# 将数组封装，变成对象再使用"></a># 将数组封装，变成对象再使用</h6><h6 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h6><h6 id="提高流的操作效率"><a href="#提高流的操作效率" class="headerlink" title="# 提高流的操作效率"></a># 提高流的操作效率</h6><h6 id="对应类"><a href="#对应类" class="headerlink" title="对应类"></a>对应类</h6><h6 id="BufferedReader-1"><a href="#BufferedReader-1" class="headerlink" title="# BufferedReader"></a># BufferedReader</h6><h6 id="从字符输入流中读取文本，缓冲各个字符，从而实现字符，数组和行的高效读取"><a href="#从字符输入流中读取文本，缓冲各个字符，从而实现字符，数组和行的高效读取" class="headerlink" title="## 从字符输入流中读取文本，缓冲各个字符，从而实现字符，数组和行的高效读取"></a>## 从字符输入流中读取文本，缓冲各个字符，从而实现字符，数组和行的高效读取</h6><h6 id="步骤-1"><a href="#步骤-1" class="headerlink" title="## 步骤"></a>## 步骤</h6><h6 id="1、创建一个读取流对象和文件相关联"><a href="#1、创建一个读取流对象和文件相关联" class="headerlink" title="### 1、创建一个读取流对象和文件相关联"></a>### 1、创建一个读取流对象和文件相关联</h6><h6 id="2、为了提高效率，加入缓冲技术。将字符读取流对象作为参数传递给缓冲对象函数的构造函数"><a href="#2、为了提高效率，加入缓冲技术。将字符读取流对象作为参数传递给缓冲对象函数的构造函数" class="headerlink" title="### 2、为了提高效率，加入缓冲技术。将字符读取流对象作为参数传递给缓冲对象函数的构造函数"></a>### 2、为了提高效率，加入缓冲技术。将字符读取流对象作为参数传递给缓冲对象函数的构造函数</h6><h6 id="3、读取缓冲区"><a href="#3、读取缓冲区" class="headerlink" title="### 3、读取缓冲区"></a>### 3、读取缓冲区</h6><h6 id="4、关闭缓冲区资源"><a href="#4、关闭缓冲区资源" class="headerlink" title="### 4、关闭缓冲区资源"></a>### 4、关闭缓冲区资源</h6><h6 id="子类"><a href="#子类" class="headerlink" title="## 子类"></a>## 子类</h6><h6 id="LineNumberReader"><a href="#LineNumberReader" class="headerlink" title="### LineNumberReader"></a>### LineNumberReader</h6><h6 id="跟踪行号缓冲字符输入流"><a href="#跟踪行号缓冲字符输入流" class="headerlink" title="#### 跟踪行号缓冲字符输入流"></a>#### 跟踪行号缓冲字符输入流</h6><h6 id="默认行编号从0开始"><a href="#默认行编号从0开始" class="headerlink" title="#### 默认行编号从0开始"></a>#### 默认行编号从0开始</h6><h6 id="BufferedWriter-1"><a href="#BufferedWriter-1" class="headerlink" title="# BufferedWriter"></a># BufferedWriter</h6><h6 id="字符流的缓冲区"><a href="#字符流的缓冲区" class="headerlink" title="## 字符流的缓冲区"></a>## 字符流的缓冲区</h6><h6 id="提高了对数据的读写效率"><a href="#提高了对数据的读写效率" class="headerlink" title="## 提高了对数据的读写效率"></a>## 提高了对数据的读写效率</h6><h6 id="在创建缓冲区前，必须要先用流对象"><a href="#在创建缓冲区前，必须要先用流对象" class="headerlink" title="## 在创建缓冲区前，必须要先用流对象"></a>## 在创建缓冲区前，必须要先用流对象</h6><h6 id="缓冲技术步骤"><a href="#缓冲技术步骤" class="headerlink" title="## 缓冲技术步骤"></a>## 缓冲技术步骤</h6><h5 id="4、转换类"><a href="#4、转换类" class="headerlink" title="4、转换类"></a>4、转换类</h5><h6 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h6><h6 id="字符编码转换"><a href="#字符编码转换" class="headerlink" title="# 字符编码转换"></a># 字符编码转换</h6><h6 id="字符和字节之间的桥梁"><a href="#字符和字节之间的桥梁" class="headerlink" title="# 字符和字节之间的桥梁"></a># 字符和字节之间的桥梁</h6><h6 id="字节转字符"><a href="#字节转字符" class="headerlink" title="字节转字符"></a>字节转字符</h6><h6 id="InputStreamReader-1"><a href="#InputStreamReader-1" class="headerlink" title="# InputStreamReader"></a># InputStreamReader</h6><h6 id="本身是字符流"><a href="#本身是字符流" class="headerlink" title="## 本身是字符流"></a>## 本身是字符流</h6><h6 id="为提高效率，可以在BufferedReader内包装InputStreamReader"><a href="#为提高效率，可以在BufferedReader内包装InputStreamReader" class="headerlink" title="## 为提高效率，可以在BufferedReader内包装InputStreamReader"></a>## 为提高效率，可以在BufferedReader内包装InputStreamReader</h6><h6 id="字符转字节"><a href="#字符转字节" class="headerlink" title="字符转字节"></a>字符转字节</h6><h6 id="OutputStreamWriter-1"><a href="#OutputStreamWriter-1" class="headerlink" title="# OutputStreamWriter"></a># OutputStreamWriter</h6><h6 id="本身是字符流-1"><a href="#本身是字符流-1" class="headerlink" title="## 本身是字符流"></a>## 本身是字符流</h6><h6 id="主要操作在控制台"><a href="#主要操作在控制台" class="headerlink" title="## 主要操作在控制台"></a>## 主要操作在控制台</h6><h6 id="为获取最高效率，可将OutputStreamWriter包装到BufferedWriter，避免频繁调用转换器"><a href="#为获取最高效率，可将OutputStreamWriter包装到BufferedWriter，避免频繁调用转换器" class="headerlink" title="## 为获取最高效率，可将OutputStreamWriter包装到BufferedWriter，避免频繁调用转换器"></a>## 为获取最高效率，可将OutputStreamWriter包装到BufferedWriter，避免频繁调用转换器</h6><h3 id="3、IO包其他类"><a href="#3、IO包其他类" class="headerlink" title="3、IO包其他类"></a>3、IO包其他类</h3><h4 id="打印流"><a href="#打印流" class="headerlink" title="打印流"></a>打印流</h4><h5 id="可以直接操作输入流和文件"><a href="#可以直接操作输入流和文件" class="headerlink" title="可以直接操作输入流和文件"></a>可以直接操作输入流和文件</h5><h5 id="PrintWriter-1"><a href="#PrintWriter-1" class="headerlink" title="PrintWriter"></a>PrintWriter</h5><h6 id="字符打印流"><a href="#字符打印流" class="headerlink" title="字符打印流"></a>字符打印流</h6><h6 id="为其他输出流添加功能"><a href="#为其他输出流添加功能" class="headerlink" title="为其他输出流添加功能"></a>为其他输出流添加功能</h6><h6 id="永远不会抛出IOException"><a href="#永远不会抛出IOException" class="headerlink" title="永远不会抛出IOException"></a>永远不会抛出IOException</h6><h6 id="在需要写入字符而不是写入字节的情况下使用"><a href="#在需要写入字符而不是写入字节的情况下使用" class="headerlink" title="在需要写入字符而不是写入字节的情况下使用"></a>在需要写入字符而不是写入字节的情况下使用</h6><h5 id="PrintStream"><a href="#PrintStream" class="headerlink" title="PrintStream"></a>PrintStream</h5><h6 id="字节打印流"><a href="#字节打印流" class="headerlink" title="字节打印流"></a>字节打印流</h6><h6 id="打印的所有字符都使用平台的默认字符编码转换为字节"><a href="#打印的所有字符都使用平台的默认字符编码转换为字节" class="headerlink" title="打印的所有字符都使用平台的默认字符编码转换为字节"></a>打印的所有字符都使用平台的默认字符编码转换为字节</h6><h4 id="序列流"><a href="#序列流" class="headerlink" title="序列流"></a>序列流</h4><h5 id="对多个流进行合并"><a href="#对多个流进行合并" class="headerlink" title="对多个流进行合并"></a>对多个流进行合并</h5><h5 id="SequenceInputStream-1"><a href="#SequenceInputStream-1" class="headerlink" title="SequenceInputStream"></a>SequenceInputStream</h5><h6 id="表示其他输入流的逻辑串联"><a href="#表示其他输入流的逻辑串联" class="headerlink" title="表示其他输入流的逻辑串联"></a>表示其他输入流的逻辑串联</h6><h6 id="没有对应的输出流类"><a href="#没有对应的输出流类" class="headerlink" title="没有对应的输出流类"></a>没有对应的输出流类</h6><h4 id="操作对象"><a href="#操作对象" class="headerlink" title="操作对象"></a>操作对象</h4><h5 id="被操作的对象需要实现Serializable（标记接口）"><a href="#被操作的对象需要实现Serializable（标记接口）" class="headerlink" title="被操作的对象需要实现Serializable（标记接口）"></a>被操作的对象需要实现Serializable（标记接口）</h5><h5 id="ObjectInputStream-1"><a href="#ObjectInputStream-1" class="headerlink" title="ObjectInputStream"></a>ObjectInputStream</h5><h5 id="ObjectOutputStream-1"><a href="#ObjectOutputStream-1" class="headerlink" title="ObjectOutputStream"></a>ObjectOutputStream</h5><h6 id="将java对象的基本类型和图形写入OutputStream"><a href="#将java对象的基本类型和图形写入OutputStream" class="headerlink" title="将java对象的基本类型和图形写入OutputStream"></a>将java对象的基本类型和图形写入OutputStream</h6><h4 id="操作文件"><a href="#操作文件" class="headerlink" title="操作文件"></a>操作文件</h4><h5 id="随机访问文件，自身具备读写的方法"><a href="#随机访问文件，自身具备读写的方法" class="headerlink" title="随机访问文件，自身具备读写的方法"></a>随机访问文件，自身具备读写的方法</h5><h5 id="RandomAccessFile"><a href="#RandomAccessFile" class="headerlink" title="RandomAccessFile"></a>RandomAccessFile</h5><h6 id="父类是Object的特殊类"><a href="#父类是Object的特殊类" class="headerlink" title="父类是Object的特殊类"></a>父类是Object的特殊类</h6><h6 id="通过skipByte（int-seek-int-x-来达到随机访问"><a href="#通过skipByte（int-seek-int-x-来达到随机访问" class="headerlink" title="通过skipByte（int),seek(int x)来达到随机访问"></a>通过skipByte（int),seek(int x)来达到随机访问</h6><h6 id="可以实现多线程下载"><a href="#可以实现多线程下载" class="headerlink" title="可以实现多线程下载"></a>可以实现多线程下载</h6><h4 id="管道流"><a href="#管道流" class="headerlink" title="管道流"></a>管道流</h4><h5 id="输入输出流可以直接进行连接，通过结合线程使用"><a href="#输入输出流可以直接进行连接，通过结合线程使用" class="headerlink" title="输入输出流可以直接进行连接，通过结合线程使用"></a>输入输出流可以直接进行连接，通过结合线程使用</h5><h5 id="PipedOutputStream-1"><a href="#PipedOutputStream-1" class="headerlink" title="PipedOutputStream"></a>PipedOutputStream</h5><h5 id="PipedInputStream-1"><a href="#PipedInputStream-1" class="headerlink" title="PipedInputStream"></a>PipedInputStream</h5><h4 id="操作基本数据类型"><a href="#操作基本数据类型" class="headerlink" title="操作基本数据类型"></a>操作基本数据类型</h4><h5 id="输入输出可以直接进行连接，通过结合线程使用"><a href="#输入输出可以直接进行连接，通过结合线程使用" class="headerlink" title="输入输出可以直接进行连接，通过结合线程使用"></a>输入输出可以直接进行连接，通过结合线程使用</h5><h5 id="DataInputStream"><a href="#DataInputStream" class="headerlink" title="DataInputStream"></a>DataInputStream</h5><h5 id="DataOutputStream"><a href="#DataOutputStream" class="headerlink" title="DataOutputStream"></a>DataOutputStream</h5><h4 id="三、重点知识点实例"><a href="#三、重点知识点实例" class="headerlink" title="三、重点知识点实例"></a>三、<em>重点知识点实例</em></h4><h4 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h4><h4 id="五、思维扩展"><a href="#五、思维扩展" class="headerlink" title="五、思维扩展"></a>五、<em>思维扩展</em></h4><h4 id="六、存在疑问"><a href="#六、存在疑问" class="headerlink" title="六、存在疑问"></a>六、<em>存在疑问</em></h4>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;一、思维导图&quot;&gt;&lt;a href=&quot;#一、思维导图&quot; class=&quot;headerlink&quot; title=&quot;一、思维导图&quot;&gt;&lt;/a&gt;一、&lt;em&gt;思维导图&lt;/em&gt;&lt;/h4&gt;&lt;h5 id=&quot;1、http-naotu-baidu-com-file-b930dac74f4d
+      
     
     </summary>
     
@@ -252,27 +259,20 @@
   </entry>
   
   <entry>
-    <title>JVM</title>
-    <link href="http://yoursite.com/2018/11/19/JVM/"/>
-    <id>http://yoursite.com/2018/11/19/JVM/</id>
+    <title>设计模式_行为型_策略模式</title>
+    <link href="http://yoursite.com/2018/11/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_%E8%A1%8C%E4%B8%BA%E5%9E%8B_%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://yoursite.com/2018/11/19/设计模式_行为型_策略模式/</id>
     <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-27T13:09:44.717Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><p><a href="http://naotu.baidu.com/file/b9498e3305b1f1e0f23ba2545bcc3893" target="_blank" rel="noopener">http://naotu.baidu.com/file/b9498e3305b1f1e0f23ba2545bcc3893</a></p><h1 id="二、JVM知识点"><a href="#二、JVM知识点" class="headerlink" title="二、JVM知识点"></a>二、<em>JVM知识点</em></h1><h2 id="1、自动内存管理机制"><a href="#1、自动内存管理机制" class="headerlink" title="1、自动内存管理机制"></a>1、自动内存管理机制</h2><h3 id="1-1、虚拟机内存区域与内存溢出异常"><a href="#1-1、虚拟机内存区域与内存溢出异常" class="headerlink" title="1.1、虚拟机内存区域与内存溢出异常"></a>1.1、虚拟机内存区域与内存溢出异常</h3><h4 id="1-1-1、运行时的数据区域"><a href="#1-1-1、运行时的数据区域" class="headerlink" title="1.1.1、运行时的数据区域"></a>1.1.1、运行时的数据区域</h4><pre><code>         1、程序计数器         2、Java虚拟机栈         3、本地方法栈         4、Java堆 ：存放对象实例（通过-Xmx和-Xms控制）         5、方法区：存储已被虚拟机加载的类信息、常量、静态方法</code></pre><h4 id="1-1-2、HotSpot虚拟机对象"><a href="#1-1-2、HotSpot虚拟机对象" class="headerlink" title="1.1.2、HotSpot虚拟机对象"></a>1.1.2、HotSpot虚拟机对象</h4><pre><code>    1、对象的创建    2、对象的内存布局    3、对象的访问定位</code></pre><h4 id="1-1-3、实战：OutOfMemoryError异常"><a href="#1-1-3、实战：OutOfMemoryError异常" class="headerlink" title="1.1.3、实战：OutOfMemoryError异常"></a>1.1.3、实战：OutOfMemoryError异常</h4><pre><code>     1、Java堆溢出     2、虚拟机栈和本地方法栈溢出     3、方法区和运行时常量池溢出     4、本机直接内存溢出</code></pre><h3 id="1-2、垃圾收集算法与内存分配策略"><a href="#1-2、垃圾收集算法与内存分配策略" class="headerlink" title="1.2、垃圾收集算法与内存分配策略"></a>1.2、垃圾收集算法与内存分配策略</h3><h4 id="1-2-1、判断对象是否已经死："><a href="#1-2-1、判断对象是否已经死：" class="headerlink" title="1.2.1、判断对象是否已经死："></a>1.2.1、判断对象是否已经死：</h4><pre><code>    1、引用计数算法        2、根搜索算法    3、引用：         1、强引用         2、软引用         3、弱引用         4、虚引用</code></pre><h4 id="1-2-2、垃圾收集算法"><a href="#1-2-2、垃圾收集算法" class="headerlink" title="1.2.2、垃圾收集算法"></a>1.2.2、垃圾收集算法</h4><pre><code>     1、标记-清除算法     2、复制算法     3、标记-整理算法     4、分代收集算法</code></pre><h3 id="1-2-3、内存分配与回收策略"><a href="#1-2-3、内存分配与回收策略" class="headerlink" title="1.2.3、内存分配与回收策略"></a>1.2.3、内存分配与回收策略</h3><h4 id="1-2-4、虚拟机性能监控与故障处理工具"><a href="#1-2-4、虚拟机性能监控与故障处理工具" class="headerlink" title="1.2.4、虚拟机性能监控与故障处理工具"></a>1.2.4、虚拟机性能监控与故障处理工具</h4><h5 id="1-2-4-1、JDK命令"><a href="#1-2-4-1、JDK命令" class="headerlink" title="1.2.4.1、JDK命令"></a>1.2.4.1、JDK命令</h5><pre><code>    1、jps:虚拟机进程状况工具    2、jstat:虚拟机统计信息工具    3、jinfo:Java配置信息工具    4、jmap:Java内存映像工具    5、jhat:虚拟机堆转储快照分析工具    6、jstack:Java堆栈跟踪工具</code></pre><h5 id="1-2-4-2、可视化工具"><a href="#1-2-4-2、可视化工具" class="headerlink" title="1.2.4.2、可视化工具"></a>1.2.4.2、可视化工具</h5><h4 id="1-2-5、调优案例分析与实战"><a href="#1-2-5、调优案例分析与实战" class="headerlink" title="1.2.5、调优案例分析与实战"></a>1.2.5、调优案例分析与实战</h4><h2 id="2、虚拟机执行子系统"><a href="#2、虚拟机执行子系统" class="headerlink" title="2、虚拟机执行子系统"></a>2、虚拟机执行子系统</h2><h3 id="2-1、类文件结构"><a href="#2-1、类文件结构" class="headerlink" title="2.1、类文件结构"></a>2.1、类文件结构</h3><h4 id="2-1-1、Class文件结构"><a href="#2-1-1、Class文件结构" class="headerlink" title="2.1.1、Class文件结构"></a>2.1.1、Class文件结构</h4><pre><code>    1、魔数与Class类文件的版本    2、常量池    3、访问标志    4、类索引、父类索引与接口索引集合    5、字段表集合    6、方法表集合    7、属性表集合</code></pre><h3 id="2-2、虚拟机类加载机制"><a href="#2-2、虚拟机类加载机制" class="headerlink" title="2.2、虚拟机类加载机制"></a>2.2、虚拟机类加载机制</h3><h4 id="2-2-1、类加载的时机"><a href="#2-2-1、类加载的时机" class="headerlink" title="2.2.1、类加载的时机"></a>2.2.1、类加载的时机</h4><h4 id="2-2-2、类加载的过程"><a href="#2-2-2、类加载的过程" class="headerlink" title="2.2.2、类加载的过程"></a>2.2.2、类加载的过程</h4><pre><code>    1、加载，验证，准备，解析，初始化（4个触发点），使用，卸载    2、虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化最终形成可以被虚拟机直接使用的Java类型，这就是虚拟机的类加载机制</code></pre><h4 id="2-2-3、类加载器"><a href="#2-2-3、类加载器" class="headerlink" title="2.2.3、类加载器"></a>2.2.3、类加载器</h4><pre><code>     1、类与类加载器     2、双亲委派模型     3、破坏双亲委派模型</code></pre><h3 id="2-3、虚拟机字节码执行引擎"><a href="#2-3、虚拟机字节码执行引擎" class="headerlink" title="2.3、虚拟机字节码执行引擎"></a>2.3、虚拟机字节码执行引擎</h3><h4 id="2-3-1、运行时栈帧结构"><a href="#2-3-1、运行时栈帧结构" class="headerlink" title="2.3.1、运行时栈帧结构"></a>2.3.1、运行时栈帧结构</h4><pre><code>     1、局部变量表     2、操作数栈     3、动态连接     4、方法返回址     5、附加信息</code></pre><h4 id="2-3-2、方法调用"><a href="#2-3-2、方法调用" class="headerlink" title="2.3.2、方法调用"></a>2.3.2、方法调用</h4><h2 id="3、程序编译与代码优化"><a href="#3、程序编译与代码优化" class="headerlink" title="3、程序编译与代码优化"></a>3、程序编译与代码优化</h2><h3 id="3-1、早期（编译期）优化"><a href="#3-1、早期（编译期）优化" class="headerlink" title="3.1、早期（编译期）优化"></a>3.1、早期（编译期）优化</h3><h4 id="3-1-1、Javac编译器"><a href="#3-1-1、Javac编译器" class="headerlink" title="3.1.1、Javac编译器"></a>3.1.1、Javac编译器</h4><pre><code>     1、Javac的源码与调试         1、字节码编译过程，javac 通过把java文件编译成Class文件，其中编译过程中存在着语法及结构关系对应     2、解析与填充符号表     3、注解处理器     4、语义分析与字节码生成</code></pre><h4 id="3-1-2、Java语法糖的味道"><a href="#3-1-2、Java语法糖的味道" class="headerlink" title="3.1.2、Java语法糖的味道"></a>3.1.2、Java语法糖的味道</h4><pre><code>    1、java语言中泛型、自动装箱及拆箱、遍历循环与变长参数</code></pre><h3 id="3-2、晚期（运行期）优化"><a href="#3-2、晚期（运行期）优化" class="headerlink" title="3.2、晚期（运行期）优化"></a>3.2、晚期（运行期）优化</h3><h4 id="3-2-1、HotSpot-虚拟机内的即时编译器"><a href="#3-2-1、HotSpot-虚拟机内的即时编译器" class="headerlink" title="3.2.1、HotSpot 虚拟机内的即时编译器"></a>3.2.1、HotSpot 虚拟机内的即时编译器</h4><h2 id="4、高效并发"><a href="#4、高效并发" class="headerlink" title="4、高效并发"></a>4、高效并发</h2><h3 id="4-1、Java内存模型与线程"><a href="#4-1、Java内存模型与线程" class="headerlink" title="4.1、Java内存模型与线程"></a>4.1、Java内存模型与线程</h3><h4 id="4-1-1、Java内存模型"><a href="#4-1-1、Java内存模型" class="headerlink" title="4.1.1、Java内存模型"></a>4.1.1、Java内存模型</h4><pre><code>1、主内存与工作内存2、内存间交互操作3、对于volatile型变量的特殊规则4、对于long和double型变量的特殊规则5、原子性，可见性与有序性6、先行发生原则</code></pre><h4 id="4-1-2、Java与线程"><a href="#4-1-2、Java与线程" class="headerlink" title="4.1.2、Java与线程"></a>4.1.2、Java与线程</h4><h3 id="4-2、线程安全与锁优化"><a href="#4-2、线程安全与锁优化" class="headerlink" title="4.2、线程安全与锁优化"></a>4.2、线程安全与锁优化</h3><h4 id="4-2-1、线程安全"><a href="#4-2-1、线程安全" class="headerlink" title="4.2.1、线程安全"></a>4.2.1、线程安全</h4><pre><code> 1、java语言中的线程安全 2、线程安全的实现方法</code></pre><h4 id="4-2-2、锁优化"><a href="#4-2-2、锁优化" class="headerlink" title="4.2.2、锁优化"></a>4.2.2、锁优化</h4><pre><code>1、自旋锁与自适应自旋2、锁消除3、锁粗化4、轻量级锁5、偏向锁</code></pre><h1 id="三、重点分析JVM知识点"><a href="#三、重点分析JVM知识点" class="headerlink" title="三、重点分析JVM知识点"></a>三、<em>重点分析JVM知识点</em></h1><pre><code>这块会重点分析以下几个方面的知识：    JVM的系列文章：    1、虚拟内存区域（运行时的数据区域）    2、垃圾收集机制    3、Class文件结构    4、虚拟机类加载机制    5、虚拟机字节码执行（栈帧）    6、早期编译及晚期优化    7、Java内存模型与线程    8、线程安全与锁优化</code></pre><h1 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h1>]]></content>
+    <updated>2018-11-21T12:28:02.310Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;h1 id=&quot;一、思维导图&quot;&gt;&lt;a href=&quot;#一、思维导图&quot; class=&quot;headerlink&quot; title=&quot;一、思维导图&quot;&gt;&lt;/a&gt;一、&lt;em&gt;思维导图&lt;/em&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://naotu.baidu.com/file/b9498e33
-      
-    
     </summary>
     
-      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
+      <category term="Java进阶" scheme="http://yoursite.com/categories/Java%E8%BF%9B%E9%98%B6/"/>
     
     
-      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
+      <category term="设计模式" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
@@ -291,6 +291,49 @@
     
     
       <category term="多线程并发" scheme="http://yoursite.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java_常用API</title>
+    <link href="http://yoursite.com/2018/11/19/Java_%E5%B8%B8%E7%94%A8API/"/>
+    <id>http://yoursite.com/2018/11/19/Java_常用API/</id>
+    <published>2018-11-19T06:17:59.000Z</published>
+    <updated>2018-12-05T14:09:22.801Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h4><h5 id="1、http-naotu-baidu-com-file-46dc16932487b3844ec59b9b9b356c73"><a href="#1、http-naotu-baidu-com-file-46dc16932487b3844ec59b9b9b356c73" class="headerlink" title="1、http://naotu.baidu.com/file/46dc16932487b3844ec59b9b9b356c73"></a>1、<a href="http://naotu.baidu.com/file/46dc16932487b3844ec59b9b9b356c73" target="_blank" rel="noopener">http://naotu.baidu.com/file/46dc16932487b3844ec59b9b9b356c73</a></h5><h4 id="二、总知识点"><a href="#二、总知识点" class="headerlink" title="二、总知识点"></a>二、<em>总知识点</em></h4><h2 id="1、String类"><a href="#1、String类" class="headerlink" title="1、String类"></a>1、String类</h2><h3 id="1、String"><a href="#1、String" class="headerlink" title="1、String"></a>1、String</h3><pre><code>    #### char charAt(int index) 返回指定位置的字符。    #### int compareTo(Object o)    #### int compareTo(String anotherString) 与另外一个对象进行比较。    #### int compareToIgnoreCase(String str)  与另一个String进行比较， 不区分大小写    #### String concat(String str) 连接两字符串， 可以直接用+， 因为Java给String覆盖了+    #### static String copyValueOf(char[] data)    #### static String copyValueOf(char[] data, int offset, int count)将data数组转换至String    #### boolean endsWith(String suffix) 测试此String是否以suffix结尾。    #### boolean startsWith(String prefix) 测试此String是否以prefix开头。    #### boolean equals(Object anObject)    #### boolean equalsIgnoreCase(String anotherString) 比较两字符串的值。 不相等则返回false    #### byte[] getBytes() 根据缺省的字符编码将String转换成字节数组。    #### byte[] getBytes(String enc) 根据指定的编码将String转换万字节数组。    #### void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin) 拷贝字符至一数组中    #### int indexOf(int ch) 从字串的起始位置查找字符ch第一次出现的位置    #### int indexOf(int ch, int fromIndex) 从指定的fromIndex位置向后查找第一次出现ch的位置，    #### int indexOf(String str)    #### int indexOf(String str, int fromIndex) 如果不存在ch或str都返回-1    #### int lastIndexOf(int ch) 从字串的最终位置往前查找第一次出现ch的位置    #### int lastIndexOf(int ch, int fromIndex)  从指定的位置往前查找第一次出现ch的位置，    #### int lastIndexOf(String str)    #### int lastIndexOf(String str, int fromIndex) 如果不存在则返回-1    #### int length() 该字符串的字符长度（一个全角的汉字长度为1）    #### String replace(char oldChar, char newChar) 将字符oldChar全部替换为newChar， 返回一个新的字符串。    #### String substring(int beginIndex) 返回从beginIndex开始的字符串子集    #### String substring(int beginIndex, int endIndex) 返回从beginIndex至endIndex结束的字符串的子集。 其中endIndex – beginIndex等于子集的字符串长度    #### char[] toCharArray() 返回该字符串的内部字符数组    #### String toLowerCase() 转换至小写字母的字符串    #### String toLowerCase(Locale locale)    #### String toUpperCase() 转换至大写字母的字符串    #### String toUpperCase(Locale locale)    #### String toString() 覆盖了Object的toString方法， 返回本身。    #### String trim() 将字符串两边的半角空白字符去掉， 如果需要去掉全角的空白字符得要自己写。    #### static String valueOf(primitive p) 将其它的简单类型的值转换为一个String</code></pre><h3 id="2、StringBuilder（线程不安全）"><a href="#2、StringBuilder（线程不安全）" class="headerlink" title="2、StringBuilder（线程不安全）"></a>2、StringBuilder（线程不安全）</h3><h3 id="3、StringBuffer（线程安全）"><a href="#3、StringBuffer（线程安全）" class="headerlink" title="3、StringBuffer（线程安全）"></a>3、StringBuffer（线程安全）</h3><pre><code>    #### StringBuffer append(param)  在StringBuffer对象之后追加param(可以为所有的简单类型和Object) 返回追加后的StringBuffer， 与原来的对象是同一份。    #### char charAt(int index) 返回指定位置index的字符。    #### StringBuffer delete(int start, int end) 删除指定区域start~end的字符。    #### StringBuffer deleteCharAt(int index) 删除指定位置index的字符。    #### void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin) 同String的getChars方法    #### StringBuffer insert(int offset, boolean b) 在指定位置offset插入param(为所有的简单类型与Object)    #### int length() 同String的length()    #### StringBuffer replace(int start, int end, String str) 将指定区域start~end的字符串替换为str    #### StringBuffer reverse() 反转字符的顺序    #### void setCharAt(int index, char ch) 设置字符ch至index位置。    #### String substring(int start)    #### String substring(int start, int end) 同String的subString    #### String toString() 返回一个String</code></pre><h2 id="2、System"><a href="#2、System" class="headerlink" title="2、System"></a>2、System</h2><h3 id="1、输入输出流"><a href="#1、输入输出流" class="headerlink" title="1、输入输出流"></a>1、输入输出流</h3><pre><code>    #### (PrintStream) System.out （标准终端输出流）    #### (PrintStream) System.err（标准错误输出流）    #### (InputStream) System.in（标准输入流）</code></pre><h3 id="2、取当前时间"><a href="#2、取当前时间" class="headerlink" title="2、取当前时间"></a>2、取当前时间</h3><pre><code>    #### System.currentTimeMillis()</code></pre><h3 id="3、数组拷贝"><a href="#3、数组拷贝" class="headerlink" title="3、数组拷贝"></a>3、数组拷贝</h3><pre><code>    #### System.arraycopy(Object src, int src_position, Object dst, int dst_position, int length)</code></pre><h3 id="4、存取系统的Properties"><a href="#4、存取系统的Properties" class="headerlink" title="4、存取系统的Properties"></a>4、存取系统的Properties</h3><pre><code>    #### System.getProperties()</code></pre><h2 id="3、Date"><a href="#3、Date" class="headerlink" title="3、Date"></a>3、Date</h2><h2 id="4、Calendar"><a href="#4、Calendar" class="headerlink" title="4、Calendar"></a>4、Calendar</h2><pre><code>    ### 1、Calendar没有构造方法，是通过Calendar.getInstance()方法来获取的，使用了单例设计模式。    ### 2、Calendar的出现是因为Date的局限性，Calendar可以很方便的操作关于年，月，日，日期运算等</code></pre><h2 id="5、Math"><a href="#5、Math" class="headerlink" title="5、Math"></a>5、Math</h2><pre><code>    ### 3、Math类包含用于执行基本数学运算的方法，如初等指数、对数、平方根和三角函数</code></pre><h4 id="三、重点知识点实例"><a href="#三、重点知识点实例" class="headerlink" title="三、重点知识点实例"></a>三、<em>重点知识点实例</em></h4><h4 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h4><h4 id="五、思维扩展"><a href="#五、思维扩展" class="headerlink" title="五、思维扩展"></a>五、<em>思维扩展</em></h4><h4 id="六、存在疑问"><a href="#六、存在疑问" class="headerlink" title="六、存在疑问"></a>六、<em>存在疑问</em></h4>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;一、思维导图&quot;&gt;&lt;a href=&quot;#一、思维导图&quot; class=&quot;headerlink&quot; title=&quot;一、思维导图&quot;&gt;&lt;/a&gt;一、&lt;em&gt;思维导图&lt;/em&gt;&lt;/h4&gt;&lt;h5 id=&quot;1、http-naotu-baidu-com-file-46dc16932487
+      
+    
+    </summary>
+    
+      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="API" scheme="http://yoursite.com/tags/API/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java_数据结构</title>
+    <link href="http://yoursite.com/2018/11/19/Java_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <id>http://yoursite.com/2018/11/19/Java_数据结构/</id>
+    <published>2018-11-19T06:17:59.000Z</published>
+    <updated>2018-11-20T12:19:18.544Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="数据结构" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
@@ -316,24 +359,6 @@
     
     
       <category term="结构" scheme="http://yoursite.com/tags/%E7%BB%93%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java_数据结构</title>
-    <link href="http://yoursite.com/2018/11/19/Java_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    <id>http://yoursite.com/2018/11/19/Java_数据结构/</id>
-    <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-20T12:19:18.544Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="数据结构" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
@@ -377,24 +402,6 @@
     
     
       <category term="语法" scheme="http://yoursite.com/tags/%E8%AF%AD%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java_集合框架</title>
-    <link href="http://yoursite.com/2018/11/19/Java_%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/"/>
-    <id>http://yoursite.com/2018/11/19/Java_集合框架/</id>
-    <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-20T12:19:18.544Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="集合框架" scheme="http://yoursite.com/tags/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
