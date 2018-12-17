@@ -17,22 +17,6 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>JVM_Class文件结构(三)</title>
-    <link href="http://yoursite.com/2018/11/27/JVM_Class%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"/>
-    <id>http://yoursite.com/2018/11/27/JVM_Class文件结构/</id>
-    <published>2018-11-27T07:02:55.000Z</published>
-    <updated>2018-11-27T12:40:18.170Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>JVM_Java内存模型与线程(七)</title>
     <link href="http://yoursite.com/2018/11/27/JVM_Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/"/>
     <id>http://yoursite.com/2018/11/27/JVM_Java内存模型与线程/</id>
@@ -155,6 +139,22 @@
   </entry>
   
   <entry>
+    <title>JVM_Class文件结构(三)</title>
+    <link href="http://yoursite.com/2018/11/27/JVM_Class%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"/>
+    <id>http://yoursite.com/2018/11/27/JVM_Class文件结构/</id>
+    <published>2018-11-27T07:02:55.000Z</published>
+    <updated>2018-11-27T12:40:18.170Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Java_基本特性</title>
     <link href="http://yoursite.com/2018/11/21/Java_%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/"/>
     <id>http://yoursite.com/2018/11/21/Java_基本特性/</id>
@@ -180,20 +180,20 @@
   </entry>
   
   <entry>
-    <title>JavaWeb_JSP</title>
-    <link href="http://yoursite.com/2018/11/19/JavaWeb_JSP/"/>
-    <id>http://yoursite.com/2018/11/19/JavaWeb_JSP/</id>
+    <title>性能_性能基础</title>
+    <link href="http://yoursite.com/2018/11/19/%E6%80%A7%E8%83%BD_%E6%80%A7%E8%83%BD%E5%9F%BA%E7%A1%80/"/>
+    <id>http://yoursite.com/2018/11/19/性能_性能基础/</id>
     <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-21T12:28:02.278Z</updated>
+    <updated>2018-11-21T12:28:02.280Z</updated>
     
     <summary type="html">
     
     </summary>
     
-      <category term="Java应用开发扩展" scheme="http://yoursite.com/categories/Java%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%A9%E5%B1%95/"/>
+      <category term="Java性能基础" scheme="http://yoursite.com/categories/Java%E6%80%A7%E8%83%BD%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="JSP" scheme="http://yoursite.com/tags/JSP/"/>
+      <category term="性能" scheme="http://yoursite.com/tags/%E6%80%A7%E8%83%BD/"/>
     
   </entry>
   
@@ -234,6 +234,31 @@
   </entry>
   
   <entry>
+    <title>JVM</title>
+    <link href="http://yoursite.com/2018/11/19/JVM/"/>
+    <id>http://yoursite.com/2018/11/19/JVM/</id>
+    <published>2018-11-19T06:17:59.000Z</published>
+    <updated>2018-11-27T13:09:44.717Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><p><a href="http://naotu.baidu.com/file/b9498e3305b1f1e0f23ba2545bcc3893" target="_blank" rel="noopener">http://naotu.baidu.com/file/b9498e3305b1f1e0f23ba2545bcc3893</a></p><h1 id="二、JVM知识点"><a href="#二、JVM知识点" class="headerlink" title="二、JVM知识点"></a>二、<em>JVM知识点</em></h1><h2 id="1、自动内存管理机制"><a href="#1、自动内存管理机制" class="headerlink" title="1、自动内存管理机制"></a>1、自动内存管理机制</h2><h3 id="1-1、虚拟机内存区域与内存溢出异常"><a href="#1-1、虚拟机内存区域与内存溢出异常" class="headerlink" title="1.1、虚拟机内存区域与内存溢出异常"></a>1.1、虚拟机内存区域与内存溢出异常</h3><h4 id="1-1-1、运行时的数据区域"><a href="#1-1-1、运行时的数据区域" class="headerlink" title="1.1.1、运行时的数据区域"></a>1.1.1、运行时的数据区域</h4><pre><code>         1、程序计数器         2、Java虚拟机栈         3、本地方法栈         4、Java堆 ：存放对象实例（通过-Xmx和-Xms控制）         5、方法区：存储已被虚拟机加载的类信息、常量、静态方法</code></pre><h4 id="1-1-2、HotSpot虚拟机对象"><a href="#1-1-2、HotSpot虚拟机对象" class="headerlink" title="1.1.2、HotSpot虚拟机对象"></a>1.1.2、HotSpot虚拟机对象</h4><pre><code>    1、对象的创建    2、对象的内存布局    3、对象的访问定位</code></pre><h4 id="1-1-3、实战：OutOfMemoryError异常"><a href="#1-1-3、实战：OutOfMemoryError异常" class="headerlink" title="1.1.3、实战：OutOfMemoryError异常"></a>1.1.3、实战：OutOfMemoryError异常</h4><pre><code>     1、Java堆溢出     2、虚拟机栈和本地方法栈溢出     3、方法区和运行时常量池溢出     4、本机直接内存溢出</code></pre><h3 id="1-2、垃圾收集算法与内存分配策略"><a href="#1-2、垃圾收集算法与内存分配策略" class="headerlink" title="1.2、垃圾收集算法与内存分配策略"></a>1.2、垃圾收集算法与内存分配策略</h3><h4 id="1-2-1、判断对象是否已经死："><a href="#1-2-1、判断对象是否已经死：" class="headerlink" title="1.2.1、判断对象是否已经死："></a>1.2.1、判断对象是否已经死：</h4><pre><code>    1、引用计数算法        2、根搜索算法    3、引用：         1、强引用         2、软引用         3、弱引用         4、虚引用</code></pre><h4 id="1-2-2、垃圾收集算法"><a href="#1-2-2、垃圾收集算法" class="headerlink" title="1.2.2、垃圾收集算法"></a>1.2.2、垃圾收集算法</h4><pre><code>     1、标记-清除算法     2、复制算法     3、标记-整理算法     4、分代收集算法</code></pre><h3 id="1-2-3、内存分配与回收策略"><a href="#1-2-3、内存分配与回收策略" class="headerlink" title="1.2.3、内存分配与回收策略"></a>1.2.3、内存分配与回收策略</h3><h4 id="1-2-4、虚拟机性能监控与故障处理工具"><a href="#1-2-4、虚拟机性能监控与故障处理工具" class="headerlink" title="1.2.4、虚拟机性能监控与故障处理工具"></a>1.2.4、虚拟机性能监控与故障处理工具</h4><h5 id="1-2-4-1、JDK命令"><a href="#1-2-4-1、JDK命令" class="headerlink" title="1.2.4.1、JDK命令"></a>1.2.4.1、JDK命令</h5><pre><code>    1、jps:虚拟机进程状况工具    2、jstat:虚拟机统计信息工具    3、jinfo:Java配置信息工具    4、jmap:Java内存映像工具    5、jhat:虚拟机堆转储快照分析工具    6、jstack:Java堆栈跟踪工具</code></pre><h5 id="1-2-4-2、可视化工具"><a href="#1-2-4-2、可视化工具" class="headerlink" title="1.2.4.2、可视化工具"></a>1.2.4.2、可视化工具</h5><h4 id="1-2-5、调优案例分析与实战"><a href="#1-2-5、调优案例分析与实战" class="headerlink" title="1.2.5、调优案例分析与实战"></a>1.2.5、调优案例分析与实战</h4><h2 id="2、虚拟机执行子系统"><a href="#2、虚拟机执行子系统" class="headerlink" title="2、虚拟机执行子系统"></a>2、虚拟机执行子系统</h2><h3 id="2-1、类文件结构"><a href="#2-1、类文件结构" class="headerlink" title="2.1、类文件结构"></a>2.1、类文件结构</h3><h4 id="2-1-1、Class文件结构"><a href="#2-1-1、Class文件结构" class="headerlink" title="2.1.1、Class文件结构"></a>2.1.1、Class文件结构</h4><pre><code>    1、魔数与Class类文件的版本    2、常量池    3、访问标志    4、类索引、父类索引与接口索引集合    5、字段表集合    6、方法表集合    7、属性表集合</code></pre><h3 id="2-2、虚拟机类加载机制"><a href="#2-2、虚拟机类加载机制" class="headerlink" title="2.2、虚拟机类加载机制"></a>2.2、虚拟机类加载机制</h3><h4 id="2-2-1、类加载的时机"><a href="#2-2-1、类加载的时机" class="headerlink" title="2.2.1、类加载的时机"></a>2.2.1、类加载的时机</h4><h4 id="2-2-2、类加载的过程"><a href="#2-2-2、类加载的过程" class="headerlink" title="2.2.2、类加载的过程"></a>2.2.2、类加载的过程</h4><pre><code>    1、加载，验证，准备，解析，初始化（4个触发点），使用，卸载    2、虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，转换解析和初始化最终形成可以被虚拟机直接使用的Java类型，这就是虚拟机的类加载机制</code></pre><h4 id="2-2-3、类加载器"><a href="#2-2-3、类加载器" class="headerlink" title="2.2.3、类加载器"></a>2.2.3、类加载器</h4><pre><code>     1、类与类加载器     2、双亲委派模型     3、破坏双亲委派模型</code></pre><h3 id="2-3、虚拟机字节码执行引擎"><a href="#2-3、虚拟机字节码执行引擎" class="headerlink" title="2.3、虚拟机字节码执行引擎"></a>2.3、虚拟机字节码执行引擎</h3><h4 id="2-3-1、运行时栈帧结构"><a href="#2-3-1、运行时栈帧结构" class="headerlink" title="2.3.1、运行时栈帧结构"></a>2.3.1、运行时栈帧结构</h4><pre><code>     1、局部变量表     2、操作数栈     3、动态连接     4、方法返回址     5、附加信息</code></pre><h4 id="2-3-2、方法调用"><a href="#2-3-2、方法调用" class="headerlink" title="2.3.2、方法调用"></a>2.3.2、方法调用</h4><h2 id="3、程序编译与代码优化"><a href="#3、程序编译与代码优化" class="headerlink" title="3、程序编译与代码优化"></a>3、程序编译与代码优化</h2><h3 id="3-1、早期（编译期）优化"><a href="#3-1、早期（编译期）优化" class="headerlink" title="3.1、早期（编译期）优化"></a>3.1、早期（编译期）优化</h3><h4 id="3-1-1、Javac编译器"><a href="#3-1-1、Javac编译器" class="headerlink" title="3.1.1、Javac编译器"></a>3.1.1、Javac编译器</h4><pre><code>     1、Javac的源码与调试         1、字节码编译过程，javac 通过把java文件编译成Class文件，其中编译过程中存在着语法及结构关系对应     2、解析与填充符号表     3、注解处理器     4、语义分析与字节码生成</code></pre><h4 id="3-1-2、Java语法糖的味道"><a href="#3-1-2、Java语法糖的味道" class="headerlink" title="3.1.2、Java语法糖的味道"></a>3.1.2、Java语法糖的味道</h4><pre><code>    1、java语言中泛型、自动装箱及拆箱、遍历循环与变长参数</code></pre><h3 id="3-2、晚期（运行期）优化"><a href="#3-2、晚期（运行期）优化" class="headerlink" title="3.2、晚期（运行期）优化"></a>3.2、晚期（运行期）优化</h3><h4 id="3-2-1、HotSpot-虚拟机内的即时编译器"><a href="#3-2-1、HotSpot-虚拟机内的即时编译器" class="headerlink" title="3.2.1、HotSpot 虚拟机内的即时编译器"></a>3.2.1、HotSpot 虚拟机内的即时编译器</h4><h2 id="4、高效并发"><a href="#4、高效并发" class="headerlink" title="4、高效并发"></a>4、高效并发</h2><h3 id="4-1、Java内存模型与线程"><a href="#4-1、Java内存模型与线程" class="headerlink" title="4.1、Java内存模型与线程"></a>4.1、Java内存模型与线程</h3><h4 id="4-1-1、Java内存模型"><a href="#4-1-1、Java内存模型" class="headerlink" title="4.1.1、Java内存模型"></a>4.1.1、Java内存模型</h4><pre><code>1、主内存与工作内存2、内存间交互操作3、对于volatile型变量的特殊规则4、对于long和double型变量的特殊规则5、原子性，可见性与有序性6、先行发生原则</code></pre><h4 id="4-1-2、Java与线程"><a href="#4-1-2、Java与线程" class="headerlink" title="4.1.2、Java与线程"></a>4.1.2、Java与线程</h4><h3 id="4-2、线程安全与锁优化"><a href="#4-2、线程安全与锁优化" class="headerlink" title="4.2、线程安全与锁优化"></a>4.2、线程安全与锁优化</h3><h4 id="4-2-1、线程安全"><a href="#4-2-1、线程安全" class="headerlink" title="4.2.1、线程安全"></a>4.2.1、线程安全</h4><pre><code> 1、java语言中的线程安全 2、线程安全的实现方法</code></pre><h4 id="4-2-2、锁优化"><a href="#4-2-2、锁优化" class="headerlink" title="4.2.2、锁优化"></a>4.2.2、锁优化</h4><pre><code>1、自旋锁与自适应自旋2、锁消除3、锁粗化4、轻量级锁5、偏向锁</code></pre><h1 id="三、重点分析JVM知识点"><a href="#三、重点分析JVM知识点" class="headerlink" title="三、重点分析JVM知识点"></a>三、<em>重点分析JVM知识点</em></h1><pre><code>这块会重点分析以下几个方面的知识：    JVM的系列文章：    1、虚拟内存区域（运行时的数据区域）    2、垃圾收集机制    3、Class文件结构    4、虚拟机类加载机制    5、虚拟机字节码执行（栈帧）    6、早期编译及晚期优化    7、Java内存模型与线程    8、线程安全与锁优化</code></pre><h1 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;一、思维导图&quot;&gt;&lt;a href=&quot;#一、思维导图&quot; class=&quot;headerlink&quot; title=&quot;一、思维导图&quot;&gt;&lt;/a&gt;一、&lt;em&gt;思维导图&lt;/em&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://naotu.baidu.com/file/b9498e33
+      
+    
+    </summary>
+    
+      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="JVM" scheme="http://yoursite.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java_IO流</title>
     <link href="http://yoursite.com/2018/11/19/Java_IO%E6%B5%81/"/>
     <id>http://yoursite.com/2018/11/19/Java_IO流/</id>
@@ -259,31 +284,20 @@
   </entry>
   
   <entry>
-    <title>设计模式_行为型_策略模式</title>
-    <link href="http://yoursite.com/2018/11/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_%E8%A1%8C%E4%B8%BA%E5%9E%8B_%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://yoursite.com/2018/11/19/设计模式_行为型_策略模式/</id>
-    <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-21T12:28:02.310Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Java进阶" scheme="http://yoursite.com/categories/Java%E8%BF%9B%E9%98%B6/"/>
-    
-    
-      <category term="设计模式" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Java_多线程并发</title>
     <link href="http://yoursite.com/2018/11/19/Java_%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/"/>
     <id>http://yoursite.com/2018/11/19/Java_多线程并发/</id>
     <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-20T12:19:18.543Z</updated>
+    <updated>2018-12-17T13:51:39.294Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h4><h5 id="1、http-naotu-baidu-com-file-2ab52ad502d59fdd09f26e3413f1b9d9"><a href="#1、http-naotu-baidu-com-file-2ab52ad502d59fdd09f26e3413f1b9d9" class="headerlink" title="1、http://naotu.baidu.com/file/2ab52ad502d59fdd09f26e3413f1b9d9"></a>1、<a href="http://naotu.baidu.com/file/2ab52ad502d59fdd09f26e3413f1b9d9" target="_blank" rel="noopener">http://naotu.baidu.com/file/2ab52ad502d59fdd09f26e3413f1b9d9</a></h5><h4 id="二、总知识点"><a href="#二、总知识点" class="headerlink" title="二、总知识点"></a>二、<em>总知识点</em></h4><h2 id="1、多线程基础"><a href="#1、多线程基础" class="headerlink" title="1、多线程基础"></a>1、多线程基础</h2><h3 id="1、线程与进程"><a href="#1、线程与进程" class="headerlink" title="1、线程与进程"></a>1、线程与进程</h3><h4 id="进程：一个正在执行的程序"><a href="#进程：一个正在执行的程序" class="headerlink" title="进程：一个正在执行的程序"></a>进程：一个正在执行的程序</h4><h4 id="线程：进程中负责程序执行的执行单元。一个进程中至少有一个线程"><a href="#线程：进程中负责程序执行的执行单元。一个进程中至少有一个线程" class="headerlink" title="线程：进程中负责程序执行的执行单元。一个进程中至少有一个线程"></a>线程：进程中负责程序执行的执行单元。一个进程中至少有一个线程</h4><h4 id="一个进程至少包含一个线程"><a href="#一个进程至少包含一个线程" class="headerlink" title="一个进程至少包含一个线程"></a>一个进程至少包含一个线程</h4><h4 id="进程在执行过程中拥有独立内存单元，而多个线程共享内存"><a href="#进程在执行过程中拥有独立内存单元，而多个线程共享内存" class="headerlink" title="进程在执行过程中拥有独立内存单元，而多个线程共享内存"></a>进程在执行过程中拥有独立内存单元，而多个线程共享内存</h4><h3 id="2、线程的实现"><a href="#2、线程的实现" class="headerlink" title="2、线程的实现"></a>2、线程的实现</h3><h4 id="1、继承Thread类重写run方法"><a href="#1、继承Thread类重写run方法" class="headerlink" title="1、继承Thread类重写run方法"></a>1、继承Thread类重写run方法</h4><h4 id="2、实现Runnable接口重写run方法"><a href="#2、实现Runnable接口重写run方法" class="headerlink" title="2、实现Runnable接口重写run方法"></a>2、实现Runnable接口重写run方法</h4><h3 id="3、线程的状态"><a href="#3、线程的状态" class="headerlink" title="3、线程的状态"></a>3、线程的状态</h3><h4 id="1、创建（new）"><a href="#1、创建（new）" class="headerlink" title="1、创建（new）"></a>1、创建（new）</h4><h4 id="2、就绪（runnable）"><a href="#2、就绪（runnable）" class="headerlink" title="2、就绪（runnable）"></a>2、就绪（runnable）</h4><h4 id="3、运行（running）"><a href="#3、运行（running）" class="headerlink" title="3、运行（running）"></a>3、运行（running）</h4><h4 id="4、堵塞（blocked）"><a href="#4、堵塞（blocked）" class="headerlink" title="4、堵塞（blocked）"></a>4、堵塞（blocked）</h4><h4 id="5、终止（dead）"><a href="#5、终止（dead）" class="headerlink" title="5、终止（dead）"></a>5、终止（dead）</h4><h3 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h3><h4 id="存储和恢复CPU状态过程，它是的线程执行能够从中断恢复执行"><a href="#存储和恢复CPU状态过程，它是的线程执行能够从中断恢复执行" class="headerlink" title="存储和恢复CPU状态过程，它是的线程执行能够从中断恢复执行"></a>存储和恢复CPU状态过程，它是的线程执行能够从中断恢复执行</h4><h3 id="4、线程中常用方法"><a href="#4、线程中常用方法" class="headerlink" title="4、线程中常用方法"></a>4、线程中常用方法</h3><h4 id="1、静态方法"><a href="#1、静态方法" class="headerlink" title="1、静态方法"></a>1、静态方法</h4><h5 id="currentThread（），获得正在执行的线程"><a href="#currentThread（），获得正在执行的线程" class="headerlink" title="currentThread（），获得正在执行的线程"></a>currentThread（），获得正在执行的线程</h5><h5 id="sleep（long）线程休眠"><a href="#sleep（long）线程休眠" class="headerlink" title="sleep（long）线程休眠"></a>sleep（long）线程休眠</h5><h5 id="yield（）让出CPU"><a href="#yield（）让出CPU" class="headerlink" title="yield（）让出CPU"></a>yield（）让出CPU</h5><h4 id="2、对象方法"><a href="#2、对象方法" class="headerlink" title="2、对象方法"></a>2、对象方法</h4><h5 id="start启动线程"><a href="#start启动线程" class="headerlink" title="start启动线程"></a>start启动线程</h5><h5 id="setPriority-int"><a href="#setPriority-int" class="headerlink" title="setPriority(int)"></a>setPriority(int)</h5><h5 id="setDaemon-boolean-设置守护线程（后台线程）"><a href="#setDaemon-boolean-设置守护线程（后台线程）" class="headerlink" title="setDaemon(boolean)设置守护线程（后台线程）"></a>setDaemon(boolean)设置守护线程（后台线程）</h5><h5 id="interrupt-中断线程"><a href="#interrupt-中断线程" class="headerlink" title="interrupt()中断线程"></a>interrupt()中断线程</h5><h5 id="join（）等待该线程结束"><a href="#join（）等待该线程结束" class="headerlink" title="join（）等待该线程结束"></a>join（）等待该线程结束</h5><h3 id="5、停止线程"><a href="#5、停止线程" class="headerlink" title="5、停止线程"></a>5、停止线程</h3><h4 id="使用退出标志"><a href="#使用退出标志" class="headerlink" title="使用退出标志"></a>使用退出标志</h4><h4 id="使用stop方法（不推荐）"><a href="#使用stop方法（不推荐）" class="headerlink" title="使用stop方法（不推荐）"></a>使用stop方法（不推荐）</h4><h4 id="使用interrupt方法中断线程，但这个不会终止一个正在运行的线程，还需要加入一个判断才可以完成线程的停止"><a href="#使用interrupt方法中断线程，但这个不会终止一个正在运行的线程，还需要加入一个判断才可以完成线程的停止" class="headerlink" title="使用interrupt方法中断线程，但这个不会终止一个正在运行的线程，还需要加入一个判断才可以完成线程的停止"></a>使用interrupt方法中断线程，但这个不会终止一个正在运行的线程，还需要加入一个判断才可以完成线程的停止</h4><h3 id="6、线程同步"><a href="#6、线程同步" class="headerlink" title="6、线程同步"></a>6、线程同步</h3><h4 id="如何同步"><a href="#如何同步" class="headerlink" title="如何同步"></a>如何同步</h4><h5 id="java5以前，synchronized"><a href="#java5以前，synchronized" class="headerlink" title="java5以前，synchronized"></a>java5以前，synchronized</h5><h6 id="在方法上添加synchronized关键字"><a href="#在方法上添加synchronized关键字" class="headerlink" title="在方法上添加synchronized关键字"></a>在方法上添加synchronized关键字</h6><h6 id="同步代码块-，synchronized（对象）"><a href="#同步代码块-，synchronized（对象）" class="headerlink" title="同步代码块 ，synchronized（对象）"></a>同步代码块 ，synchronized（对象）</h6><h5 id="java5后"><a href="#java5后" class="headerlink" title="java5后"></a>java5后</h5><h6 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h6><h6 id="lock（）加锁"><a href="#lock（）加锁" class="headerlink" title="# lock（）加锁"></a># lock（）加锁</h6><h6 id="unlock（）解锁"><a href="#unlock（）解锁" class="headerlink" title="# unlock（）解锁"></a># unlock（）解锁</h6><h6 id="tryLock（）尝试获得锁"><a href="#tryLock（）尝试获得锁" class="headerlink" title="# tryLock（）尝试获得锁"></a># tryLock（）尝试获得锁</h6><h6 id="Semaphone"><a href="#Semaphone" class="headerlink" title="Semaphone"></a>Semaphone</h6><h6 id="acquire（）获取资源"><a href="#acquire（）获取资源" class="headerlink" title="# acquire（）获取资源"></a># acquire（）获取资源</h6><h6 id="release（）尝试获取锁"><a href="#release（）尝试获取锁" class="headerlink" title="# release（）尝试获取锁"></a># release（）尝试获取锁</h6><h6 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h6><h2 id="2、多线程中级"><a href="#2、多线程中级" class="headerlink" title="2、多线程中级"></a>2、多线程中级</h2><h3 id="1、控制线程"><a href="#1、控制线程" class="headerlink" title="1、控制线程"></a>1、控制线程</h3><h4 id="join"><a href="#join" class="headerlink" title="join"></a>join</h4><h5 id="B调用Ajoin，要等A执行完毕B才执行"><a href="#B调用Ajoin，要等A执行完毕B才执行" class="headerlink" title="B调用Ajoin，要等A执行完毕B才执行"></a>B调用Ajoin，要等A执行完毕B才执行</h5><h5 id="就是说B的线程会堵塞"><a href="#就是说B的线程会堵塞" class="headerlink" title="就是说B的线程会堵塞"></a>就是说B的线程会堵塞</h5><h5 id="可以在构造函数里面传最大堵塞时间"><a href="#可以在构造函数里面传最大堵塞时间" class="headerlink" title="可以在构造函数里面传最大堵塞时间"></a>可以在构造函数里面传最大堵塞时间</h5><h4 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h4><h5 id="任务是给其他线程提供服务"><a href="#任务是给其他线程提供服务" class="headerlink" title="任务是给其他线程提供服务"></a>任务是给其他线程提供服务</h5><h5 id="当前台进程死亡，守护进程自动死亡"><a href="#当前台进程死亡，守护进程自动死亡" class="headerlink" title="当前台进程死亡，守护进程自动死亡"></a>当前台进程死亡，守护进程自动死亡</h5><h5 id="例如：java垃圾回收线程"><a href="#例如：java垃圾回收线程" class="headerlink" title="例如：java垃圾回收线程"></a>例如：java垃圾回收线程</h5><h5 id="setDeamo设置"><a href="#setDeamo设置" class="headerlink" title="setDeamo设置"></a>setDeamo设置</h5><h4 id="线程睡眠"><a href="#线程睡眠" class="headerlink" title="线程睡眠"></a>线程睡眠</h4><h5 id="主动进入堵塞状态，调用sleep方法"><a href="#主动进入堵塞状态，调用sleep方法" class="headerlink" title="主动进入堵塞状态，调用sleep方法"></a>主动进入堵塞状态，调用sleep方法</h5><h5 id="jdk以后推荐TimeUtil类睡眠"><a href="#jdk以后推荐TimeUtil类睡眠" class="headerlink" title="jdk以后推荐TimeUtil类睡眠"></a>jdk以后推荐TimeUtil类睡眠</h5><h4 id="线程让步"><a href="#线程让步" class="headerlink" title="线程让步"></a>线程让步</h4><h5 id="执行yield方法，让当前线程设置为就绪状态"><a href="#执行yield方法，让当前线程设置为就绪状态" class="headerlink" title="执行yield方法，让当前线程设置为就绪状态"></a>执行yield方法，让当前线程设置为就绪状态</h5><h5 id="当在完成一个方法最重要的功能时候，可以将处理器控制权让出去"><a href="#当在完成一个方法最重要的功能时候，可以将处理器控制权让出去" class="headerlink" title="当在完成一个方法最重要的功能时候，可以将处理器控制权让出去"></a>当在完成一个方法最重要的功能时候，可以将处理器控制权让出去</h5><h5 id="不保证让出去后马上得到处理器控制权"><a href="#不保证让出去后马上得到处理器控制权" class="headerlink" title="不保证让出去后马上得到处理器控制权"></a>不保证让出去后马上得到处理器控制权</h5><h4 id="改变线程的优先级"><a href="#改变线程的优先级" class="headerlink" title="改变线程的优先级"></a>改变线程的优先级</h4><h5 id="SetPriority-范围1-10"><a href="#SetPriority-范围1-10" class="headerlink" title="SetPriority 范围1-10"></a>SetPriority 范围1-10</h5><h5 id="推荐使用Thread的三个静态常量"><a href="#推荐使用Thread的三个静态常量" class="headerlink" title="推荐使用Thread的三个静态常量"></a>推荐使用Thread的三个静态常量</h5><h3 id="2、线程通信"><a href="#2、线程通信" class="headerlink" title="2、线程通信"></a>2、线程通信</h3><h4 id="协调运行的控制策略"><a href="#协调运行的控制策略" class="headerlink" title="协调运行的控制策略"></a>协调运行的控制策略</h4><h5 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h5><h6 id="wait"><a href="#wait" class="headerlink" title="wait"></a>wait</h6><h6 id="释放当前线程锁定"><a href="#释放当前线程锁定" class="headerlink" title="# 释放当前线程锁定"></a># 释放当前线程锁定</h6><h6 id="例如：如果消费完，等待生产者将其"><a href="#例如：如果消费完，等待生产者将其" class="headerlink" title="# 例如：如果消费完，等待生产者将其"></a># 例如：如果消费完，等待生产者将其</h6><h6 id="notify"><a href="#notify" class="headerlink" title="notify"></a>notify</h6><h6 id="唤醒当前等待的线程"><a href="#唤醒当前等待的线程" class="headerlink" title="# 唤醒当前等待的线程"></a># 唤醒当前等待的线程</h6><h5 id="lock"><a href="#lock" class="headerlink" title="lock"></a>lock</h5><h6 id="使用Condition代替同步监视功能"><a href="#使用Condition代替同步监视功能" class="headerlink" title="使用Condition代替同步监视功能"></a>使用Condition代替同步监视功能</h6><h6 id="lock-newCondition"><a href="#lock-newCondition" class="headerlink" title="# lock.newCondition"></a># lock.newCondition</h6><h6 id="await代替wait"><a href="#await代替wait" class="headerlink" title="# await代替wait"></a># await代替wait</h6><h6 id="signal代替"><a href="#signal代替" class="headerlink" title="# signal代替"></a># signal代替</h6><h4 id="管道流通信"><a href="#管道流通信" class="headerlink" title="管道流通信"></a>管道流通信</h4><h5 id="使用new分别创建管道输入流（Piperead）和输出流（PipeRead）"><a href="#使用new分别创建管道输入流（Piperead）和输出流（PipeRead）" class="headerlink" title="使用new分别创建管道输入流（Piperead）和输出流（PipeRead）"></a>使用new分别创建管道输入流（Piperead）和输出流（PipeRead）</h5><h5 id="使用管道输入流或者管道输出流将对象用connect连接起来"><a href="#使用管道输入流或者管道输出流将对象用connect连接起来" class="headerlink" title="使用管道输入流或者管道输出流将对象用connect连接起来"></a>使用管道输入流或者管道输出流将对象用connect连接起来</h5><h5 id="将输入输出分别传入两个线程"><a href="#将输入输出分别传入两个线程" class="headerlink" title="将输入输出分别传入两个线程"></a>将输入输出分别传入两个线程</h5><h5 id="分别依赖各自的管道输入流，管道输出流进行通信"><a href="#分别依赖各自的管道输入流，管道输出流进行通信" class="headerlink" title="分别依赖各自的管道输入流，管道输出流进行通信"></a>分别依赖各自的管道输入流，管道输出流进行通信</h5><h5 id="两个线程分别依赖自己的管道流进行通信"><a href="#两个线程分别依赖自己的管道流进行通信" class="headerlink" title="两个线程分别依赖自己的管道流进行通信"></a>两个线程分别依赖自己的管道流进行通信</h5><h3 id="3、其他工具"><a href="#3、其他工具" class="headerlink" title="3、其他工具"></a>3、其他工具</h3><h4 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h4><h5 id="线程局部变量"><a href="#线程局部变量" class="headerlink" title="线程局部变量"></a>线程局部变量</h5><h5 id="当前线程作为key，要存的值为value"><a href="#当前线程作为key，要存的值为value" class="headerlink" title="当前线程作为key，要存的值为value"></a>当前线程作为key，要存的值为value</h5><h5 id="从线程的角度看，每个线程完全拥有该变量"><a href="#从线程的角度看，每个线程完全拥有该变量" class="headerlink" title="从线程的角度看，每个线程完全拥有该变量"></a>从线程的角度看，每个线程完全拥有该变量</h5><h5 id="实例，HibernateFactory生成session"><a href="#实例，HibernateFactory生成session" class="headerlink" title="实例，HibernateFactory生成session"></a>实例，HibernateFactory生成session</h5><h5 id="每个线程独立的改变自己的副本，和其他线程不产生冲突"><a href="#每个线程独立的改变自己的副本，和其他线程不产生冲突" class="headerlink" title="每个线程独立的改变自己的副本，和其他线程不产生冲突"></a>每个线程独立的改变自己的副本，和其他线程不产生冲突</h5><h4 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h4><h5 id="提供将线程不安全的集合转为线程安全"><a href="#提供将线程不安全的集合转为线程安全" class="headerlink" title="提供将线程不安全的集合转为线程安全"></a>提供将线程不安全的集合转为线程安全</h5><h5 id="Collection-synchronizedMap-new-HashMap"><a href="#Collection-synchronizedMap-new-HashMap" class="headerlink" title="Collection.synchronizedMap(new HashMap)"></a>Collection.synchronizedMap(new HashMap)</h5><h4 id="线程安全的集合类"><a href="#线程安全的集合类" class="headerlink" title="线程安全的集合类"></a>线程安全的集合类</h4><h5 id="hashtable-vector-stack"><a href="#hashtable-vector-stack" class="headerlink" title="hashtable,vector,stack"></a>hashtable,vector,stack</h5><h5 id="ConCurrentHashMap"><a href="#ConCurrentHashMap" class="headerlink" title="ConCurrentHashMap"></a>ConCurrentHashMap</h5><h3 id="4、线程同步"><a href="#4、线程同步" class="headerlink" title="4、线程同步"></a>4、线程同步</h3><h4 id="当多个线程访问同一个资源时，加synchronized对资源进行加锁"><a href="#当多个线程访问同一个资源时，加synchronized对资源进行加锁" class="headerlink" title="当多个线程访问同一个资源时，加synchronized对资源进行加锁"></a>当多个线程访问同一个资源时，加synchronized对资源进行加锁</h4><h4 id="synchronized可以修饰代码块，修饰方法"><a href="#synchronized可以修饰代码块，修饰方法" class="headerlink" title="synchronized可以修饰代码块，修饰方法"></a>synchronized可以修饰代码块，修饰方法</h4><h4 id="只对可以改变竞争资源的方法加锁"><a href="#只对可以改变竞争资源的方法加锁" class="headerlink" title="只对可以改变竞争资源的方法加锁"></a>只对可以改变竞争资源的方法加锁</h4><h4 id="只有多线程才会出现线程安全"><a href="#只有多线程才会出现线程安全" class="headerlink" title="只有多线程才会出现线程安全"></a>只有多线程才会出现线程安全</h4><h4 id="释放锁条件"><a href="#释放锁条件" class="headerlink" title="释放锁条件"></a>释放锁条件</h4><h5 id="同步方法，代码块结束"><a href="#同步方法，代码块结束" class="headerlink" title="同步方法，代码块结束"></a>同步方法，代码块结束</h5><h5 id="出现未处理的异常"><a href="#出现未处理的异常" class="headerlink" title="出现未处理的异常"></a>出现未处理的异常</h5><h5 id="调用wait，将本线程置为就绪状态"><a href="#调用wait，将本线程置为就绪状态" class="headerlink" title="调用wait，将本线程置为就绪状态"></a>调用wait，将本线程置为就绪状态</h5><h5 id="sleep或者yield-suspend不会释放同步锁"><a href="#sleep或者yield-suspend不会释放同步锁" class="headerlink" title="sleep或者yield,suspend不会释放同步锁"></a>sleep或者yield,suspend不会释放同步锁</h5><h4 id="同步锁，显示加锁，释放锁"><a href="#同步锁，显示加锁，释放锁" class="headerlink" title="同步锁，显示加锁，释放锁"></a>同步锁，显示加锁，释放锁</h4><h5 id="读写锁（readWriteLock）"><a href="#读写锁（readWriteLock）" class="headerlink" title="读写锁（readWriteLock）"></a>读写锁（readWriteLock）</h5><h5 id="可重入锁（ReentrantLock）"><a href="#可重入锁（ReentrantLock）" class="headerlink" title="可重入锁（ReentrantLock）"></a>可重入锁（ReentrantLock）</h5><h6 id="对以加锁的继续加锁"><a href="#对以加锁的继续加锁" class="headerlink" title="对以加锁的继续加锁"></a>对以加锁的继续加锁</h6><h6 id="每一个lock方法都有一个unlock方法"><a href="#每一个lock方法都有一个unlock方法" class="headerlink" title="每一个lock方法都有一个unlock方法"></a>每一个lock方法都有一个unlock方法</h6><h4 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h4><h5 id="A调用B方法，B调用A方法"><a href="#A调用B方法，B调用A方法" class="headerlink" title="A调用B方法，B调用A方法"></a>A调用B方法，B调用A方法</h5><h5 id="A，B要相互等待执行完之后才执行"><a href="#A，B要相互等待执行完之后才执行" class="headerlink" title="A，B要相互等待执行完之后才执行"></a>A，B要相互等待执行完之后才执行</h5><h3 id="5、线程组"><a href="#5、线程组" class="headerlink" title="5、线程组"></a>5、线程组</h3><h4 id="默认情况下父线程创建子线程就是在同一线程下"><a href="#默认情况下父线程创建子线程就是在同一线程下" class="headerlink" title="默认情况下父线程创建子线程就是在同一线程下"></a>默认情况下父线程创建子线程就是在同一线程下</h4><h3 id="6、线程池"><a href="#6、线程池" class="headerlink" title="6、线程池"></a>6、线程池</h3><h4 id="用Executor创建线程池"><a href="#用Executor创建线程池" class="headerlink" title="用Executor创建线程池"></a>用Executor创建线程池</h4><h4 id="创建Runnable或Callable实例，作为任务类"><a href="#创建Runnable或Callable实例，作为任务类" class="headerlink" title="创建Runnable或Callable实例，作为任务类"></a>创建Runnable或Callable实例，作为任务类</h4><h4 id="向线程池提交线程"><a href="#向线程池提交线程" class="headerlink" title="向线程池提交线程"></a>向线程池提交线程</h4><h5 id="submit（有返回值）"><a href="#submit（有返回值）" class="headerlink" title="submit（有返回值）"></a>submit（有返回值）</h5><h5 id="execute无返回值，方便Exception"><a href="#execute无返回值，方便Exception" class="headerlink" title="execute无返回值，方便Exception"></a>execute无返回值，方便Exception</h5><h3 id="7、Callable和Futuer"><a href="#7、Callable和Futuer" class="headerlink" title="7、Callable和Futuer"></a>7、Callable和Futuer</h3><h4 id="带有返回值的“run”方法"><a href="#带有返回值的“run”方法" class="headerlink" title="带有返回值的“run”方法"></a>带有返回值的“run”方法</h4><h4 id="使用FutureTask接受Callable"><a href="#使用FutureTask接受Callable" class="headerlink" title="使用FutureTask接受Callable"></a>使用FutureTask接受Callable</h4><h4 id="使用get堵塞方法得到返回值"><a href="#使用get堵塞方法得到返回值" class="headerlink" title="使用get堵塞方法得到返回值"></a>使用get堵塞方法得到返回值</h4><h4 id="三、重点知识点实例"><a href="#三、重点知识点实例" class="headerlink" title="三、重点知识点实例"></a>三、<em>重点知识点实例</em></h4><h4 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h4><h4 id="五、思维扩展"><a href="#五、思维扩展" class="headerlink" title="五、思维扩展"></a>五、<em>思维扩展</em></h4><h4 id="六、存在疑问"><a href="#六、存在疑问" class="headerlink" title="六、存在疑问"></a>六、<em>存在疑问</em></h4>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;一、思维导图&quot;&gt;&lt;a href=&quot;#一、思维导图&quot; class=&quot;headerlink&quot; title=&quot;一、思维导图&quot;&gt;&lt;/a&gt;一、&lt;em&gt;思维导图&lt;/em&gt;&lt;/h4&gt;&lt;h5 id=&quot;1、http-naotu-baidu-com-file-2ab52ad502d5
+      
     
     </summary>
     
@@ -338,6 +352,24 @@
   </entry>
   
   <entry>
+    <title>Java_网络编程</title>
+    <link href="http://yoursite.com/2018/11/19/Java_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    <id>http://yoursite.com/2018/11/19/Java_网络编程/</id>
+    <published>2018-11-19T06:17:59.000Z</published>
+    <updated>2018-11-20T12:19:18.544Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="网络编程" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java_整体结构</title>
     <link href="http://yoursite.com/2018/11/19/Java_%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84/"/>
     <id>http://yoursite.com/2018/11/19/Java_整体结构/</id>
@@ -359,24 +391,6 @@
     
     
       <category term="结构" scheme="http://yoursite.com/tags/%E7%BB%93%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java_网络编程</title>
-    <link href="http://yoursite.com/2018/11/19/Java_%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
-    <id>http://yoursite.com/2018/11/19/Java_网络编程/</id>
-    <published>2018-11-19T06:17:59.000Z</published>
-    <updated>2018-11-20T12:19:18.544Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Java基础" scheme="http://yoursite.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="网络编程" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
