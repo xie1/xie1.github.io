@@ -1,5 +1,5 @@
 ---
-title: Java_基本特性
+title: Java_基本特性(二)
 date: 2018-11-21 14:17:59
 tags: 基本特性
 categories: Java基础
