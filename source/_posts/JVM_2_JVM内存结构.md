@@ -1,5 +1,5 @@
 ---
-title: JVM_虚拟内存区域(一)
+title: JVM_虚拟内存区域(二)
 date: 2018-11-18 15:02:55
 tags: JVM
 categories: Java基础
