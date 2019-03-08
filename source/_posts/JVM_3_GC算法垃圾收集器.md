@@ -47,6 +47,9 @@ categories: Java基础
 
 
 ##3、垃圾回收器
+	
+
+
 ###3.1、相关概念介绍
 		并行和并发
 			并行（Parallel）：指多条垃圾收集线程并行工作，但此时用户线程仍然处于等待状态。
@@ -58,6 +61,14 @@ categories: Java基础
 		Minor GC 和 Full GC
 			新生代GC（Minor GC）：指发生在新生代的垃圾收集动作，因为Java对象大多都具备朝生夕灭的特性，所以Minor GC非常频繁，一般回收速度也比较快。具体原理见上一篇文章。
 			老年代GC（Major GC / Full GC）：指发生在老年代的GC，出现了Major GC，经常会伴随至少一次的Minor GC（但非绝对的，在Parallel Scavenge收集器的收集策略里就有直接进行Major GC的策略选择过程）。Major GC的速度一般会比Minor GC慢10倍以上。
+	1、新生代 Young Generation
+		Eden Space 任何新进入运行时数据区域的实例都会存放在此
+		S0 Suvivor Space 存在时间较长，经过垃圾回收没有被清除的实例，就从Eden 搬到了S0
+		S1 Survivor Space 同理，存在时间更长的实例，就从S0 搬到了S1
+	2、旧生代 Old Generation/tenured
+	  同理，存在时间更长的实例，对象多次回收没被清除，就从S1 搬到了tenured
+	3、Perm 存放运行时数据区的方法区
+
 ###3.2、新生代收集器
 ####3.2.1、Serial收集器
 ####3.2.2、ParNew 收集器
