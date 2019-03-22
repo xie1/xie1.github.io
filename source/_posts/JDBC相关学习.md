@@ -202,5 +202,7 @@ tags:
 
 
 [https://my.oschina.net/pamgo/blog/639625](https://my.oschina.net/pamgo/blog/639625 "涉及设计模式")
+
+[https://juejin.im/post/5bab2c09e51d4543e6097316](https://juejin.im/post/5bab2c09e51d4543e6097316 "JDBCAPI源码")
 ###四、*思维扩展*
 ###五、*存在疑问*
