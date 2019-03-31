@@ -2,6 +2,7 @@
 title: Linux学习
 date: 2019-03-06 22:30:32
 tags:
+categories: 基础
 ---
 ##一、*思维导图*
 ##二、*总知识点*
