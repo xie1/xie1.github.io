@@ -1,6 +1,6 @@
 ---
 title: 00_linux面试题
-date: 2019-04-14 18:16:20
+date: 2019-04-14 18:11:20
 tags:
 categories: Java面试
 ---
@@ -9,307 +9,312 @@ categories: Java面试
 
 ####1、如何看当前Linux系统有几颗物理CPU和每颗CPU的核数？
 
-答：
-[root@centos6 ~ 10:55 #35]# cat /proc/cpuinfo|grep -c 'physical id'
-4
-[root@centos6 ~ 10:56 #36]# cat /proc/cpuinfo|grep -c 'processor'
-4
+	答：
+	[root@centos6 ~ 10:55 #35]# cat /proc/cpuinfo|grep -c 'physical id'
+	4
+	[root@centos6 ~ 10:56 #36]# cat /proc/cpuinfo|grep -c 'processor'
+	4
 
 ####2、查看系统负载有两个常用的命令，是哪两个？这三个数值表示什么含义呢？
 
-答：
-[root@centos6 ~ 10:56 #37]# w
-10:57:38 up 14 min,  1 user,  load average: 0.00, 0.00, 0.00
-USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT
-root     pts/0    192.168.147.1    18:44    0.00s  0.10s  0.00s w
-[root@centos6 ~ 10:57 #38]# uptime
-10:57:47 up 14 min,  1 user,  load average: 0.00, 0.00, 0.00
-其中load average即系统负载，三个数值分别表示一分钟、五分钟、十五分钟内系统的平均负载，即平均任务数。
+	答：
+	[root@centos6 ~ 10:56 #37]# w
+	10:57:38 up 14 min,  1 user,  load average: 0.00, 0.00, 0.00
+	USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT
+	root     pts/0    192.168.147.1    18:44    0.00s  0.10s  0.00s w
+	[root@centos6 ~ 10:57 #38]# uptime
+	10:57:47 up 14 min,  1 user,  load average: 0.00, 0.00, 0.00
+	其中load average即系统负载，三个数值分别表示一分钟、五分钟、十五分钟内系统的平均负载，即平均任务数。
 
 ####3、vmstat r, b, si, so, bi, bo 这几列表示什么含义呢？
-
-答：
-[root@centos6 ~ 10:57 #39]# vmstat
-procs -----------memory---------- ---swap-- -----io---- --system-- -----cpu-----
-r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
-0  0      0 1783964  13172 106056    0    0    29     7   15   11  0  0 99  0  0
-r即running，表示正在跑的任务数
-b即blocked，表示被阻塞的任务数
-si表示有多少数据从交换分区读入内存
-so表示有多少数据从内存写入交换分区
-bi表示有多少数据从磁盘读入内存
-bo表示有多少数据从内存写入磁盘
-简记：
-
-i --input，进入内存
-o --output，从内存出去
-s --swap，交换分区
-b --block，块设备，磁盘
-单位都是KB
+	答：
+	[root@centos6 ~ 10:57 #39]# vmstat
+	procs -----------memory---------- ---swap-- -----io---- --system-- -----cpu-----
+	r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+	0  0      0 1783964  13172 106056    0    0    29     7   15   11  0  0 99  0  0
+	r即running，表示正在跑的任务数
+	b即blocked，表示被阻塞的任务数
+	si表示有多少数据从交换分区读入内存
+	so表示有多少数据从内存写入交换分区
+	bi表示有多少数据从磁盘读入内存
+	bo表示有多少数据从内存写入磁盘
+	简记：
+	
+	i --input，进入内存
+	o --output，从内存出去
+	s --swap，交换分区
+	b --block，块设备，磁盘
+	单位都是KB
 
 ####4、linux系统里，您知道buffer和cache如何区分吗？
 
-答：
-buffer和cache都是内存中的一块区域，当CPU需要写数据到磁盘时，由于磁盘速度比较慢，所以CPU先把数据存进buffer，然后CPU去执行其他任务，buffer中的数据会定期写入磁盘；当CPU需要从磁盘读入数据时，由于磁盘速度比较慢，可以把即将用到的数据提前存入cache，CPU直接从Cache中拿数据要快的多。
+	答：
+	buffer和cache都是内存中的一块区域，当CPU需要写数据到磁盘时，由于磁盘速度比较慢，
+	所以CPU先把数据存进buffer，然后CPU去执行其他任务，buffer中的数据会定期写入磁盘；
+	当CPU需要从磁盘读入数据时，由于磁盘速度比较慢，可以把即将用到的数据提前存入cache，
+	CPU直接从Cache中拿数据要快的多。
 
 ####5、使用top查看系统资源占用情况时，哪一列表示内存占用呢？
 
-答：
-PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND
-301 root      20   0     0    0    0 S  0.3  0.0   0:00.08 jbd2/sda3-8
-1 root      20   0  2900 1428 1216 S  0.0  0.1   0:01.28 init
-2 root      20   0     0    0    0 S  0.0  0.0   0:00.00 kthreadd
-3 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/0
-VIRT虚拟内存用量
-RES物理内存用量
-SHR共享内存用量
-%MEM内存用量
+	答：
+	PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND
+	301 root      20   0     0    0    0 S  0.3  0.0   0:00.08 jbd2/sda3-8
+	1 root      20   0  2900 1428 1216 S  0.0  0.1   0:01.28 init
+	2 root      20   0     0    0    0 S  0.0  0.0   0:00.00 kthreadd
+	3 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/0
+	VIRT虚拟内存用量
+	RES物理内存用量
+	SHR共享内存用量
+	%MEM内存用量
 
 ####6、如何实时查看网卡流量为多少？如何查看历史网卡流量？
 
-答：
-安装sysstat包，使用sar命令查看。
-
-yum install -y sysstat#安装sysstat包，获得sar命令
-sar -n DEV#查看网卡流量，默认10分钟更新一次
-sar -n DEV 1 10#一秒显示一次，一共显示10次
-sar -n DEV -f /var/log/sa/sa22#查看指定日期的流量日志
+	答：
+	安装sysstat包，使用sar命令查看。
+	
+	yum install -y sysstat#安装sysstat包，获得sar命令
+	sar -n DEV#查看网卡流量，默认10分钟更新一次
+	sar -n DEV 1 10#一秒显示一次，一共显示10次
+	sar -n DEV -f /var/log/sa/sa22#查看指定日期的流量日志
 ####7、如何查看当前系统都有哪些进程？
 
-答：
-ps -aux 或者ps -elf
-[root@centos6 ~ 13:20 #56]# ps -aux
-Warning: bad syntax, perhaps a bogus '-'? See /usr/share/doc/procps-3.2.8/FAQ
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root         1  0.0  0.0   2900  1428 ?        Ss   10:43   0:01 /sbin/init
-root         2  0.0  0.0      0     0 ?        S    10:43   0:00 [kthreadd]
-root         3  0.0  0.0      0     0 ?        S    10:43   0:00 [migration/0]
-root         4  0.0  0.0      0     0 ?        S    10:43   0:00 [ksoftirqd/0]
-……
-[root@centos6 ~ 13:21 #57]# ps -elf
-F S UID        PID  PPID  C PRI  NI ADDR SZ WCHAN  STIME TTY          TIME CMD
-4 S root         1     0  0  80   0 -   725 -      10:43 ?        00:00:01 /sbin/init
-1 S root         2     0  0  80   0 -     0 -      10:43 ?        00:00:00 [kthreadd]
-1 S root         3     2  0 -40   - -     0 -      10:43 ?        00:00:00 [migration/0]
-1 S root         4     2  0  80   0 -     0 -      10:43 ?        00:00:00 [ksoftirqd/0]
-1 S root         5     2  0 -40   - -     0 -      10:43 ?        00:00:00 [migration/0]
+	答：
+	ps -aux 或者ps -elf
+	[root@centos6 ~ 13:20 #56]# ps -aux
+	Warning: bad syntax, perhaps a bogus '-'? See /usr/share/doc/procps-3.2.8/FAQ
+	USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+	root         1  0.0  0.0   2900  1428 ?        Ss   10:43   0:01 /sbin/init
+	root         2  0.0  0.0      0     0 ?        S    10:43   0:00 [kthreadd]
+	root         3  0.0  0.0      0     0 ?        S    10:43   0:00 [migration/0]
+	root         4  0.0  0.0      0     0 ?        S    10:43   0:00 [ksoftirqd/0]
+	……
+	[root@centos6 ~ 13:21 #57]# ps -elf
+	F S UID        PID  PPID  C PRI  NI ADDR SZ WCHAN  STIME TTY          TIME CMD
+	4 S root         1     0  0  80   0 -   725 -      10:43 ?        00:00:01 /sbin/init
+	1 S root         2     0  0  80   0 -     0 -      10:43 ?        00:00:00 [kthreadd]
+	1 S root         3     2  0 -40   - -     0 -      10:43 ?        00:00:00 [migration/0]
+	1 S root         4     2  0  80   0 -     0 -      10:43 ?        00:00:00 [ksoftirqd/0]
+	1 S root         5     2  0 -40   - -     0 -      10:43 ?        00:00:00 [migration/0]
 ####8、ps 查看系统进程时，有一列为STAT， 如果当前进程的stat为Ss 表示什么含义？如果为Z表示什么含义？
 
-答：S表示正在休眠；s表示主进程；Z表示僵尸进程。
+	答：S表示正在休眠；s表示主进程；Z表示僵尸进程。
 
 ####9、如何查看系统都开启了哪些端口？
 
-答：
-[root@centos6 ~ 13:20 #55]# netstat -lnp
-Active Internet connections (only servers)
-Proto Recv-Q Send-Q Local Address               Foreign Address             State       PID/Program name
-tcp        0      0 0.0.0.0:22                  0.0.0.0:*                   LISTEN      1035/sshd
-tcp        0      0 :::22                       :::*                        LISTEN      1035/sshd
-udp        0      0 0.0.0.0:68                  0.0.0.0:*                               931/dhclient
-Active UNIX domain sockets (only servers)
-Proto RefCnt Flags       Type       State         I-Node PID/Program name    Path
-unix  2      [ ACC ]     STREAM     LISTENING     6825   1/init              @/com/ubuntu/upstart
-unix  2      [ ACC ]     STREAM     LISTENING     8429   1003/dbus-daemon    /var/run/dbus/system_bus_socket
+	答：
+	[root@centos6 ~ 13:20 #55]# netstat -lnp
+	Active Internet connections (only servers)
+	Proto Recv-Q Send-Q Local Address               Foreign Address             State       PID/Program name
+	tcp        0      0 0.0.0.0:22                  0.0.0.0:*                   LISTEN      1035/sshd
+	tcp        0      0 :::22                       :::*                        LISTEN      1035/sshd
+	udp        0      0 0.0.0.0:68                  0.0.0.0:*                               931/dhclient
+	Active UNIX domain sockets (only servers)
+	Proto RefCnt Flags       Type       State         I-Node PID/Program name    Path
+	unix  2      [ ACC ]     STREAM     LISTENING     6825   1/init              @/com/ubuntu/upstart
+	unix  2      [ ACC ]     STREAM     LISTENING     8429   1003/dbus-daemon    /var/run/dbus/system_bus_socket
 ####10、如何查看网络连接状况？
 
-答：
-[root@centos6 ~ 13:22 #58]# netstat -an
-Active Internet connections (servers and established)
-Proto Recv-Q Send-Q Local Address               Foreign Address             State
-tcp        0      0 0.0.0.0:22                  0.0.0.0:*                   LISTEN
-tcp        0      0 192.168.147.130:22          192.168.147.1:23893         ESTABLISHED
-tcp        0      0 :::22                       :::*                        LISTEN
-udp        0      0 0.0.0.0:68                  0.0.0.0:*
-……
+	答：
+	[root@centos6 ~ 13:22 #58]# netstat -an
+	Active Internet connections (servers and established)
+	Proto Recv-Q Send-Q Local Address               Foreign Address             State
+	tcp        0      0 0.0.0.0:22                  0.0.0.0:*                   LISTEN
+	tcp        0      0 192.168.147.130:22          192.168.147.1:23893         ESTABLISHED
+	tcp        0      0 :::22                       :::*                        LISTEN
+	udp        0      0 0.0.0.0:68                  0.0.0.0:*
+	……
 ####11、想修改ip，需要编辑哪个配置文件，修改完配置文件后，如何重启网卡，使配置生效？
 
-答：使用vi或者vim编辑器编辑网卡配置文件/etc/sysconfig/network-scripts/ifcft-eth0（如果是eth1文件名为ifcft-eth1），内容如下：
-DEVICE=eth0
-HWADDR=00:0C:29:06:37:BA
-TYPE=Ethernet
-UUID=0eea1820-1fe8-4a80-a6f0-39b3d314f8da
-ONBOOT=yes
-NM_CONTROLLED=yes
-BOOTPROTO=static
-IPADDR=192.168.147.130
-NETMASK=255.255.255.0
-GATEWAY=192.168.147.2
-DNS1=192.168.147.2
-DNS2=8.8.8.8
-修改网卡后，可以使用命令重启网卡：
-
-ifdown eth0
-ifup eth0
-也可以重启网络服务：
-
-service network restart
+	答：使用vi或者vim编辑器编辑网卡配置文件/etc/sysconfig/network-scripts/ifcft-eth0（如果是eth1文件名为ifcft-eth1），内容如下：
+	DEVICE=eth0
+	HWADDR=00:0C:29:06:37:BA
+	TYPE=Ethernet
+	UUID=0eea1820-1fe8-4a80-a6f0-39b3d314f8da
+	ONBOOT=yes
+	NM_CONTROLLED=yes
+	BOOTPROTO=static
+	IPADDR=192.168.147.130
+	NETMASK=255.255.255.0
+	GATEWAY=192.168.147.2
+	DNS1=192.168.147.2
+	DNS2=8.8.8.8
+	修改网卡后，可以使用命令重启网卡：
+	
+	ifdown eth0
+	ifup eth0
+	也可以重启网络服务：
+	
+	service network restart
 ####12、能否给一个网卡配置多个IP? 如果能，怎么配置？
 
-答：可以给一个网卡配置多个IP，配置步骤如下：
-cat /etc/sysconfig/network-scripts/ifcfg-eth0#查看eth0的配置
-DEVICE=eth0
-HWADDR=00:0C:29:06:37:BA
-TYPE=Ethernet
-UUID=0eea1820-1fe8-4a80-a6f0-39b3d314f8da
-ONBOOT=yes
-NM_CONTROLLED=yes
-BOOTPROTO=static
-IPADDR=192.168.147.130
-NETMASK=255.255.255.0
-GATEWAY=192.168.147.2
-DNS1=192.168.147.2
-DNS2=8.8.8.8
-（1）新建一个ifcfg-eth0:1文件
-
-cp /etc/sysconfig/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth0:1
-（2）修改其内容如下：
-
-vim /etc/sysconfig/network-scripts/ifcfg-eth0:1
-DEVICE=eth0:1
-HWADDR=00:0C:29:06:37:BA
-TYPE=Ethernet
-UUID=0eea1820-1fe8-4a80-a6f0-39b3d314f8da
-ONBOOT=yes
-NM_CONTROLLED=yes
-BOOTPROTO=static
-IPADDR=192.168.147.133
-NETMASK=255.255.255.0
-GATEWAY=192.168.147.2
-DNS1=192.168.147.2
-DNS2=8.8.8.8
-（3）重启网络服务：
-
-service network restart
+	答：可以给一个网卡配置多个IP，配置步骤如下：
+	cat /etc/sysconfig/network-scripts/ifcfg-eth0#查看eth0的配置
+	DEVICE=eth0
+	HWADDR=00:0C:29:06:37:BA
+	TYPE=Ethernet
+	UUID=0eea1820-1fe8-4a80-a6f0-39b3d314f8da
+	ONBOOT=yes
+	NM_CONTROLLED=yes
+	BOOTPROTO=static
+	IPADDR=192.168.147.130
+	NETMASK=255.255.255.0
+	GATEWAY=192.168.147.2
+	DNS1=192.168.147.2
+	DNS2=8.8.8.8
+	（1）新建一个ifcfg-eth0:1文件
+	
+	cp /etc/sysconfig/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth0:1
+	（2）修改其内容如下：
+	
+	vim /etc/sysconfig/network-scripts/ifcfg-eth0:1
+	DEVICE=eth0:1
+	HWADDR=00:0C:29:06:37:BA
+	TYPE=Ethernet
+	UUID=0eea1820-1fe8-4a80-a6f0-39b3d314f8da
+	ONBOOT=yes
+	NM_CONTROLLED=yes
+	BOOTPROTO=static
+	IPADDR=192.168.147.133
+	NETMASK=255.255.255.0
+	GATEWAY=192.168.147.2
+	DNS1=192.168.147.2
+	DNS2=8.8.8.8
+	（3）重启网络服务：
+	
+	service network restart
 ####13、如何查看某个网卡是否连接着交换机？
 
-答：mii-tool eth0 或者 mii-tool eth1
+	答：mii-tool eth0 或者 mii-tool eth1
 
 ####14、如何查看当前主机的主机名，如何修改主机名？要想重启后依旧生效，需要修改哪个配 置文件呢？
 
-答：查看主机名：
-hostname
-centos6.5
-修改主机名：
-hostname centos6.5-1
-永久生效需要修改配置文件：
-
-vim /etc/sysconfig/network
-NETWORKING=yes
-HOSTNAME=centos6.5-1
+	答：查看主机名：
+	hostname
+	centos6.5
+	修改主机名：
+	hostname centos6.5-1
+	永久生效需要修改配置文件：
+	
+	vim /etc/sysconfig/network
+	NETWORKING=yes
+	HOSTNAME=centos6.5-1
 ####15、设置DNS需要修改哪个配置文件？
 
-答：
-（1）在文件 /etc/resolv.conf 中设置DNS
-（2）在文件 /etc/sysconfig/network-scripts/ifcfg-eth0 中设置DNS
+	答：
+	（1）在文件 /etc/resolv.conf 中设置DNS
+	（2）在文件 /etc/sysconfig/network-scripts/ifcfg-eth0 中设置DNS
 
 ####16、使用iptables 写一条规则：把来源IP为192.168.1.101访问本机80端口的包直接拒绝
 
-答：iptables -I INPUT -s 192.168.1.101 -p tcp --dport 80 -j REJECT
+	答：iptables -I INPUT -s 192.168.1.101 -p tcp --dport 80 -j REJECT
 
 ####17、要想把iptable的规则保存到一个文件中如何做？如何恢复？
-答：使用iptables-save重定向到文件中：
-iptables-save > 1.ipt
-使用iptables-restore反重定向回来：
+	答：使用iptables-save重定向到文件中：
+	iptables-save > 1.ipt
+	使用iptables-restore反重定向回来：
 
-iptables-restore < 1.ipt
+	iptables-restore < 1.ipt
 ####18、如何备份某个用户的任务计划？
 
-答：将/var/spool/cron/目录下指定用户的任务计划拷贝到备份目录cron_bak/下即可
-cp /var/spool/cron/rachy /tmp/bak/cron_bak/
+	答：将/var/spool/cron/目录下指定用户的任务计划拷贝到备份目录cron_bak/下即可
+	cp /var/spool/cron/rachy /tmp/bak/cron_bak/
 
 ####19、任务计划格式中，前面5个数字分表表示什么含义？
 
-答：依次表示：分、时、日、月、周
+	答：依次表示：分、时、日、月、周
 
 ####20、如何可以把系统中不用的服务关掉？
 
-答：（1）使用可视化工具：ntsysv
-（2）使用命令：
-chkconfig servicename off
+	答：（1）使用可视化工具：ntsysv
+	（2）使用命令：
+	chkconfig servicename off
 
 ####21、如何让某个服务（假如服务名为 nginx）只在3,5两个运行级别开启，其他级别关闭？
 
-答：先关闭所有运行级别：
-chkconfig nginx off
-然后打开35运行级别：
-chkconfig --level 35 nginx on
+	答：先关闭所有运行级别：
+	chkconfig nginx off
+	然后打开35运行级别：
+	chkconfig --level 35 nginx on
 
 ####22、rsync 同步命令中，下面两种方式有什么不同呢？
 
-(1) rsync -av  /dira/  ip:/dirb/
-(2) rsync -av  /dira/  ip::dirb
-答：(1)前者是通过ssh方式同步的
-(2)后者是通过rsync服务的方式同步的
+	(1) rsync -av  /dira/  ip:/dirb/
+	(2) rsync -av  /dira/  ip::dirb
+	答：(1)前者是通过ssh方式同步的
+	(2)后者是通过rsync服务的方式同步的
 
 ####23、rsync 同步时，如果要同步的源中有软连接，如何把软连接的目标文件或者目录同步？
 
-答：同步源文件需要加-L选项
+	答：同步源文件需要加-L选项
 
 ####24、某个账号登陆linux后，系统会在哪些日志文件中记录相关信息？
 
-答：用户身份验证过程记录在/var/log/secure中，登录成功的信息记录在/var/log/wtmp。
+	答：用户身份验证过程记录在/var/log/secure中，登录成功的信息记录在/var/log/wtmp。
 
 ####25、网卡或者硬盘有问题时，我们可以通过使用哪个命令查看相关信息？
 
-答：使用命令dmesg
+	答：使用命令dmesg
 
 ####26、分别使用xargs和exec实现这样的需求，把当前目录下所有后缀名为.txt的文件的权限修改为777
 
-答：
-（1）find ./ -type f -name "*.txt" |xargs chmod 777
-（2）find ./ -type f -name "*.txt" -exec chmod 777 {} ;
+	答：
+	（1）find ./ -type f -name "*.txt" |xargs chmod 777
+	（2）find ./ -type f -name "*.txt" -exec chmod 777 {} ;
 
 ####27、有一个脚本运行时间可能超过2天，如何做才能使其不间断的运行，而且还可以随时观察脚本运行时的输出信息？
 
-答：使用screen工具
+	答：使用screen工具
 
 ####28、在Linux系统下如何按照下面要求抓包：只过滤出访问http服务的，目标ip为192.168.0.111，一共抓1000个包，并且保存到1.cap文件中？
 
-答：tcpdump -nn -s0 host 192.168.0.111 and port 80 -c 1000 -w 1.cap
+	答：tcpdump -nn -s0 host 192.168.0.111 and port 80 -c 1000 -w 1.cap
 
 ####29、rsync 同步数据时，如何过滤出所有.txt的文件不同步？
 
-答：加上--exclude选项：
-
---exclude=“*.txt”
+	答：加上--exclude选项：
+	
+	--exclude=“*.txt”
 ####30、rsync同步数据时，如果目标文件比源文件还新，则忽略该文件，如何做？
 
-答：保留更新使用-u或者--update选项
+	答：保留更新使用-u或者--update选项
 
 ####31、想在Linux命令行下访问某个网站，并且该网站域名还没有解析，如何做？
 
-答：在/etc/hosts文件中增加一条从该网站域名到其IP的解析记录即可，或者使用curl -x
+	答：在/etc/hosts文件中增加一条从该网站域名到其IP的解析记录即可，或者使用curl -x
 
 ####32、自定义解析域名的时候，我们可以编辑哪个文件？是否可以一个ip对应多个域名？是否一个域名对应多个ip？
 
-答：编辑 /etc/hosts ,可以一个ip对应多个域名，不可以一个域名对多个ip
+	答：编辑 /etc/hosts ,可以一个ip对应多个域名，不可以一个域名对多个ip
 
 ####33、我们可以使用哪个命令查看系统的历史负载（比如说两天前的）？
 
-答：sar -q -f /var/log/sa/sa22  #查看22号的系统负载
+	答：sar -q -f /var/log/sa/sa22  #查看22号的系统负载
 
 ####34、在Linux下如何指定dns服务器，来解析某个域名？
 
-答：使用dig命令：dig @DNSip http://domain.com
-
-如：dig @8.8.8.8 www.baidu.com#使用谷歌DNS解析百度
+	答：使用dig命令：dig @DNSip http://domain.com
+	
+	如：dig @8.8.8.8 www.baidu.com#使用谷歌DNS解析百度
 ####35、使用rsync同步数据时，假如我们采用的是ssh方式，并且目标机器的sshd端口并不是默认的22端口，那我们如何做？
 
-答：rsync "--rsh=ssh -p 10022"或者rsync -e "ssh -p 10022"
+	答：rsync "--rsh=ssh -p 10022"或者rsync -e "ssh -p 10022"
 
 ####36、rsync同步时，如何删除目标数据多出来的数据，即源上不存在，但目标却存在的文件或者目录？
 
-答：加上--delete选项
+	答：加上--delete选项
 
 ####37、使用free查看内存使用情况时，哪个数值表示真正可用的内存量？
 
-答：free列第二行的值
+	答：free列第二行的值
 
 ####38、有一天你突然发现公司网站访问速度变的很慢很慢，你该怎么办呢？
 
-（服务器可以登陆，提示：你可以从系统负载和网卡流量入手）
-
-答：可以从两个方面入手分析：分析系统负载，使用w命令或者uptime命令查看系统负载，如果负载很高，则使用top命令查看CPU，MEM等占用情况，要么是CPU繁忙，要么是内存不够，如果这二者都正常，再去使用sar命令分析网卡流量，分析是不是遭到了攻击。一旦分析出问题的原因，采取对应的措施解决，如决定要不要杀死一些进程，或者禁止一些访问等。
+	（服务器可以登陆，提示：你可以从系统负载和网卡流量入手）
+	
+	答：可以从两个方面入手分析：分析系统负载，使用w命令或者uptime命令查看系统负载，
+	如果负载很高，则使用top命令查看CPU，MEM等占用情况，要么是CPU繁忙，要么是内存不够，
+	如果这二者都正常，再去使用sar命令分析网卡流量，分析是不是遭到了攻击。
+	一旦分析出问题的原因，采取对应的措施解决，如决定要不要杀死一些进程，或者禁止一些访问等。
 
 ####39、rsync使用服务模式时，如果我们指定了一个密码文件，那么这个密码文件的权限应该设置成多少才可以？
 
@@ -380,7 +385,10 @@ chkconfig --level 35 nginx on
 	auto_increment是用于主键自动增长的，从3开始增长，3表示自增的起始值
 	
 	16、详细说明keepalived的故障切换工作原理
-	这种故障切换是通过VRRP协议来实现的，主节点会按一定的时间间隔发送心跳信息的广播包，告诉备节点自己的存活状态信息，当主节点发生故障时，备节点在一段时间内就收到广播包，从而判断主节点出现故障，因此会调用自身的接管程序来接管主节点的IP资源及服务，当主节点恢复时，备节点会主动释放资源，恢复到接管前的状态，从而来实现主备故障切换
+	这种故障切换是通过VRRP协议来实现的，主节点会按一定的时间间隔发送心跳信息的广播包，
+	告诉备节点自己的存活状态信息，当主节点发生故障时，备节点在一段时间内就收到广播包，
+	从而判断主节点出现故障，因此会调用自身的接管程序来接管主节点的IP资源及服务，
+	当主节点恢复时，备节点会主动释放资源，恢复到接管前的状态，从而来实现主备故障切换
 
 ###安全
 	1、防火墙有几张表几条链？
@@ -478,7 +486,8 @@ chkconfig --level 35 nginx on
 		done
 		写一个sed命令，修改/tmp/input.txt文件的内容。
 		要求：(1) 删除所有空行；
-		(2) 一行中，如果包含"11111"，则在"11111"前面插入"AAA"，在"11111"后面插入"BBB"，比如：将内容为0000111112222的一行改为：0000AAA11111BBB2222
+		(2) 一行中，如果包含"11111"，则在"11111"前面插入"AAA"，在"11111"后面插入"BBB"，
+		比如：将内容为0000111112222的一行改为：0000AAA11111BBB2222
 		
 		[root@~]# cat -n /tmp/input.txt
 		     1  000011111222
