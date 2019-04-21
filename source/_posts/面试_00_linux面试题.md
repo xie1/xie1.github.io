@@ -4,11 +4,8 @@ date: 2019-04-14 18:11:20
 tags:
 categories: Java面试
 ---
-
 #*面试点*
-
 ####1、如何看当前Linux系统有几颗物理CPU和每颗CPU的核数？
-
 	答：
 	[root@centos6 ~ 10:55 #35]# cat /proc/cpuinfo|grep -c 'physical id'
 	4
