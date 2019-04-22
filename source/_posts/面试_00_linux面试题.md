@@ -516,3 +516,9 @@ categories: Java面试
 		22AAA11111BBB111
 		112222222
 		1122 
+
+
+#二、*参考链接地址*
+[https://zhuanlan.zhihu.com/p/32250942](https://zhuanlan.zhihu.com/p/32250942)
+https://gywbd.github.io/posts/2014/8/50-linux-commands.html
+https://www.leolan.top/index.php/posts/36.html

@@ -349,3 +349,12 @@ categories: Java面试
 	1. 首先，线程A把本地内存A中更新过的共享变量刷新到主内存中去。
 	2. 然后，线程B到主内存中去读取线程A之前已更新过的共享变量。
 	写的很好:http://www.infoq.com/cn/articles/java-memory-model-1
+
+
+
+
+
+#二、*参考链接地址*
+
+1、[https://www.douban.com/note/702607847/](https://www.douban.com/note/702607847/)
+2、[https://cloud.tencent.com/developer/article/1102969](https://cloud.tencent.com/developer/article/1102969)
