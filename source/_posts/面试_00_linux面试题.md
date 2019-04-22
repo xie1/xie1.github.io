@@ -520,5 +520,5 @@ categories: Java面试
 
 #二、*参考链接地址*
 [https://zhuanlan.zhihu.com/p/32250942](https://zhuanlan.zhihu.com/p/32250942)
-https://gywbd.github.io/posts/2014/8/50-linux-commands.html
-https://www.leolan.top/index.php/posts/36.html
+[https://gywbd.github.io/posts/2014/8/50-linux-commands.html](https://gywbd.github.io/posts/2014/8/50-linux-commands.html)
+[https://www.leolan.top/index.php/posts/36.html](https://www.leolan.top/index.php/posts/36.html)
