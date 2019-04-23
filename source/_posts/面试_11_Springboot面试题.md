@@ -8,7 +8,8 @@ categories: Java面试
 
 ###1、什么是 Spring Boot？
 
-	Spring Boot 是 Spring 开源组织下的子项目，是 Spring 组件一站式解决方案，主要是简化了使用 Spring 的难度，简省了繁重的配置，提供了各种启动器，开发者能快速上手。
+	Spring Boot 是 Spring 开源组织下的子项目，是 Spring 组件一站式解决方案，主要是简化了使用 Spring 的难度，简省了繁重的配置，
+	提供了各种启动器，开发者能快速上手。
 	更多 Spring Boot 详细介绍请看这篇文章《什么是Spring Boot?》。
 
 ###2、为什么要用 Spring Boot？
@@ -56,7 +57,8 @@ categories: Java面试
 	
 	@SpringBootConfiguration：组合了 @Configuration 注解，实现配置文件的功能。
 	
-	@EnableAutoConfiguration：打开自动配置的功能，也可以关闭某个自动配置的选项，如关闭数据源自动配置功能： @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })。
+	@EnableAutoConfiguration：打开自动配置的功能，也可以关闭某个自动配置的选项，如关闭数据源自动配置功能：
+	 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })。
 	
 	@ComponentScan：Spring组件扫描。
 
@@ -82,7 +84,8 @@ categories: Java面试
 
 ###9、Spring Boot 自动配置原理是什么？
 
-	注解 @EnableAutoConfiguration, @Configuration, @ConditionalOnClass 就是自动配置的核心，首先它得是一个配置文件，其次根据类路径下是否有这个类去自动配置。
+	注解 @EnableAutoConfiguration, @Configuration, @ConditionalOnClass 就是自动配置的核心，首先它得是一个配置文件，
+	其次根据类路径下是否有这个类去自动配置。
 	
 	具体看这篇文章《Spring Boot自动配置原理、实战》。
 
@@ -103,25 +106,31 @@ categories: Java面试
          +- OrderController.java
          +- OrderService.java
          +- OrderRepository.java
-	这个目录结构是主流及推荐的做法，而在主入口类上加上 @SpringBootApplication 注解来开启 Spring Boot 的各项能力，如自动配置、组件扫描等。具体看这篇文章《Spring Boot 主类及目录结构介绍》。
+	这个目录结构是主流及推荐的做法，而在主入口类上加上 @SpringBootApplication 注解来开启 Spring Boot 的各项能力，
+	如自动配置、组件扫描等。具体看这篇文章《Spring Boot 主类及目录结构介绍》。
 
 ###11、你如何理解 Spring Boot 中的 Starters？
 
-	Starters可以理解为启动器，它包含了一系列可以集成到应用里面的依赖包，你可以一站式集成 Spring 及其他技术，而不需要到处找示例代码和依赖包。如你想使用 Spring JPA 访问数据库，只要加入 spring-boot-starter-data-jpa 启动器依赖就能使用了。
+	Starters可以理解为启动器，它包含了一系列可以集成到应用里面的依赖包，你可以一站式集成 Spring 及其他技术，
+	而不需要到处找示例代码和依赖包。如你想使用 Spring JPA 访问数据库，只要加入 spring-boot-starter-data-jpa 启动器依赖就能使用了。
 	
-	Starters包含了许多项目中需要用到的依赖，它们能快速持续的运行，都是一系列得到支持的管理传递性依赖。具体请看这篇文章《Spring Boot Starters启动器》。
+	Starters包含了许多项目中需要用到的依赖，它们能快速持续的运行，都是一系列得到支持的管理传递性依赖。
+	具体请看这篇文章《Spring Boot Starters启动器》。
 
 ###12、如何在 Spring Boot 启动的时候运行一些特定的代码？
 
-	可以实现接口 ApplicationRunner 或者 CommandLineRunner，这两个接口实现方式一样，它们都只提供了一个 run 方法，具体请看这篇文章《Spring Boot Runner启动器》。
+	可以实现接口 ApplicationRunner 或者 CommandLineRunner，这两个接口实现方式一样，它们都只提供了一个 run 方法，
+	具体请看这篇文章《Spring Boot Runner启动器》。
 
 ###13、Spring Boot 有哪几种读取配置的方式？
 
-	Spring Boot 可以通过 @PropertySource,@Value,@Environment, @ConfigurationProperties 来绑定变量，具体请看这篇文章《Spring Boot读取配置的几种方式》。
+	Spring Boot 可以通过 @PropertySource,@Value,@Environment, @ConfigurationProperties 来绑定变量，
+	具体请看这篇文章《Spring Boot读取配置的几种方式》。
 
 ###14、Spring Boot 支持哪些日志框架？推荐和默认的日志框架是哪个？
 
-	Spring Boot 支持 Java Util Logging, Log4j2, Lockback 作为日志框架，如果你使用 Starters 启动器，Spring Boot 将使用 Logback 作为默认日志框架，具体请看这篇文章《Spring Boot日志集成》。
+	Spring Boot 支持 Java Util Logging, Log4j2, Lockback 作为日志框架，如果你使用 Starters 启动器，
+	Spring Boot 将使用 Logback 作为默认日志框架，具体请看这篇文章《Spring Boot日志集成》。
 
 ###15、SpringBoot 实现热部署有哪几种方式？
 
