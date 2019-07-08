@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT,xiesz">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XieSZ'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、思维导图总知识点一、Java库1、java.lang 2、java.util 3、java.util.concurrent 4、java.io 二、创建和销毁对象1、考虑用静态工厂方法代替构造器优势： 1、静态工厂方法与狗肇庆不同第一大优势，他们有名称 2、不必再每次调用的时候都创建一个对象（类似于单例模式） 3、他们可以返回类型的任何子类型的对象 4、在创建参数化类型实例的时候，他们使代码变">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书笔记_Effective java">
+<meta property="og:url" content="http://yoursite.com/2019/04/05/读书笔记_Effective Java/index.html">
+<meta property="og:site_name" content="XieSZ&#39;S BLOG">
+<meta property="og:description" content="一、思维导图总知识点一、Java库1、java.lang 2、java.util 3、java.util.concurrent 4、java.io 二、创建和销毁对象1、考虑用静态工厂方法代替构造器优势： 1、静态工厂方法与狗肇庆不同第一大优势，他们有名称 2、不必再每次调用的时候都创建一个对象（类似于单例模式） 3、他们可以返回类型的任何子类型的对象 4、在创建参数化类型实例的时候，他们使代码变">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-13T03:41:48.472Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读书笔记_Effective java">
+<meta name="twitter:description" content="一、思维导图总知识点一、Java库1、java.lang 2、java.util 3、java.util.concurrent 4、java.io 二、创建和销毁对象1、考虑用静态工厂方法代替构造器优势： 1、静态工厂方法与狗肇庆不同第一大优势，他们有名称 2、不必再每次调用的时候都创建一个对象（类似于单例模式） 3、他们可以返回类型的任何子类型的对象 4、在创建参数化类型实例的时候，他们使代码变">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/05/读书笔记_Effective Java/">
+
+
+
+
+
+  <title>读书笔记_Effective java | XieSZ'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XieSZ'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">xieshanzhong的博客小站</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/05/读书笔记_Effective Java/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieSZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XieSZ'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">读书笔记_Effective java</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-05T23:01:41+08:00">
+                2019-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/04/05/读书笔记_Effective Java/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/04/05/读书笔记_Effective Java/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><h1 id="总知识点"><a href="#总知识点" class="headerlink" title="总知识点"></a><em>总知识点</em></h1><h2 id="一、Java库"><a href="#一、Java库" class="headerlink" title="一、Java库"></a>一、Java库</h2><pre><code>1、java.lang
+2、java.util
+3、java.util.concurrent
+4、java.io
+</code></pre><h2 id="二、创建和销毁对象"><a href="#二、创建和销毁对象" class="headerlink" title="二、创建和销毁对象"></a>二、创建和销毁对象</h2><h3 id="1、考虑用静态工厂方法代替构造器"><a href="#1、考虑用静态工厂方法代替构造器" class="headerlink" title="1、考虑用静态工厂方法代替构造器"></a>1、考虑用静态工厂方法代替构造器</h3><pre><code>优势：
+1、静态工厂方法与狗肇庆不同第一大优势，他们有名称
+2、不必再每次调用的时候都创建一个对象（类似于单例模式）
+3、他们可以返回类型的任何子类型的对象
+4、在创建参数化类型实例的时候，他们使代码变得更加简洁
+劣势：
+1、类如果不含有的或者受保护的构造器，就不能被子类化
+2、他们与静态方法实际上没有任何区别
+</code></pre><h3 id="2、遇到多个构造器参数时要考虑用构建器"><a href="#2、遇到多个构造器参数时要考虑用构建器" class="headerlink" title="2、遇到多个构造器参数时要考虑用构建器"></a>2、遇到多个构造器参数时要考虑用构建器</h3><pre><code>Builder模式，不直接生成想要的对象，而让客户端利用所有必要的参数调用构造器或者静态工厂一个builder对象
+</code></pre><h3 id="3、用私有构造器或者枚举类型强化Singleton属性"><a href="#3、用私有构造器或者枚举类型强化Singleton属性" class="headerlink" title="3、用私有构造器或者枚举类型强化Singleton属性"></a>3、用私有构造器或者枚举类型强化Singleton属性</h3><h3 id="4、通过私有构造器强化不可实例化能力"><a href="#4、通过私有构造器强化不可实例化能力" class="headerlink" title="4、通过私有构造器强化不可实例化能力"></a>4、通过私有构造器强化不可实例化能力</h3><h3 id="5、避免创建不必要的对象"><a href="#5、避免创建不必要的对象" class="headerlink" title="5、避免创建不必要的对象"></a>5、避免创建不必要的对象</h3><h3 id="6、消除过期的对象引用"><a href="#6、消除过期的对象引用" class="headerlink" title="6、消除过期的对象引用"></a>6、消除过期的对象引用</h3><pre><code>内存泄漏
+1、常见来源：只有当所要缓存想的生命周期是由该键的外部引用，而不是由值决定时，weakHashMap才有用处
+2、监听器和其他回调
+</code></pre><h3 id="7、避免使用终结方法"><a href="#7、避免使用终结方法" class="headerlink" title="7、避免使用终结方法"></a>7、避免使用终结方法</h3><pre><code>可以采用InputStream，outputStream,Connetiond的close方法   
+</code></pre><h2 id="三、对于所有对象都通用方法"><a href="#三、对于所有对象都通用方法" class="headerlink" title="三、对于所有对象都通用方法"></a>三、对于所有对象都通用方法</h2><h3 id="8、覆盖equals时请遵守通用约定"><a href="#8、覆盖equals时请遵守通用约定" class="headerlink" title="8、覆盖equals时请遵守通用约定"></a>8、覆盖equals时请遵守通用约定</h3><pre><code>不覆盖equals方法
+1、类的每个实例本质上是唯一的
+2、不关心是否提供了逻辑相等的测试功能
+3、超类已覆盖的equal，从超类继承过来的行为对于子类也是合适的
+4、类是私有的或者是包级私有，可以确定它的equals方法永远不会被调用
+equals方法实现对等的关系
+1、自反性，x.equals(x)==&gt;true
+2、对称性
+3、传递性、
+4、一致性
+5、对于任何非null引用值，x.equal(null)必须返回false
+实现高质量的equals方法：
+1、使用==操作符检查，参数是否为这个对象的引用
+2、使用instanceof操作检查参数是否是正确的类型
+3、把参数转换成正确的类型
+4、对于该类中的每一关键域，检查参数中的域是否与该对象中对应域相匹配
+注意：
+1、覆盖equals时总要覆盖hashcode
+2、不要企图让equals方法过于只能
+3、不要将equals声明中的object对象替换成其他类型
+</code></pre><h3 id="9、覆盖equals时总是要覆盖hashcode"><a href="#9、覆盖equals时总是要覆盖hashcode" class="headerlink" title="9、覆盖equals时总是要覆盖hashcode"></a>9、覆盖equals时总是要覆盖hashcode</h3><pre><code>如果不这么做的话，会违反Object、hashcode的通用约定，从而导致该类无法结合所有基于散列的集合一起工作，这样的集合都要包含hashmap，hashSet，HashTable
+</code></pre><h3 id="10、始终要覆盖toString"><a href="#10、始终要覆盖toString" class="headerlink" title="10、始终要覆盖toString"></a>10、始终要覆盖toString</h3><h3 id="11、小心地覆盖clone"><a href="#11、小心地覆盖clone" class="headerlink" title="11、小心地覆盖clone"></a>11、小心地覆盖clone</h3><pre><code>Cloneable并没有任何方法，它决定了Object中所保护的clone方法的实现行为
+</code></pre><h3 id="12、考虑实现Comparable接口"><a href="#12、考虑实现Comparable接口" class="headerlink" title="12、考虑实现Comparable接口"></a>12、考虑实现Comparable接口</h3><pre><code>compareTo方法并没有在Object中声明，相反它是Compareable接口中唯一的方法，实现Comparable接口，就表明了它具有内在排序关系
+如果一个域并没有实现Comparable接口，或者你需要使用一个非标准的排序关系，就可以使用显示Comparator代替
+</code></pre><h2 id="四、类和接口"><a href="#四、类和接口" class="headerlink" title="四、类和接口"></a>四、类和接口</h2><h3 id="13、使类和成员的可访问性最小"><a href="#13、使类和成员的可访问性最小" class="headerlink" title="13、使类和成员的可访问性最小"></a>13、使类和成员的可访问性最小</h3><pre><code>除了公有静态final域的特殊情形之外，公有类都不应该包含公有域，属性，而且要确保公有静态域所引用的对象都是不可变的。
+</code></pre><h3 id="14、在公有类中使用访问方法而非公有域"><a href="#14、在公有类中使用访问方法而非公有域" class="headerlink" title="14、在公有类中使用访问方法而非公有域"></a>14、在公有类中使用访问方法而非公有域</h3><h3 id="15、使可变性最小化"><a href="#15、使可变性最小化" class="headerlink" title="15、使可变性最小化"></a>15、使可变性最小化</h3><pre><code>不可变类，String，基本类型的包装类，BigInteger,BigDecimal
+</code></pre><h3 id="16、复合优于继承"><a href="#16、复合优于继承" class="headerlink" title="16、复合优于继承"></a>16、复合优于继承</h3><pre><code>不可扩展现有的类，而是在新的类中增加了一个私有域，它引用现有类的一个实例，即复合
+</code></pre><h3 id="17、要么为继承而设计，并提供文档说明，要么就禁止继承"><a href="#17、要么为继承而设计，并提供文档说明，要么就禁止继承" class="headerlink" title="17、要么为继承而设计，并提供文档说明，要么就禁止继承"></a>17、要么为继承而设计，并提供文档说明，要么就禁止继承</h3><h3 id="18、接口优于抽象类"><a href="#18、接口优于抽象类" class="headerlink" title="18、接口优于抽象类"></a>18、接口优于抽象类</h3><pre><code>1、现有的类可以很容易被更新，以实现新的接口
+2、接口是定义mixin（混合类型）的理想选择
+3、接口允许我们构造非层次结构的类型框架
+</code></pre><h3 id="19、接口只用于定义类型"><a href="#19、接口只用于定义类型" class="headerlink" title="19、接口只用于定义类型"></a>19、接口只用于定义类型</h3><pre><code>接口应该只被用来定义类型，他们不应该被用来导出常量
+</code></pre><h3 id="20、类层次优于标签类"><a href="#20、类层次优于标签类" class="headerlink" title="20、类层次优于标签类"></a>20、类层次优于标签类</h3><h3 id="21、用函数对象表示策略"><a href="#21、用函数对象表示策略" class="headerlink" title="21、用函数对象表示策略"></a>21、用函数对象表示策略</h3><pre><code>嵌套类有四种，
+1、静态类成员类
+2、非静态类成员类
+3、匿名类
+4、局部类
+</code></pre><h2 id="五、泛型"><a href="#五、泛型" class="headerlink" title="五、泛型"></a>五、泛型</h2><h3 id="23、请不要在新代码中使用原生态类型"><a href="#23、请不要在新代码中使用原生态类型" class="headerlink" title="23、请不要在新代码中使用原生态类型"></a>23、请不要在新代码中使用原生态类型</h3><pre><code>1、Set&lt;Object&gt; 任何对象某个集合
+2、Set&lt;?&gt; 只包含某种接口的类型集合
+3、Set原生态，不安全
+</code></pre><h3 id="24、消除非受控警告"><a href="#24、消除非受控警告" class="headerlink" title="24、消除非受控警告"></a>24、消除非受控警告</h3><h3 id="25、列表优于数组"><a href="#25、列表优于数组" class="headerlink" title="25、列表优于数组"></a>25、列表优于数组</h3><pre><code>数组在运行时才知道并检查他们的元素类型约束
+</code></pre><h3 id="26、优先考虑泛型"><a href="#26、优先考虑泛型" class="headerlink" title="26、优先考虑泛型"></a>26、优先考虑泛型</h3><h3 id="27、优先考虑泛型方法"><a href="#27、优先考虑泛型方法" class="headerlink" title="27、优先考虑泛型方法"></a>27、优先考虑泛型方法</h3><h3 id="28、使用有限制通配符来提升API的灵活性"><a href="#28、使用有限制通配符来提升API的灵活性" class="headerlink" title="28、使用有限制通配符来提升API的灵活性"></a>28、使用有限制通配符来提升API的灵活性</h3><pre><code>1、如果参数化类型表示一个生产者，就是使用&lt;? extends T&gt;;
+2、如果它表示T消费者，就使用&lt;? super T&gt; 所有的Comparable 和Comparator都是消费者
+</code></pre><h3 id="29、优先考虑类型安全的异构容器"><a href="#29、优先考虑类型安全的异构容器" class="headerlink" title="29、优先考虑类型安全的异构容器"></a>29、优先考虑类型安全的异构容器</h3><h2 id="六、枚举和注解"><a href="#六、枚举和注解" class="headerlink" title="六、枚举和注解"></a>六、枚举和注解</h2><h3 id="30、用enum代替int常量"><a href="#30、用enum代替int常量" class="headerlink" title="30、用enum代替int常量"></a>30、用enum代替int常量</h3><pre><code>java枚举本质上int值
+</code></pre><h3 id="31、用实例域代替拿数"><a href="#31、用实例域代替拿数" class="headerlink" title="31、用实例域代替拿数"></a>31、用实例域代替拿数</h3><h3 id="32、用EnumSet代替位域"><a href="#32、用EnumSet代替位域" class="headerlink" title="32、用EnumSet代替位域"></a>32、用EnumSet代替位域</h3><h3 id="33、用EnumMap代替序数索引"><a href="#33、用EnumMap代替序数索引" class="headerlink" title="33、用EnumMap代替序数索引"></a>33、用EnumMap代替序数索引</h3><h3 id="34、用接口模拟可伸缩的枚举"><a href="#34、用接口模拟可伸缩的枚举" class="headerlink" title="34、用接口模拟可伸缩的枚举"></a>34、用接口模拟可伸缩的枚举</h3><h3 id="35、注解优先于命名模式"><a href="#35、注解优先于命名模式" class="headerlink" title="35、注解优先于命名模式"></a>35、注解优先于命名模式</h3><h3 id="36、坚持使用Override"><a href="#36、坚持使用Override" class="headerlink" title="36、坚持使用Override"></a>36、坚持使用Override</h3><h3 id="37、用标记接口定义类型"><a href="#37、用标记接口定义类型" class="headerlink" title="37、用标记接口定义类型"></a>37、用标记接口定义类型</h3><h2 id="七、方法"><a href="#七、方法" class="headerlink" title="七、方法"></a>七、方法</h2><h3 id="38、检查参数有效性"><a href="#38、检查参数有效性" class="headerlink" title="38、检查参数有效性"></a>38、检查参数有效性</h3><h3 id="39、必要时进行保护性拷贝"><a href="#39、必要时进行保护性拷贝" class="headerlink" title="39、必要时进行保护性拷贝"></a>39、必要时进行保护性拷贝</h3><pre><code>对于参数类型可以被不可信任子类化参数，请不要使用clone（）方法保护性拷贝
+</code></pre><h3 id="40、谨慎设计签名"><a href="#40、谨慎设计签名" class="headerlink" title="40、谨慎设计签名"></a>40、谨慎设计签名</h3><h3 id="41、慎用重载"><a href="#41、慎用重载" class="headerlink" title="41、慎用重载"></a>41、慎用重载</h3><h3 id="42、慎用可变参数"><a href="#42、慎用可变参数" class="headerlink" title="42、慎用可变参数"></a>42、慎用可变参数</h3><h3 id="43、返回零长度的数组或集合，而不是null"><a href="#43、返回零长度的数组或集合，而不是null" class="headerlink" title="43、返回零长度的数组或集合，而不是null"></a>43、返回零长度的数组或集合，而不是null</h3><h3 id="44、为所有导出的API元素编写文档注解"><a href="#44、为所有导出的API元素编写文档注解" class="headerlink" title="44、为所有导出的API元素编写文档注解"></a>44、为所有导出的API元素编写文档注解</h3><h2 id="八、通用程序设计"><a href="#八、通用程序设计" class="headerlink" title="八、通用程序设计"></a>八、通用程序设计</h2><h3 id="45、将局部变量的作用域最小化"><a href="#45、将局部变量的作用域最小化" class="headerlink" title="45、将局部变量的作用域最小化"></a>45、将局部变量的作用域最小化</h3><h3 id="46、for-each循环优先于传统"><a href="#46、for-each循环优先于传统" class="headerlink" title="46、for-each循环优先于传统"></a>46、for-each循环优先于传统</h3><pre><code>无法使用for-each循环
+过滤，转换，平行迭代
+</code></pre><h3 id="47、了解和使用类库"><a href="#47、了解和使用类库" class="headerlink" title="47、了解和使用类库"></a>47、了解和使用类库</h3><h3 id="48、如果需要精确的答案，请避免使用float和double，用BigDecimal-int-long进行货币计算"><a href="#48、如果需要精确的答案，请避免使用float和double，用BigDecimal-int-long进行货币计算" class="headerlink" title="48、如果需要精确的答案，请避免使用float和double，用BigDecimal,int,long进行货币计算"></a>48、如果需要精确的答案，请避免使用float和double，用BigDecimal,int,long进行货币计算</h3><h3 id="49、基本类型优于装箱基本类型"><a href="#49、基本类型优于装箱基本类型" class="headerlink" title="49、基本类型优于装箱基本类型"></a>49、基本类型优于装箱基本类型</h3><pre><code>1、对装箱基本类型运用==操作符几乎总是错误的
+    集合，参数化类型，反射方法调用
+</code></pre><h3 id="50、如果其他类型更适合，则尽量避免使用字符串"><a href="#50、如果其他类型更适合，则尽量避免使用字符串" class="headerlink" title="50、如果其他类型更适合，则尽量避免使用字符串"></a>50、如果其他类型更适合，则尽量避免使用字符串</h3><h3 id="51、当心字符串连接性能"><a href="#51、当心字符串连接性能" class="headerlink" title="51、当心字符串连接性能"></a>51、当心字符串连接性能</h3><pre><code>用StringBuilder代替String
+</code></pre><h3 id="52、通过接口引用对象"><a href="#52、通过接口引用对象" class="headerlink" title="52、通过接口引用对象"></a>52、通过接口引用对象</h3><h3 id="53、接口优于反射机制"><a href="#53、接口优于反射机制" class="headerlink" title="53、接口优于反射机制"></a>53、接口优于反射机制</h3><h3 id="54、谨慎使用本地方法"><a href="#54、谨慎使用本地方法" class="headerlink" title="54、谨慎使用本地方法"></a>54、谨慎使用本地方法</h3><h3 id="55、谨慎地进行优化"><a href="#55、谨慎地进行优化" class="headerlink" title="55、谨慎地进行优化"></a>55、谨慎地进行优化</h3><pre><code>1、性能解析器
+2、有效算法
+</code></pre><h3 id="56、遵守普遍接受的命名惯例"><a href="#56、遵守普遍接受的命名惯例" class="headerlink" title="56、遵守普遍接受的命名惯例"></a>56、遵守普遍接受的命名惯例</h3><h2 id="九、异常"><a href="#九、异常" class="headerlink" title="九、异常"></a>九、异常</h2><h3 id="57、只针对异常的情况才使用异常"><a href="#57、只针对异常的情况才使用异常" class="headerlink" title="57、只针对异常的情况才使用异常"></a>57、只针对异常的情况才使用异常</h3><h3 id="58、对可恢复的情况使用受检查异常，对编程错误使用运行异常"><a href="#58、对可恢复的情况使用受检查异常，对编程错误使用运行异常" class="headerlink" title="58、对可恢复的情况使用受检查异常，对编程错误使用运行异常"></a>58、对可恢复的情况使用受检查异常，对编程错误使用运行异常</h3><pre><code>1、受检查异常
+2、运行时异常
+3、Error错误
+</code></pre><h3 id="59、避免不必要的使用受检查异常"><a href="#59、避免不必要的使用受检查异常" class="headerlink" title="59、避免不必要的使用受检查异常"></a>59、避免不必要的使用受检查异常</h3><h3 id="60、优先使用标准异常"><a href="#60、优先使用标准异常" class="headerlink" title="60、优先使用标准异常"></a>60、优先使用标准异常</h3><h3 id="61、抛出与抽象相对应的异常"><a href="#61、抛出与抽象相对应的异常" class="headerlink" title="61、抛出与抽象相对应的异常"></a>61、抛出与抽象相对应的异常</h3><h3 id="62、每个方法抛出的异常都要有文档"><a href="#62、每个方法抛出的异常都要有文档" class="headerlink" title="62、每个方法抛出的异常都要有文档"></a>62、每个方法抛出的异常都要有文档</h3><h3 id="63、在细节消息中包含能捕获失败的信息"><a href="#63、在细节消息中包含能捕获失败的信息" class="headerlink" title="63、在细节消息中包含能捕获失败的信息"></a>63、在细节消息中包含能捕获失败的信息</h3><h3 id="64、努力使失败保持原子性"><a href="#64、努力使失败保持原子性" class="headerlink" title="64、努力使失败保持原子性"></a>64、努力使失败保持原子性</h3><h3 id="65、不要忽略异常"><a href="#65、不要忽略异常" class="headerlink" title="65、不要忽略异常"></a>65、不要忽略异常</h3><h2 id="十、并发"><a href="#十、并发" class="headerlink" title="十、并发"></a>十、并发</h2><h3 id="66、同步访问共享的可变数据"><a href="#66、同步访问共享的可变数据" class="headerlink" title="66、同步访问共享的可变数据"></a>66、同步访问共享的可变数据</h3><h3 id="67、避免过度同步"><a href="#67、避免过度同步" class="headerlink" title="67、避免过度同步"></a>67、避免过度同步</h3><h3 id="68、executor和task优先线程"><a href="#68、executor和task优先线程" class="headerlink" title="68、executor和task优先线程"></a>68、executor和task优先线程</h3><h3 id="69、并发工具优先于wait和notity"><a href="#69、并发工具优先于wait和notity" class="headerlink" title="69、并发工具优先于wait和notity"></a>69、并发工具优先于wait和notity</h3><pre><code>concurrent更高级工具
+    1、Executor FrameWork
+    2、并发集合
+    3、同步器
+</code></pre><h3 id="70、线程安全性的文档化"><a href="#70、线程安全性的文档化" class="headerlink" title="70、线程安全性的文档化"></a>70、线程安全性的文档化</h3><h3 id="71、慎用延迟初始化"><a href="#71、慎用延迟初始化" class="headerlink" title="71、慎用延迟初始化"></a>71、慎用延迟初始化</h3><h3 id="72、不要依赖线程调度器"><a href="#72、不要依赖线程调度器" class="headerlink" title="72、不要依赖线程调度器"></a>72、不要依赖线程调度器</h3><h3 id="73、避免使用线程组"><a href="#73、避免使用线程组" class="headerlink" title="73、避免使用线程组"></a>73、避免使用线程组</h3><h2 id="十一、序列化"><a href="#十一、序列化" class="headerlink" title="十一、序列化"></a>十一、序列化</h2><h3 id="74、慎用地实现Seriazable接口"><a href="#74、慎用地实现Seriazable接口" class="headerlink" title="74、慎用地实现Seriazable接口"></a>74、慎用地实现Seriazable接口</h3><h3 id="75、考虑使用自定义的序列化形式"><a href="#75、考虑使用自定义的序列化形式" class="headerlink" title="75、考虑使用自定义的序列化形式"></a>75、考虑使用自定义的序列化形式</h3><h3 id="76、保护性编写readObject方法"><a href="#76、保护性编写readObject方法" class="headerlink" title="76、保护性编写readObject方法"></a>76、保护性编写readObject方法</h3><h3 id="77、对于实例控制，枚举类型优先readResolve"><a href="#77、对于实例控制，枚举类型优先readResolve" class="headerlink" title="77、对于实例控制，枚举类型优先readResolve"></a>77、对于实例控制，枚举类型优先readResolve</h3><h3 id="78、考虑用序列化代理代替序列化实例"><a href="#78、考虑用序列化代理代替序列化实例" class="headerlink" title="78、考虑用序列化代理代替序列化实例"></a>78、考虑用序列化代理代替序列化实例</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    XieSZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/04/05/读书笔记_Effective Java/" title="读书笔记_Effective java">http://yoursite.com/2019/04/05/读书笔记_Effective Java/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/05/读书笔记_SQL学习指南/" rel="next" title="读书笔记_SQL学习指南">
+                <i class="fa fa-chevron-left"></i> 读书笔记_SQL学习指南
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/05/读书笔记_HotSpot实践/" rel="prev" title="读书笔记_HotSpot实践">
+                读书笔记_HotSpot实践 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieSZ</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到XieSZ的技术分享站~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xie1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xieshanzhong66@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xie1.github.io/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="hexo" target="_blank">hexo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、思维导图"><span class="nav-text">一、思维导图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总知识点"><span class="nav-text">总知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Java库"><span class="nav-text">一、Java库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、创建和销毁对象"><span class="nav-text">二、创建和销毁对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、考虑用静态工厂方法代替构造器"><span class="nav-text">1、考虑用静态工厂方法代替构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、遇到多个构造器参数时要考虑用构建器"><span class="nav-text">2、遇到多个构造器参数时要考虑用构建器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、用私有构造器或者枚举类型强化Singleton属性"><span class="nav-text">3、用私有构造器或者枚举类型强化Singleton属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、通过私有构造器强化不可实例化能力"><span class="nav-text">4、通过私有构造器强化不可实例化能力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、避免创建不必要的对象"><span class="nav-text">5、避免创建不必要的对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、消除过期的对象引用"><span class="nav-text">6、消除过期的对象引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、避免使用终结方法"><span class="nav-text">7、避免使用终结方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、对于所有对象都通用方法"><span class="nav-text">三、对于所有对象都通用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8、覆盖equals时请遵守通用约定"><span class="nav-text">8、覆盖equals时请遵守通用约定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、覆盖equals时总是要覆盖hashcode"><span class="nav-text">9、覆盖equals时总是要覆盖hashcode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10、始终要覆盖toString"><span class="nav-text">10、始终要覆盖toString</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11、小心地覆盖clone"><span class="nav-text">11、小心地覆盖clone</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12、考虑实现Comparable接口"><span class="nav-text">12、考虑实现Comparable接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、类和接口"><span class="nav-text">四、类和接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#13、使类和成员的可访问性最小"><span class="nav-text">13、使类和成员的可访问性最小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14、在公有类中使用访问方法而非公有域"><span class="nav-text">14、在公有类中使用访问方法而非公有域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15、使可变性最小化"><span class="nav-text">15、使可变性最小化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16、复合优于继承"><span class="nav-text">16、复合优于继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17、要么为继承而设计，并提供文档说明，要么就禁止继承"><span class="nav-text">17、要么为继承而设计，并提供文档说明，要么就禁止继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18、接口优于抽象类"><span class="nav-text">18、接口优于抽象类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19、接口只用于定义类型"><span class="nav-text">19、接口只用于定义类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20、类层次优于标签类"><span class="nav-text">20、类层次优于标签类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21、用函数对象表示策略"><span class="nav-text">21、用函数对象表示策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、泛型"><span class="nav-text">五、泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#23、请不要在新代码中使用原生态类型"><span class="nav-text">23、请不要在新代码中使用原生态类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24、消除非受控警告"><span class="nav-text">24、消除非受控警告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25、列表优于数组"><span class="nav-text">25、列表优于数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26、优先考虑泛型"><span class="nav-text">26、优先考虑泛型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27、优先考虑泛型方法"><span class="nav-text">27、优先考虑泛型方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#28、使用有限制通配符来提升API的灵活性"><span class="nav-text">28、使用有限制通配符来提升API的灵活性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#29、优先考虑类型安全的异构容器"><span class="nav-text">29、优先考虑类型安全的异构容器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、枚举和注解"><span class="nav-text">六、枚举和注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#30、用enum代替int常量"><span class="nav-text">30、用enum代替int常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#31、用实例域代替拿数"><span class="nav-text">31、用实例域代替拿数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32、用EnumSet代替位域"><span class="nav-text">32、用EnumSet代替位域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33、用EnumMap代替序数索引"><span class="nav-text">33、用EnumMap代替序数索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#34、用接口模拟可伸缩的枚举"><span class="nav-text">34、用接口模拟可伸缩的枚举</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#35、注解优先于命名模式"><span class="nav-text">35、注解优先于命名模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#36、坚持使用Override"><span class="nav-text">36、坚持使用Override</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#37、用标记接口定义类型"><span class="nav-text">37、用标记接口定义类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、方法"><span class="nav-text">七、方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#38、检查参数有效性"><span class="nav-text">38、检查参数有效性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#39、必要时进行保护性拷贝"><span class="nav-text">39、必要时进行保护性拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#40、谨慎设计签名"><span class="nav-text">40、谨慎设计签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#41、慎用重载"><span class="nav-text">41、慎用重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#42、慎用可变参数"><span class="nav-text">42、慎用可变参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#43、返回零长度的数组或集合，而不是null"><span class="nav-text">43、返回零长度的数组或集合，而不是null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#44、为所有导出的API元素编写文档注解"><span class="nav-text">44、为所有导出的API元素编写文档注解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、通用程序设计"><span class="nav-text">八、通用程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#45、将局部变量的作用域最小化"><span class="nav-text">45、将局部变量的作用域最小化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#46、for-each循环优先于传统"><span class="nav-text">46、for-each循环优先于传统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#47、了解和使用类库"><span class="nav-text">47、了解和使用类库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#48、如果需要精确的答案，请避免使用float和double，用BigDecimal-int-long进行货币计算"><span class="nav-text">48、如果需要精确的答案，请避免使用float和double，用BigDecimal,int,long进行货币计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#49、基本类型优于装箱基本类型"><span class="nav-text">49、基本类型优于装箱基本类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#50、如果其他类型更适合，则尽量避免使用字符串"><span class="nav-text">50、如果其他类型更适合，则尽量避免使用字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#51、当心字符串连接性能"><span class="nav-text">51、当心字符串连接性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#52、通过接口引用对象"><span class="nav-text">52、通过接口引用对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#53、接口优于反射机制"><span class="nav-text">53、接口优于反射机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#54、谨慎使用本地方法"><span class="nav-text">54、谨慎使用本地方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#55、谨慎地进行优化"><span class="nav-text">55、谨慎地进行优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#56、遵守普遍接受的命名惯例"><span class="nav-text">56、遵守普遍接受的命名惯例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#九、异常"><span class="nav-text">九、异常</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#57、只针对异常的情况才使用异常"><span class="nav-text">57、只针对异常的情况才使用异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#58、对可恢复的情况使用受检查异常，对编程错误使用运行异常"><span class="nav-text">58、对可恢复的情况使用受检查异常，对编程错误使用运行异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#59、避免不必要的使用受检查异常"><span class="nav-text">59、避免不必要的使用受检查异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#60、优先使用标准异常"><span class="nav-text">60、优先使用标准异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#61、抛出与抽象相对应的异常"><span class="nav-text">61、抛出与抽象相对应的异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#62、每个方法抛出的异常都要有文档"><span class="nav-text">62、每个方法抛出的异常都要有文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#63、在细节消息中包含能捕获失败的信息"><span class="nav-text">63、在细节消息中包含能捕获失败的信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#64、努力使失败保持原子性"><span class="nav-text">64、努力使失败保持原子性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#65、不要忽略异常"><span class="nav-text">65、不要忽略异常</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十、并发"><span class="nav-text">十、并发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#66、同步访问共享的可变数据"><span class="nav-text">66、同步访问共享的可变数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#67、避免过度同步"><span class="nav-text">67、避免过度同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#68、executor和task优先线程"><span class="nav-text">68、executor和task优先线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#69、并发工具优先于wait和notity"><span class="nav-text">69、并发工具优先于wait和notity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#70、线程安全性的文档化"><span class="nav-text">70、线程安全性的文档化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#71、慎用延迟初始化"><span class="nav-text">71、慎用延迟初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#72、不要依赖线程调度器"><span class="nav-text">72、不要依赖线程调度器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#73、避免使用线程组"><span class="nav-text">73、避免使用线程组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十一、序列化"><span class="nav-text">十一、序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#74、慎用地实现Seriazable接口"><span class="nav-text">74、慎用地实现Seriazable接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#75、考虑使用自定义的序列化形式"><span class="nav-text">75、考虑使用自定义的序列化形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#76、保护性编写readObject方法"><span class="nav-text">76、保护性编写readObject方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#77、对于实例控制，枚举类型优先readResolve"><span class="nav-text">77、对于实例控制，枚举类型优先readResolve</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#78、考虑用序列化代理代替序列化实例"><span class="nav-text">78、考虑用序列化代理代替序列化实例</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieSZ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytwYroRX';
+      var conf = 'a1ed94f3fa27338ebcb9c5f114025ca5';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

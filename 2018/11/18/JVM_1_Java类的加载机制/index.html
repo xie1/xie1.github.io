@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT,xiesz">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XieSZ'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、问题指引1、编译1、编译的概念？ 2、前端编译（java源码编译成class文件）和后端编译（class文件编译成机器码）？ 3、编译过程是什么？ 2、类加载器1、什么是类加载器？ 2、类加载器分成几个部分，分别是什么，分别加载什么路径？ 3、什么是双亲委派加载机制？工作原理是什么？ 4、类加载的几个步骤/过程？ 二、思维导图三、重点知识点1、编译1.1、编译的概念以通过javac命令将Jav">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM_虚拟机类加载机制(一)">
+<meta property="og:url" content="http://yoursite.com/2018/11/18/JVM_1_Java类的加载机制/index.html">
+<meta property="og:site_name" content="XieSZ&#39;S BLOG">
+<meta property="og:description" content="一、问题指引1、编译1、编译的概念？ 2、前端编译（java源码编译成class文件）和后端编译（class文件编译成机器码）？ 3、编译过程是什么？ 2、类加载器1、什么是类加载器？ 2、类加载器分成几个部分，分别是什么，分别加载什么路径？ 3、什么是双亲委派加载机制？工作原理是什么？ 4、类加载的几个步骤/过程？ 二、思维导图三、重点知识点1、编译1.1、编译的概念以通过javac命令将Jav">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/XAstcVK.png">
+<meta property="og:image" content="https://i.imgur.com/rYO7vty.png">
+<meta property="og:image" content="https://i.imgur.com/wBe4y5u.png">
+<meta property="og:image" content="https://i.imgur.com/inwxX1M.png">
+<meta property="og:image" content="https://i.imgur.com/mc23Peh.png">
+<meta property="og:updated_time" content="2019-03-10T13:52:12.728Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM_虚拟机类加载机制(一)">
+<meta name="twitter:description" content="一、问题指引1、编译1、编译的概念？ 2、前端编译（java源码编译成class文件）和后端编译（class文件编译成机器码）？ 3、编译过程是什么？ 2、类加载器1、什么是类加载器？ 2、类加载器分成几个部分，分别是什么，分别加载什么路径？ 3、什么是双亲委派加载机制？工作原理是什么？ 4、类加载的几个步骤/过程？ 二、思维导图三、重点知识点1、编译1.1、编译的概念以通过javac命令将Jav">
+<meta name="twitter:image" content="https://i.imgur.com/XAstcVK.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/18/JVM_1_Java类的加载机制/">
+
+
+
+
+
+  <title>JVM_虚拟机类加载机制(一) | XieSZ'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XieSZ'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">xieshanzhong的博客小站</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/JVM_1_Java类的加载机制/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieSZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XieSZ'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JVM_虚拟机类加载机制(一)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-18T15:01:55+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/11/18/JVM_1_Java类的加载机制/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/11/18/JVM_1_Java类的加载机制/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="一、问题指引"><a href="#一、问题指引" class="headerlink" title="一、问题指引"></a>一、<em>问题指引</em></h4><h5 id="1、编译"><a href="#1、编译" class="headerlink" title="1、编译"></a>1、编译</h5><pre><code>1、编译的概念？
+2、前端编译（java源码编译成class文件）和后端编译（class文件编译成机器码）？
+3、编译过程是什么？
+</code></pre><h5 id="2、类加载器"><a href="#2、类加载器" class="headerlink" title="2、类加载器"></a>2、类加载器</h5><pre><code>1、什么是类加载器？
+2、类加载器分成几个部分，分别是什么，分别加载什么路径？
+3、什么是双亲委派加载机制？工作原理是什么？
+4、类加载的几个步骤/过程？
+</code></pre><h4 id="二、思维导图"><a href="#二、思维导图" class="headerlink" title="二、思维导图"></a>二、<em>思维导图</em></h4><h4 id="三、重点知识点"><a href="#三、重点知识点" class="headerlink" title="三、重点知识点"></a>三、<em>重点知识点</em></h4><h2 id="1、编译-1"><a href="#1、编译-1" class="headerlink" title="1、编译"></a>1、编译</h2><h3 id="1-1、编译的概念"><a href="#1-1、编译的概念" class="headerlink" title="1.1、编译的概念"></a>1.1、编译的概念</h3><pre><code>以通过javac命令将Java程序的源代码编译成Java字节码，即我们常说的class文件。
+另外字节码并不是机器语言，要想让机器能够执行，还需要把字节码翻译成机器指令。这个过程是Java虚拟机做的，这个过程也叫编译，是更深层次的编译。
+即反编译，则将class文件反编译成可以理解的java文件
+    提供的反编译的方式或工具如下
+        1、javap
+            javac xx.java
+            javap -c xx.class
+        2、jad
+            jad xx.class
+        3、cfr
+            java -jar cfr_0_125.jar xx.class --decodestringswitch false
+</code></pre><h3 id="1-2、编译的过程"><a href="#1-2、编译的过程" class="headerlink" title="1.2、编译的过程"></a>1.2、编译的过程</h3><p><img src="https://i.imgur.com/XAstcVK.png" alt=""><br><img src="https://i.imgur.com/rYO7vty.png" alt="编译过程"></p>
+<h4 id="过程分析"><a href="#过程分析" class="headerlink" title="过程分析"></a>过程分析</h4><p>1）词法分析：读取源代码，一个字节一个字节的读进来，找出这些词法中我们定义的语言关键词如：if、else、while等，识别哪些if是合法的哪些是不合法的。这个步骤就是词法分析过程。</p>
+<p>词法分析的结果：就是从源代码中找出了一些规范化的token流，就像人类语言中，给你一句话你要分辨出哪些是一个词语，哪些是标点符号，哪些是动词，哪些是名词。</p>
+<p>2）语法分析：就是对词法分析中得到的token流进行语法分析，这一步就是检查这些关键词组合在一起是不是符合Java语言规范。如if的后面是不是紧跟着一个布尔型判断表达式。</p>
+<p>语法分析的结果：就是形成一个符合Java语言规定的抽象语法树，抽象语法树是一个结构化的语法表达形式，它的作用是把语言的主要词法用一个结构化的形式组织在一起。这棵语法树可以被后面按照新的规则再重新组织。</p>
+<p>3）语义分析：语法分析完成之后也就不存在语法问题了，语义分析的主要工作就是把一些难懂的，复杂的语法转化成更简单的语法。就如难懂的文言文转化为大家都懂的百话文，或者是注释一下一些不懂的成语。</p>
+<p>语义分析结果：就是将复杂的语法转化为简单的语法，对应到Java就是将foreach转化为for循环，还有一些注释等。最后生成一棵抽象的语法树，这棵语法树也就更接近目标语言的语法规则。</p>
+<p>4）字节码生成：将会根据经过注释的抽象语法树生成字节码，也就是将一个数据结构转化为另外一个数据结构。就像将所有的中文词语翻译成英文单词后按照英文语法组装文英文语句。代码生成器的结果就是生成符合java虚拟机规范的字节码</p>
+<h3 id="1-3、Java源码编译机制"><a href="#1-3、Java源码编译机制" class="headerlink" title="1.3、Java源码编译机制"></a>1.3、Java源码编译机制</h3><pre><code>1、分析和输入到符号表
+2、注解处理
+3、语义分析和生成 class 文件
+</code></pre><p>流程图：<br><img src="https://i.imgur.com/wBe4y5u.png" alt=""></p>
+<pre><code>最后生成的 class 文件由以下部分组成：
+1、结构信息：包括 class 文件格式版本号及各部分的数量与大小的信息。
+2、元数据：对应于 Java 源码中声明与常量的信息。包含类/继承的超类/实现的接口的声明信息、域与方法声明信息和常量池。
+3、方法信息：对应 Java 源码中语句和表达式对应的信息。包含字节码、异常处理器表、求值栈与局部变量区大小、求值栈的类型记录、调试符号信息
+</code></pre><hr>
+<h2 id="2、类加载器-1"><a href="#2、类加载器-1" class="headerlink" title="2、类加载器"></a>2、类加载器</h2><h3 id="2-1、类加载器概念"><a href="#2-1、类加载器概念" class="headerlink" title="2.1、类加载器概念"></a>2.1、类加载器概念</h3><pre><code>    类加载器是一个用来加载类文件的类。Java源代码通过javac编译器编译成类文件,然后JVM来执行类文件中的字节码来执行程序,类加载器负责加载文件系统、网络或其他来源的类文件。
+</code></pre><h3 id="2-2、类加载器"><a href="#2-2、类加载器" class="headerlink" title="2.2、类加载器"></a>2.2、类加载器</h3><pre><code>    1、三种默认使用的类加载器：Bootstrap类加载器、Extension类加载器和System类加载器
+        1) Bootstrap类加载器 – JRE/lib/rt.jar
+        2) Extension类加载器 – JRE/lib/ext或者java.ext.dirs指向的目录
+        3) Application类加载器 – CLASSPATH环境变量, 由-classpath或-cp选项定义,或者是JAR中的Manifest的classpath属性定义.
+</code></pre><p><img src="https://i.imgur.com/inwxX1M.png" alt="类加载器"></p>
+<pre><code>    2、工作过程
+        1、当AppClassLoader加载一个class时，它首先不会自己去尝试加载这个类，而是把类加载请求委派给父类加载器ExtClassLoader去完成。
+        2、当ExtClassLoader加载一个class时，它首先也不会自己去尝试加载这个类，而是把类加载请求委派给BootStrapClassLoader去完成。
+        3、如果BootStrapClassLoader加载失败（例如在$JAVA_HOME/jre/lib里未查找到该class），会使用ExtClassLoader来尝试加载；
+        4、若ExtClassLoader也加载失败，则会使用AppClassLoader来加载
+        5、如果AppClassLoader也加载失败，则会报出异常ClassNotFoundException
+
+    3、Java类加载器基于三个机制：委托、可见性和单一性
+        1、委托：双亲委派模型。简单来说：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把请求委托给父加载器去完成，依次向上。
+        2、可见性：子类加载器可以看到父类加载器加载的类，而反之则不行
+        3、单一性：根据这个机制，父加载器加载过的类不能被子加载器加载第二次。虽然重写违反委托和单一性机制的类加载器是可能的，但这样做并不可取。你写自己的类加载器的时候应该严格遵守这三条机制
+    特别说明：
+    类加载器在成功加载某个类之后，会把得到的 java.lang.Class类的实例缓存起来。下次再请求加载该类的时候，类加载器会直接使用缓存的类的实例，而不会尝试再次加载
+</code></pre><h3 id="2-3、类加载详细过程"><a href="#2-3、类加载详细过程" class="headerlink" title="2.3、类加载详细过程"></a>2.3、类加载详细过程</h3><pre><code>    1、类的生命周期：包括这几个部分，加载、连接、初始化、使用和卸载，其中前三部是类的加载的过程
+</code></pre><p><img src="https://i.imgur.com/mc23Peh.png" alt="类加载详细过程"></p>
+<pre><code>分析：
+    其中类加载的过程包括了加载、验证、准备、解析、初始化五个阶段。在这五个阶段中，加载、验证、准备和初始化这四个阶段发生的顺序是确定的，而解析阶段则不一定，它在某些情况下可以在初始化阶段之后开始，这是为了支持Java语言的运行时绑定（也成为动态绑定或晚期绑定）。另外注意这里的几个阶段是按顺序开始，而不是按顺序进行或完成，因为这些阶段通常都是互相交叉地混合进行的，通常在一个阶段执行的过程中调用或激活另一个阶段
+    1、加载，查找并加载类的二进制数据，在Java堆中也创建一个java.lang.Class类的对象
+    2、连接，连接又包含三块内容：验证、准备、初始化。1）验证，文件格式、元数据、字节码、符号引用验证；2）准备，为类的静态变量分配内存，并将其初始化为默认值；3）解析，把类中的符号引用转换为直接引用
+    3、初始化，为类的静态变量赋予正确的初始值
+    4、使用，new出对象程序中使用
+    5、卸载，执行垃圾回收
+</code></pre><ul>
+<li>加载</li>
+<li><p>  查找并加载类的二进制数据加载时类加载过程的第一个阶段，在加载阶段，虚拟机需要完成以下三件事情：<br>  1、通过一个类的全限定名来获取其定义的二进制字节流。<br>  2、将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。<br>  3、在Java堆中生成一个代表这个类的 java.lang.Class对象，作为对方法区中这些数据的访问入口。<br>  相对于类加载的其他阶段而言，加载阶段（准确地说，是加载阶段获取类的二进制字节流的动作）是可控性最强的阶段，因为开发人员既可以使用系统提供的类加载器来完成加载，也可以自定义自己的类加载器来完成加载。<br>  加载阶段完成后，虚拟机外部的二进制字节流就按照虚拟机所需的格式存储在方法区之中，而且在Java堆中也创建一个 java.lang.Class类的对象，这样便可以通过该对象访问方法区中的这些数据。</p>
+</li>
+<li><p>连接</p>
+</li>
+<li><ol>
+<li><p>验证：确保被加载的类的正确性<br> 验证是连接阶段的第一步，这一阶段的目的是为了确保Class文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。验证阶段大致会完成4个阶段的检验动作：<br> 1、文件格式验证：验证字节流是否符合Class文件格式的规范；例如：是否以 0xCAFEBABE开头、主次版本号是否在当前虚拟机的处理范围之内、常量池中的常量是否有不被支持的类型。<br> 2、元数据验证：对字节码描述的信息进行语义分析（注意：对比javac编译阶段的语义分析），以保证其描述的信息符合Java语言规范的要求；例如：这个类是否有父类，除了 java.lang.Object之外。<br> 3、字节码验证：通过数据流和控制流分析，确定程序语义是合法的、符合逻辑的。<br> 4、符号引用验证：确保解析动作能正确执行。<br> 验证阶段是非常重要的，但不是必须的，它对程序运行期没有影响，如果所引用的类经过反复验证，那么可以考虑采用 -Xverifynone参数来关闭大部分的类验证措施，以缩短虚拟机类加载的时间。</p>
+</li>
+<li><p>准备：为类的 静态变量分配内存，并将其初始化为默认值<br> 准备阶段是正式为类变量分配内存并设置类变量初始值的阶段，这些内存都将在方法区中分配。对于该阶段有以下几点需要注意：<br> 1、这时候进行内存分配的仅包括类变量（static），而不包括实例变量，实例变量会在对象实例化时随着对象一块分配在Java堆中。</p>
+<p> 2、这里所设置的初始值通常情况下是数据类型默认的零值（如0、0L、null、false等），而不是被在Java代码中被显式地赋予的值。</p>
+<pre><code> 假设一个类变量的定义为： publicstaticintvalue=3；
+ 那么变量value在准备阶段过后的初始值为0，而不是3，因为这时候尚未开始执行任何Java方法，而把value赋值为3的 publicstatic指令是在程序编译后，存放于类构造器 &lt;clinit&gt;（）方法之中的，所以把value赋值为3的动作将在初始化阶段才会执行。
+ 这里还需要注意如下几点：
+ 对基本数据类型来说，对于类变量（static）和全局变量，如果不显式地对其赋值而直接使用，则系统会为其赋予默认的零值，而对于局部变量来说，在使用前必须显式地为其赋值，否则编译时不通过。
+ 对于同时被static和final修饰的常量，必须在声明的时候就为其显式地赋值，否则编译时不通过；而只被final修饰的常量则既可以在声明时显式地为其赋值，也可以在类初始化时显式地为其赋值，总之，在使用前必须为其显式地赋值，系统不会为其赋予默认零值。
+ 对于引用数据类型reference来说，如数组引用、对象引用等，如果没有对其进行显式地赋值而直接使用，系统都会为其赋予默认的零值，即null。
+ 如果在数组初始化时没有对数组中的各元素赋值，那么其中的元素将根据对应的数据类型而被赋予默认的零值。
+</code></pre><p> 3、如果类字段的字段属性表中存在 ConstantValue属性，即同时被final和static修饰，那么在准备阶段变量value就会被初始化为ConstValue属性所指定的值。</p>
+<pre><code> 假设上面的类变量value被定义为： publicstaticfinalintvalue=3；
+ 编译时Javac将会为value生成ConstantValue属性，在准备阶段虚拟机就会根据 ConstantValue的设置将value赋值为3。我们可以理解为static final常量在编译期就将其结果放入了调用它的类的常量池中
+</code></pre></li>
+<li><p>解析：把类中的符号引用转换为直接引用<br> 解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程，解析动作主要针对类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符7类符号引用进行。符号引用就是一组符号来描述目标，可以是任何字面量。<br> 直接引用就是直接指向目标的指针、相对偏移量或一个间接定位到目标的句柄。</p>
+</li>
+</ol>
+</li>
+<li><p>初始化</p>
+</li>
+<li><p>  初始化，为类的静态变量赋予正确的初始值，JVM负责对类进行初始化，主要对类变量进行初始化。在Java中对类变量进行初始值设定有两种方式：<br>  1、声明类变量是指定初始值<br>  2、使用静态代码块为类变量指定初始值</p>
+<p>  JVM初始化步骤：<br>  1、假如这个类还没有被加载和连接，则程序先加载并连接该类<br>  2、假如该类的直接父类还没有被初始化，则先初始化其直接父类<br>  3、假如类中有初始化语句，则系统依次执行这些初始化语句</p>
+<pre><code>  类初始化时机：只有当对类的主动使用的时候才会导致类的初始化，类的主动使用包括以下六种：
+  1、创建类的实例，也就是new的方式
+  2、访问某个类或接口的静态变量，或者对该静态变量赋值
+  3、调用类的静态方法
+  4、反射（如 Class.forName(“com.shengsiyuan.Test”)）
+  5、初始化某个类的子类，则其父类也会被初始化
+  6、Java虚拟机启动时被标明为启动类的类（ JavaTest），直接使用 java.exe命令来运行某个主类
+</code></pre></li>
+<li><p>结束生命周期</p>
+</li>
+<li><p>  在如下几种情况下，Java虚拟机将结束生命周期</p>
+<p>  1、执行了 System.exit()方法<br>  2、程序正常执行结束<br>  3、程序在执行过程中遇到了异常或错误而异常终止<br>  4、由于操作系统出现错误而导致Java虚拟机进程终止</p>
+<h4 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h4><p><a href="http://www.hollischuang.com/archives/58" title="编译" target="_blank" rel="noopener">http://www.hollischuang.com/archives/58</a></p>
+</li>
+</ul>
+<p><a href="https://blog.csdn.net/fuzhongmin05/article/details/54880257" target="_blank" rel="noopener">https://blog.csdn.net/fuzhongmin05/article/details/54880257</a></p>
+<p><a href="https://juejin.im/post/5b45ef49f265da0f5140489c" title="类加载器" target="_blank" rel="noopener">https://juejin.im/post/5b45ef49f265da0f5140489c</a> </p>
+<p><a href="http://www.cnblogs.com/ityouknow/p/5603287.html" title="类加载器" target="_blank" rel="noopener">http://www.cnblogs.com/ityouknow/p/5603287.html</a></p>
+<h4 id="五、思维扩展"><a href="#五、思维扩展" class="headerlink" title="五、思维扩展"></a>五、<em>思维扩展</em></h4><h4 id="六、存在疑问"><a href="#六、存在疑问" class="headerlink" title="六、存在疑问"></a>六、<em>存在疑问</em></h4><pre><code>1、异常ClassNotFoundException？
+2、tomcat存在多少个类加载器？
+3、JIT 编译器
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    XieSZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2018/11/18/JVM_1_Java类的加载机制/" title="JVM_虚拟机类加载机制(一)">http://yoursite.com/2018/11/18/JVM_1_Java类的加载机制/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/18/JVM/" rel="next" title="JVM">
+                <i class="fa fa-chevron-left"></i> JVM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/18/JVM_2_JVM内存结构/" rel="prev" title="JVM_虚拟内存结构(二)">
+                JVM_虚拟内存结构(二) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieSZ</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到XieSZ的技术分享站~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xie1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xieshanzhong66@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xie1.github.io/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="hexo" target="_blank">hexo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、问题指引"><span class="nav-text">一、问题指引</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、编译"><span class="nav-text">1、编译</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、类加载器"><span class="nav-text">2、类加载器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、思维导图"><span class="nav-text">二、思维导图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、重点知识点"><span class="nav-text">三、重点知识点</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#1、编译-1"><span class="nav-text">1、编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1、编译的概念"><span class="nav-text">1.1、编译的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2、编译的过程"><span class="nav-text">1.2、编译的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#过程分析"><span class="nav-text">过程分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3、Java源码编译机制"><span class="nav-text">1.3、Java源码编译机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、类加载器-1"><span class="nav-text">2、类加载器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1、类加载器概念"><span class="nav-text">2.1、类加载器概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2、类加载器"><span class="nav-text">2.2、类加载器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3、类加载详细过程"><span class="nav-text">2.3、类加载详细过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#四、参考资料"><span class="nav-text">四、参考资料</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、思维扩展"><span class="nav-text">五、思维扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六、存在疑问"><span class="nav-text">六、存在疑问</span></a></li></ol></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieSZ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytwYroRX';
+      var conf = 'a1ed94f3fa27338ebcb9c5f114025ca5';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

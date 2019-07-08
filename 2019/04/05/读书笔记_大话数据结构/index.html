@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT,xiesz">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XieSZ'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、思维导图总知识点第1章、数据结构绪论1.3 、数据结构起源    程序设计 = 数据结构+算法 1.4 、基本概念和术语1.4.1、数据是描述客观事物的符号，是计算机中可以操作的对象，是能被计算机是被，并输入给计算机处理的符号集合。      1.4.2、数据元素（人）是组成数据的，有一定意义的基本单位，在计算机中通常作为整体处理。也被称为记录 1.4.3、数据项（口，耳）1、一个数据元素可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书笔记_大话数据结构">
+<meta property="og:url" content="http://yoursite.com/2019/04/05/读书笔记_大话数据结构/index.html">
+<meta property="og:site_name" content="XieSZ&#39;S BLOG">
+<meta property="og:description" content="一、思维导图总知识点第1章、数据结构绪论1.3 、数据结构起源    程序设计 = 数据结构+算法 1.4 、基本概念和术语1.4.1、数据是描述客观事物的符号，是计算机中可以操作的对象，是能被计算机是被，并输入给计算机处理的符号集合。      1.4.2、数据元素（人）是组成数据的，有一定意义的基本单位，在计算机中通常作为整体处理。也被称为记录 1.4.3、数据项（口，耳）1、一个数据元素可以">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-08T15:11:21.270Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读书笔记_大话数据结构">
+<meta name="twitter:description" content="一、思维导图总知识点第1章、数据结构绪论1.3 、数据结构起源    程序设计 = 数据结构+算法 1.4 、基本概念和术语1.4.1、数据是描述客观事物的符号，是计算机中可以操作的对象，是能被计算机是被，并输入给计算机处理的符号集合。      1.4.2、数据元素（人）是组成数据的，有一定意义的基本单位，在计算机中通常作为整体处理。也被称为记录 1.4.3、数据项（口，耳）1、一个数据元素可以">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/05/读书笔记_大话数据结构/">
+
+
+
+
+
+  <title>读书笔记_大话数据结构 | XieSZ'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XieSZ'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">xieshanzhong的博客小站</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/05/读书笔记_大话数据结构/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieSZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XieSZ'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">读书笔记_大话数据结构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-05T23:01:41+08:00">
+                2019-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/04/05/读书笔记_大话数据结构/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/04/05/读书笔记_大话数据结构/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><h1 id="总知识点"><a href="#总知识点" class="headerlink" title="总知识点"></a><em>总知识点</em></h1><h4 id="第1章、数据结构绪论"><a href="#第1章、数据结构绪论" class="headerlink" title="第1章、数据结构绪论"></a>第1章、数据结构绪论</h4><h5 id="1-3-、数据结构起源"><a href="#1-3-、数据结构起源" class="headerlink" title="1.3 、数据结构起源"></a>1.3 、数据结构起源</h5><pre><code>    程序设计 = 数据结构+算法
+</code></pre><h5 id="1-4-、基本概念和术语"><a href="#1-4-、基本概念和术语" class="headerlink" title="1.4 、基本概念和术语"></a>1.4 、基本概念和术语</h5><h6 id="1-4-1、数据"><a href="#1-4-1、数据" class="headerlink" title="1.4.1、数据"></a>1.4.1、数据</h6><pre><code>是描述客观事物的符号，是计算机中可以操作的对象，是能被计算机是被，并输入给计算机处理的符号集合。     
+</code></pre><h6 id="1-4-2、数据元素（人）"><a href="#1-4-2、数据元素（人）" class="headerlink" title="1.4.2、数据元素（人）"></a>1.4.2、数据元素（人）</h6><pre><code>是组成数据的，有一定意义的基本单位，在计算机中通常作为整体处理。也被称为记录
+</code></pre><h6 id="1-4-3、数据项（口，耳）"><a href="#1-4-3、数据项（口，耳）" class="headerlink" title="1.4.3、数据项（口，耳）"></a>1.4.3、数据项（口，耳）</h6><pre><code>1、一个数据元素可以由若干个数据项组成
+2、数据项是数据不可分割的最小单位
+</code></pre><h6 id="1-4-4、数据对象"><a href="#1-4-4、数据对象" class="headerlink" title="1.4.4、数据对象"></a>1.4.4、数据对象</h6><pre><code>是性质相同的数据元素的集合，是数据的子集
+</code></pre><h6 id="1-4-5、数据结构"><a href="#1-4-5、数据结构" class="headerlink" title="1.4.5、数据结构"></a>1.4.5、数据结构</h6><pre><code>是相互之间存在一种或多种特性关系的数据元素的集合
+</code></pre><h5 id="1-5-、逻辑结构与物理结构"><a href="#1-5-、逻辑结构与物理结构" class="headerlink" title="1.5 、逻辑结构与物理结构"></a>1.5 、逻辑结构与物理结构</h5><h6 id="1-5-1、逻辑结构"><a href="#1-5-1、逻辑结构" class="headerlink" title="1.5.1、逻辑结构"></a>1.5.1、逻辑结构</h6><pre><code>是指数据对象中数据元素之间的相互关系
+1、集合结构：数据元素除了同属一个集合外，它们之间没有其他关系
+2、线性结构：数据元素是一对一关系
+3、树形结构：数据元素之间存在一种一对多的层次关系
+4、图形结构：多对多的关系
+</code></pre><h6 id="1-5-2、物理结构"><a href="#1-5-2、物理结构" class="headerlink" title="1.5.2、物理结构"></a>1.5.2、物理结构</h6><pre><code>是指数据的逻辑结构在计算机中的存储形式
+    1、顺序存储结构：是把数据元素存在地址连续的存储单元，其数据间的逻辑关系和物理关系一致
+    2、链式存储结构：是把数据元素存在人员的存储单元里，这组存储单元可以是连续的，也可以是不连续的
+</code></pre><h5 id="1-6-、抽象数据类型"><a href="#1-6-、抽象数据类型" class="headerlink" title="1.6 、抽象数据类型"></a>1.6 、抽象数据类型</h5><h6 id="1-6-1-、数据类型"><a href="#1-6-1-、数据类型" class="headerlink" title="1.6.1 、数据类型"></a>1.6.1 、数据类型</h6><pre><code>    是指一组性质相同的值的集合及定义在此集合上的一些操作的总称
+</code></pre><h6 id="1-6-2-、抽象数据类型（ADT）"><a href="#1-6-2-、抽象数据类型（ADT）" class="headerlink" title="1.6.2 、抽象数据类型（ADT）"></a>1.6.2 、抽象数据类型（ADT）</h6><pre><code>    是一个数学模型及定义在该模型上的一组操作
+</code></pre><h4 id="第2章、算法"><a href="#第2章、算法" class="headerlink" title="第2章、算法"></a>第2章、算法</h4><h5 id="2-4、算法的定义"><a href="#2-4、算法的定义" class="headerlink" title="2.4、算法的定义"></a>2.4、算法的定义</h5><pre><code>算法是解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，而且每条指令表示一个或多个操作。
+</code></pre><h5 id="2-5、算法的特性"><a href="#2-5、算法的特性" class="headerlink" title="2.5、算法的特性"></a>2.5、算法的特性</h5><h6 id="2-5-1、输入输出"><a href="#2-5-1、输入输出" class="headerlink" title="2.5.1、输入输出"></a>2.5.1、输入输出</h6><pre><code>    算法具有零个或多个输入，至少有一个或多个输出
+</code></pre><h6 id="2-5-2、有穷性"><a href="#2-5-2、有穷性" class="headerlink" title="2.5.2、有穷性"></a>2.5.2、有穷性</h6><pre><code>    算法在执行有限的步骤之后，自动结束不会出现无限循环，而且每个步骤在可接受的时间内完成、
+</code></pre><h6 id="2-5-3、确定性"><a href="#2-5-3、确定性" class="headerlink" title="2.5.3、确定性"></a>2.5.3、确定性</h6><pre><code>    算法的每一步都具有确定性含义，不会出现二义性
+</code></pre><h6 id="2-5-4、可行性"><a href="#2-5-4、可行性" class="headerlink" title="2.5.4、可行性"></a>2.5.4、可行性</h6><pre><code>    算法的每一步都必须是可行的，也就是说，每一步都能够通过执行有限次数完成
+</code></pre><h5 id="2-6、算法设计的要求"><a href="#2-6、算法设计的要求" class="headerlink" title="2.6、算法设计的要求"></a>2.6、算法设计的要求</h5><h6 id="2-6-1、正确性"><a href="#2-6-1、正确性" class="headerlink" title="2.6.1、正确性"></a>2.6.1、正确性</h6><pre><code>    算法的正确性是指算法至少应该具有输入，输出和加工处理无歧义性
+</code></pre><h6 id="2-6-2、可读性"><a href="#2-6-2、可读性" class="headerlink" title="2.6.2、可读性"></a>2.6.2、可读性</h6><h6 id="2-6-3、健壮性"><a href="#2-6-3、健壮性" class="headerlink" title="2.6.3、健壮性"></a>2.6.3、健壮性</h6><h6 id="2-6-4、时间效率高和存储量低"><a href="#2-6-4、时间效率高和存储量低" class="headerlink" title="2.6.4、时间效率高和存储量低"></a>2.6.4、时间效率高和存储量低</h6><h5 id="2-7、算法效率的度量方法"><a href="#2-7、算法效率的度量方法" class="headerlink" title="2.7、算法效率的度量方法"></a>2.7、算法效率的度量方法</h5><h6 id="2-7-1、事后统计方法"><a href="#2-7-1、事后统计方法" class="headerlink" title="2.7.1、事后统计方法"></a>2.7.1、事后统计方法</h6><h6 id="2-7-2、事前分析估算方法"><a href="#2-7-2、事前分析估算方法" class="headerlink" title="2.7.2、事前分析估算方法"></a>2.7.2、事前分析估算方法</h6><pre><code>    在计算机程序编程之前，依据统计方法对算法进行估算
+        1、算法采用的策略、方法。
+        2、编译产生的代码质量
+        3、问题的输入规模
+        4、机器执行指令的速度
+    最终，在分析程序的运行时间时，最重要的是把程序看成是的独立与程序设计语言的算法或一系列步骤
+</code></pre><h5 id="2-8、函数的渐近增长"><a href="#2-8、函数的渐近增长" class="headerlink" title="2.8、函数的渐近增长"></a>2.8、函数的渐近增长</h5><pre><code>    给定两个函数f(n)和g(n),如果存在一个整数N，使得对于所有的n&gt;N,f(n)总是比g(n)大，那么，f(n)的增长渐近快于g(n)
+</code></pre><h5 id="2-9、算法时间复杂度"><a href="#2-9、算法时间复杂度" class="headerlink" title="2.9、算法时间复杂度"></a>2.9、算法时间复杂度</h5><h6 id="2-9-1、算法时间复杂度定义"><a href="#2-9-1、算法时间复杂度定义" class="headerlink" title="2.9.1、算法时间复杂度定义"></a>2.9.1、算法时间复杂度定义</h6><pre><code>    在进行算法分析时，语句总的执行次数T（n）是关于问题规模n的函数，进而分析T（n）随n的变化情况并确定T（n）的数量级。算法时间复杂度，记做T(n)=O(f(n)),它表示随问题规模n的增大，算法执行时间的增长率和f(n)的增长率相同。大O记法
+</code></pre><h6 id="2-9-2、推导大O阶方法"><a href="#2-9-2、推导大O阶方法" class="headerlink" title="2.9.2、推导大O阶方法"></a>2.9.2、推导大O阶方法</h6><pre><code>1、用常数1取代运行时间中所有加法常数
+2、在修改后的运行次数函数中，只保留最高阶项
+3、如果最高阶项存在而且不是1，则去除与整个项相乘的常数
+</code></pre><h6 id="2-9-3、常数阶"><a href="#2-9-3、常数阶" class="headerlink" title="2.9.3、常数阶"></a>2.9.3、常数阶</h6><pre><code>具有O（1）的时间复杂度，又叫常数阶
+</code></pre><h6 id="2-9-4、线性阶"><a href="#2-9-4、线性阶" class="headerlink" title="2.9.4、线性阶"></a>2.9.4、线性阶</h6><pre><code>它的循环的时间复杂度为O（n）
+</code></pre><h6 id="2-9-5、对数阶"><a href="#2-9-5、对数阶" class="headerlink" title="2.9.5、对数阶"></a>2.9.5、对数阶</h6><pre><code>它的时间复杂度为O（logn）
+</code></pre><h6 id="2-9-6、平方阶"><a href="#2-9-6、平方阶" class="headerlink" title="2.9.6、平方阶"></a>2.9.6、平方阶</h6><pre><code>O（n*n）
+</code></pre><h5 id="2-10、常见的时间复杂度"><a href="#2-10、常见的时间复杂度" class="headerlink" title="2.10、常见的时间复杂度"></a>2.10、常见的时间复杂度</h5><pre><code>常用的时间复杂度所耗的时间从小到大依次是：
+    O（1）&lt;O（logn）&lt;O（n）&lt;O（n*n）&lt;O（n*n*n）&lt;O（2n）(指数阶)&lt;O（n!）&lt;O（nn）
+</code></pre><h5 id="2-11、最坏情况与平均情况"><a href="#2-11、最坏情况与平均情况" class="headerlink" title="2.11、最坏情况与平均情况"></a>2.11、最坏情况与平均情况</h5><pre><code>最坏情况运行时间是一种保证，那就是运行时间将不会再坏了。在应用中，这是一种最重要的需求，通常，除非特别指定，我们提到的运行时间都是最坏的情况的运行时间。
+</code></pre><h5 id="2-12、算法空间复杂度"><a href="#2-12、算法空间复杂度" class="headerlink" title="2.12、算法空间复杂度"></a>2.12、算法空间复杂度</h5><pre><code>公式：S(n) = O(f(n)),n为问题的规模，f(n)为语句关于n所占存储空间函数
+</code></pre><h4 id="第3章、线性表"><a href="#第3章、线性表" class="headerlink" title="第3章、线性表"></a>第3章、线性表</h4><h5 id="3-2、线性表定义"><a href="#3-2、线性表定义" class="headerlink" title="3.2、线性表定义"></a>3.2、线性表定义</h5><pre><code>线性表（List）：零个或是多个数据元素的有限序列
+数学语言定义：
+    1、若将线性表记为（a1,...,ai-1,ai,ai+1,...an）,则表中ai-1领先于ai，ai领先于ai+1，称为ai-1是ai的直接前驱元素，ai+1,称ai-1是ai的直接前驱元素，ai+1是ai的直接后继元素。当i=1,2，。。。。，n-1时，ai有且仅有一个直接后继，当i=2,3，。。。n时，ai有且仅有一个直接前驱
+    2、线性表元素的个数n（n&gt;=0）定义为线性表的长度，当n=0时，称为空表。    
+    3、在复杂的线性表中，一个数据元素可以由若干个数据项组成
+</code></pre><h5 id="3-3、线性表的抽象数据类型"><a href="#3-3、线性表的抽象数据类型" class="headerlink" title="3.3、线性表的抽象数据类型"></a>3.3、线性表的抽象数据类型</h5><h5 id="3-4、线性表的顺序存储结构"><a href="#3-4、线性表的顺序存储结构" class="headerlink" title="3.4、线性表的顺序存储结构"></a>3.4、线性表的顺序存储结构</h5><h6 id="3-4-1、顺序存储定义"><a href="#3-4-1、顺序存储定义" class="headerlink" title="3.4.1、顺序存储定义"></a>3.4.1、顺序存储定义</h6><pre><code>指的是用一段地址连续的存储单元依次存储线性表的数据元素
+</code></pre><h6 id="3-4-2、顺序存储方式"><a href="#3-4-2、顺序存储方式" class="headerlink" title="3.4.2、顺序存储方式"></a>3.4.2、顺序存储方式</h6><pre><code>    存储空间的起始位置：数组data，它的存储位置就是存储空间的存储位置
+    线性表的最大存储容量：数组长度MaxSize
+    线性表的当前长度：length
+</code></pre><h6 id="3-4-3、数据长度与线性长度区别"><a href="#3-4-3、数据长度与线性长度区别" class="headerlink" title="3.4.3、数据长度与线性长度区别"></a>3.4.3、数据长度与线性长度区别</h6><pre><code>数据的长度：存放在线性表的存储空间长度
+线性表的长度：线性表数据元素的个数，随着线性表的插入和删除操作的进行，这个量是变化的。
+在任意时刻，线性表的长度应该小于等于数组的长度    
+</code></pre><h6 id="3-4-4、地址计算方法"><a href="#3-4-4、地址计算方法" class="headerlink" title="3.4.4、地址计算方法"></a>3.4.4、地址计算方法</h6><pre><code>数据元素的序号和存在它的数组下标之间存在的对应关系：
+    线性表的第i个元素是要存储在数组下标为i-1的位置
+</code></pre><h5 id="3-5、顺序存储结构的插入与删除"><a href="#3-5、顺序存储结构的插入与删除" class="headerlink" title="3.5、顺序存储结构的插入与删除"></a>3.5、顺序存储结构的插入与删除</h5><h6 id="3-5-1、获得元素操作"><a href="#3-5-1、获得元素操作" class="headerlink" title="3.5.1、获得元素操作"></a>3.5.1、获得元素操作</h6><h6 id="3-5-2、插入操作"><a href="#3-5-2、插入操作" class="headerlink" title="3.5.2、插入操作"></a>3.5.2、插入操作</h6><pre><code>插入算法思路：
+    1、如果插入位置不合理，抛出异常
+    2、如果线性表长度大于等于数组长度，则抛出异常或动态增加容量
+    3、从最后一个元素开始向前遍历到第i个位置，分别将他们都向后移动一个位置
+    4、将要插入元素填入位置i处
+    5、表长加1
+</code></pre><h6 id="3-5-3、删除操作"><a href="#3-5-3、删除操作" class="headerlink" title="3.5.3、删除操作"></a>3.5.3、删除操作</h6><pre><code>    1、如果删除位置不合理，抛出异常
+    2、取出删除元素
+    3、从删除元素开始遍历到最后一个元素位置，分别将它们都向前移动一个位置
+    4、表长减1
+线性表的顺序存储结构，在存、读数据时，不管是哪个位置，时间复杂度都是O（1）；而插入或删除时，时间复杂度都是O（n）
+</code></pre><h6 id="3-5-4、线性表顺序存储结构的优缺点"><a href="#3-5-4、线性表顺序存储结构的优缺点" class="headerlink" title="3.5.4、线性表顺序存储结构的优缺点"></a>3.5.4、线性表顺序存储结构的优缺点</h6><pre><code>优点：
+    1、无须为表示表中元素之间的逻辑关系而增加额外的存储空间
+    2、可以快速地存储表中任一位置的元素
+缺点：
+    1、插入和删除操作需要移动大量的元素
+    2、当线性表长度变化较大时，难以确定存储空间的容量
+    3、造成存储空间的空间“碎片”
+</code></pre><h5 id="3-6、线性表的链式存储结构"><a href="#3-6、线性表的链式存储结构" class="headerlink" title="3.6、线性表的链式存储结构"></a>3.6、线性表的链式存储结构</h5><h6 id="3-6-1、顺序存储结构不足的解决办法"><a href="#3-6-1、顺序存储结构不足的解决办法" class="headerlink" title="3.6.1、顺序存储结构不足的解决办法"></a>3.6.1、顺序存储结构不足的解决办法</h6><h6 id="3-6-2、线性表链式存储结构的定义"><a href="#3-6-2、线性表链式存储结构的定义" class="headerlink" title="3.6.2、线性表链式存储结构的定义"></a>3.6.2、线性表链式存储结构的定义</h6><pre><code>    为了表示每个数据元素ai与其直接后继数据元素ai+1之间的逻辑关系，对于数据元素ai来说，出了存储其本身的信息之外，还需存储一个指示其直接后继的信息（即直接后继的存储位置）。
+    数据域：把存储数据元素信息的域称数据域
+    指针域：把存储直接后继位置的域称为指针域，指针域中存储的信息称为指针或链。
+    结点（Node）：这两部分的信息组成数据元素ai的存储映像
+    n个结点（ai的存储映像）链结成一个链表，即为线性表的链式存储结构，因为此链表的每个结点中包含一个指针域，所以叫做单链表。
+    链表中第一个存储位置叫做头指针，那么整个链表的存取就必须从头指针开始进行的。
+</code></pre><h6 id="3-6-3、头指针与头结点的异同"><a href="#3-6-3、头指针与头结点的异同" class="headerlink" title="3.6.3、头指针与头结点的异同"></a>3.6.3、头指针与头结点的异同</h6><pre><code>头指针
+    1、头指针是指链表指向第一个结点的指针，若链表有头结点，则是指向头结点的指针
+    2、头指针具有标识作用。所以常用头指针冠以链表的名字
+    3、无论是链表是否为空，头指针均不为空。头指针是链表的必要元素
+头结点
+    1、头结点是为了操作的统一和方便而设立的，放在第一个元素的结点之前，其数据域一般无意义。
+    2、有了头结点，对在一个元素结点前插入结点和删除第一结点，其操作与其他结点的操作时统一了
+    3、头结点不一定是链表必须要素
+</code></pre><h6 id="3-6-3、线性表链式存储结构代码描述"><a href="#3-6-3、线性表链式存储结构代码描述" class="headerlink" title="3.6.3、线性表链式存储结构代码描述"></a>3.6.3、线性表链式存储结构代码描述</h6><pre><code>p是指向线性表第i个元素的指针，则该结点ai的数据域我们可以用p-&gt;data来表示，p-&gt;data的值是一个数据元素，结点ai的指针域可以用p-&gt;next来表示，p-next的值是一个指针
+即：p-&gt;data = ai
+    p-&gt;next-&gt;data = ai+1
+</code></pre><h5 id="3-7、单链表的读取"><a href="#3-7、单链表的读取" class="headerlink" title="3.7、单链表的读取"></a>3.7、单链表的读取</h5><pre><code>    获得链表第i个数据的算法思路：
+        1、声明一个指针p指向链表第一个结点，初始化j从1开始
+        2、当j&lt;i时，就遍历链表，让p的指针向后移动，不断指向下一个结点，j累加1
+        3、若到链表末尾p为空，则说明第i个结点不存在
+        4、否则查找成功，返回结点p的数据    
+</code></pre><h5 id="3-8、单链表的插入与删除"><a href="#3-8、单链表的插入与删除" class="headerlink" title="3.8、单链表的插入与删除"></a>3.8、单链表的插入与删除</h5><h6 id="3-8-1、单链表的插入"><a href="#3-8-1、单链表的插入" class="headerlink" title="3.8.1、单链表的插入"></a>3.8.1、单链表的插入</h6><pre><code>    s-&gt;next = p-&gt;next ; p-&gt;next = s;
+    单链表第i个数据插入结点的算法思路：
+        1、声明一个指针p指向链表头结点，初始化j从1开始
+        2、当j&lt;i时，遍历链表，让p的指针向后移动，不断指向下一个结点，j累加1
+        3、若到链表末尾p为空，则说明第i个结点不存在
+        4、否则查找成功，在系统中生成一个空结点s
+        5、将数据元素e赋值给s-&gt;data
+        6、单链表的插入标准语句s-&gt;next = p-&gt;next; p-&gt;next = s;
+        7、返回成功
+</code></pre><h6 id="3-8-2、单链表的删除"><a href="#3-8-2、单链表的删除" class="headerlink" title="3.8.2、单链表的删除"></a>3.8.2、单链表的删除</h6><pre><code>q= p-&gt;next ; p-&gt;next = q-&gt;next
+单链表第i个数据删除结点的算法思路
+    1、声明一个指针p指向链表头指针，初始化j从1开始
+    2、当j&lt;i时，就遍历链表，让p的指针向后移动，不断指向下一个结点，j累加1
+    3、若到链表末尾p为空，则说明第i个结点不存在
+    4、否则查找成功，将欲删除的结点p—&gt;next赋值给q
+    5、单链表的删除标准语句p-&gt;next = q-&gt;next
+    6、将q结点中的数据复制给e，作为返回
+    7、释放q结点
+</code></pre><h5 id="3-9、单链表的整表创建"><a href="#3-9、单链表的整表创建" class="headerlink" title="3.9、单链表的整表创建"></a>3.9、单链表的整表创建</h5><pre><code>    算法思路：
+        1、声明一个指针p和计数器变量i
+        2、初始化以空链表L
+        3、让L的头结点的指针指向null，即建立一个带头结点的当链表
+        4、循环：
+            1、生成一个新结点
+            2、随机生成以数字赋值给p的数据域p-&gt;data
+            3、将p插入到头结点与前一新结点之间
+</code></pre><h5 id="3-10、单链表的整表删除"><a href="#3-10、单链表的整表删除" class="headerlink" title="3.10、单链表的整表删除"></a>3.10、单链表的整表删除</h5><pre><code>    算法思路：
+        1、声明一个结点p和q
+        2、将第一结点赋值给p
+        3、循环：
+            1、将下一结点复制给q
+            2、释放p
+            3、将q赋值给p
+</code></pre><h5 id="3-11、单链表结构与顺序存储结构优缺点"><a href="#3-11、单链表结构与顺序存储结构优缺点" class="headerlink" title="3.11、单链表结构与顺序存储结构优缺点"></a>3.11、单链表结构与顺序存储结构优缺点</h5><pre><code>    存储分配方式：
+        1、顺序存储结构用一段连续的存储单元依次存储线性表的数据元素
+        2、单链表采用链式存储结构，用一组任意的存储单元存放线性表的元素
+    时间性能
+        1、查找
+            顺序存储结构O（1）
+            单链表O（n）
+        2、插入和删除
+            顺序存储结构需要平均移动表长一半的元素，时间为O（n）
+            单链表在线出某位置的指针后，插入和删除时仅为O（1）
+    空间性能
+        1、顺序存储结构需要预分配存储空间，分大了，浪费，分小了易发生上溢
+</code></pre><h5 id="3-12、静态链表"><a href="#3-12、静态链表" class="headerlink" title="3.12、静态链表"></a>3.12、静态链表</h5><pre><code>用数组描述的链表叫做静态链表
+</code></pre><h6 id="3-12-1、静态链表的插入操作（不理解）"><a href="#3-12-1、静态链表的插入操作（不理解）" class="headerlink" title="3.12.1、静态链表的插入操作（不理解）"></a>3.12.1、静态链表的插入操作（不理解）</h6><h6 id="3-12-2、静态链表的删除操作"><a href="#3-12-2、静态链表的删除操作" class="headerlink" title="3.12.2、静态链表的删除操作"></a>3.12.2、静态链表的删除操作</h6><h6 id="3-12-3、静态链表优缺点"><a href="#3-12-3、静态链表优缺点" class="headerlink" title="3.12.3、静态链表优缺点"></a>3.12.3、静态链表优缺点</h6><pre><code>    优点：
+        1、在插入和删除操作时，只需要修改游标，不需要移动元素，从而改进了在顺序存储结构中的插入和删除操作需要的移动大量的元素的缺点
+    缺点：
+        1、没有解决连续存储分配带来的表长难以确定的问题
+        2、失去了顺序存储结构随机存取的特性
+</code></pre><h5 id="3-12、循环链表"><a href="#3-12、循环链表" class="headerlink" title="3.12、循环链表"></a>3.12、循环链表</h5><pre><code>    将单链表中终端节点的指针端由空指针改为头结点，就使整个单链表形成了一个环，这种头尾相接的单链表称为单循环链表
+</code></pre><h5 id="3-13、双向链表"><a href="#3-13、双向链表" class="headerlink" title="3.13、双向链表"></a>3.13、双向链表</h5><pre><code>    是在单链表的每个结点中，在设置一个指向其前驱结点的执行域。
+    p-&gt;next-&gt;prior = p = p-&gt;prior-&gt;next(前驱的后继或后继的前驱)
+</code></pre><h4 id="第4章、栈与队列"><a href="#第4章、栈与队列" class="headerlink" title="第4章、栈与队列"></a>第4章、栈与队列</h4><h5 id="4-2、栈的定义"><a href="#4-2、栈的定义" class="headerlink" title="4.2、栈的定义"></a>4.2、栈的定义</h5><pre><code>    栈是限定仅在表尾进行插入和删除操作的线性表
+    即允许插入和删除的一端称为栈顶，另一端是栈底，不含任何数据元素的栈称为空栈。栈时先进后出，后进先出
+</code></pre><h6 id="4-2-2、进栈出栈变化形式"><a href="#4-2-2、进栈出栈变化形式" class="headerlink" title="4.2.2、进栈出栈变化形式"></a>4.2.2、进栈出栈变化形式</h6><h5 id="4-3、栈的抽象数据类型"><a href="#4-3、栈的抽象数据类型" class="headerlink" title="4.3、栈的抽象数据类型"></a>4.3、栈的抽象数据类型</h5><pre><code>    栈是特殊的线性表
+</code></pre><h5 id="4-4、栈的顺序存储结构及实现"><a href="#4-4、栈的顺序存储结构及实现" class="headerlink" title="4.4、栈的顺序存储结构及实现"></a>4.4、栈的顺序存储结构及实现</h5><h6 id="4-4-1、栈的顺序存储结构"><a href="#4-4-1、栈的顺序存储结构" class="headerlink" title="4.4.1、栈的顺序存储结构"></a>4.4.1、栈的顺序存储结构</h6><h6 id="4-4-2、栈的顺序存储结构—进栈操作"><a href="#4-4-2、栈的顺序存储结构—进栈操作" class="headerlink" title="4.4.2、栈的顺序存储结构—进栈操作"></a>4.4.2、栈的顺序存储结构—进栈操作</h6><h6 id="4-4-3、栈的顺序存储结构—出栈操作（时间复杂度为O-1-）"><a href="#4-4-3、栈的顺序存储结构—出栈操作（时间复杂度为O-1-）" class="headerlink" title="4.4.3、栈的顺序存储结构—出栈操作（时间复杂度为O(1)）"></a>4.4.3、栈的顺序存储结构—出栈操作（时间复杂度为O(1)）</h6><h5 id="4-5、两栈共享空间"><a href="#4-5、两栈共享空间" class="headerlink" title="4.5、两栈共享空间"></a>4.5、两栈共享空间</h5>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    XieSZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/04/05/读书笔记_大话数据结构/" title="读书笔记_大话数据结构">http://yoursite.com/2019/04/05/读书笔记_大话数据结构/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/05/读书笔记_Java特种兵/" rel="next" title="读书笔记_Java特种兵">
+                <i class="fa fa-chevron-left"></i> 读书笔记_Java特种兵
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/05/读书笔记_SpringCould与Docker/" rel="prev" title="读书笔记_SpringCloud与Docker">
+                读书笔记_SpringCloud与Docker <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieSZ</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到XieSZ的技术分享站~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xie1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xieshanzhong66@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xie1.github.io/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="hexo" target="_blank">hexo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、思维导图"><span class="nav-text">一、思维导图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总知识点"><span class="nav-text">总知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第1章、数据结构绪论"><span class="nav-text">第1章、数据结构绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-、数据结构起源"><span class="nav-text">1.3 、数据结构起源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-、基本概念和术语"><span class="nav-text">1.4 、基本概念和术语</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-4-1、数据"><span class="nav-text">1.4.1、数据</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-4-2、数据元素（人）"><span class="nav-text">1.4.2、数据元素（人）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-4-3、数据项（口，耳）"><span class="nav-text">1.4.3、数据项（口，耳）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-4-4、数据对象"><span class="nav-text">1.4.4、数据对象</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-4-5、数据结构"><span class="nav-text">1.4.5、数据结构</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-、逻辑结构与物理结构"><span class="nav-text">1.5 、逻辑结构与物理结构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-5-1、逻辑结构"><span class="nav-text">1.5.1、逻辑结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-5-2、物理结构"><span class="nav-text">1.5.2、物理结构</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-6-、抽象数据类型"><span class="nav-text">1.6 、抽象数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-6-1-、数据类型"><span class="nav-text">1.6.1 、数据类型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-6-2-、抽象数据类型（ADT）"><span class="nav-text">1.6.2 、抽象数据类型（ADT）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第2章、算法"><span class="nav-text">第2章、算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4、算法的定义"><span class="nav-text">2.4、算法的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5、算法的特性"><span class="nav-text">2.5、算法的特性</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#2-5-1、输入输出"><span class="nav-text">2.5.1、输入输出</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-5-2、有穷性"><span class="nav-text">2.5.2、有穷性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-5-3、确定性"><span class="nav-text">2.5.3、确定性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-5-4、可行性"><span class="nav-text">2.5.4、可行性</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-6、算法设计的要求"><span class="nav-text">2.6、算法设计的要求</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#2-6-1、正确性"><span class="nav-text">2.6.1、正确性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-6-2、可读性"><span class="nav-text">2.6.2、可读性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-6-3、健壮性"><span class="nav-text">2.6.3、健壮性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-6-4、时间效率高和存储量低"><span class="nav-text">2.6.4、时间效率高和存储量低</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-7、算法效率的度量方法"><span class="nav-text">2.7、算法效率的度量方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#2-7-1、事后统计方法"><span class="nav-text">2.7.1、事后统计方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-7-2、事前分析估算方法"><span class="nav-text">2.7.2、事前分析估算方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-8、函数的渐近增长"><span class="nav-text">2.8、函数的渐近增长</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-9、算法时间复杂度"><span class="nav-text">2.9、算法时间复杂度</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#2-9-1、算法时间复杂度定义"><span class="nav-text">2.9.1、算法时间复杂度定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-9-2、推导大O阶方法"><span class="nav-text">2.9.2、推导大O阶方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-9-3、常数阶"><span class="nav-text">2.9.3、常数阶</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-9-4、线性阶"><span class="nav-text">2.9.4、线性阶</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-9-5、对数阶"><span class="nav-text">2.9.5、对数阶</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-9-6、平方阶"><span class="nav-text">2.9.6、平方阶</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-10、常见的时间复杂度"><span class="nav-text">2.10、常见的时间复杂度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-11、最坏情况与平均情况"><span class="nav-text">2.11、最坏情况与平均情况</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-12、算法空间复杂度"><span class="nav-text">2.12、算法空间复杂度</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第3章、线性表"><span class="nav-text">第3章、线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2、线性表定义"><span class="nav-text">3.2、线性表定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3、线性表的抽象数据类型"><span class="nav-text">3.3、线性表的抽象数据类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4、线性表的顺序存储结构"><span class="nav-text">3.4、线性表的顺序存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#3-4-1、顺序存储定义"><span class="nav-text">3.4.1、顺序存储定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-4-2、顺序存储方式"><span class="nav-text">3.4.2、顺序存储方式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-4-3、数据长度与线性长度区别"><span class="nav-text">3.4.3、数据长度与线性长度区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-4-4、地址计算方法"><span class="nav-text">3.4.4、地址计算方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5、顺序存储结构的插入与删除"><span class="nav-text">3.5、顺序存储结构的插入与删除</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#3-5-1、获得元素操作"><span class="nav-text">3.5.1、获得元素操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-5-2、插入操作"><span class="nav-text">3.5.2、插入操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-5-3、删除操作"><span class="nav-text">3.5.3、删除操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-5-4、线性表顺序存储结构的优缺点"><span class="nav-text">3.5.4、线性表顺序存储结构的优缺点</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6、线性表的链式存储结构"><span class="nav-text">3.6、线性表的链式存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#3-6-1、顺序存储结构不足的解决办法"><span class="nav-text">3.6.1、顺序存储结构不足的解决办法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-6-2、线性表链式存储结构的定义"><span class="nav-text">3.6.2、线性表链式存储结构的定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-6-3、头指针与头结点的异同"><span class="nav-text">3.6.3、头指针与头结点的异同</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-6-3、线性表链式存储结构代码描述"><span class="nav-text">3.6.3、线性表链式存储结构代码描述</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-7、单链表的读取"><span class="nav-text">3.7、单链表的读取</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-8、单链表的插入与删除"><span class="nav-text">3.8、单链表的插入与删除</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#3-8-1、单链表的插入"><span class="nav-text">3.8.1、单链表的插入</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-8-2、单链表的删除"><span class="nav-text">3.8.2、单链表的删除</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-9、单链表的整表创建"><span class="nav-text">3.9、单链表的整表创建</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-10、单链表的整表删除"><span class="nav-text">3.10、单链表的整表删除</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-11、单链表结构与顺序存储结构优缺点"><span class="nav-text">3.11、单链表结构与顺序存储结构优缺点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-12、静态链表"><span class="nav-text">3.12、静态链表</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#3-12-1、静态链表的插入操作（不理解）"><span class="nav-text">3.12.1、静态链表的插入操作（不理解）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-12-2、静态链表的删除操作"><span class="nav-text">3.12.2、静态链表的删除操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-12-3、静态链表优缺点"><span class="nav-text">3.12.3、静态链表优缺点</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-12、循环链表"><span class="nav-text">3.12、循环链表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-13、双向链表"><span class="nav-text">3.13、双向链表</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第4章、栈与队列"><span class="nav-text">第4章、栈与队列</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2、栈的定义"><span class="nav-text">4.2、栈的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-2-2、进栈出栈变化形式"><span class="nav-text">4.2.2、进栈出栈变化形式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3、栈的抽象数据类型"><span class="nav-text">4.3、栈的抽象数据类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4、栈的顺序存储结构及实现"><span class="nav-text">4.4、栈的顺序存储结构及实现</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-4-1、栈的顺序存储结构"><span class="nav-text">4.4.1、栈的顺序存储结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-4-2、栈的顺序存储结构—进栈操作"><span class="nav-text">4.4.2、栈的顺序存储结构—进栈操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-4-3、栈的顺序存储结构—出栈操作（时间复杂度为O-1-）"><span class="nav-text">4.4.3、栈的顺序存储结构—出栈操作（时间复杂度为O(1)）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-5、两栈共享空间"><span class="nav-text">4.5、两栈共享空间</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieSZ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytwYroRX';
+      var conf = 'a1ed94f3fa27338ebcb9c5f114025ca5';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

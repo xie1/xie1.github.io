@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT,xiesz">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XieSZ'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、思维导图总知识点第1章、单一职责原则1.1、我是牛类，我可以担任多职吗    1、概念：应该有且只有一个原因引起类的变化 第2章、里氏替换原则（继承关系）    1、子类必须完全实现父类的方法     2、子类可以有自己的个性     3、覆盖或实现父类的方法时输入参数可以被放大     4、复写或实现父类的方法时输出结果可以被缩小 第3章、依赖倒置原则（面向接口编程）3.1、依赖倒置原则的定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书笔记_设计模式之禅">
+<meta property="og:url" content="http://yoursite.com/2019/04/05/读书笔记_设计模式之禅/index.html">
+<meta property="og:site_name" content="XieSZ&#39;S BLOG">
+<meta property="og:description" content="一、思维导图总知识点第1章、单一职责原则1.1、我是牛类，我可以担任多职吗    1、概念：应该有且只有一个原因引起类的变化 第2章、里氏替换原则（继承关系）    1、子类必须完全实现父类的方法     2、子类可以有自己的个性     3、覆盖或实现父类的方法时输入参数可以被放大     4、复写或实现父类的方法时输出结果可以被缩小 第3章、依赖倒置原则（面向接口编程）3.1、依赖倒置原则的定">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-08T15:11:21.271Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读书笔记_设计模式之禅">
+<meta name="twitter:description" content="一、思维导图总知识点第1章、单一职责原则1.1、我是牛类，我可以担任多职吗    1、概念：应该有且只有一个原因引起类的变化 第2章、里氏替换原则（继承关系）    1、子类必须完全实现父类的方法     2、子类可以有自己的个性     3、覆盖或实现父类的方法时输入参数可以被放大     4、复写或实现父类的方法时输出结果可以被缩小 第3章、依赖倒置原则（面向接口编程）3.1、依赖倒置原则的定">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/05/读书笔记_设计模式之禅/">
+
+
+
+
+
+  <title>读书笔记_设计模式之禅 | XieSZ'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XieSZ'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">xieshanzhong的博客小站</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/05/读书笔记_设计模式之禅/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieSZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XieSZ'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">读书笔记_设计模式之禅</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-05T23:01:41+08:00">
+                2019-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/04/05/读书笔记_设计模式之禅/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/04/05/读书笔记_设计模式之禅/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><h1 id="总知识点"><a href="#总知识点" class="headerlink" title="总知识点"></a><em>总知识点</em></h1><h4 id="第1章、单一职责原则"><a href="#第1章、单一职责原则" class="headerlink" title="第1章、单一职责原则"></a>第1章、单一职责原则</h4><h5 id="1-1、我是牛类，我可以担任多职吗"><a href="#1-1、我是牛类，我可以担任多职吗" class="headerlink" title="1.1、我是牛类，我可以担任多职吗"></a>1.1、我是牛类，我可以担任多职吗</h5><pre><code>    1、概念：应该有且只有一个原因引起类的变化
+</code></pre><h4 id="第2章、里氏替换原则（继承关系）"><a href="#第2章、里氏替换原则（继承关系）" class="headerlink" title="第2章、里氏替换原则（继承关系）"></a>第2章、里氏替换原则（继承关系）</h4><pre><code>    1、子类必须完全实现父类的方法
+    2、子类可以有自己的个性
+    3、覆盖或实现父类的方法时输入参数可以被放大
+    4、复写或实现父类的方法时输出结果可以被缩小
+</code></pre><h4 id="第3章、依赖倒置原则（面向接口编程）"><a href="#第3章、依赖倒置原则（面向接口编程）" class="headerlink" title="第3章、依赖倒置原则（面向接口编程）"></a>第3章、依赖倒置原则（面向接口编程）</h4><h5 id="3-1、依赖倒置原则的定义"><a href="#3-1、依赖倒置原则的定义" class="headerlink" title="3.1、依赖倒置原则的定义"></a>3.1、依赖倒置原则的定义</h5><pre><code>    1、含义：
+        1、高层模块不应该依赖底层模块，两者都应该依赖其抽象
+        2、抽象不应该依赖细节
+        3、细节不应该依赖抽象
+    2、对应的Java
+        1、模块间的依赖通过抽象发生，实现类之间不发生直接的依赖关系，其依赖关系是通过接口或抽象类产生的
+        2、接口或抽类不依赖于实现类
+        3、实现类依赖接口或抽象类
+</code></pre><h5 id="3-3、依赖的三种写法"><a href="#3-3、依赖的三种写法" class="headerlink" title="3.3、依赖的三种写法"></a>3.3、依赖的三种写法</h5><pre><code>    1、构造函数传递依赖对象
+    2、Setter方法传递依赖对象
+    3、接口声明依赖对象 
+</code></pre><h4 id="第4章、接口隔离原则"><a href="#第4章、接口隔离原则" class="headerlink" title="第4章、接口隔离原则"></a>第4章、接口隔离原则</h4><h5 id="4-1、接口隔离原则的定义"><a href="#4-1、接口隔离原则的定义" class="headerlink" title="4.1、接口隔离原则的定义"></a>4.1、接口隔离原则的定义</h5><h5 id="4-2、保证接口的纯洁性"><a href="#4-2、保证接口的纯洁性" class="headerlink" title="4.2、保证接口的纯洁性"></a>4.2、保证接口的纯洁性</h5><pre><code>    1、接口要尽量小（根据接口隔离原则拆分接口时，首先必须满足单一职责原则）
+    2、接口要高内聚
+    3、定制服务
+    4、接口设计是有限度的
+</code></pre><h5 id="4-3、最佳实践"><a href="#4-3、最佳实践" class="headerlink" title="4.3、最佳实践"></a>4.3、最佳实践</h5><h4 id="第5章、迪米特法则（最少知识原则）"><a href="#第5章、迪米特法则（最少知识原则）" class="headerlink" title="第5章、迪米特法则（最少知识原则）"></a>第5章、迪米特法则（最少知识原则）</h4><pre><code>    1、只和朋友交流
+    2、朋友间也是有距离
+    3、是自己的就是自己的
+        如果一个方法放在本类中，即不增加类间关系，也对本类不产生负面影响，那就放置在本类中
+</code></pre><h4 id="第6章、开闭原则"><a href="#第6章、开闭原则" class="headerlink" title="第6章、开闭原则"></a>第6章、开闭原则</h4><pre><code>        1、逻辑变化
+        2、子模块变化
+        3、可见视图变化
+</code></pre><h5 id="6-1、为什么要采用开闭原则"><a href="#6-1、为什么要采用开闭原则" class="headerlink" title="6.1、为什么要采用开闭原则"></a>6.1、为什么要采用开闭原则</h5><pre><code>    1、开闭原则对测试的影响
+    2、开闭原则可以提高代码复用
+    3、开闭原则可以提高可维护性
+    4、面向对象开发的要求
+</code></pre><h5 id="6-2、如何使用开闭原则"><a href="#6-2、如何使用开闭原则" class="headerlink" title="6.2、如何使用开闭原则"></a>6.2、如何使用开闭原则</h5><pre><code>    1、抽象约束
+           1、通过接口或抽象类约束扩展，对扩展进行边界限定，不允许出现在接口或抽象类中不存在的public方法
+           2、参数类型，引用对象尽量使用接口或者抽象类，而不是实现类
+           3、抽象层尽量保持稳定，一旦确定即不允许修改
+    2、元数据控制模块行为
+    3、制定项目章程
+    4、封装变化
+</code></pre><h5 id="6-3、最佳实践"><a href="#6-3、最佳实践" class="headerlink" title="6.3、最佳实践"></a>6.3、最佳实践</h5><pre><code>    SOLID（稳定的）
+    1、单一职责原则（S）
+    2、开闭原则(O)
+    3、里氏替换原则(L)
+    4、迪米特法则(L)
+    5、接口隔离原则(I)
+    6、依赖倒置原则(D)
+</code></pre><h3 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h3><h4 id="第7章、单例模式"><a href="#第7章、单例模式" class="headerlink" title="第7章、单例模式"></a>第7章、单例模式</h4><h5 id="7-1、我是皇帝我是独苗"><a href="#7-1、我是皇帝我是独苗" class="headerlink" title="7.1、我是皇帝我是独苗"></a>7.1、我是皇帝我是独苗</h5><h5 id="7-2、单例模式的定义："><a href="#7-2、单例模式的定义：" class="headerlink" title="7.2、单例模式的定义："></a>7.2、单例模式的定义：</h5><pre><code>确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Singleton (实例类)</span><br><span class="line">private final Singleton singleton = new Singleton()</span><br><span class="line">private Singleton()&#123;&#125;</span><br><span class="line">public static Singleton getSingleton()</span><br></pre></td></tr></table></figure>
+<h5 id="7-3、单例模式的应用："><a href="#7-3、单例模式的应用：" class="headerlink" title="7.3、单例模式的应用："></a>7.3、单例模式的应用：</h5><h6 id="7-3-1、单例模式的优点："><a href="#7-3-1、单例模式的优点：" class="headerlink" title="7.3.1、单例模式的优点："></a>7.3.1、单例模式的优点：</h6><pre><code>    1、由于单例模式在内存中只有一个实例，减少了内存的开支
+    2、由于单例模式只生成一个实例，所以减少了系统的性能开销
+    3、单例模式可以避免对资源的多重占用
+    4、单例模式可以在系统设置全局访问点，优化和共享资源访问
+</code></pre><h6 id="7-3-2、单例模式的缺点："><a href="#7-3-2、单例模式的缺点：" class="headerlink" title="7.3.2、单例模式的缺点："></a>7.3.2、单例模式的缺点：</h6><pre><code>    1、一般没有接口，扩展比较困难
+    2、单例模式对测试时不利。特别是在并发环境下
+    3、单例模式与单一职责原则有冲突
+</code></pre><h6 id="7-3-3、单例模式的使用场景："><a href="#7-3-3、单例模式的使用场景：" class="headerlink" title="7.3.3、单例模式的使用场景："></a>7.3.3、单例模式的使用场景：</h6><pre><code>    1、要求生成唯一的序列号环境
+    2、在整个项目中需要一个共享访问点或共享数据，例如web页面的计数器
+    3、创建一个对象需要消耗的资源过多，如要访问IO和数据库资源
+    4、需要定义大量的静态常量和静态方法
+</code></pre><h6 id="7-3-4、单例模式的注意事项："><a href="#7-3-4、单例模式的注意事项：" class="headerlink" title="7.3.4、单例模式的注意事项："></a>7.3.4、单例模式的注意事项：</h6><h5 id="7-4、单例模式的扩展："><a href="#7-4、单例模式的扩展：" class="headerlink" title="7.4、单例模式的扩展："></a>7.4、单例模式的扩展：</h5><h4 id="第8章、工厂方法模式"><a href="#第8章、工厂方法模式" class="headerlink" title="第8章、工厂方法模式"></a>第8章、工厂方法模式</h4><h5 id="8-1、女娲造人的故事"><a href="#8-1、女娲造人的故事" class="headerlink" title="8.1、女娲造人的故事"></a>8.1、女娲造人的故事</h5><pre><code>    1、女娲对应场景类Client
+    2、八卦炉对应一个工厂
+    3、三种不同肤色的人对应同一接口下的不同实现类
+</code></pre><h5 id="8-2、工厂方法模式的定义"><a href="#8-2、工厂方法模式的定义" class="headerlink" title="8.2、工厂方法模式的定义"></a>8.2、工厂方法模式的定义</h5><pre><code>    定义了一个用于创建对象的的接口，让子类决定实例化哪一个类。工厂方法使一个类的实例化延迟到其子类
+    1、类图
+    2、通用代码
+</code></pre><h5 id="8-3、工厂方法模式的应用"><a href="#8-3、工厂方法模式的应用" class="headerlink" title="8.3、工厂方法模式的应用"></a>8.3、工厂方法模式的应用</h5><h5 id="8-3-1、工厂方法模式的优点"><a href="#8-3-1、工厂方法模式的优点" class="headerlink" title="8.3.1、工厂方法模式的优点"></a>8.3.1、工厂方法模式的优点</h5><pre><code>    1、良好的封装性，代码结构清晰
+    2、工厂方法模式的扩展性非常优秀
+    3、屏蔽产品类
+    4、工厂方法模式典型的解耦框架
+</code></pre><h5 id="8-3-2、工厂方法模式的使用场景"><a href="#8-3-2、工厂方法模式的使用场景" class="headerlink" title="8.3.2、工厂方法模式的使用场景"></a>8.3.2、工厂方法模式的使用场景</h5><pre><code>    1、工厂方法模式是new一个对象的替代品
+    2、工厂方法可以用在异构项目
+    3、可以使用在测试驱动开发的框架
+</code></pre><h5 id="8-4、工厂方法模式的扩展"><a href="#8-4、工厂方法模式的扩展" class="headerlink" title="8.4、工厂方法模式的扩展"></a>8.4、工厂方法模式的扩展</h5><pre><code>    1、缩小为简单工厂模式（去除抽象工厂类并把工厂方法定义为static）
+    2、升级为多个工厂类：创建自己负责的产品对象
+    3、代替单例模式
+    4、延迟初始化
+        通过定义一个Map容器，容纳所有产生的对象。如果在Map中容器中有对象，则直接取出返回
+</code></pre><h4 id="第9章、抽象工厂模式"><a href="#第9章、抽象工厂模式" class="headerlink" title="第9章、抽象工厂模式"></a>第9章、抽象工厂模式</h4><h5 id="9-1、失误的女娲"><a href="#9-1、失误的女娲" class="headerlink" title="9.1、失误的女娲"></a>9.1、失误的女娲</h5><h5 id="9-2、抽象工厂模式的定义"><a href="#9-2、抽象工厂模式的定义" class="headerlink" title="9.2、抽象工厂模式的定义"></a>9.2、抽象工厂模式的定义</h5><pre><code>    为创建一组相关或相互依赖的对象提供一个接口，而且无须指定他们的具体类
+    1、类图
+</code></pre><h5 id="9-3、抽象工厂模式的应用"><a href="#9-3、抽象工厂模式的应用" class="headerlink" title="9.3、抽象工厂模式的应用"></a>9.3、抽象工厂模式的应用</h5><h5 id="9-3-1、抽象工厂模式的优点"><a href="#9-3-1、抽象工厂模式的优点" class="headerlink" title="9.3.1、抽象工厂模式的优点"></a>9.3.1、抽象工厂模式的优点</h5><pre><code>        1、封装性
+        2、产品族内的约束为非公开状态
+</code></pre><h5 id="9-3-2、抽象工厂模式的缺点"><a href="#9-3-2、抽象工厂模式的缺点" class="headerlink" title="9.3.2、抽象工厂模式的缺点"></a>9.3.2、抽象工厂模式的缺点</h5><pre><code>        1、产品族扩展非常困难
+</code></pre><h5 id="9-3-3、抽象工厂模式的使用场景"><a href="#9-3-3、抽象工厂模式的使用场景" class="headerlink" title="9.3.3、抽象工厂模式的使用场景"></a>9.3.3、抽象工厂模式的使用场景</h5><h5 id="9-3-4、抽象工厂模式的注意事项"><a href="#9-3-4、抽象工厂模式的注意事项" class="headerlink" title="9.3.4、抽象工厂模式的注意事项"></a>9.3.4、抽象工厂模式的注意事项</h5><h4 id="第10章、模板方法模式"><a href="#第10章、模板方法模式" class="headerlink" title="第10章、模板方法模式"></a>第10章、模板方法模式</h4><h5 id="10-1、辉煌工程-制造悍马"><a href="#10-1、辉煌工程-制造悍马" class="headerlink" title="10.1、辉煌工程-制造悍马"></a>10.1、辉煌工程-制造悍马</h5><h5 id="10-2、模板方法模式定义"><a href="#10-2、模板方法模式定义" class="headerlink" title="10.2、模板方法模式定义"></a>10.2、模板方法模式定义</h5><pre><code>    定义一个操作中算法的框架，而将一些步骤延迟到子类中。使得子类可以不改变一个算法结构即重新定义该算法的某些特定步骤。
+    1、类图
+    2、它的方法：
+        1、基本方法：抽象方法，由子类实现的方法，而且在模板方法被调用
+        2、模板方法：一般模板方法定义成final
+</code></pre><h5 id="10-3、模板方法模式的应用"><a href="#10-3、模板方法模式的应用" class="headerlink" title="10.3、模板方法模式的应用"></a>10.3、模板方法模式的应用</h5><h5 id="10-3-1、模板方法模式的应用"><a href="#10-3-1、模板方法模式的应用" class="headerlink" title="10.3.1、模板方法模式的应用"></a>10.3.1、模板方法模式的应用</h5><pre><code>    1、封装不可变的部分，扩展可变的部分
+    2、提取公共部分代码，便于维护
+    3、行为由父类控制，子类实现
+</code></pre><h5 id="10-3-2、模板方法模式的优点"><a href="#10-3-2、模板方法模式的优点" class="headerlink" title="10.3.2、模板方法模式的优点"></a>10.3.2、模板方法模式的优点</h5><h5 id="10-3-3、模板方法模式的缺点"><a href="#10-3-3、模板方法模式的缺点" class="headerlink" title="10.3.3、模板方法模式的缺点"></a>10.3.3、模板方法模式的缺点</h5><h4 id="10-4、模板方法模式的扩展"><a href="#10-4、模板方法模式的扩展" class="headerlink" title="10.4、模板方法模式的扩展"></a>10.4、模板方法模式的扩展</h4><h4 id="第11章、建造者模式"><a href="#第11章、建造者模式" class="headerlink" title="第11章、建造者模式"></a>第11章、建造者模式</h4><h5 id="11-1、变化是永恒的"><a href="#11-1、变化是永恒的" class="headerlink" title="11.1、变化是永恒的"></a>11.1、变化是永恒的</h5><h5 id="11-2、建造者模式的定义"><a href="#11-2、建造者模式的定义" class="headerlink" title="11.2、建造者模式的定义"></a>11.2、建造者模式的定义</h5><pre><code>    将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。
+    1、类图
+    2、建造者模式中，有如下4个角色
+        1、Product产品类
+        2、Bulider抽象建造者
+        3、ConcreteBuilder具体建造者，实现抽象类定义的所有方法，并且返回一个组建好的对象
+        4、Director导演类：负责安排已有模块的顺序
+</code></pre><h5 id="11-3、建造者模式的应用"><a href="#11-3、建造者模式的应用" class="headerlink" title="11.3、建造者模式的应用"></a>11.3、建造者模式的应用</h5><h5 id="11-3-1建造者模式的优点"><a href="#11-3-1建造者模式的优点" class="headerlink" title="11.3.1建造者模式的优点"></a>11.3.1建造者模式的优点</h5><pre><code>    1、封装性
+    2、建造者独立，容易扩展
+    3、便于控制细节风险
+</code></pre><h4 id="第12章、代理模式-重点"><a href="#第12章、代理模式-重点" class="headerlink" title="第12章、代理模式(重点)"></a>第12章、代理模式(重点)</h4><h5 id="12-1、我是游戏至尊"><a href="#12-1、我是游戏至尊" class="headerlink" title="12.1、我是游戏至尊"></a>12.1、我是游戏至尊</h5><h5 id="12-2、代理模式的定义"><a href="#12-2、代理模式的定义" class="headerlink" title="12.2、代理模式的定义"></a>12.2、代理模式的定义</h5><pre><code>    为其他对象提供一种代理以控制对这个对象的访问。
+    1、类图
+    2、角色定义
+        1、Subject抽象主题角色
+        2、RealSubject具体的主题角色，业务逻辑的具体执行者
+        3、Proxy代理主题角色：它负责对真实角色的应用，把所有抽象主题类定义的方法限制委托给真实主题角色实现，而且在真实主题角色处理完毕前后做
+</code></pre><h5 id="12-3、代理模式的应用"><a href="#12-3、代理模式的应用" class="headerlink" title="12.3、代理模式的应用"></a>12.3、代理模式的应用</h5><h5 id="12-4、代理模式的扩展"><a href="#12-4、代理模式的扩展" class="headerlink" title="12.4、代理模式的扩展"></a>12.4、代理模式的扩展</h5><h6 id="12-4-1、普通代理"><a href="#12-4-1、普通代理" class="headerlink" title="12.4.1、普通代理"></a>12.4.1、普通代理</h6><pre><code>    该模式下，调用者只知代理而不用知道真实的角色是谁，屏蔽了真实角色的变更对高层模块的影响
+</code></pre><h6 id="12-4-2、强制代理"><a href="#12-4-2、强制代理" class="headerlink" title="12.4.2、强制代理"></a>12.4.2、强制代理</h6><pre><code>    要从真实角色查找到代理角色，不允许直接访问真实角色
+</code></pre><h6 id="12-4-3、代理是有个性的"><a href="#12-4-3、代理是有个性的" class="headerlink" title="12.4.3、代理是有个性的"></a>12.4.3、代理是有个性的</h6><h6 id="12-4-4、动态代理"><a href="#12-4-4、动态代理" class="headerlink" title="12.4.4、动态代理"></a>12.4.4、动态代理</h6><pre><code>    动态代理是在实现阶段不用关心代理谁，而是在运行阶段才制定代理哪一个对象。
+</code></pre><h4 id="第13章、原型模式"><a href="#第13章、原型模式" class="headerlink" title="第13章、原型模式"></a>第13章、原型模式</h4><h5 id="13-1、个性化电子账单"><a href="#13-1、个性化电子账单" class="headerlink" title="13.1、个性化电子账单"></a>13.1、个性化电子账单</h5><h5 id="13-2、原型模式的定义"><a href="#13-2、原型模式的定义" class="headerlink" title="13.2、原型模式的定义"></a>13.2、原型模式的定义</h5><pre><code>    用原型实例指定创建对象的种类，而且通过拷贝这些原型创建的对象
+    覆盖clone（）方法    
+</code></pre><h5 id="13-3、原型模式的应用"><a href="#13-3、原型模式的应用" class="headerlink" title="13.3、原型模式的应用"></a>13.3、原型模式的应用</h5><h5 id="13-3-1、原型模式的优点"><a href="#13-3-1、原型模式的优点" class="headerlink" title="13.3.1、原型模式的优点"></a>13.3.1、原型模式的优点</h5><pre><code>1、性能优良
+2、逃避构造函数的约束
+</code></pre><h5 id="13-3-2、原型模式的使用场景"><a href="#13-3-2、原型模式的使用场景" class="headerlink" title="13.3.2、原型模式的使用场景"></a>13.3.2、原型模式的使用场景</h5><pre><code>1、资源优化场景
+2、性能和安全要求的场景
+3、一个对象多个修改者的场景
+</code></pre><h5 id="13-4、原型模式的注意事项"><a href="#13-4、原型模式的注意事项" class="headerlink" title="13.4、原型模式的注意事项"></a>13.4、原型模式的注意事项</h5><h5 id="13-4-1、构造函数不会被执行"><a href="#13-4-1、构造函数不会被执行" class="headerlink" title="13.4.1、构造函数不会被执行"></a>13.4.1、构造函数不会被执行</h5><pre><code>    Object类的clone方法的原理是从内存中（具体低说是堆内存）以二进制流的方式进行拷贝，重新分配一个内存块。那构造函数没有被执行也是非常正常的
+</code></pre><h5 id="13-4-2、浅拷贝和深拷贝"><a href="#13-4-2、浅拷贝和深拷贝" class="headerlink" title="13.4.2、浅拷贝和深拷贝"></a>13.4.2、浅拷贝和深拷贝</h5><pre><code>浅拷贝：Object类提供的方法clone只是拷贝本对象，其对象内部的数组，引用对象等都不拷贝，还是指向原生对象的内部元素地址。
+</code></pre><h5 id="13-4-3、clone与final两个冤家"><a href="#13-4-3、clone与final两个冤家" class="headerlink" title="13.4.3、clone与final两个冤家"></a>13.4.3、clone与final两个冤家</h5><pre><code>要使用clone方法，类的成员变量上不要增加final关键字    
+</code></pre><h4 id="第14章、中介者模式"><a href="#第14章、中介者模式" class="headerlink" title="第14章、中介者模式"></a>第14章、中介者模式</h4><h5 id="14-1、进销存管理是这样子的吗"><a href="#14-1、进销存管理是这样子的吗" class="headerlink" title="14.1、进销存管理是这样子的吗"></a>14.1、进销存管理是这样子的吗</h5><pre><code>    多个模块之间的相互耦合
+</code></pre><h5 id="14-2、中介者模式的定义"><a href="#14-2、中介者模式的定义" class="headerlink" title="14.2、中介者模式的定义"></a>14.2、中介者模式的定义</h5><pre><code>    用一个中介对象封装一系列的对象交互，中介者使各对象不需要显示地相互作用，从而使其耦合松散，而且可以独立地改变他们之间的交互
+    中介者模式通用类图
+        1、Mediator 抽象中介者角色
+            抽象中介者角色定义统一的接口，用于各同事角色之间通信
+        2、Concrete Mediator具体中介者角色
+            具体的实现
+        3、College同事角色
+</code></pre><h5 id="14-3、中介者模式的应用"><a href="#14-3、中介者模式的应用" class="headerlink" title="14.3、中介者模式的应用"></a>14.3、中介者模式的应用</h5><h6 id="14-3-1、中介者模式的优点"><a href="#14-3-1、中介者模式的优点" class="headerlink" title="14.3.1、中介者模式的优点"></a>14.3.1、中介者模式的优点</h6><pre><code>    减少了类之间的依赖关系，减少耦合
+</code></pre><h6 id="14-3-2、中介者模式的缺点"><a href="#14-3-2、中介者模式的缺点" class="headerlink" title="14.3.2、中介者模式的缺点"></a>14.3.2、中介者模式的缺点</h6><pre><code>    中介类会变得越来越大
+</code></pre><h6 id="14-3-3、中介者模式的使用场景"><a href="#14-3-3、中介者模式的使用场景" class="headerlink" title="14.3.3、中介者模式的使用场景"></a>14.3.3、中介者模式的使用场景</h6><pre><code>    类的相互之间的依赖出现蜘蛛网可以梳理成星型结构
+</code></pre><h5 id="14-4、中介者模式的实际应用"><a href="#14-4、中介者模式的实际应用" class="headerlink" title="14.4、中介者模式的实际应用"></a>14.4、中介者模式的实际应用</h5><h4 id="第15章、命令模式"><a href="#第15章、命令模式" class="headerlink" title="第15章、命令模式"></a>第15章、命令模式</h4><h5 id="15-1、项目经理也难当"><a href="#15-1、项目经理也难当" class="headerlink" title="15.1、项目经理也难当"></a>15.1、项目经理也难当</h5><h5 id="15-2、命令模式的定义"><a href="#15-2、命令模式的定义" class="headerlink" title="15.2、命令模式的定义"></a>15.2、命令模式的定义</h5><pre><code>    将一个请求封装成一个对象，从而让你使用不同的请求把客户端参数化，对请求排队或者记录请求日志，可以提供命令的撤销和恢复功能
+</code></pre><h5 id="15-3、命令模式的应用"><a href="#15-3、命令模式的应用" class="headerlink" title="15.3、命令模式的应用"></a>15.3、命令模式的应用</h5><h6 id="15-3-1、命令模式的优点"><a href="#15-3-1、命令模式的优点" class="headerlink" title="15.3.1、命令模式的优点"></a>15.3.1、命令模式的优点</h6><pre><code>    1、类间解耦
+    2、可扩展性
+    3、命令模式结合其他模式更优秀
+</code></pre><h6 id="15-3-2、命令模式的缺点"><a href="#15-3-2、命令模式的缺点" class="headerlink" title="15.3.2、命令模式的缺点"></a>15.3.2、命令模式的缺点</h6><pre><code>    命令的子类的比较的膨胀    
+</code></pre><h4 id="第16章、责任链模式"><a href="#第16章、责任链模式" class="headerlink" title="第16章、责任链模式"></a>第16章、责任链模式</h4><h5 id="16-1-古代妇女的枷锁—“三从四德”"><a href="#16-1-古代妇女的枷锁—“三从四德”" class="headerlink" title="16.1 古代妇女的枷锁—“三从四德”"></a>16.1 古代妇女的枷锁—“三从四德”</h5><h5 id="16-2-责任链模式的定义"><a href="#16-2-责任链模式的定义" class="headerlink" title="16.2 责任链模式的定义"></a>16.2 责任链模式的定义</h5><pre><code>使多个对象都有机会处理请求，从而避免了请求的发送和接受者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，知道有对象处理它为止
+抽象处理者：
+    1、定义一个请求的处理方法handleMessage，唯一对外开放的方法
+    2、定义一个链的编排方法setNext,设置下一个处理中
+    3、定义了具体的请求者必须实现的两个方法（定义自己能够处理的级别getHandleLevel和具体的处理任务echo）
+</code></pre><h5 id="16-3-责任链模式的应用"><a href="#16-3-责任链模式的应用" class="headerlink" title="16.3 责任链模式的应用"></a>16.3 责任链模式的应用</h5><h6 id="16-3-1、责任链模式的优点"><a href="#16-3-1、责任链模式的优点" class="headerlink" title="16.3.1、责任链模式的优点"></a>16.3.1、责任链模式的优点</h6><h6 id="16-3-2、责任链模式的缺点"><a href="#16-3-2、责任链模式的缺点" class="headerlink" title="16.3.2、责任链模式的缺点"></a>16.3.2、责任链模式的缺点</h6><pre><code>    1、性能问题
+    2、调试不很方便 
+</code></pre><h4 id="第17章、装饰模式"><a href="#第17章、装饰模式" class="headerlink" title="第17章、装饰模式"></a>第17章、装饰模式</h4><h5 id="17-1、罪恶的成绩单"><a href="#17-1、罪恶的成绩单" class="headerlink" title="17.1、罪恶的成绩单"></a>17.1、罪恶的成绩单</h5><h5 id="17-2、装饰模式的定义"><a href="#17-2、装饰模式的定义" class="headerlink" title="17.2、装饰模式的定义"></a>17.2、装饰模式的定义</h5><pre><code>通用类图：
+    1、Component抽象组件：是一个接口或者是抽象类，就是定义我们最核心的对象，也是最原始的对象
+    2、ConcreteComponent具体组件：你要装饰的就是它
+    3、Detcorator装饰角色：在它的属性里必然有一个private变量指向Component抽象构件
+    4、具体的装饰角色：把你最核心，最原始的，最基本的东西装饰城其他东西    
+</code></pre><h5 id="17-3、装饰模式的应用"><a href="#17-3、装饰模式的应用" class="headerlink" title="17.3、装饰模式的应用"></a>17.3、装饰模式的应用</h5><h6 id="17-3-1、装饰模式的优点"><a href="#17-3-1、装饰模式的优点" class="headerlink" title="17.3.1、装饰模式的优点"></a>17.3.1、装饰模式的优点</h6><h6 id="17-3-2、装饰模式的缺点："><a href="#17-3-2、装饰模式的缺点：" class="headerlink" title="17.3.2、装饰模式的缺点："></a>17.3.2、装饰模式的缺点：</h6><h6 id="17-3-3、装饰模式的使用场景："><a href="#17-3-3、装饰模式的使用场景：" class="headerlink" title="17.3.3、装饰模式的使用场景："></a>17.3.3、装饰模式的使用场景：</h6><pre><code>    1、需要扩展一个类的功能，或给一个类增加附加功能
+    2、需要动态地给一个对象增加功能，这些功能可以在动态地撤销
+    3、需要为一批的兄弟类进行改装或加装功能，首选装饰模式
+</code></pre><h4 id="第18章、策略模式"><a href="#第18章、策略模式" class="headerlink" title="第18章、策略模式"></a>第18章、策略模式</h4><h5 id="18-1、刘备江东娶妻"><a href="#18-1、刘备江东娶妻" class="headerlink" title="18.1、刘备江东娶妻"></a>18.1、刘备江东娶妻</h5><h5 id="18-2、策略模式的定义"><a href="#18-2、策略模式的定义" class="headerlink" title="18.2、策略模式的定义"></a>18.2、策略模式的定义</h5><pre><code>定义一组算法，将每个算法都封装起来，而且使他们之间可以互换
+类图：
+    1、Context封装角色：上下文角色，屏蔽高层模块对策略，算法的直接访问，封装可能存在的变化
+    2、Strategy抽象策略角色
+    3、ConcreteStrategy具体策略角色
+</code></pre><h5 id="18-3、策略模式的应用"><a href="#18-3、策略模式的应用" class="headerlink" title="18.3、策略模式的应用"></a>18.3、策略模式的应用</h5><h6 id="18-3-1、策略模式的优点"><a href="#18-3-1、策略模式的优点" class="headerlink" title="18.3.1、策略模式的优点:"></a>18.3.1、策略模式的优点:</h6><pre><code>    1、算法可以自己切换
+    2、避免使用多重条件判断
+    3、扩展性良好
+</code></pre><h6 id="18-3-2、策略模式的缺点"><a href="#18-3-2、策略模式的缺点" class="headerlink" title="18.3.2、策略模式的缺点;"></a>18.3.2、策略模式的缺点;</h6><pre><code>    1、策略类数量增多
+    2、所有的策略类都需要对外暴露
+</code></pre><h6 id="18-3-3、策略模式的使用场景"><a href="#18-3-3、策略模式的使用场景" class="headerlink" title="18.3.3、策略模式的使用场景"></a>18.3.3、策略模式的使用场景</h6><pre><code>    1、多个类只有在算法或行为上稍微不同场景
+    2、算法需要自由切换的场景
+    3、需要屏蔽算法规则的场景
+</code></pre><h4 id="第19章、适配器模式"><a href="#第19章、适配器模式" class="headerlink" title="第19章、适配器模式"></a>第19章、适配器模式</h4><h5 id="19-1、业务发展"><a href="#19-1、业务发展" class="headerlink" title="19.1、业务发展"></a>19.1、业务发展</h5><h5 id="19-2、适配器模式定义"><a href="#19-2、适配器模式定义" class="headerlink" title="19.2、适配器模式定义"></a>19.2、适配器模式定义</h5><pre><code>将一个类的接口变换成客户端所期待的另一种接口，从而使原本因接口不匹配而无法在一起工作的两个类能够在一起工作
+    适配器三种角色：
+        1、Target目标角色：该角色定义把其他类转换为何种接口，也就是我们所期望的接口。
+        2、Adaptee源角色：想把谁转换成目标角色，这个“谁”就是源角色
+        3、Adapter适配器角色：就是把源角色转换成目标角色，可以通过继承或是关联的方式 
+</code></pre><h5 id="19-3、适配器模式的应用"><a href="#19-3、适配器模式的应用" class="headerlink" title="19.3、适配器模式的应用"></a>19.3、适配器模式的应用</h5><h6 id="19-3-1、适配器模式的优点"><a href="#19-3-1、适配器模式的优点" class="headerlink" title="19.3.1、适配器模式的优点"></a>19.3.1、适配器模式的优点</h6><pre><code>    1、适配器模式可以让两个没有任何关联的类在一起运行
+    2、增加了类的透明性
+    3、提高了类的复用度
+    4、灵活性非常好
+</code></pre><h6 id="19-3-2、适配器模式的使用场景"><a href="#19-3-2、适配器模式的使用场景" class="headerlink" title="19.3.2、适配器模式的使用场景"></a>19.3.2、适配器模式的使用场景</h6><pre><code>    1、扩展已经运行正常的系统
+</code></pre><h4 id="第20章、迭代器模式"><a href="#第20章、迭代器模式" class="headerlink" title="第20章、迭代器模式"></a>第20章、迭代器模式</h4><h5 id="20-1、整理项目信息"><a href="#20-1、整理项目信息" class="headerlink" title="20.1、整理项目信息"></a>20.1、整理项目信息</h5>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    XieSZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/04/05/读书笔记_设计模式之禅/" title="读书笔记_设计模式之禅">http://yoursite.com/2019/04/05/读书笔记_设计模式之禅/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/05/读书笔记_程序员修炼之道/" rel="next" title="读书笔记_程序员修炼之道">
+                <i class="fa fa-chevron-left"></i> 读书笔记_程序员修炼之道
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/05/读书笔记_Mybatis技术内幕/" rel="prev" title="读书笔记_Mybatis技术内幕">
+                读书笔记_Mybatis技术内幕 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieSZ</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到XieSZ的技术分享站~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xie1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xieshanzhong66@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xie1.github.io/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="hexo" target="_blank">hexo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、思维导图"><span class="nav-text">一、思维导图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总知识点"><span class="nav-text">总知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第1章、单一职责原则"><span class="nav-text">第1章、单一职责原则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1、我是牛类，我可以担任多职吗"><span class="nav-text">1.1、我是牛类，我可以担任多职吗</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第2章、里氏替换原则（继承关系）"><span class="nav-text">第2章、里氏替换原则（继承关系）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第3章、依赖倒置原则（面向接口编程）"><span class="nav-text">第3章、依赖倒置原则（面向接口编程）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1、依赖倒置原则的定义"><span class="nav-text">3.1、依赖倒置原则的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3、依赖的三种写法"><span class="nav-text">3.3、依赖的三种写法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第4章、接口隔离原则"><span class="nav-text">第4章、接口隔离原则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1、接口隔离原则的定义"><span class="nav-text">4.1、接口隔离原则的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2、保证接口的纯洁性"><span class="nav-text">4.2、保证接口的纯洁性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3、最佳实践"><span class="nav-text">4.3、最佳实践</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第5章、迪米特法则（最少知识原则）"><span class="nav-text">第5章、迪米特法则（最少知识原则）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第6章、开闭原则"><span class="nav-text">第6章、开闭原则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-1、为什么要采用开闭原则"><span class="nav-text">6.1、为什么要采用开闭原则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2、如何使用开闭原则"><span class="nav-text">6.2、如何使用开闭原则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-3、最佳实践"><span class="nav-text">6.3、最佳实践</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二部分"><span class="nav-text">第二部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第7章、单例模式"><span class="nav-text">第7章、单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-1、我是皇帝我是独苗"><span class="nav-text">7.1、我是皇帝我是独苗</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-2、单例模式的定义："><span class="nav-text">7.2、单例模式的定义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-3、单例模式的应用："><span class="nav-text">7.3、单例模式的应用：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#7-3-1、单例模式的优点："><span class="nav-text">7.3.1、单例模式的优点：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-3-2、单例模式的缺点："><span class="nav-text">7.3.2、单例模式的缺点：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-3-3、单例模式的使用场景："><span class="nav-text">7.3.3、单例模式的使用场景：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-3-4、单例模式的注意事项："><span class="nav-text">7.3.4、单例模式的注意事项：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-4、单例模式的扩展："><span class="nav-text">7.4、单例模式的扩展：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第8章、工厂方法模式"><span class="nav-text">第8章、工厂方法模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8-1、女娲造人的故事"><span class="nav-text">8.1、女娲造人的故事</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-2、工厂方法模式的定义"><span class="nav-text">8.2、工厂方法模式的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-3、工厂方法模式的应用"><span class="nav-text">8.3、工厂方法模式的应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-3-1、工厂方法模式的优点"><span class="nav-text">8.3.1、工厂方法模式的优点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-3-2、工厂方法模式的使用场景"><span class="nav-text">8.3.2、工厂方法模式的使用场景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-4、工厂方法模式的扩展"><span class="nav-text">8.4、工厂方法模式的扩展</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第9章、抽象工厂模式"><span class="nav-text">第9章、抽象工厂模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#9-1、失误的女娲"><span class="nav-text">9.1、失误的女娲</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-2、抽象工厂模式的定义"><span class="nav-text">9.2、抽象工厂模式的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-3、抽象工厂模式的应用"><span class="nav-text">9.3、抽象工厂模式的应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-3-1、抽象工厂模式的优点"><span class="nav-text">9.3.1、抽象工厂模式的优点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-3-2、抽象工厂模式的缺点"><span class="nav-text">9.3.2、抽象工厂模式的缺点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-3-3、抽象工厂模式的使用场景"><span class="nav-text">9.3.3、抽象工厂模式的使用场景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-3-4、抽象工厂模式的注意事项"><span class="nav-text">9.3.4、抽象工厂模式的注意事项</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第10章、模板方法模式"><span class="nav-text">第10章、模板方法模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#10-1、辉煌工程-制造悍马"><span class="nav-text">10.1、辉煌工程-制造悍马</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-2、模板方法模式定义"><span class="nav-text">10.2、模板方法模式定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-3、模板方法模式的应用"><span class="nav-text">10.3、模板方法模式的应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-3-1、模板方法模式的应用"><span class="nav-text">10.3.1、模板方法模式的应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-3-2、模板方法模式的优点"><span class="nav-text">10.3.2、模板方法模式的优点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-3-3、模板方法模式的缺点"><span class="nav-text">10.3.3、模板方法模式的缺点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-4、模板方法模式的扩展"><span class="nav-text">10.4、模板方法模式的扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第11章、建造者模式"><span class="nav-text">第11章、建造者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#11-1、变化是永恒的"><span class="nav-text">11.1、变化是永恒的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-2、建造者模式的定义"><span class="nav-text">11.2、建造者模式的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-3、建造者模式的应用"><span class="nav-text">11.3、建造者模式的应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-3-1建造者模式的优点"><span class="nav-text">11.3.1建造者模式的优点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第12章、代理模式-重点"><span class="nav-text">第12章、代理模式(重点)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#12-1、我是游戏至尊"><span class="nav-text">12.1、我是游戏至尊</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-2、代理模式的定义"><span class="nav-text">12.2、代理模式的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-3、代理模式的应用"><span class="nav-text">12.3、代理模式的应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-4、代理模式的扩展"><span class="nav-text">12.4、代理模式的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#12-4-1、普通代理"><span class="nav-text">12.4.1、普通代理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#12-4-2、强制代理"><span class="nav-text">12.4.2、强制代理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#12-4-3、代理是有个性的"><span class="nav-text">12.4.3、代理是有个性的</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#12-4-4、动态代理"><span class="nav-text">12.4.4、动态代理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第13章、原型模式"><span class="nav-text">第13章、原型模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#13-1、个性化电子账单"><span class="nav-text">13.1、个性化电子账单</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-2、原型模式的定义"><span class="nav-text">13.2、原型模式的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-3、原型模式的应用"><span class="nav-text">13.3、原型模式的应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-3-1、原型模式的优点"><span class="nav-text">13.3.1、原型模式的优点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-3-2、原型模式的使用场景"><span class="nav-text">13.3.2、原型模式的使用场景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-4、原型模式的注意事项"><span class="nav-text">13.4、原型模式的注意事项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-4-1、构造函数不会被执行"><span class="nav-text">13.4.1、构造函数不会被执行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-4-2、浅拷贝和深拷贝"><span class="nav-text">13.4.2、浅拷贝和深拷贝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-4-3、clone与final两个冤家"><span class="nav-text">13.4.3、clone与final两个冤家</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第14章、中介者模式"><span class="nav-text">第14章、中介者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#14-1、进销存管理是这样子的吗"><span class="nav-text">14.1、进销存管理是这样子的吗</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#14-2、中介者模式的定义"><span class="nav-text">14.2、中介者模式的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#14-3、中介者模式的应用"><span class="nav-text">14.3、中介者模式的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#14-3-1、中介者模式的优点"><span class="nav-text">14.3.1、中介者模式的优点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#14-3-2、中介者模式的缺点"><span class="nav-text">14.3.2、中介者模式的缺点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#14-3-3、中介者模式的使用场景"><span class="nav-text">14.3.3、中介者模式的使用场景</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#14-4、中介者模式的实际应用"><span class="nav-text">14.4、中介者模式的实际应用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第15章、命令模式"><span class="nav-text">第15章、命令模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#15-1、项目经理也难当"><span class="nav-text">15.1、项目经理也难当</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#15-2、命令模式的定义"><span class="nav-text">15.2、命令模式的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#15-3、命令模式的应用"><span class="nav-text">15.3、命令模式的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#15-3-1、命令模式的优点"><span class="nav-text">15.3.1、命令模式的优点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#15-3-2、命令模式的缺点"><span class="nav-text">15.3.2、命令模式的缺点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第16章、责任链模式"><span class="nav-text">第16章、责任链模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#16-1-古代妇女的枷锁—“三从四德”"><span class="nav-text">16.1 古代妇女的枷锁—“三从四德”</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#16-2-责任链模式的定义"><span class="nav-text">16.2 责任链模式的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#16-3-责任链模式的应用"><span class="nav-text">16.3 责任链模式的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#16-3-1、责任链模式的优点"><span class="nav-text">16.3.1、责任链模式的优点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#16-3-2、责任链模式的缺点"><span class="nav-text">16.3.2、责任链模式的缺点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第17章、装饰模式"><span class="nav-text">第17章、装饰模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#17-1、罪恶的成绩单"><span class="nav-text">17.1、罪恶的成绩单</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#17-2、装饰模式的定义"><span class="nav-text">17.2、装饰模式的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#17-3、装饰模式的应用"><span class="nav-text">17.3、装饰模式的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#17-3-1、装饰模式的优点"><span class="nav-text">17.3.1、装饰模式的优点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#17-3-2、装饰模式的缺点："><span class="nav-text">17.3.2、装饰模式的缺点：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#17-3-3、装饰模式的使用场景："><span class="nav-text">17.3.3、装饰模式的使用场景：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第18章、策略模式"><span class="nav-text">第18章、策略模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#18-1、刘备江东娶妻"><span class="nav-text">18.1、刘备江东娶妻</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#18-2、策略模式的定义"><span class="nav-text">18.2、策略模式的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#18-3、策略模式的应用"><span class="nav-text">18.3、策略模式的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#18-3-1、策略模式的优点"><span class="nav-text">18.3.1、策略模式的优点:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#18-3-2、策略模式的缺点"><span class="nav-text">18.3.2、策略模式的缺点;</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#18-3-3、策略模式的使用场景"><span class="nav-text">18.3.3、策略模式的使用场景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第19章、适配器模式"><span class="nav-text">第19章、适配器模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#19-1、业务发展"><span class="nav-text">19.1、业务发展</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#19-2、适配器模式定义"><span class="nav-text">19.2、适配器模式定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#19-3、适配器模式的应用"><span class="nav-text">19.3、适配器模式的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#19-3-1、适配器模式的优点"><span class="nav-text">19.3.1、适配器模式的优点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#19-3-2、适配器模式的使用场景"><span class="nav-text">19.3.2、适配器模式的使用场景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第20章、迭代器模式"><span class="nav-text">第20章、迭代器模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#20-1、整理项目信息"><span class="nav-text">20.1、整理项目信息</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieSZ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytwYroRX';
+      var conf = 'a1ed94f3fa27338ebcb9c5f114025ca5';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

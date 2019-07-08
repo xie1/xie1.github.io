@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT,xiesz">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XieSZ'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、面试点1、什么是Spring MVC ？简单介绍下你对springMVC的理解?Spring MVC是一个基于Java的实现了MVC设计模式的请求驱动类型的轻量级Web框架，通过把Model，View，Controller分离，将web层进行职责解耦， 把复杂的web应用分成逻辑清晰的几部分，简化开发，减少出错，方便组内开发人员之间的配合。 2、SpringMVC的流程？（1）用户发送请求至前">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10_SpringMVC面试题">
+<meta property="og:url" content="http://yoursite.com/2019/04/14/面试_10_Springmvc面试题/index.html">
+<meta property="og:site_name" content="XieSZ&#39;S BLOG">
+<meta property="og:description" content="一、面试点1、什么是Spring MVC ？简单介绍下你对springMVC的理解?Spring MVC是一个基于Java的实现了MVC设计模式的请求驱动类型的轻量级Web框架，通过把Model，View，Controller分离，将web层进行职责解耦， 把复杂的web应用分成逻辑清晰的几部分，简化开发，减少出错，方便组内开发人员之间的配合。 2、SpringMVC的流程？（1）用户发送请求至前">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/uGNUUce.png">
+<meta property="og:updated_time" content="2019-04-23T13:16:04.473Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="10_SpringMVC面试题">
+<meta name="twitter:description" content="一、面试点1、什么是Spring MVC ？简单介绍下你对springMVC的理解?Spring MVC是一个基于Java的实现了MVC设计模式的请求驱动类型的轻量级Web框架，通过把Model，View，Controller分离，将web层进行职责解耦， 把复杂的web应用分成逻辑清晰的几部分，简化开发，减少出错，方便组内开发人员之间的配合。 2、SpringMVC的流程？（1）用户发送请求至前">
+<meta name="twitter:image" content="https://i.imgur.com/uGNUUce.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/14/面试_10_Springmvc面试题/">
+
+
+
+
+
+  <title>10_SpringMVC面试题 | XieSZ'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XieSZ'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">xieshanzhong的博客小站</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/14/面试_10_Springmvc面试题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieSZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XieSZ'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">10_SpringMVC面试题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-14T18:23:20+08:00">
+                2019-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java面试/" itemprop="url" rel="index">
+                    <span itemprop="name">Java面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/04/14/面试_10_Springmvc面试题/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/04/14/面试_10_Springmvc面试题/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、面试点"><a href="#一、面试点" class="headerlink" title="一、面试点"></a>一、<em>面试点</em></h1><h4 id="1、什么是Spring-MVC-？简单介绍下你对springMVC的理解"><a href="#1、什么是Spring-MVC-？简单介绍下你对springMVC的理解" class="headerlink" title="1、什么是Spring MVC ？简单介绍下你对springMVC的理解?"></a>1、什么是Spring MVC ？简单介绍下你对springMVC的理解?</h4><pre><code>Spring MVC是一个基于Java的实现了MVC设计模式的请求驱动类型的轻量级Web框架，通过把Model，View，Controller分离，将web层进行职责解耦，
+把复杂的web应用分成逻辑清晰的几部分，简化开发，减少出错，方便组内开发人员之间的配合。
+</code></pre><h4 id="2、SpringMVC的流程？"><a href="#2、SpringMVC的流程？" class="headerlink" title="2、SpringMVC的流程？"></a>2、SpringMVC的流程？</h4><pre><code>（1）用户发送请求至前端控制器DispatcherServlet；
+（2） DispatcherServlet收到请求后，调用HandlerMapping处理器映射器，请求获取Handle；
+（3）处理器映射器根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet；
+（4）DispatcherServlet 调用 HandlerAdapter处理器适配器；
+（5）HandlerAdapter 经过适配调用 具体处理器(Handler，也叫后端控制器)；
+（6）Handler执行完成返回ModelAndView；
+（7）HandlerAdapter将Handler执行结果ModelAndView返回给DispatcherServlet；
+（8）DispatcherServlet将ModelAndView传给ViewResolver视图解析器进行解析；
+（9）ViewResolver解析后返回具体View；
+（10）DispatcherServlet对View进行渲染视图（即将模型数据填充至视图中）
+（11）DispatcherServlet响应用户。
+</code></pre><p><img src="https://i.imgur.com/uGNUUce.png" alt=""></p>
+<h4 id="3、Springmvc的优点"><a href="#3、Springmvc的优点" class="headerlink" title="3、Springmvc的优点:"></a>3、Springmvc的优点:</h4><pre><code>（1）可以支持各种视图技术,而不仅仅局限于JSP；
+
+（2）与Spring框架集成（如IoC容器、AOP等）；
+
+（3）清晰的角色分配：前端控制器(dispatcherServlet) , 请求到处理器映射（handlerMapping), 处理器适配器（HandlerAdapter),
+</code></pre><p> 视图解析器（ViewResolver）。</p>
+<pre><code>（4） 支持各种请求资源的映射策略。
+</code></pre><h4 id="4、Spring-MVC的主要组件？"><a href="#4、Spring-MVC的主要组件？" class="headerlink" title="4、Spring MVC的主要组件？"></a>4、Spring MVC的主要组件？</h4><pre><code>（1）前端控制器 DispatcherServlet（不需要程序员开发）
+
+作用：接收请求、响应结果，相当于转发器，有了DispatcherServlet 就减少了其它组件之间的耦合度。
+
+（2）处理器映射器HandlerMapping（不需要程序员开发）
+
+作用：根据请求的URL来查找Handler
+
+（3）处理器适配器HandlerAdapter
+
+注意：在编写Handler的时候要按照HandlerAdapter要求的规则去编写，这样适配器HandlerAdapter才可以正确的去执行Handler。
+
+（4）处理器Handler（需要程序员开发）
+
+（5）视图解析器 ViewResolver（不需要程序员开发）
+
+作用：进行视图的解析，根据视图逻辑名解析成真正的视图（view）
+
+（6）视图View（需要程序员开发jsp）
+
+View是一个接口， 它的实现类支持不同的视图类型（jsp，freemarker，pdf等等）
+</code></pre><h4 id="5、springMVC和struts2的区别有哪些"><a href="#5、springMVC和struts2的区别有哪些" class="headerlink" title="5、springMVC和struts2的区别有哪些?"></a>5、springMVC和struts2的区别有哪些?</h4><pre><code>（1）springmvc的入口是一个servlet即前端控制器（DispatchServlet），而struts2入口是一个filter过虑器（StrutsPrepareAndExecuteFilter）。
+
+（2）springmvc是基于方法开发(一个url对应一个方法)，请求参数传递到方法的形参，可以设计为单例或多例(建议单例)，struts2是基于类开发，
+    传递参数是通过类的属性，只能设计为多例。
+
+（3）Struts采用值栈存储请求和响应的数据，通过OGNL存取数据，springmvc通过参数解析器是将request请求内容解析，并给方法形参赋值，
+    将数据和视图封装成ModelAndView对象，最后又将ModelAndView中的模型数据通过reques域传输到页面。Jsp视图解析器默认使用jstl。
+</code></pre><h4 id="6、SpringMVC怎么样设定重定向和转发的？"><a href="#6、SpringMVC怎么样设定重定向和转发的？" class="headerlink" title="6、SpringMVC怎么样设定重定向和转发的？"></a>6、SpringMVC怎么样设定重定向和转发的？</h4><pre><code>（1）转发：在返回值前面加&quot;forward:&quot;，譬如&quot;forward:user.do?name=method4&quot;
+
+（2）重定向：在返回值前面加&quot;redirect:&quot;，譬如&quot;redirect:http://www.baidu.com&quot;
+</code></pre><h4 id="7、SpringMvc怎么和AJAX相互调用的？"><a href="#7、SpringMvc怎么和AJAX相互调用的？" class="headerlink" title="7、SpringMvc怎么和AJAX相互调用的？"></a>7、SpringMvc怎么和AJAX相互调用的？</h4><pre><code>通过Jackson框架就可以把Java里面的对象直接转化成Js可以识别的Json对象。具体步骤如下 ：
+
+（1）加入Jackson.jar
+
+（2）在配置文件中配置json的映射
+
+（3）在接受Ajax方法里面可以直接返回Object,List等,但方法前面要加上@ResponseBody注解。
+</code></pre><h4 id="8、如何解决POST请求中文乱码问题，GET的又如何处理呢？"><a href="#8、如何解决POST请求中文乱码问题，GET的又如何处理呢？" class="headerlink" title="8、如何解决POST请求中文乱码问题，GET的又如何处理呢？"></a>8、如何解决POST请求中文乱码问题，GET的又如何处理呢？</h4><pre><code>（1）解决post请求乱码问题：
+
+在web.xml中配置一个CharacterEncodingFilter过滤器，设置成utf-8；
+
+&lt;filter&gt;
+
+    &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+
+    &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+
+    &lt;init-param&gt;
+
+        &lt;param-name&gt;encoding&lt;/param-name&gt;
+
+        &lt;param-value&gt;utf-8&lt;/param-value&gt;
+
+    &lt;/init-param&gt;
+
+&lt;/filter&gt;
+
+&lt;filter-mapping&gt;
+
+    &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+
+&lt;/filter-mapping&gt;
+
+（2）get请求中文参数出现乱码解决方法有两个：
+
+①修改tomcat配置文件添加编码与工程编码一致，如下：
+
+&lt;ConnectorURIEncoding=&quot;utf-8&quot; connectionTimeout=&quot;20000&quot; port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; redirectPort=&quot;8443&quot;/&gt;
+
+ ②另外一种方法对参数进行重新编码：
+
+String userName = new String(request.getParamter(&quot;userName&quot;).getBytes(&quot;ISO8859-1&quot;),&quot;utf-8&quot;)
+
+ISO8859-1是tomcat默认编码，需要将tomcat编码后的内容按utf-8编码。
+</code></pre><h4 id="9、Spring-MVC的异常处理-？"><a href="#9、Spring-MVC的异常处理-？" class="headerlink" title="9、Spring MVC的异常处理 ？"></a>9、Spring MVC的异常处理 ？</h4><pre><code>答：可以将异常抛给Spring框架，由Spring框架来处理；我们只需要配置简单的异常处理器，在异常处理器中添视图页面即可。
+</code></pre><h4 id="10、SpringMvc的控制器是不是单例模式-如果是-有什么问题-怎么解决？"><a href="#10、SpringMvc的控制器是不是单例模式-如果是-有什么问题-怎么解决？" class="headerlink" title="10、SpringMvc的控制器是不是单例模式,如果是,有什么问题,怎么解决？"></a>10、SpringMvc的控制器是不是单例模式,如果是,有什么问题,怎么解决？</h4><pre><code>答：是单例模式,所以在多线程访问的时候有线程安全问题,不要用同步,会影响性能的,解决方案是在控制器里面不能写字段。
+</code></pre><h4 id="11、-SpringMVC常用的注解有哪些？"><a href="#11、-SpringMVC常用的注解有哪些？" class="headerlink" title="11、 SpringMVC常用的注解有哪些？"></a>11、 SpringMVC常用的注解有哪些？</h4><pre><code>@RequestMapping：用于处理请求 url 映射的注解，可用于类或方法上。用于类上，则表示类中的所有响应请求的方法都是以该地址作为父路径。
+
+@RequestBody：注解实现接收http请求的json数据，将json转换为java对象。
+
+@ResponseBody：注解实现将conreoller方法返回对象转化为json对象响应给客户。
+</code></pre><h4 id="12、SpingMvc中的控制器的注解一般用那个-有没有别的注解可以替代？"><a href="#12、SpingMvc中的控制器的注解一般用那个-有没有别的注解可以替代？" class="headerlink" title="12、SpingMvc中的控制器的注解一般用那个,有没有别的注解可以替代？"></a>12、SpingMvc中的控制器的注解一般用那个,有没有别的注解可以替代？</h4><pre><code>答：一般用@Conntroller注解,表示是表现层,不能用别的注解代替。
+</code></pre><h4 id="13、如果在拦截请求中，我想拦截get方式提交的方法-怎么配置？"><a href="#13、如果在拦截请求中，我想拦截get方式提交的方法-怎么配置？" class="headerlink" title="13、如果在拦截请求中，我想拦截get方式提交的方法,怎么配置？"></a>13、如果在拦截请求中，我想拦截get方式提交的方法,怎么配置？</h4><pre><code>答：可以在@RequestMapping注解里面加上method=RequestMethod.GET。
+</code></pre><h4 id="14、怎样在方法里面得到Request-或者Session？"><a href="#14、怎样在方法里面得到Request-或者Session？" class="headerlink" title="14、怎样在方法里面得到Request,或者Session？"></a>14、怎样在方法里面得到Request,或者Session？</h4><pre><code>答：直接在方法的形参中声明request,SpringMvc就自动把request对象传入。
+</code></pre><h4 id="15、如果想在拦截的方法里面得到从前台传入的参数-怎么得到？"><a href="#15、如果想在拦截的方法里面得到从前台传入的参数-怎么得到？" class="headerlink" title="15、如果想在拦截的方法里面得到从前台传入的参数,怎么得到？"></a>15、如果想在拦截的方法里面得到从前台传入的参数,怎么得到？</h4><pre><code>答：直接在形参里面声明这个参数就可以,但必须名字和传过来的参数一样。
+</code></pre><h4 id="16、如果前台有很多个参数传入-并且这些参数都是一个对象的-那么怎么样快速得到这个对象？"><a href="#16、如果前台有很多个参数传入-并且这些参数都是一个对象的-那么怎么样快速得到这个对象？" class="headerlink" title="16、如果前台有很多个参数传入,并且这些参数都是一个对象的,那么怎么样快速得到这个对象？"></a>16、如果前台有很多个参数传入,并且这些参数都是一个对象的,那么怎么样快速得到这个对象？</h4><pre><code>答：直接在方法中声明这个对象,SpringMvc就自动会把属性赋值到这个对象里面。
+</code></pre><h4 id="17、SpringMvc中函数的返回值是什么？"><a href="#17、SpringMvc中函数的返回值是什么？" class="headerlink" title="17、SpringMvc中函数的返回值是什么？"></a>17、SpringMvc中函数的返回值是什么？</h4><pre><code>答：返回值可以有很多类型,有String, ModelAndView。ModelAndView类把视图和数据都合并的一起的，但一般用String比较好。
+</code></pre><h4 id="18、SpringMvc用什么对象从后台向前台传递数据的？"><a href="#18、SpringMvc用什么对象从后台向前台传递数据的？" class="headerlink" title="18、SpringMvc用什么对象从后台向前台传递数据的？"></a>18、SpringMvc用什么对象从后台向前台传递数据的？</h4><pre><code>答：通过ModelMap对象,可以在这个对象里面调用put方法,把对象加到里面,前台就可以通过el表达式拿到。
+</code></pre><h4 id="19、怎么样把ModelMap里面的数据放入Session里面？"><a href="#19、怎么样把ModelMap里面的数据放入Session里面？" class="headerlink" title="19、怎么样把ModelMap里面的数据放入Session里面？"></a>19、怎么样把ModelMap里面的数据放入Session里面？</h4><pre><code>答：可以在类上面加上@SessionAttributes注解,里面包含的字符串就是要放入session里面的key。
+</code></pre><h4 id="20、SpringMvc里面拦截器是怎么写的："><a href="#20、SpringMvc里面拦截器是怎么写的：" class="headerlink" title="20、SpringMvc里面拦截器是怎么写的："></a>20、SpringMvc里面拦截器是怎么写的：</h4><pre><code>有两种写法,一种是实现HandlerInterceptor接口，另外一种是继承适配器类，接着在接口方法当中，实现处理逻辑；然后在SpringMvc的配置文件
+中配置拦截器即可：
+
+  &lt;!-- 配置SpringMvc的拦截器 --&gt;
+
+&lt;mvc:interceptors&gt;
+
+    &lt;!-- 配置一个拦截器的Bean就可以了 默认是对所有请求都拦截 --&gt;
+
+    &lt;bean id=&quot;myInterceptor&quot; class=&quot;com.zwp.action.MyHandlerInterceptor&quot;&gt;&lt;/bean&gt;
+
+    &lt;!-- 只针对部分请求拦截 --&gt;
+
+    &lt;mvc:interceptor&gt;
+
+       &lt;mvc:mapping path=&quot;/modelMap.do&quot; /&gt;
+
+       &lt;bean class=&quot;com.zwp.action.MyHandlerInterceptorAdapter&quot; /&gt;
+
+    &lt;/mvc:interceptor&gt;
+
+&lt;/mvc:interceptors&gt;
+</code></pre><h4 id="21、注解原理："><a href="#21、注解原理：" class="headerlink" title="21、注解原理："></a>21、注解原理：</h4><pre><code>注解本质是一个继承了Annotation的特殊接口，其具体实现类是Java运行时生成的动态代理类。我们通过反射获取注解时，
+返回的是Java运行时生成的动态代理对象。通过代理对象调用自定义注解的方法，会最终调用AnnotationInvocationHandler的invoke方法。
+该方法会从memberValues这个Map中索引出对应的值。而memberValues的来源是Java常量池。
+</code></pre><h1 id="二、参考链接地址"><a href="#二、参考链接地址" class="headerlink" title="二、参考链接地址"></a>二、<em>参考链接地址</em></h1><p><a href="https://blog.csdn.net/a745233700/article/details/80963758" target="_blank" rel="noopener">https://blog.csdn.net/a745233700/article/details/80963758</a><br><a href="https://blog.csdn.net/xinghuo0007/article/details/53463897" target="_blank" rel="noopener">https://blog.csdn.net/xinghuo0007/article/details/53463897</a><br><a href="http://www.voidcn.com/article/p-xburccnf-xz.html" target="_blank" rel="noopener">http://www.voidcn.com/article/p-xburccnf-xz.html</a><br><a href="https://zhuanlan.zhihu.com/p/59377434" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/59377434</a><br><a href="https://www.jianshu.com/p/95d695c10fd0" target="_blank" rel="noopener">https://www.jianshu.com/p/95d695c10fd0</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    XieSZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/04/14/面试_10_Springmvc面试题/" title="10_SpringMVC面试题">http://yoursite.com/2019/04/14/面试_10_Springmvc面试题/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/14/面试_09_Spring面试题/" rel="next" title="09_Spring面试题">
+                <i class="fa fa-chevron-left"></i> 09_Spring面试题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/14/面试_11_Springboot面试题/" rel="prev" title="11_SpringBoot面试题">
+                11_SpringBoot面试题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieSZ</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到XieSZ的技术分享站~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xie1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xieshanzhong66@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xie1.github.io/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="hexo" target="_blank">hexo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、面试点"><span class="nav-text">一、面试点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、什么是Spring-MVC-？简单介绍下你对springMVC的理解"><span class="nav-text">1、什么是Spring MVC ？简单介绍下你对springMVC的理解?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、SpringMVC的流程？"><span class="nav-text">2、SpringMVC的流程？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、Springmvc的优点"><span class="nav-text">3、Springmvc的优点:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、Spring-MVC的主要组件？"><span class="nav-text">4、Spring MVC的主要组件？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、springMVC和struts2的区别有哪些"><span class="nav-text">5、springMVC和struts2的区别有哪些?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、SpringMVC怎么样设定重定向和转发的？"><span class="nav-text">6、SpringMVC怎么样设定重定向和转发的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、SpringMvc怎么和AJAX相互调用的？"><span class="nav-text">7、SpringMvc怎么和AJAX相互调用的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、如何解决POST请求中文乱码问题，GET的又如何处理呢？"><span class="nav-text">8、如何解决POST请求中文乱码问题，GET的又如何处理呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9、Spring-MVC的异常处理-？"><span class="nav-text">9、Spring MVC的异常处理 ？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10、SpringMvc的控制器是不是单例模式-如果是-有什么问题-怎么解决？"><span class="nav-text">10、SpringMvc的控制器是不是单例模式,如果是,有什么问题,怎么解决？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11、-SpringMVC常用的注解有哪些？"><span class="nav-text">11、 SpringMVC常用的注解有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12、SpingMvc中的控制器的注解一般用那个-有没有别的注解可以替代？"><span class="nav-text">12、SpingMvc中的控制器的注解一般用那个,有没有别的注解可以替代？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13、如果在拦截请求中，我想拦截get方式提交的方法-怎么配置？"><span class="nav-text">13、如果在拦截请求中，我想拦截get方式提交的方法,怎么配置？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14、怎样在方法里面得到Request-或者Session？"><span class="nav-text">14、怎样在方法里面得到Request,或者Session？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15、如果想在拦截的方法里面得到从前台传入的参数-怎么得到？"><span class="nav-text">15、如果想在拦截的方法里面得到从前台传入的参数,怎么得到？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16、如果前台有很多个参数传入-并且这些参数都是一个对象的-那么怎么样快速得到这个对象？"><span class="nav-text">16、如果前台有很多个参数传入,并且这些参数都是一个对象的,那么怎么样快速得到这个对象？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17、SpringMvc中函数的返回值是什么？"><span class="nav-text">17、SpringMvc中函数的返回值是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18、SpringMvc用什么对象从后台向前台传递数据的？"><span class="nav-text">18、SpringMvc用什么对象从后台向前台传递数据的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#19、怎么样把ModelMap里面的数据放入Session里面？"><span class="nav-text">19、怎么样把ModelMap里面的数据放入Session里面？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20、SpringMvc里面拦截器是怎么写的："><span class="nav-text">20、SpringMvc里面拦截器是怎么写的：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#21、注解原理："><span class="nav-text">21、注解原理：</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#二、参考链接地址"><span class="nav-text">二、参考链接地址</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieSZ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytwYroRX';
+      var conf = 'a1ed94f3fa27338ebcb9c5f114025ca5';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
