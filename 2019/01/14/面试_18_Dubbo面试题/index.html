@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT,xiesz">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XieSZ'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、面试点1、Dubbo是什么？Dubbo是阿里巴巴开源的基于 Java 的高性能 RPC 分布式服务框架，现已成为 Apache 基金会孵化项目。 面试官问你如果这个都不清楚，那下面的就没必要问了。 官网：http://dubbo.apache.org 2、为什么要用Dubbo？因为是阿里开源项目，国内很多互联网公司都在用，已经经过很多线上考验。内部使用了 Netty、Zookeeper，保证了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="18_Dubbo面试题">
+<meta property="og:url" content="http://yoursite.com/2019/01/14/面试_18_Dubbo面试题/index.html">
+<meta property="og:site_name" content="XieSZ&#39;S BLOG">
+<meta property="og:description" content="一、面试点1、Dubbo是什么？Dubbo是阿里巴巴开源的基于 Java 的高性能 RPC 分布式服务框架，现已成为 Apache 基金会孵化项目。 面试官问你如果这个都不清楚，那下面的就没必要问了。 官网：http://dubbo.apache.org 2、为什么要用Dubbo？因为是阿里开源项目，国内很多互联网公司都在用，已经经过很多线上考验。内部使用了 Netty、Zookeeper，保证了">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/1ahftVA.jpg">
+<meta property="og:image" content="https://i.imgur.com/Ova7jdw.jpg">
+<meta property="og:image" content="https://i.imgur.com/jhyGjba.jpg">
+<meta property="og:image" content="https://i.imgur.com/ALzevh3.jpg">
+<meta property="og:image" content="https://i.imgur.com/RCLJDIg.jpg">
+<meta property="og:image" content="https://i.imgur.com/e5dIhRY.jpg">
+<meta property="og:updated_time" content="2019-07-12T14:20:05.577Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="18_Dubbo面试题">
+<meta name="twitter:description" content="一、面试点1、Dubbo是什么？Dubbo是阿里巴巴开源的基于 Java 的高性能 RPC 分布式服务框架，现已成为 Apache 基金会孵化项目。 面试官问你如果这个都不清楚，那下面的就没必要问了。 官网：http://dubbo.apache.org 2、为什么要用Dubbo？因为是阿里开源项目，国内很多互联网公司都在用，已经经过很多线上考验。内部使用了 Netty、Zookeeper，保证了">
+<meta name="twitter:image" content="https://i.imgur.com/1ahftVA.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/14/面试_18_Dubbo面试题/">
+
+
+
+
+
+  <title>18_Dubbo面试题 | XieSZ'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XieSZ'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">xieshanzhong的博客小站</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/14/面试_18_Dubbo面试题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieSZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XieSZ'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">18_Dubbo面试题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-14T18:31:20+08:00">
+                2019-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java面试/" itemprop="url" rel="index">
+                    <span itemprop="name">Java面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/01/14/面试_18_Dubbo面试题/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/01/14/面试_18_Dubbo面试题/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、面试点"><a href="#一、面试点" class="headerlink" title="一、面试点"></a>一、<em>面试点</em></h1><h4 id="1、Dubbo是什么？"><a href="#1、Dubbo是什么？" class="headerlink" title="1、Dubbo是什么？"></a>1、Dubbo是什么？</h4><p>Dubbo是阿里巴巴开源的基于 Java 的高性能 RPC 分布式服务框架，现已成为 Apache 基金会孵化项目。</p>
+<p>面试官问你如果这个都不清楚，那下面的就没必要问了。</p>
+<p>官网：<a href="http://dubbo.apache.org" target="_blank" rel="noopener">http://dubbo.apache.org</a></p>
+<h4 id="2、为什么要用Dubbo？"><a href="#2、为什么要用Dubbo？" class="headerlink" title="2、为什么要用Dubbo？"></a>2、为什么要用Dubbo？</h4><p>因为是阿里开源项目，国内很多互联网公司都在用，已经经过很多线上考验。内部使用了 Netty、Zookeeper，保证了高性能高可用性。</p>
+<p>使用 Dubbo 可以将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，可用于提高业务复用灵活扩展，使前端应用能更快速的响应多变的市场需求。</p>
+<p>下面这张图可以很清楚的诠释，最重要的一点是，分布式架构可以承受更大规模的并发流量。</p>
+<p><img src="https://i.imgur.com/1ahftVA.jpg" alt=""></p>
+<p>下面是 Dubbo 的服务治理图。</p>
+<p><img src="https://i.imgur.com/Ova7jdw.jpg" alt=""></p>
+<h4 id="3、Dubbo-和-Spring-Cloud-有什么区别？"><a href="#3、Dubbo-和-Spring-Cloud-有什么区别？" class="headerlink" title="3、Dubbo 和 Spring Cloud 有什么区别？"></a>3、Dubbo 和 Spring Cloud 有什么区别？</h4><p>两个没关联，如果硬要说区别，有以下几点。</p>
+<p>1）通信方式不同</p>
+<p>Dubbo 使用的是 RPC 通信，而 Spring Cloud 使用的是 HTTP RESTFul 方式。</p>
+<p>2）组成部分不同</p>
+<p>组件 | Dubbo | Spring Cloud —-|—-|—- 服务注册中心 | Zookeeper | Spring Cloud Netflix Eureka 服务监控 | Dubbo-monitor | Spring Boot Admin 断路器 | 不完善 | Spring Cloud Netflix Hystrix 服务网关 | 无 | Spring Cloud Netflix Gateway 分布式配置 | 无 | Spring Cloud Config 服务跟踪 | 无 | Spring Cloud Sleuth 消息总线 | 无 | Spring Cloud Bus 数据流 | 无 | Spring Cloud Stream 批量任务 | 无 | Spring Cloud Task … | … | …</p>
+<p>4、dubbo都支持什么协议，推荐用哪种？</p>
+<p>dubbo://（推荐）<br>rmi://<br>hessian://<br>http://<br>webservice://<br>thrift://<br>memcached://<br>redis://<br>rest://</p>
+<h4 id="5、Dubbo需要-Web-容器吗？"><a href="#5、Dubbo需要-Web-容器吗？" class="headerlink" title="5、Dubbo需要 Web 容器吗？"></a>5、Dubbo需要 Web 容器吗？</h4><p>不需要，如果硬要用 Web 容器，只会增加复杂性，也浪费资源。</p>
+<h4 id="6、Dubbo内置了哪几种服务容器？"><a href="#6、Dubbo内置了哪几种服务容器？" class="headerlink" title="6、Dubbo内置了哪几种服务容器？"></a>6、Dubbo内置了哪几种服务容器？</h4><p>Spring Container<br>Jetty Container<br>Log4j Container<br>Dubbo 的服务容器只是一个简单的 Main 方法，并加载一个简单的 Spring 容器，用于暴露服务。</p>
+<h4 id="7、Dubbo里面有哪几种节点角色？"><a href="#7、Dubbo里面有哪几种节点角色？" class="headerlink" title="7、Dubbo里面有哪几种节点角色？"></a>7、Dubbo里面有哪几种节点角色？</h4><p>节点 | 角色说明 —-|—- Provider | 暴露服务的服务提供方 Consumer | 调用远程服务的服务消费方 Registry | 服务注册与发现的注册中心 Monitor | 统计服务的调用次数和调用时间的监控中心 Container | 服务运行容器</p>
+<h4 id="8、画一画服务注册与发现的流程图"><a href="#8、画一画服务注册与发现的流程图" class="headerlink" title="8、画一画服务注册与发现的流程图"></a>8、画一画服务注册与发现的流程图</h4><p><img src="https://i.imgur.com/jhyGjba.jpg" alt=""></p>
+<p>该图来自 Dubbo 官网，供你参考，如果你说你熟悉 Dubbo, 面试官经常会让你画这个图，记好了。</p>
+<h4 id="9、Dubbo默认使用什么注册中心，还有别的选择吗？"><a href="#9、Dubbo默认使用什么注册中心，还有别的选择吗？" class="headerlink" title="9、Dubbo默认使用什么注册中心，还有别的选择吗？"></a>9、Dubbo默认使用什么注册中心，还有别的选择吗？</h4><p>推荐使用 Zookeeper 作为注册中心，还有 Redis、Multicast、Simple 注册中心，但不推荐。</p>
+<h4 id="10、Dubbo有哪几种配置方式？"><a href="#10、Dubbo有哪几种配置方式？" class="headerlink" title="10、Dubbo有哪几种配置方式？"></a>10、Dubbo有哪几种配置方式？</h4><p>1）Spring 配置方式 2）Java API 配置方式</p>
+<h4 id="11、Dubbo-核心的配置有哪些？"><a href="#11、Dubbo-核心的配置有哪些？" class="headerlink" title="11、Dubbo 核心的配置有哪些？"></a>11、Dubbo 核心的配置有哪些？</h4><p>我曾经面试就遇到过面试官让你写这些配置，我也是蒙逼。。</p>
+<p>配置 | 配置说明 —-|—- dubbo:service | 服务配置 dubbo:reference | 引用配置 dubbo:protocol | 协议配置 dubbo:application | 应用配置 dubbo:module | 模块配置 dubbo:registry | 注册中心配置 dubbo:monitor | 监控中心配置 dubbo:provider | 提供方配置 dubbo:consumer | 消费方配置 dubbo:method | 方法配置 dubbo:argument | 参数配置</p>
+<p>配置之间的关系见下图。</p>
+<p><img src="https://i.imgur.com/ALzevh3.jpg" alt=""></p>
+<h4 id="12、在-Provider-上可以配置的-Consumer-端的属性有哪些？"><a href="#12、在-Provider-上可以配置的-Consumer-端的属性有哪些？" class="headerlink" title="12、在 Provider 上可以配置的 Consumer 端的属性有哪些？"></a>12、在 Provider 上可以配置的 Consumer 端的属性有哪些？</h4><p>1）timeout：方法调用超时 2）retries：失败重试次数，默认重试 2 次 3）loadbalance：负载均衡算法，默认随机 4）actives 消费者端，最大并发调用限制</p>
+<h4 id="13、Dubbo启动时如果依赖的服务不可用会怎样？"><a href="#13、Dubbo启动时如果依赖的服务不可用会怎样？" class="headerlink" title="13、Dubbo启动时如果依赖的服务不可用会怎样？"></a>13、Dubbo启动时如果依赖的服务不可用会怎样？</h4><p>Dubbo 缺省会在启动时检查依赖的服务是否可用，不可用时会抛出异常，阻止 Spring 初始化完成，默认 check=”true”，可以通过 check=”false” 关闭检查。</p>
+<h4 id="14、Dubbo推荐使用什么序列化框架，你知道的还有哪些？"><a href="#14、Dubbo推荐使用什么序列化框架，你知道的还有哪些？" class="headerlink" title="14、Dubbo推荐使用什么序列化框架，你知道的还有哪些？"></a>14、Dubbo推荐使用什么序列化框架，你知道的还有哪些？</h4><p>推荐使用Hessian序列化，还有Duddo、FastJson、Java自带序列化。</p>
+<h4 id="15、Dubbo默认使用的是什么通信框架，还有别的选择吗？"><a href="#15、Dubbo默认使用的是什么通信框架，还有别的选择吗？" class="headerlink" title="15、Dubbo默认使用的是什么通信框架，还有别的选择吗？"></a>15、Dubbo默认使用的是什么通信框架，还有别的选择吗？</h4><p>Dubbo 默认使用 Netty 框架，也是推荐的选择，另外内容还集成有Mina、Grizzly。</p>
+<h4 id="16、Dubbo有哪几种集群容错方案，默认是哪种？"><a href="#16、Dubbo有哪几种集群容错方案，默认是哪种？" class="headerlink" title="16、Dubbo有哪几种集群容错方案，默认是哪种？"></a>16、Dubbo有哪几种集群容错方案，默认是哪种？</h4><p>集群容错方案 | 说明 —-|—- Failover Cluster | 失败自动切换，自动重试其它服务器（默认） Failfast Cluster | 快速失败，立即报错，只发起一次调用 Failsafe Cluster | 失败安全，出现异常时，直接忽略 Failback Cluster | 失败自动恢复，记录失败请求，定时重发 Forking Cluster | 并行调用多个服务器，只要一个成功即返回 Broadcast Cluster | 广播逐个调用所有提供者，任意一个报错则报错</p>
+<h4 id="17、Dubbo有哪几种负载均衡策略，默认是哪种？"><a href="#17、Dubbo有哪几种负载均衡策略，默认是哪种？" class="headerlink" title="17、Dubbo有哪几种负载均衡策略，默认是哪种？"></a>17、Dubbo有哪几种负载均衡策略，默认是哪种？</h4><p>负载均衡策略 | 说明 —-|—- Random LoadBalance | 随机，按权重设置随机概率（默认） RoundRobin LoadBalance | 轮询，按公约后的权重设置轮询比率 LeastActive LoadBalance | 最少活跃调用数，相同活跃数的随机 ConsistentHash LoadBalance | 一致性 Hash，相同参数的请求总是发到同一提供者</p>
+<h4 id="18、注册了多个同一样的服务，如果测试指定的某一个服务呢？"><a href="#18、注册了多个同一样的服务，如果测试指定的某一个服务呢？" class="headerlink" title="18、注册了多个同一样的服务，如果测试指定的某一个服务呢？"></a>18、注册了多个同一样的服务，如果测试指定的某一个服务呢？</h4><p>可以配置环境点对点直连，绕过注册中心，将以服务接口为单位，忽略注册中心的提供者列表。</p>
+<h4 id="19、Dubbo支持服务多协议吗？"><a href="#19、Dubbo支持服务多协议吗？" class="headerlink" title="19、Dubbo支持服务多协议吗？"></a>19、Dubbo支持服务多协议吗？</h4><p>Dubbo 允许配置多协议，在不同服务上支持不同协议或者同一服务上同时支持多种协议。</p>
+<h4 id="20、当一个服务接口有多种实现时怎么做？"><a href="#20、当一个服务接口有多种实现时怎么做？" class="headerlink" title="20、当一个服务接口有多种实现时怎么做？"></a>20、当一个服务接口有多种实现时怎么做？</h4><p>当一个接口有多种实现时，可以用 group 属性来分组，服务提供方和消费方都指定同一个 group 即可。</p>
+<h4 id="21、服务上线怎么兼容旧版本？"><a href="#21、服务上线怎么兼容旧版本？" class="headerlink" title="21、服务上线怎么兼容旧版本？"></a>21、服务上线怎么兼容旧版本？</h4><p>可以用版本号（version）过渡，多个不同版本的服务注册到注册中心，版本号不同的服务相互间不引用。这个和服务分组的概念有一点类似。</p>
+<h4 id="22、Dubbo可以对结果进行缓存吗？"><a href="#22、Dubbo可以对结果进行缓存吗？" class="headerlink" title="22、Dubbo可以对结果进行缓存吗？"></a>22、Dubbo可以对结果进行缓存吗？</h4><p>可以，Dubbo 提供了声明式缓存，用于加速热门数据的访问速度，以减少用户加缓存的工作量。</p>
+<h4 id="23、Dubbo服务之间的调用是阻塞的吗？"><a href="#23、Dubbo服务之间的调用是阻塞的吗？" class="headerlink" title="23、Dubbo服务之间的调用是阻塞的吗？"></a>23、Dubbo服务之间的调用是阻塞的吗？</h4><p>默认是同步等待结果阻塞的，支持异步调用。</p>
+<p>Dubbo 是基于 NIO 的非阻塞实现并行调用，客户端不需要启动多线程即可完成并行调用多个远程服务，相对多线程开销较小，异步调用会返回一个 Future 对象。</p>
+<p>异步调用流程图如下。</p>
+<p><img src="https://i.imgur.com/RCLJDIg.jpg" alt=""></p>
+<h4 id="24、Dubbo支持分布式事务吗？"><a href="#24、Dubbo支持分布式事务吗？" class="headerlink" title="24、Dubbo支持分布式事务吗？"></a>24、Dubbo支持分布式事务吗？</h4><p>目前暂时不支持，后续可能采用基于 JTA/XA 规范实现，如以图所示。</p>
+<p><img src="https://i.imgur.com/e5dIhRY.jpg" alt=""></p>
+<h4 id="25、Dubbo-telnet-命令能做什么？"><a href="#25、Dubbo-telnet-命令能做什么？" class="headerlink" title="25、Dubbo telnet 命令能做什么？"></a>25、Dubbo telnet 命令能做什么？</h4><p>dubbo 通过 telnet 命令来进行服务治理，具体使用看这篇文章《dubbo服务调试管理实用命令》。</p>
+<p>telnet localhost 8090</p>
+<h4 id="26、Dubbo支持服务降级吗？"><a href="#26、Dubbo支持服务降级吗？" class="headerlink" title="26、Dubbo支持服务降级吗？"></a>26、Dubbo支持服务降级吗？</h4><p>Dubbo 2.2.0 以上版本支持。</p>
+<h4 id="27、Dubbo如何优雅停机？"><a href="#27、Dubbo如何优雅停机？" class="headerlink" title="27、Dubbo如何优雅停机？"></a>27、Dubbo如何优雅停机？</h4><p>Dubbo 是通过 JDK 的 ShutdownHook 来完成优雅停机的，所以如果使用 kill -9 PID 等强制关闭指令，是不会执行优雅停机的，只有通过 kill PID 时，才会执行。</p>
+<h4 id="28、服务提供者能实现失效踢出是什么原理？"><a href="#28、服务提供者能实现失效踢出是什么原理？" class="headerlink" title="28、服务提供者能实现失效踢出是什么原理？"></a>28、服务提供者能实现失效踢出是什么原理？</h4><p>服务失效踢出基于 Zookeeper 的临时节点原理。</p>
+<h4 id="29、如何解决服务调用链过长的问题？"><a href="#29、如何解决服务调用链过长的问题？" class="headerlink" title="29、如何解决服务调用链过长的问题？"></a>29、如何解决服务调用链过长的问题？</h4><p>Dubbo 可以使用 Pinpoint 和 Apache Skywalking(Incubator) 实现分布式服务追踪，当然还有其他很多方案。</p>
+<h4 id="30、服务读写推荐的容错策略是怎样的？"><a href="#30、服务读写推荐的容错策略是怎样的？" class="headerlink" title="30、服务读写推荐的容错策略是怎样的？"></a>30、服务读写推荐的容错策略是怎样的？</h4><p>读操作建议使用 Failover 失败自动切换，默认重试两次其他服务器。</p>
+<p>写操作建议使用 Failfast 快速失败，发一次调用失败就立即报错。</p>
+<h4 id="31、Dubbo必须依赖的包有哪些？"><a href="#31、Dubbo必须依赖的包有哪些？" class="headerlink" title="31、Dubbo必须依赖的包有哪些？"></a>31、Dubbo必须依赖的包有哪些？</h4><p>Dubbo 必须依赖 JDK，其他为可选。</p>
+<h4 id="32、Dubbo的管理控制台能做什么？"><a href="#32、Dubbo的管理控制台能做什么？" class="headerlink" title="32、Dubbo的管理控制台能做什么？"></a>32、Dubbo的管理控制台能做什么？</h4><p>管理控制台主要包含：路由规则，动态配置，服务降级，访问控制，权重调整，负载均衡，等管理功能。</p>
+<h4 id="33、说说-Dubbo-服务暴露的过程。"><a href="#33、说说-Dubbo-服务暴露的过程。" class="headerlink" title="33、说说 Dubbo 服务暴露的过程。"></a>33、说说 Dubbo 服务暴露的过程。</h4><p>Dubbo 会在 Spring 实例化完 bean 之后，在刷新容器最后一步发布 ContextRefreshEvent 事件的时候，通知实现了 ApplicationListener 的 ServiceBean 类进行回调 onApplicationEvent 事件方法，Dubbo 会在这个方法中调用 ServiceBean 父类 ServiceConfig 的 export 方法，而该方法真正实现了服务的（异步或者非异步）发布。</p>
+<h4 id="34、Dubbo-停止维护了吗？"><a href="#34、Dubbo-停止维护了吗？" class="headerlink" title="34、Dubbo 停止维护了吗？"></a>34、Dubbo 停止维护了吗？</h4><p>2014 年开始停止维护过几年，17 年开始重新维护，并进入了 Apache 项目。</p>
+<h4 id="35、Dubbo-和-Dubbox-有什么区别？"><a href="#35、Dubbo-和-Dubbox-有什么区别？" class="headerlink" title="35、Dubbo 和 Dubbox 有什么区别？"></a>35、Dubbo 和 Dubbox 有什么区别？</h4><p>Dubbox 是继 Dubbo 停止维护后，当当网基于 Dubbo 做的一个扩展项目，如加了服务可 Restful 调用，更新了开源组件等。</p>
+<h4 id="36、你还了解别的分布式框架吗？"><a href="#36、你还了解别的分布式框架吗？" class="headerlink" title="36、你还了解别的分布式框架吗？"></a>36、你还了解别的分布式框架吗？</h4><p>别的还有 Spring cloud、Facebook 的 Thrift、Twitter 的 Finagle 等。</p>
+<h4 id="37、Dubbo-能集成-Spring-Boot-吗？"><a href="#37、Dubbo-能集成-Spring-Boot-吗？" class="headerlink" title="37、Dubbo 能集成 Spring Boot 吗？"></a>37、Dubbo 能集成 Spring Boot 吗？</h4><p>可以的，项目地址如下。</p>
+<p><a href="https://github.com/apache/incubator-dubbo-spring-boot-project" target="_blank" rel="noopener">https://github.com/apache/incubator-dubbo-spring-boot-project</a></p>
+<h4 id="38、在使用过程中都遇到了些什么问题？"><a href="#38、在使用过程中都遇到了些什么问题？" class="headerlink" title="38、在使用过程中都遇到了些什么问题？"></a>38、在使用过程中都遇到了些什么问题？</h4><p>Dubbo 的设计目的是为了满足高并发小数据量的 rpc 调用，在大数据量下的性能表现并不好，建议使用 rmi 或 http 协议。</p>
+<h4 id="39、你读过-Dubbo-的源码吗？"><a href="#39、你读过-Dubbo-的源码吗？" class="headerlink" title="39、你读过 Dubbo 的源码吗？"></a>39、你读过 Dubbo 的源码吗？</h4><p>要了解 Dubbo 就必须看其源码，了解其原理，花点时间看下吧，网上也有很多教程，后续有时间我也会在公众号上分享 Dubbo 的源码。</p>
+<h4 id="40、你觉得用-Dubbo-好还是-Spring-Cloud-好？"><a href="#40、你觉得用-Dubbo-好还是-Spring-Cloud-好？" class="headerlink" title="40、你觉得用 Dubbo 好还是 Spring Cloud 好？"></a>40、你觉得用 Dubbo 好还是 Spring Cloud 好？</h4><p>扩展性的问题，没有好坏，只有适合不适合，不过我好像更倾向于使用 Dubbo, Spring Cloud 版本升级太快，组件更新替换太频繁，配置太繁琐，还有很多我觉得是没有 Dubbo 顺手的地方……</p>
+<h1 id="二、参考链接地址"><a href="#二、参考链接地址" class="headerlink" title="二、参考链接地址"></a>二、<em>参考链接地址</em></h1><p><a href="https://zhuanlan.zhihu.com/p/45846108" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/45846108</a><br><a href="https://www.jianshu.com/p/9d062eceb765" target="_blank" rel="noopener">https://www.jianshu.com/p/9d062eceb765</a><br><a href="https://juejin.im/entry/5b3af5fd518825621d57791a" target="_blank" rel="noopener">https://juejin.im/entry/5b3af5fd518825621d57791a</a><br><a href="https://blog.csdn.net/liyanlei5858/article/details/79236685" target="_blank" rel="noopener">https://blog.csdn.net/liyanlei5858/article/details/79236685</a><br><a href="https://blog.yoodb.com/yoodb/article/detail/1521" target="_blank" rel="noopener">https://blog.yoodb.com/yoodb/article/detail/1521</a><br><a href="http://www.codeseeding.com/portal.php?mod=view&amp;aid=44" target="_blank" rel="noopener">http://www.codeseeding.com/portal.php?mod=view&amp;aid=44</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    XieSZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/01/14/面试_18_Dubbo面试题/" title="18_Dubbo面试题">http://yoursite.com/2019/01/14/面试_18_Dubbo面试题/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/14/面试_17_缓存系统面试题/" rel="next" title="17_缓存系统面试题">
+                <i class="fa fa-chevron-left"></i> 17_缓存系统面试题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/14/面试_19_Zookeeper面试题/" rel="prev" title="19_Zookeeper面试题">
+                19_Zookeeper面试题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieSZ</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到XieSZ的技术分享站~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">164</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xie1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xieshanzhong66@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xie1.github.io/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="hexo" target="_blank">hexo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、面试点"><span class="nav-text">一、面试点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、Dubbo是什么？"><span class="nav-text">1、Dubbo是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、为什么要用Dubbo？"><span class="nav-text">2、为什么要用Dubbo？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、Dubbo-和-Spring-Cloud-有什么区别？"><span class="nav-text">3、Dubbo 和 Spring Cloud 有什么区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、Dubbo需要-Web-容器吗？"><span class="nav-text">5、Dubbo需要 Web 容器吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、Dubbo内置了哪几种服务容器？"><span class="nav-text">6、Dubbo内置了哪几种服务容器？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、Dubbo里面有哪几种节点角色？"><span class="nav-text">7、Dubbo里面有哪几种节点角色？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、画一画服务注册与发现的流程图"><span class="nav-text">8、画一画服务注册与发现的流程图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9、Dubbo默认使用什么注册中心，还有别的选择吗？"><span class="nav-text">9、Dubbo默认使用什么注册中心，还有别的选择吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10、Dubbo有哪几种配置方式？"><span class="nav-text">10、Dubbo有哪几种配置方式？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11、Dubbo-核心的配置有哪些？"><span class="nav-text">11、Dubbo 核心的配置有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12、在-Provider-上可以配置的-Consumer-端的属性有哪些？"><span class="nav-text">12、在 Provider 上可以配置的 Consumer 端的属性有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13、Dubbo启动时如果依赖的服务不可用会怎样？"><span class="nav-text">13、Dubbo启动时如果依赖的服务不可用会怎样？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14、Dubbo推荐使用什么序列化框架，你知道的还有哪些？"><span class="nav-text">14、Dubbo推荐使用什么序列化框架，你知道的还有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15、Dubbo默认使用的是什么通信框架，还有别的选择吗？"><span class="nav-text">15、Dubbo默认使用的是什么通信框架，还有别的选择吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16、Dubbo有哪几种集群容错方案，默认是哪种？"><span class="nav-text">16、Dubbo有哪几种集群容错方案，默认是哪种？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17、Dubbo有哪几种负载均衡策略，默认是哪种？"><span class="nav-text">17、Dubbo有哪几种负载均衡策略，默认是哪种？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18、注册了多个同一样的服务，如果测试指定的某一个服务呢？"><span class="nav-text">18、注册了多个同一样的服务，如果测试指定的某一个服务呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#19、Dubbo支持服务多协议吗？"><span class="nav-text">19、Dubbo支持服务多协议吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20、当一个服务接口有多种实现时怎么做？"><span class="nav-text">20、当一个服务接口有多种实现时怎么做？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#21、服务上线怎么兼容旧版本？"><span class="nav-text">21、服务上线怎么兼容旧版本？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#22、Dubbo可以对结果进行缓存吗？"><span class="nav-text">22、Dubbo可以对结果进行缓存吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#23、Dubbo服务之间的调用是阻塞的吗？"><span class="nav-text">23、Dubbo服务之间的调用是阻塞的吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#24、Dubbo支持分布式事务吗？"><span class="nav-text">24、Dubbo支持分布式事务吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#25、Dubbo-telnet-命令能做什么？"><span class="nav-text">25、Dubbo telnet 命令能做什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#26、Dubbo支持服务降级吗？"><span class="nav-text">26、Dubbo支持服务降级吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#27、Dubbo如何优雅停机？"><span class="nav-text">27、Dubbo如何优雅停机？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#28、服务提供者能实现失效踢出是什么原理？"><span class="nav-text">28、服务提供者能实现失效踢出是什么原理？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#29、如何解决服务调用链过长的问题？"><span class="nav-text">29、如何解决服务调用链过长的问题？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#30、服务读写推荐的容错策略是怎样的？"><span class="nav-text">30、服务读写推荐的容错策略是怎样的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#31、Dubbo必须依赖的包有哪些？"><span class="nav-text">31、Dubbo必须依赖的包有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#32、Dubbo的管理控制台能做什么？"><span class="nav-text">32、Dubbo的管理控制台能做什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#33、说说-Dubbo-服务暴露的过程。"><span class="nav-text">33、说说 Dubbo 服务暴露的过程。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#34、Dubbo-停止维护了吗？"><span class="nav-text">34、Dubbo 停止维护了吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#35、Dubbo-和-Dubbox-有什么区别？"><span class="nav-text">35、Dubbo 和 Dubbox 有什么区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#36、你还了解别的分布式框架吗？"><span class="nav-text">36、你还了解别的分布式框架吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#37、Dubbo-能集成-Spring-Boot-吗？"><span class="nav-text">37、Dubbo 能集成 Spring Boot 吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#38、在使用过程中都遇到了些什么问题？"><span class="nav-text">38、在使用过程中都遇到了些什么问题？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#39、你读过-Dubbo-的源码吗？"><span class="nav-text">39、你读过 Dubbo 的源码吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#40、你觉得用-Dubbo-好还是-Spring-Cloud-好？"><span class="nav-text">40、你觉得用 Dubbo 好还是 Spring Cloud 好？</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#二、参考链接地址"><span class="nav-text">二、参考链接地址</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieSZ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytwYroRX';
+      var conf = 'a1ed94f3fa27338ebcb9c5f114025ca5';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
