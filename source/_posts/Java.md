@@ -4,29 +4,40 @@ date: 2018-11-21 10:17:59
 tags: 结构
 categories: Java基础
 ---
-####一、*思维导图*
-[http://naotu.baidu.com/file/b321382655c8e78fdcc4a5b9a0618b6e](http://naotu.baidu.com/file/b321382655c8e78fdcc4a5b9a0618b6e)
-####二、*总知识点*
-## 1、语法基础
+##一、*思维导图*
+[http://naotu.baidu.com/file/b321382655c8e78fdcc4a5b9a0618b6e?token=6f740a500a0f4b9d](http://naotu.baidu.com/file/b321382655c8e78fdcc4a5b9a0618b6e?token=6f740a500a0f4b9d "Java_整体结构脑图")
+##二、*总知识点*
+###1、语法基础
 
-###1、数据类型
+###1.1、数据类型
 
-#### 1、基本类型
-	整型：byte short int long
-	浮点类型 ： float double
-	boolean
-	char
-#### 2、引用类型
-	 类  接口 数组
-#### 3、字符串
+####1.1.1、基本类型
+	整型： byte short int long
+	浮点型 ： float double
+	布尔型 ： boolean
+	字符型 ：char
+
+	思维扩展：有基本类型-》他们的初始值，大小，相互之间可以进行转换-》包装类及相互转换-》合适选择基本类型或包装类-》基本类型/包装类的源码
+####1.1.2、引用类型
+	类  接口  数组
+
+	思维扩展：这三者概念-》之间的关系
+####1.1.3、字符串
 	String
 
-###2、 基本语法
+	思维扩展：
+	1、String、StringBuffer、StringBuilder三者关系
+	2、String的API（重点理解及应用）
 
-#### 1、运算符
+###1.2、基本语法
+
+####2.1、运算符
 	 自增自减
 #### 2、循环条件
 	 if else while for break
+
+
+
 ## 2、基本特性
 
 ### 1、封装
@@ -244,7 +255,8 @@ categories: Java基础
 		throw 方法体内抛出
 	自定义异常
 	异常链
-####三、*重点知识点实例*
-####四、*参考资料*
-####五、*思维扩展*
-####六、*存在疑问*
+##三、*重点知识点实例*
+##四、*参考资料*
+##五、*思维扩展*
+###1、JDK7、8区别及特性的变化	
+##六、*存在疑问*
