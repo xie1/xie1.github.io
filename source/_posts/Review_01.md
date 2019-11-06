@@ -1,9 +1,11 @@
-@(13_ARTS计划)[Review计划]
+---
+title: Review_01_How to choose the correct Garbage Collector
+date: 2019-11-06 10:49:26
+tags: Review
+categories: Review计划
+---
 
 
-##Review_01_How to choose the correct Garbage Collector
-
-[TOC]
 ###1、[文章地址](http://karunsubramanian.com/websphere/how-to-choose-the-correct-garbage-collector-java-generational-heap-and-garbage-collection-explained/)
 	1、JVM的Java Heap的内存划分
 	2、什么是垃圾回收器及垃圾回收器的种类

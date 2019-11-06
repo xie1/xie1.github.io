@@ -40,10 +40,10 @@ categories: Java基础
 	思维扩展：
 	1、i++或者是++i有什么区别
 	2、主要在i++在多线程的情况的会出现什么问题，从而如何避免等
-	3、
+	
 ####1.4、循环条件
-	 if else while for break
-
+	if else while for break
+		
 
 
 ### 2、基本特性
@@ -105,9 +105,9 @@ categories: Java基础
 	 3、set
 		 HashSet
 
-####5. 2、map
+####5.2、map
 	HashMap
-####5. 3、collections工具类
+####5.3、collections工具类
 ####5.4、comparable接口
 ####5.5、comparator接口
 
@@ -193,13 +193,9 @@ categories: Java基础
 ###8、Java网络编程
 
 ####8.1、 Socket编程
-
 	 网络基础知识
-	
 	 InetAddress类
-	
 	 URL
-	
 	 TCP编程（Sockets）可靠
 		 客户端的Socket类
 		 服务器的ServerSocket类
@@ -236,7 +232,6 @@ categories: Java基础
 
 
 ####9.4、异常
-
 	1、java异常体系结构(Throwable)
 			Error
 			Exception
