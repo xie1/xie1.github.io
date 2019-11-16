@@ -1,6 +1,9 @@
-
-##V_Mysql高级特性
-
+---
+title: Mysql高级特性
+date: 2019-11-16 10:17:59
+tags: 
+categories: 
+---
 ###1、mysql的架构介绍
 ####1.1、Mysql简介
 	1、概述

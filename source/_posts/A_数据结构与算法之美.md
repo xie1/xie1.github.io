@@ -1,5 +1,9 @@
-
-##A_数据结构与算法之美
+---
+title: A_数据结构与算法之美
+date: 2019-11-13 10:17:59
+tags: 
+categories: 数据结构及算法
+---
 
 ![Alt text](./913e0ababe43a2d57267df5c5f0832a7.jpg)
 

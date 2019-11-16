@@ -1,6 +1,11 @@
-
-##P_面试题目_SpringBoot面试题
-
+---
+title: SpringBoot面试题
+date: 2019-11-16 10:17:59
+tags: 
+categories: 
+---
+#一、*思维导图*
+#*总知识点*
 ###1、什么是 Spring Boot？——》已理解
 	SpringBoot是Spring的一个子项目，是Spring组件一站式解决方案，主要简化使用Spring的难度，简化了繁重的配置，提供各种启动器。
 	

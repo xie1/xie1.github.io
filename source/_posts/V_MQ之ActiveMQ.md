@@ -1,4 +1,11 @@
-
+---
+title: MQ之ActiveMQ
+date: 2019-11-16 10:17:59
+tags: 
+categories: 
+---
+#一、*思维导图*
+#*总知识点*
 ##V_MQ之ActiveMQ
 ![Alt text](./1568513205193.png)
 ![Alt text](./1568514251649.png)

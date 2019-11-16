@@ -1,6 +1,11 @@
-
-##S_4_MyBatis补缺专题
-
+---
+title: MyBatis补缺专题
+date: 2019-11-16 10:17:59
+tags: 
+categories: 
+---
+#一、*思维导图*
+#*总知识点*
 ###1、构建SqlSessionFactory过程
 	步骤：
 		1、通过XMLConfigBuilder解析配置XML文件，读出配置参数，将读取的数据存入整个Configuration类中

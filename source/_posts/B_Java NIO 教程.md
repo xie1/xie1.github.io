@@ -1,6 +1,11 @@
-
-##B_Java NIO 教程
-
+---
+title: Java NIO 教程
+date: 2019-11-16 10:17:59
+tags: 
+categories: 
+---
+#一、*思维导图*
+#*总知识点*
 ###1、Java NIO简介
 	1、原IO编程是面向字节流和字符流，而NIO是面向通道和缓冲区，数据总是从通道读到buffer缓冲区（输出），或者从buffer写入通道（输入）
 	2、Java NIO使我们可以进行非阻塞IO操作

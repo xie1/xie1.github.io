@@ -1,6 +1,11 @@
-
-##S_MySQL进阶整理
-
+---
+title: MySQL进阶整理
+date: 2019-11-16 10:17:59
+tags: 
+categories: 
+---
+#一、*思维导图*
+#*总知识点*
 ###一、mysql架构介绍（15分钟、5分钟交流）
 ####1、简介
 	MySQL原本是一个开放源码的关系数据库管理系统，原开发者为瑞典的MySQL AB公司，该公司于2008年被（Sun Microsystems）收购。2009年，甲骨文公司（Oracle）收购昇阳微系统公司，MySQL成为Oracle旗下产品。

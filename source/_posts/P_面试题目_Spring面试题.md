@@ -1,6 +1,11 @@
-
-##P_面试题目_Spring面试题
-
+---
+title: Spring面试题
+date: 2019-11-16 10:17:59
+tags: 
+categories: 
+---
+#一、*思维导图*
+#*总知识点*
 ###1、BeanFactory 和 ApplicationContext 有什么区别？
 	1、BeanFactory：bean的工厂，包含bean的定义，生命周期的控制，调用客户端的初始化方法和销毁方法
 	2、ApplicationContex是beanFactory具体的实现，具有beanFactory的功能，并加入一些高级的功能，如支持国际化文本消息统一资源

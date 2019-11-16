@@ -1,5 +1,11 @@
-
-##S_5_MySQL补缺专题
+---
+title: MySQL补缺专题
+date: 2019-11-16 10:17:59
+tags: 
+categories: 
+---
+#一、*思维导图*
+#*总知识点*
 ###1、索引
 https://www.cnblogs.com/duanxz/p/3799045.html
 ###2、MySQL大表优化方案
