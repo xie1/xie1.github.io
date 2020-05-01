@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT,xiesz">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XieSZ'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、思维导图总知识点1、MyBatis简介1.1、传统的JDBC编程1.2、ORM模型ORM模型都是基于JDBC进行封装 1、hibernate     缺点：         1、全表映射带来的不便，比如更新时需要发送所有字段         2、无法根据不同的条件组装不同的SQLd         3、对夺标关联和复杂的SQL查询支持较差         4、不能有效支持存储过程 2、MyBa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入浅出MyBatis技术原理与实战">
+<meta property="og:url" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/index.html">
+<meta property="og:site_name" content="XieSZ&#39;S BLOG">
+<meta property="og:description" content="一、思维导图总知识点1、MyBatis简介1.1、传统的JDBC编程1.2、ORM模型ORM模型都是基于JDBC进行封装 1、hibernate     缺点：         1、全表映射带来的不便，比如更新时需要发送所有字段         2、无法根据不同的条件组装不同的SQLd         3、对夺标关联和复杂的SQL查询支持较差         4、不能有效支持存储过程 2、MyBa">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558258676822.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558424029986.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558425444533.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558425672551.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558426863354.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558426874318.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558489105079.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558489120328.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558489535476.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558489603034.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558490294124.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558491625344.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558492987273.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558493502184.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558494753634.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558494775426.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558494795513.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558494818225.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558494832748.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558494840209.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558495011688.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558495026406.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558496299195.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558496525456.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558496963559.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558497087655.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558503991315.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558504002657.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558504017174.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558504661187.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558505352073.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558505781753.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558505831729.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558506922844.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507752495.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507775358.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507794599.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507808394.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507824957.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507841577.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507858030.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507890820.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507908728.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507923182.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507951569.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507966709.png">
+<meta property="og:updated_time" content="2019-11-16T10:38:30.017Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入浅出MyBatis技术原理与实战">
+<meta name="twitter:description" content="一、思维导图总知识点1、MyBatis简介1.1、传统的JDBC编程1.2、ORM模型ORM模型都是基于JDBC进行封装 1、hibernate     缺点：         1、全表映射带来的不便，比如更新时需要发送所有字段         2、无法根据不同的条件组装不同的SQLd         3、对夺标关联和复杂的SQL查询支持较差         4、不能有效支持存储过程 2、MyBa">
+<meta name="twitter:image" content="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558258676822.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/">
+
+
+
+
+
+  <title>深入浅出MyBatis技术原理与实战 | XieSZ'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XieSZ'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">xieshanzhong的博客小站</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieSZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XieSZ'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">深入浅出MyBatis技术原理与实战</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-16T10:17:59+08:00">
+                2019-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/11/16/B_深入浅出MyBatis技术原理与实战/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/11/16/B_深入浅出MyBatis技术原理与实战/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><h1 id="总知识点"><a href="#总知识点" class="headerlink" title="总知识点"></a><em>总知识点</em></h1><h3 id="1、MyBatis简介"><a href="#1、MyBatis简介" class="headerlink" title="1、MyBatis简介"></a>1、MyBatis简介</h3><h4 id="1-1、传统的JDBC编程"><a href="#1-1、传统的JDBC编程" class="headerlink" title="1.1、传统的JDBC编程"></a>1.1、传统的JDBC编程</h4><h4 id="1-2、ORM模型"><a href="#1-2、ORM模型" class="headerlink" title="1.2、ORM模型"></a>1.2、ORM模型</h4><pre><code>ORM模型都是基于JDBC进行封装
+1、hibernate
+    缺点：
+        1、全表映射带来的不便，比如更新时需要发送所有字段
+        2、无法根据不同的条件组装不同的SQLd
+        3、对夺标关联和复杂的SQL查询支持较差
+        4、不能有效支持存储过程
+</code></pre><h3 id="2、MyBatis入门"><a href="#2、MyBatis入门" class="headerlink" title="2、MyBatis入门"></a>2、MyBatis入门</h3><h4 id="2-1、MyBatis的基本构成"><a href="#2-1、MyBatis的基本构成" class="headerlink" title="2.1、MyBatis的基本构成"></a>2.1、MyBatis的基本构成</h4><pre><code>1、SqlSessionFactoryBuilder（构造器）：它会根据配置信息或者代码来生成SqlSessionFactory（工厂接口）
+2、SqlSessionFactory：依靠工厂生成SqlSession（会话）
+3、SqlSession ：一个既可以发送SQL去执行并返回结果，也可以获取Mapper的接口
+4、SQL Mapper ：它负责发送SQL去执行，并返回结果
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558258676822.png" alt="Alt text"></p>
+<h5 id="2-1-1、-构建SqlSessionFactory"><a href="#2-1-1、-构建SqlSessionFactory" class="headerlink" title="2.1.1、    构建SqlSessionFactory"></a>2.1.1、    构建SqlSessionFactory</h5><pre><code>提供两个实现类：DefaultSqlSessionFactory和SqlSessionManger(未使用)
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558424029986.png" alt="Alt text"></p>
+<h5 id="2-1-2、-创建SqlSession"><a href="#2-1-2、-创建SqlSession" class="headerlink" title="2.1.2、    创建SqlSession"></a>2.1.2、    创建SqlSession</h5><pre><code>用途：
+    1、获取映射器，让映射器通过命名空间和方法名称找到对应的SQL，发送给数据库执行后返回结果
+    2、直接通过命名信息去执行SQL返回结果。在SqlSession层中我们可以通过update、insert、select、delete等方法
+</code></pre><h5 id="2-1-3、映射器"><a href="#2-1-3、映射器" class="headerlink" title="2.1.3、映射器"></a>2.1.3、映射器</h5><pre><code>1、XML文件配置方式实现Mapper
+2、Java注解方式实现Mapper
+</code></pre><h4 id="2-2、生命周期"><a href="#2-2、生命周期" class="headerlink" title="2.2、生命周期"></a>2.2、生命周期</h4><pre><code>1、SqlSessionFactoryBuilder
+    生命周期值存在方法的局部，生成SqlSessionFactory对象
+2、SqlSessionFactory
+    单例的SqlSessionFactory，SqlSessionFactory是Mybatis应用的整个生命周期
+3、SqlSession
+    是一个会话，相当于JDBC的一个Connection对象，它的生命周期应该是在请求数据库处理事务的过程中。
+4、Mapper
+    它就如同JDBC中的一条SQL语句的执行，最大的范围和SqlSession是相同的。
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558425444533.png" alt="Alt text"></p>
+<h3 id="3、配置"><a href="#3、配置" class="headerlink" title="3、配置"></a>3、配置</h3><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558425672551.png" alt="Alt text"></p>
+<pre><code>了解各配置的用处及属性有哪些
+</code></pre><h3 id="4、映射器"><a href="#4、映射器" class="headerlink" title="4、映射器"></a>4、映射器</h3><h4 id="4-1、映射器的主要元素"><a href="#4-1、映射器的主要元素" class="headerlink" title="4.1、映射器的主要元素"></a>4.1、映射器的主要元素</h4><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558426863354.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558426874318.png" alt="Alt text"></p>
+<h4 id="4-2、select元素"><a href="#4-2、select元素" class="headerlink" title="4.2、select元素"></a>4.2、select元素</h4><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558489105079.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558489120328.png" alt="Alt text"></p>
+<pre><code>1、自动映射
+2、传递多个参数
+    1、使用Map传递参数
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558489535476.png" alt="Alt text"></p>
+<pre><code>    2、使用注解方式传递参数
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558489603034.png" alt="Alt text"></p>
+<pre><code>    3、使用JavaBean传递参数
+
+总结：使用Map传递参数以及废弃。使用@Param注解传递多个参数，当n&lt;=5时可以采用，n&gt;5时可以采用Javabean方式
+3、使用ResultMap映射结果集
+    1、定义一个唯一的标识id，用type属性去定义它对应的是哪个JaveBean
+</code></pre><h4 id="4-3、insert元素"><a href="#4-3、insert元素" class="headerlink" title="4.3、insert元素"></a>4.3、insert元素</h4><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558490294124.png" alt="Alt text"></p>
+<pre><code>1、主键回填和自定义
+    首先我们可以使用keyProperty属性指定哪个是主键字段，同时使用useGeneratedkeys属性高数MyBatis这个主键是否使用数据库内置的策略生成。
+</code></pre><h4 id="4-4、update元素和delete元素"><a href="#4-4、update元素和delete元素" class="headerlink" title="4.4、update元素和delete元素"></a>4.4、update元素和delete元素</h4><h4 id="4-5、参数"><a href="#4-5、参数" class="headerlink" title="4.5、参数"></a>4.5、参数</h4><h5 id="4-5-1、参数配置"><a href="#4-5-1、参数配置" class="headerlink" title="4.5.1、参数配置"></a>4.5.1、参数配置</h5><h5 id="4-5-2、存储过程支持"><a href="#4-5-2、存储过程支持" class="headerlink" title="4.5.2、存储过程支持"></a>4.5.2、存储过程支持</h5><h5 id="4-5-3、特殊字符串替换和处理（-和-）"><a href="#4-5-3、特殊字符串替换和处理（-和-）" class="headerlink" title="4.5.3、特殊字符串替换和处理（#和$）"></a>4.5.3、特殊字符串替换和处理（#和$）</h5><pre><code>1、#（name）在大部分的情况下Mybatis会用创建预编译的语句，然后Mybatis为它设值
+2、$,传递SQL语句本身，而不是SQL所需要的参数
+</code></pre><h4 id="4-6、sql语句"><a href="#4-6、sql语句" class="headerlink" title="4.6、sql语句"></a>4.6、sql语句</h4><h4 id="4-7、resultMap结果映射集"><a href="#4-7、resultMap结果映射集" class="headerlink" title="4.7、resultMap结果映射集"></a>4.7、resultMap结果映射集</h4><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558491625344.png" alt="Alt text"></p>
+<pre><code>1、使用Map存储结果集
+2、使用POJO存储结果集
+3、级联
+    1、association ，代表一对一关系
+    2、collection ，代表一对多的关系
+    3、discriminator,是鉴别器，它可以更加实际选择采用哪个类作为实例，允许你根据特定的条件去关联不同的结果集
+性能问题：
+    1、性能分析和N+1问题
+    2、延迟加载
+</code></pre><h4 id="4-8、缓存cache"><a href="#4-8、缓存cache" class="headerlink" title="4.8、缓存cache"></a>4.8、缓存cache</h4><h5 id="4-8-1、系统缓存（一级缓存和二级缓存）"><a href="#4-8-1、系统缓存（一级缓存和二级缓存）" class="headerlink" title="4.8.1、系统缓存（一级缓存和二级缓存）"></a>4.8.1、系统缓存（一级缓存和二级缓存）</h5><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558492987273.png" alt="Alt text"></p>
+<pre><code>一级缓存是sqlSession
+二级缓存是SqlSessionFactory ，默认是一级缓存
+</code></pre><h5 id="4-8-2、自定义缓存"><a href="#4-8-2、自定义缓存" class="headerlink" title="4.8.2、自定义缓存"></a>4.8.2、自定义缓存</h5><h3 id="5、动态SQL"><a href="#5、动态SQL" class="headerlink" title="5、动态SQL"></a>5、动态SQL</h3><h4 id="5-1、概述"><a href="#5-1、概述" class="headerlink" title="5.1、概述"></a>5.1、概述</h4><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558493502184.png" alt="Alt text"></p>
+<h3 id="6、MyBatis的解析和运行原理"><a href="#6、MyBatis的解析和运行原理" class="headerlink" title="6、MyBatis的解析和运行原理"></a>6、MyBatis的解析和运行原理</h3><h4 id="6-1、涉及到技术难点简介"><a href="#6-1、涉及到技术难点简介" class="headerlink" title="6.1、涉及到技术难点简介"></a>6.1、涉及到技术难点简介</h4><h5 id="6-1-1、反射技术"><a href="#6-1-1、反射技术" class="headerlink" title="6.1.1、反射技术"></a>6.1.1、反射技术</h5><pre><code>    就如同Spring IOC 容器一样，我们可以给很多配置设置参数，使得Java应用程序能够顺利运行，提高了Java的灵活性和可配置性，降低模块之间耦合
+</code></pre><h5 id="6-1-2、JDK动态代理"><a href="#6-1-2、JDK动态代理" class="headerlink" title="6.1.2、JDK动态代理"></a>6.1.2、JDK动态代理</h5><pre><code>JDK的动态代理，是由JDK的java.lang.reflect.*包提供支持：
+    1、编写服务类和接口，这个是真正的服务提供者，在JDK代理中接口是必须的
+    2、编写代理类，提供绑定的代理方法
+JDK的代理最大的缺点是需要提供接口，而Mybatis的Mapper就是一个接口，它采用的就是JDK的动态代理。
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558494753634.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558494775426.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558494795513.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558494818225.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558494832748.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558494840209.png" alt="Alt text"></p>
+<h5 id="6-1-3、CGLIB动态代理"><a href="#6-1-3、CGLIB动态代理" class="headerlink" title="6.1.3、CGLIB动态代理"></a>6.1.3、CGLIB动态代理</h5><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558495011688.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558495026406.png" alt="Alt text"></p>
+<h4 id="6-2、构建SqlSessionFactory过程"><a href="#6-2、构建SqlSessionFactory过程" class="headerlink" title="6.2、构建SqlSessionFactory过程"></a>6.2、构建SqlSessionFactory过程</h4><pre><code>采用建造模式去创建SqlSessionFactory，可以通过SqlSessionFactoryBuilder去构建
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558496299195.png" alt="Alt text"></p>
+<h5 id="6-2-1、构建Configuration"><a href="#6-2-1、构建Configuration" class="headerlink" title="6.2.1、构建Configuration"></a>6.2.1、构建Configuration</h5><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558496525456.png" alt="Alt text"></p>
+<h5 id="6-2-2、映射器的内部组成"><a href="#6-2-2、映射器的内部组成" class="headerlink" title="6.2.2、映射器的内部组成"></a>6.2.2、映射器的内部组成</h5><pre><code>1、MappedStatement，它保存映射器的一个节点（select|insert|delete|update）。包括许多我们配置的SQL、SQL的id、缓存信息、resultMap、parameterType、resultType等重要配置内容
+2、SqlSource，它是提供BoundSql对象的地方，它是MappedStatement的一个属性
+3、BoundSql，它是建立在SQL和参数的地方，它有3个常用属性，SQL、parameterObject、parameterMappings
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558496963559.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558497087655.png" alt="Alt text"></p>
+<h5 id="6-2-3、构建SqlSessionFactory"><a href="#6-2-3、构建SqlSessionFactory" class="headerlink" title="6.2.3、构建SqlSessionFactory"></a>6.2.3、构建SqlSessionFactory</h5><pre><code>sqlSessionFactory = new SqlSessionFactoryBuilder（）.build(inputStream);
+</code></pre><h4 id="6-3、SqlSession运行过程"><a href="#6-3、SqlSession运行过程" class="headerlink" title="6.3、SqlSession运行过程"></a>6.3、SqlSession运行过程</h4><h5 id="6-3-1、映射器的动态代理"><a href="#6-3-1、映射器的动态代理" class="headerlink" title="6.3.1、映射器的动态代理"></a>6.3.1、映射器的动态代理</h5><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558503991315.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558504002657.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558504017174.png" alt="Alt text"></p>
+<h5 id="6-3-2、SqlSession下的四大对象"><a href="#6-3-2、SqlSession下的四大对象" class="headerlink" title="6.3.2、SqlSession下的四大对象"></a>6.3.2、SqlSession下的四大对象</h5><pre><code>Mapper执行过程是通过Executor、StatementHandler、ParameterHandler和ResultHandler来完成数据库操作和结果返回的
+1、Executor代表执行器，由它来调度StatementHandler、ParameterHandler、ResultHandler等来执行对应的SQL
+2、StatementHandler的作用是使用数据库的Statement（PreparedStatement）执行操作
+3、parameterHandler用于SQL对参数的处理
+4、ResultHandler是进行最后数据集（ResultSet）的封装返回处理
+</code></pre><h6 id="6-3-2-1、执行器（Executor）"><a href="#6-3-2-1、执行器（Executor）" class="headerlink" title="6.3.2.1、执行器（Executor）"></a>6.3.2.1、执行器（Executor）</h6><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558504661187.png" alt="Alt text"></p>
+<pre><code>Mybatis是如何创建执行器？
+</code></pre><h6 id="6-3-2-2、数据库会话器（StatementHandler）"><a href="#6-3-2-2、数据库会话器（StatementHandler）" class="headerlink" title="6.3.2.2、数据库会话器（StatementHandler）"></a>6.3.2.2、数据库会话器（StatementHandler）</h6><pre><code>Mybatis是如何创建数据库会话器？
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558505352073.png" alt="Alt text"></p>
+<h6 id="6-3-2-3、参数处理器（parameterHandler）"><a href="#6-3-2-3、参数处理器（parameterHandler）" class="headerlink" title="6.3.2.3、参数处理器（parameterHandler）"></a>6.3.2.3、参数处理器（parameterHandler）</h6><pre><code>对预编译语句进行参数设置
+</code></pre><h6 id="6-3-2-4、结果处理器（ResultHandler）"><a href="#6-3-2-4、结果处理器（ResultHandler）" class="headerlink" title="6.3.2.4、结果处理器（ResultHandler）"></a>6.3.2.4、结果处理器（ResultHandler）</h6><pre><code>组装结果集返回
+</code></pre><h5 id="6-3-3、SqlSession运行总结"><a href="#6-3-3、SqlSession运行总结" class="headerlink" title="6.3.3、SqlSession运行总结"></a>6.3.3、SqlSession运行总结</h5><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558505781753.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558505831729.png" alt="Alt text"></p>
+<h3 id="7、插件（暂定学习）"><a href="#7、插件（暂定学习）" class="headerlink" title="7、插件（暂定学习）"></a>7、插件（暂定学习）</h3><pre><code>我们有机会在四大对象调度的时候插入我们的额代码去执行一些特殊的要求以满足特殊的场景需求，这便是Mybatis的插件技术
+</code></pre><h4 id="7-1、插件接口"><a href="#7-1、插件接口" class="headerlink" title="7.1、插件接口"></a>7.1、插件接口</h4><h3 id="8、MyBatis-Spring"><a href="#8、MyBatis-Spring" class="headerlink" title="8、MyBatis-Spring"></a>8、MyBatis-Spring</h3><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558506922844.png" alt="Alt text"></p>
+<pre><code>配置MyBatis-Spring分为下面几部分：
+    1、配置数据源
+    2、配置SqlSessionFactory
+    3、配置SqlSessionTemplate
+    4、配置Mapper
+    5、事务处理
+
+在MyBatis 中要构建SqlSessionFactory对象，让它来产生SqlSession，而在Mybatis-Spring项目中SqlSession的使用是通过SqlSessionTemplate来实现的，它提供了对SqlSession操作的封装。所以通过SqlSessionTemplate可以得到Mapper.
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507752495.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507775358.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507794599.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507808394.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507824957.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507841577.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507858030.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507890820.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507908728.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507923182.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507951569.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/1558507966709.png" alt="Alt text"></p>
+<h3 id="9、使用场景（暂定学习）"><a href="#9、使用场景（暂定学习）" class="headerlink" title="9、使用场景（暂定学习）"></a>9、使用场景（暂定学习）</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    XieSZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/" title="深入浅出MyBatis技术原理与实战">http://yoursite.com/2019/11/16/B_深入浅出MyBatis技术原理与实战/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/16/B_领域驱动设计/" rel="next" title="领域驱动设计">
+                <i class="fa fa-chevron-left"></i> 领域驱动设计
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/16/B_精通Spring4.x/" rel="prev" title="精通Spring4.x">
+                精通Spring4.x <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieSZ</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到XieSZ的技术分享站~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">234</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xie1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xieshanzhong66@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xie1.github.io/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="hexo" target="_blank">hexo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、思维导图"><span class="nav-text">一、思维导图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总知识点"><span class="nav-text">总知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、MyBatis简介"><span class="nav-text">1、MyBatis简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1、传统的JDBC编程"><span class="nav-text">1.1、传统的JDBC编程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2、ORM模型"><span class="nav-text">1.2、ORM模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、MyBatis入门"><span class="nav-text">2、MyBatis入门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1、MyBatis的基本构成"><span class="nav-text">2.1、MyBatis的基本构成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1、-构建SqlSessionFactory"><span class="nav-text">2.1.1、    构建SqlSessionFactory</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2、-创建SqlSession"><span class="nav-text">2.1.2、    创建SqlSession</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-3、映射器"><span class="nav-text">2.1.3、映射器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2、生命周期"><span class="nav-text">2.2、生命周期</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、配置"><span class="nav-text">3、配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、映射器"><span class="nav-text">4、映射器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1、映射器的主要元素"><span class="nav-text">4.1、映射器的主要元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2、select元素"><span class="nav-text">4.2、select元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3、insert元素"><span class="nav-text">4.3、insert元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4、update元素和delete元素"><span class="nav-text">4.4、update元素和delete元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5、参数"><span class="nav-text">4.5、参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-5-1、参数配置"><span class="nav-text">4.5.1、参数配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-5-2、存储过程支持"><span class="nav-text">4.5.2、存储过程支持</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-5-3、特殊字符串替换和处理（-和-）"><span class="nav-text">4.5.3、特殊字符串替换和处理（#和$）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6、sql语句"><span class="nav-text">4.6、sql语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-7、resultMap结果映射集"><span class="nav-text">4.7、resultMap结果映射集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-8、缓存cache"><span class="nav-text">4.8、缓存cache</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-8-1、系统缓存（一级缓存和二级缓存）"><span class="nav-text">4.8.1、系统缓存（一级缓存和二级缓存）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-8-2、自定义缓存"><span class="nav-text">4.8.2、自定义缓存</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、动态SQL"><span class="nav-text">5、动态SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1、概述"><span class="nav-text">5.1、概述</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、MyBatis的解析和运行原理"><span class="nav-text">6、MyBatis的解析和运行原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1、涉及到技术难点简介"><span class="nav-text">6.1、涉及到技术难点简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-1-1、反射技术"><span class="nav-text">6.1.1、反射技术</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-1-2、JDK动态代理"><span class="nav-text">6.1.2、JDK动态代理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-1-3、CGLIB动态代理"><span class="nav-text">6.1.3、CGLIB动态代理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2、构建SqlSessionFactory过程"><span class="nav-text">6.2、构建SqlSessionFactory过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2-1、构建Configuration"><span class="nav-text">6.2.1、构建Configuration</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2-2、映射器的内部组成"><span class="nav-text">6.2.2、映射器的内部组成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2-3、构建SqlSessionFactory"><span class="nav-text">6.2.3、构建SqlSessionFactory</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-3、SqlSession运行过程"><span class="nav-text">6.3、SqlSession运行过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-3-1、映射器的动态代理"><span class="nav-text">6.3.1、映射器的动态代理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-3-2、SqlSession下的四大对象"><span class="nav-text">6.3.2、SqlSession下的四大对象</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#6-3-2-1、执行器（Executor）"><span class="nav-text">6.3.2.1、执行器（Executor）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-3-2-2、数据库会话器（StatementHandler）"><span class="nav-text">6.3.2.2、数据库会话器（StatementHandler）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-3-2-3、参数处理器（parameterHandler）"><span class="nav-text">6.3.2.3、参数处理器（parameterHandler）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-3-2-4、结果处理器（ResultHandler）"><span class="nav-text">6.3.2.4、结果处理器（ResultHandler）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-3-3、SqlSession运行总结"><span class="nav-text">6.3.3、SqlSession运行总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、插件（暂定学习）"><span class="nav-text">7、插件（暂定学习）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1、插件接口"><span class="nav-text">7.1、插件接口</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、MyBatis-Spring"><span class="nav-text">8、MyBatis-Spring</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、使用场景（暂定学习）"><span class="nav-text">9、使用场景（暂定学习）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieSZ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytwYroRX';
+      var conf = 'a1ed94f3fa27338ebcb9c5f114025ca5';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT,xiesz">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XieSZ'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、思维导图总知识点1、BeanFactory 和 ApplicationContext 有什么区别？1、BeanFactory：bean的工厂，包含bean的定义，生命周期的控制，调用客户端的初始化方法和销毁方法 2、ApplicationContex是beanFactory具体的实现，具有beanFactory的功能，并加入一些高级的功能，如支持国际化文本消息统一资源 2、BeanFactor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring面试题">
+<meta property="og:url" content="http://yoursite.com/2019/11/16/P_面试题目_Spring面试题/index.html">
+<meta property="og:site_name" content="XieSZ&#39;S BLOG">
+<meta property="og:description" content="一、思维导图总知识点1、BeanFactory 和 ApplicationContext 有什么区别？1、BeanFactory：bean的工厂，包含bean的定义，生命周期的控制，调用客户端的初始化方法和销毁方法 2、ApplicationContex是beanFactory具体的实现，具有beanFactory的功能，并加入一些高级的功能，如支持国际化文本消息统一资源 2、BeanFactor">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Spring面试题/1561349417834.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Spring面试题/1561356408216.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Spring面试题/1561356435922.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Spring面试题/1561358958797.png">
+<meta property="og:updated_time" content="2019-11-16T12:25:50.198Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring面试题">
+<meta name="twitter:description" content="一、思维导图总知识点1、BeanFactory 和 ApplicationContext 有什么区别？1、BeanFactory：bean的工厂，包含bean的定义，生命周期的控制，调用客户端的初始化方法和销毁方法 2、ApplicationContex是beanFactory具体的实现，具有beanFactory的功能，并加入一些高级的功能，如支持国际化文本消息统一资源 2、BeanFactor">
+<meta name="twitter:image" content="http://yoursite.com/2019/11/16/P_面试题目_Spring面试题/1561349417834.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/16/P_面试题目_Spring面试题/">
+
+
+
+
+
+  <title>Spring面试题 | XieSZ'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XieSZ'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">xieshanzhong的博客小站</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/P_面试题目_Spring面试题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieSZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XieSZ'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Spring面试题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-16T10:17:59+08:00">
+                2019-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/11/16/P_面试题目_Spring面试题/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/11/16/P_面试题目_Spring面试题/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><h1 id="总知识点"><a href="#总知识点" class="headerlink" title="总知识点"></a><em>总知识点</em></h1><h3 id="1、BeanFactory-和-ApplicationContext-有什么区别？"><a href="#1、BeanFactory-和-ApplicationContext-有什么区别？" class="headerlink" title="1、BeanFactory 和 ApplicationContext 有什么区别？"></a>1、BeanFactory 和 ApplicationContext 有什么区别？</h3><pre><code>1、BeanFactory：bean的工厂，包含bean的定义，生命周期的控制，调用客户端的初始化方法和销毁方法
+2、ApplicationContex是beanFactory具体的实现，具有beanFactory的功能，并加入一些高级的功能，如支持国际化文本消息统一资源
+</code></pre><h3 id="2、BeanFactory和FactoryBean的区别？"><a href="#2、BeanFactory和FactoryBean的区别？" class="headerlink" title="2、BeanFactory和FactoryBean的区别？"></a>2、BeanFactory和FactoryBean的区别？</h3><pre><code>1、BeanFactory是个Factory，也就是IoC容器或对象工厂，在Spring中，所有的Bean都是由BeanFactory来进行管理的，提供实例化对象和拿对象的功能
+2、FactoryBean是一个Bean,这个Bean是一个能生产或者修饰对象生成的工厂Bean，它的实现设计模式中的工厂模式和装饰器模式一样。
+</code></pre><h3 id="3、IoC和DI是什么？"><a href="#3、IoC和DI是什么？" class="headerlink" title="3、IoC和DI是什么？"></a>3、IoC和DI是什么？</h3><pre><code>控制反转是就是应用本身不负责依赖对象的创建和维护,依赖对象的创建及维护是由外部容器负责的,这样控制权就有应用转移到了外部容器,控制权的转移就是控制反转。
+</code></pre><h3 id="4、Spring-IoC的理解，其初始化过程——》待理解？"><a href="#4、Spring-IoC的理解，其初始化过程——》待理解？" class="headerlink" title="4、Spring IoC的理解，其初始化过程——》待理解？"></a>4、Spring IoC的理解，其初始化过程——》待理解？</h3><pre><code>Resource资源定位,这个Resouce指的是BeanDefinition的资源定位,这个过程就是容器找数据的过程。
+BeanDefinition的载入过程,这个载入过程是把用户定义好的Bean表示成Ioc容器内部的数据结构，而这个容器内部的数据结构就是BeanDefition。
+向IOC容器注册这些BeanDefinition的过程,这个过程就是将前面的BeanDefition保存到HashMap中的过程。
+
+Resource定位
+我们一般使用外部资源来描述Bean对象，所以IOC容器第一步就是需要定位Resource外部资源。Resource的定位其实就是BeanDefinition的资源定位，它是由ResourceLoader通过统一的Resource接口来完成的，这个Resource对各种形式的BeanDefinition的使用都提供了统一接口。
+
+载入
+第二个过程就是BeanDefinition的载入,BeanDefinitionReader读取,解析Resource定位的资源，也就是将用户定义好的Bean表示成IOC容器的内部数据结构也就是BeanDefinition,在IOC容器内部维护着一个BeanDefinition Map的数据结构，通过这样的数据结构，IOC容器能够对Bean进行更好的管理。
+
+在配置文件中每一个&lt;bean&gt;都对应着一个BeanDefinition对象。
+
+注册
+第三个过程则是注册，即向IOC容器注册这些BeanDefinition，这个过程是通过BeanDefinitionRegistery接口来实现的。
+
+在IOC容器内部其实是将第二个过程解析得到的BeanDefinition注入到一个HashMap容器中，IOC容器就是通过这个HashMap来维护这些BeanDefinition的。
+
+上面提到的过程一般是不包括Bean的依赖注入的实现，Bean的载入和依赖注入是两个独立的过程，依赖注入是发生在应用第一次调用getBean向容器所要Bean时。
+
+当然我们可以通过设置预处理，即对某个Bean设置lazyinit属性，那么这个Bean的依赖注入就会在容器初始化的时候完成。
+
+经过这 (Resource定位,载入,注册)三个步骤，IOC容器的初始化过程就已经完成了。
+</code></pre><h3 id="5、Spring-框架中Bean的生命周期？—》重点"><a href="#5、Spring-框架中Bean的生命周期？—》重点" class="headerlink" title="5、Spring 框架中Bean的生命周期？—》重点"></a>5、Spring 框架中Bean的生命周期？—》重点</h3><p><img src="//yoursite.com/2019/11/16/P_面试题目_Spring面试题/1561349417834.png" alt="Alt text"></p>
+<pre><code>概括来说主要有四个阶段：实例化，初始化，使用，销毁
+ApplicationContext容器中，Bean的生命周期流程如上图所示，流程大致如下：
+
+1.首先容器启动后，会对scope为singleton且非懒加载的bean进行实例化，
+
+2.按照Bean定义信息配置信息，注入所有的属性，
+
+&lt;!-----实例化------&gt;    
+
+3.如果Bean实现了BeanNameAware接口，会回调该接口的setBeanName()方法，传入该Bean的id，此时该Bean就获得了自己在配置文件中的id，
+
+4.如果Bean实现了BeanFactoryAware接口,会回调该接口的setBeanFactory()方法，传入该Bean的BeanFactory，这样该Bean就获得了自己所在的BeanFactory，
+
+5.如果Bean实现了ApplicationContextAware接口,会回调该接口的setApplicationContext()方法，传入该Bean的ApplicationContext，这样该Bean就获得了自己所在的ApplicationContext，
+
+&lt;!-----初始化------&gt;    
+
+6.如果有Bean实现了BeanPostProcessor接口，则会回调该接口的postProcessBeforeInitialzation()方法，
+
+7.如果Bean实现了InitializingBean接口，则会回调该接口的afterPropertiesSet()方法，
+
+8.如果Bean配置了init-method方法，则会执行init-method配置的方法，
+
+9.如果有Bean实现了BeanPostProcessor接口，则会回调该接口的postProcessAfterInitialization()方法，
+
+&lt;!-----初始化------&gt;    
+
+
+10.经过流程9之后，就可以正式使用该Bean了,对于scope为singleton的Bean,Spring的ioc容器中会缓存一份该bean的实例，而对于scope为prototype的Bean,每次被调用都会new一个新的对象，期生命周期就交给调用方管理了，不再是Spring容器进行管理了
+
+11.容器关闭后，如果Bean实现了DisposableBean接口，则会回调该接口的destroy()方法，
+
+12.如果Bean配置了destroy-method方法，则会执行destroy-method配置的方法，至此，整个Bean的生命周期结束
+</code></pre><h3 id="6、Spring-AOP实现原理？"><a href="#6、Spring-AOP实现原理？" class="headerlink" title="6、Spring AOP实现原理？"></a>6、Spring AOP实现原理？</h3><pre><code>1、JDK动态代理和CGLiB动态代理的实现
+</code></pre><h3 id="7、Spring-是如何管理实务的，事务管理机制？"><a href="#7、Spring-是如何管理实务的，事务管理机制？" class="headerlink" title="7、Spring 是如何管理实务的，事务管理机制？"></a>7、Spring 是如何管理实务的，事务管理机制？</h3><p><img src="//yoursite.com/2019/11/16/P_面试题目_Spring面试题/1561356408216.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Spring面试题/1561356435922.png" alt="Alt text"></p>
+<h3 id="8、Spring-的不同事务传播行为有哪些，干什么用的？"><a href="#8、Spring-的不同事务传播行为有哪些，干什么用的？" class="headerlink" title="8、Spring 的不同事务传播行为有哪些，干什么用的？"></a>8、Spring 的不同事务传播行为有哪些，干什么用的？</h3><p><img src="//yoursite.com/2019/11/16/P_面试题目_Spring面试题/1561358958797.png" alt="Alt text"></p>
+<h3 id="9、Spring是如何保证Controller并发安全？"><a href="#9、Spring是如何保证Controller并发安全？" class="headerlink" title="9、Spring是如何保证Controller并发安全？"></a>9、Spring是如何保证Controller并发安全？</h3><pre><code>使用ThreadLocal来保存类变量，将类变量保存在线程的变量域中，让不同的请求隔离开来
+</code></pre><h3 id="10、其他面试题-》再过过"><a href="#10、其他面试题-》再过过" class="headerlink" title="10、其他面试题-》再过过"></a>10、其他面试题-》再过过</h3><pre><code>1、代理模式相关问题
+为什么需要代理模式？
+讲讲静态代理模式的优点及其瓶颈？
+对Java 接口代理模式的实现原理的理解？
+如何使用 Java 反射实现动态代理？
+Java 接口代理模式的指定增强？
+谈谈对Cglib 类增强动态代理的实现？
+
+2、Spring AOP相关问题
+什么是 AOP？
+point cut，advice，Join point是什么？
+join point 和 point cut 的区别？
+怎么理解面向切面编程的切面？
+谈谈对SpringAOP Weaving（织入）的理解？
+谈谈SpringAOP Introduction（引入）的理解？
+讲解OOP与AOP的简单对比？
+讲解JDK 动态代理和 CGLIB 代理原理以及区别？
+讲解Spring 框架中基于 Schema 的 AOP 实现原理？
+讲解Spring 框架中如何基于 AOP 实现的事务管理？
+
+3、Spring IOC相关问题
+什么是 IOC？
+谈谈对控制反转的设计思想的理解？
+怎么理解 Spring IOC 容器？
+Spring 中有多少种 IOC 容器？
+Spring IOC 怎么管理 Bean 之间的依赖关系，怎么避免循环依赖？
+对Spring IOC 容器的依赖注入的理解？
+说说对Spring IOC 的单例模式和高级特性？
+BeanFactory 和 FactoryBean 有什么区别，BeanFactory 和 ApplicationContext 又有什么不同？
+Spring 在 Bean 创建过程中是如何解决循环依赖的？
+谈谈Spring Bean 创建过程中的设计模式？
+
+4、注解相关问题
+注解是一种什么样的编程思想？
+为何能够直接使用@Autowired进行依赖注入？是如何工作的？
+Spring 是如何通过@AutoWired 自动注入 Bean 属性和 Map，List 集合的？
+@Required 是如何起到检查xml里面属性有没有被配置的？
+Spring 框架是如何把标注@Component 的 Bean 注入到容器？
+@Configuration，@ComponentScan,@Import，@Bean 注解是是如何工作的？
+使用@PropertySource 引入配置文件，那么配置文件里面的配置是如何被注册到 Spring 环境里面的？
+讲解如何通过自定义注解实现一个简单的树形文档生成？
+
+5、事务相关问题
+在 XML 里面配置了一个 SqlSessionFactoryBean 后，其究竟做了什么？
+在 XML 里面配置了一个 MapperScannerConfigurer 后，其究竟做了什么?
+在执行 Mapper 接口的查询方法后，发生了什么？
+&lt;tx:advice/&gt;、&lt;aop:config&gt; 标签如何创建事务切面的？
+标签添加后为何就可以使用注解式事务了？
+为什么会报 Transaction rolled back because it has been marked as rollback-only 异常？
+Transactional 注解是否可以加在 private、protected 方法上？
+事务的传播属性到底有什么用，嵌套事务到底又是怎么一回事？
+为什么抛出了异常，事务却没有回滚？
+Spring 事务是如何保证线程安全的？
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    XieSZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/11/16/P_面试题目_Spring面试题/" title="Spring面试题">http://yoursite.com/2019/11/16/P_面试题目_Spring面试题/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/16/P_面试题目_分布式系统面试题/" rel="next" title="分布式系统面试题">
+                <i class="fa fa-chevron-left"></i> 分布式系统面试题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/16/P_面试题目_SpringBoot面试题/" rel="prev" title="SpringBoot面试题">
+                SpringBoot面试题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieSZ</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到XieSZ的技术分享站~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">234</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xie1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xieshanzhong66@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xie1.github.io/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="hexo" target="_blank">hexo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、思维导图"><span class="nav-text">一、思维导图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总知识点"><span class="nav-text">总知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、BeanFactory-和-ApplicationContext-有什么区别？"><span class="nav-text">1、BeanFactory 和 ApplicationContext 有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、BeanFactory和FactoryBean的区别？"><span class="nav-text">2、BeanFactory和FactoryBean的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、IoC和DI是什么？"><span class="nav-text">3、IoC和DI是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、Spring-IoC的理解，其初始化过程——》待理解？"><span class="nav-text">4、Spring IoC的理解，其初始化过程——》待理解？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、Spring-框架中Bean的生命周期？—》重点"><span class="nav-text">5、Spring 框架中Bean的生命周期？—》重点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、Spring-AOP实现原理？"><span class="nav-text">6、Spring AOP实现原理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、Spring-是如何管理实务的，事务管理机制？"><span class="nav-text">7、Spring 是如何管理实务的，事务管理机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、Spring-的不同事务传播行为有哪些，干什么用的？"><span class="nav-text">8、Spring 的不同事务传播行为有哪些，干什么用的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、Spring是如何保证Controller并发安全？"><span class="nav-text">9、Spring是如何保证Controller并发安全？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10、其他面试题-》再过过"><span class="nav-text">10、其他面试题-》再过过</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieSZ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytwYroRX';
+      var conf = 'a1ed94f3fa27338ebcb9c5f114025ca5';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

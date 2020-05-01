@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT,xiesz">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XieSZ'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、思维导图总知识点V_数据结构与算法基础一、概述1、数据结构概述1、什么是数据结构 2、数据存储结构     1、顺序存储结构     2、链式存储结构 3、数据的逻辑结构     1、集合结构     2、线性结构     3、树形结构     4、图形结构 2、算法概述1、算法的定义 2、算法的特性     1、输入     2、输出     3、有穷性     4、确定性     5、可行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法基础">
+<meta property="og:url" content="http://yoursite.com/2019/11/16/V_数据结构与算法基础/index.html">
+<meta property="og:site_name" content="XieSZ&#39;S BLOG">
+<meta property="og:description" content="一、思维导图总知识点V_数据结构与算法基础一、概述1、数据结构概述1、什么是数据结构 2、数据存储结构     1、顺序存储结构     2、链式存储结构 3、数据的逻辑结构     1、集合结构     2、线性结构     3、树形结构     4、图形结构 2、算法概述1、算法的定义 2、算法的特性     1、输入     2、输出     3、有穷性     4、确定性     5、可行">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-16T13:20:08.487Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构与算法基础">
+<meta name="twitter:description" content="一、思维导图总知识点V_数据结构与算法基础一、概述1、数据结构概述1、什么是数据结构 2、数据存储结构     1、顺序存储结构     2、链式存储结构 3、数据的逻辑结构     1、集合结构     2、线性结构     3、树形结构     4、图形结构 2、算法概述1、算法的定义 2、算法的特性     1、输入     2、输出     3、有穷性     4、确定性     5、可行">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/16/V_数据结构与算法基础/">
+
+
+
+
+
+  <title>数据结构与算法基础 | XieSZ'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XieSZ'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">xieshanzhong的博客小站</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/V_数据结构与算法基础/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieSZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XieSZ'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据结构与算法基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-16T10:17:59+08:00">
+                2019-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/11/16/V_数据结构与算法基础/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/11/16/V_数据结构与算法基础/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><h1 id="总知识点"><a href="#总知识点" class="headerlink" title="总知识点"></a><em>总知识点</em></h1><h2 id="V-数据结构与算法基础"><a href="#V-数据结构与算法基础" class="headerlink" title="V_数据结构与算法基础"></a>V_数据结构与算法基础</h2><h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><h4 id="1、数据结构概述"><a href="#1、数据结构概述" class="headerlink" title="1、数据结构概述"></a>1、数据结构概述</h4><pre><code>1、什么是数据结构
+2、数据存储结构
+    1、顺序存储结构
+    2、链式存储结构
+3、数据的逻辑结构
+    1、集合结构
+    2、线性结构
+    3、树形结构
+    4、图形结构
+</code></pre><h4 id="2、算法概述"><a href="#2、算法概述" class="headerlink" title="2、算法概述"></a>2、算法概述</h4><pre><code>1、算法的定义
+2、算法的特性
+    1、输入
+    2、输出
+    3、有穷性
+    4、确定性
+    5、可行性
+3、算法的基本要求
+    1、正确性
+    2、可读性
+    3、健壮性
+    4、时间复杂度
+    5、空间复杂度
+</code></pre><h3 id="二、线性结构"><a href="#二、线性结构" class="headerlink" title="二、线性结构"></a>二、线性结构</h3><h4 id="顺序存储结构"><a href="#顺序存储结构" class="headerlink" title="顺序存储结构"></a>顺序存储结构</h4><h4 id="1、数组"><a href="#1、数组" class="headerlink" title="1、数组"></a>1、数组</h4><h5 id="1-1、数组的基本使用"><a href="#1-1、数组的基本使用" class="headerlink" title="1.1、数组的基本使用"></a>1.1、数组的基本使用</h5><pre><code>1、使用
+public class TestOpArray {
+    public static void main(String[] args) {
+        int[] arr = new int[]{9,8,7,6,5,4,3};
+        System.out.println(Arrays.toString(arr));
+
+        // 定义一个需要删除的下标
+        int dst = 3;
+
+        //定义一个新数组
+        int[] newArr = new int[arr.length-1];
+
+        for (int i = 0; i &lt; newArr.length; i++) {
+        //保留dst之前的数组元素
+            if (i &lt; dst){
+                newArr[i] = arr[i];
+            }else {
+                newArr[i] = arr[i+1];
+            }
+        }
+        // 重新赋给arr
+        arr = newArr;
+        System.out.println(Arrays.toString(arr));
+    }
+}
+
+2、添加
+3、删除
+</code></pre><h5 id="1-2、面向对象的数组"><a href="#1-2、面向对象的数组" class="headerlink" title="1.2、面向对象的数组"></a>1.2、面向对象的数组</h5><h5 id="1-3、数组的有序性"><a href="#1-3、数组的有序性" class="headerlink" title="1.3、数组的有序性"></a>1.3、数组的有序性</h5><h5 id="1-4、查找法"><a href="#1-4、查找法" class="headerlink" title="1.4、查找法"></a>1.4、查找法</h5><pre><code>1、线性查找
+2、二分法查找
+    // 二分法
+    public class TestBinarySearch {
+        public static void main(String[] args) {
+        //定义有序的数组
+            int[] arr = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+        //定义需要查找的数
+            int target = 9;
+
+        // 开始的下标为0
+            int start = 0;
+        //结束的下标
+            int end = arr.length - 1;
+        //中间的下标
+            int mid = (start + end) / 2;
+
+            int index = -1;
+
+            for (int i = 0; i &lt; arr.length; i++) {
+                if (arr[mid] == target) {
+                    index = mid;
+                    break;
+                } else {
+                    // 大于
+                    if (arr[mid] &gt; target) {
+                        end = mid - 1;
+
+                    } else {
+                        start = mid + 1;
+                    }
+                    mid = (start + end) / 2;
+                }
+            }
+            System.out.println(&quot;index--&gt;&quot; + index);
+
+        }
+    }
+</code></pre><h4 id="2、栈"><a href="#2、栈" class="headerlink" title="2、栈"></a>2、栈</h4><pre><code>1、栈的内部实现的结构是数组
+2、栈的方法包括
+    1、入栈
+    2、出栈
+    3、查看栈顶元素
+    4、判断是否为空
+
+public class MyStack {
+
+    private int[] elements;
+
+    public MyStack() {
+        elements = new int[0];
+
+    }
+
+//入栈
+    public void push(int element) {
+        int[] newArr = new int[elements.length + 1];
+
+        for (int i = 0; i &lt; elements.length; i++) {
+            newArr[i] = elements[i];
+        }
+        newArr[newArr.length-1] = element;
+
+        elements = newArr;
+    }
+
+
+    //取出栈顶元素
+    public int pop() throws Exception {
+        if (elements.length==0){
+            throw new Exception();
+        }
+        // 取出最大下标值
+        int pop = elements[elements.length - 1];
+        // 创建一个新的数组
+        int[] newArr = new int[elements.length - 1];
+//重新赋值
+        for (int i = 0; i &lt; elements.length - 1; i++) {
+            newArr[i] = elements[i];
+        }
+        elements = newArr;
+        return pop;
+    }
+
+    public int peek(){
+        return elements[elements.length-1];
+    }
+}
+</code></pre><h4 id="3、队列"><a href="#3、队列" class="headerlink" title="3、队列"></a>3、队列</h4><pre><code>1、队列的内部实现的结构是数组
+2、队列的方法包括
+    1、入队
+    2、出队
+    3、判断是否为空
+public class MyQueue {
+
+    private int[] elements;
+
+public MyQueue(){
+    elements = new int[0];
+}
+
+
+public void add(int element){
+    int[] newArr = new int[elements.length + 1];
+    for (int i = 0; i &lt; elements.length; i++) {
+        newArr[i] = elements[i];
+    }
+    newArr[newArr.length-1] = element;
+    elements = newArr;
+}
+
+public int pool(){
+    int pool = elements[0];
+    int[] newArr = new int[elements.length-1];
+    for (int i = 0; i &lt; elements.length-1; i++) {
+        newArr[i] = elements[i+1];
+    }
+    elements = newArr;
+    return  pool;
+    }
+ }
+</code></pre><h4 id="链式存储结构"><a href="#链式存储结构" class="headerlink" title="链式存储结构"></a>链式存储结构</h4><h4 id="4、单链表"><a href="#4、单链表" class="headerlink" title="4、单链表"></a>4、单链表</h4><pre><code>1、链表初始化
+2、单链表的新增
+3、单链表中删除
+
+public class Node {
+
+    private int data;
+
+    // 下一个节点
+    Node next;
+
+    public  Node(int data){
+        this.data = data;
+    }
+
+    // 为节点追回节点
+    public void append(Node node){
+        Node currentNode = this;
+        // 循环向后找
+        while (true){
+            // 取出下一个节点
+            Node nextNode = currentNode.next;
+
+            // 如果下一个节点为null，当前节点已经是最后一个节点
+            if (nextNode == null){
+                break;
+            }
+
+            // 赋值当前节点
+            currentNode = nextNode;
+        }
+        // 把需要追回的节点追加为找到的当前节点的下一个节点
+        currentNode.next = node;
+    }
+
+    // 获取下一个节点
+    public Node next(){
+        return this.next;
+    }
+
+
+    public int getData(){
+        return this.data;
+    }
+
+    // 删除结点
+    public void removeNode(){
+        // 取出下下个节点
+        Node newNode = next.next;
+        // 当前节点的下一个节点
+        this.next = newNode;
+    }
+
+    // 新增结点
+    public void after(Node node){
+        // 获取下一结点
+        Node nextNextNode = this.next;
+        // 当前节点的下一个节点为新增结点
+        this.next = node;
+        node.next = nextNextNode;
+    }
+}
+</code></pre><h4 id="5、循环链表"><a href="#5、循环链表" class="headerlink" title="5、循环链表"></a>5、循环链表</h4><pre><code>类似于单链表，只不过是尾指针指向首结点
+</code></pre><h4 id="6、双链表"><a href="#6、双链表" class="headerlink" title="6、双链表"></a>6、双链表</h4><pre><code>循环双向链表
+</code></pre><h4 id="7、递归"><a href="#7、递归" class="headerlink" title="7、递归"></a>7、递归</h4><pre><code>1、概念：在一个方法内部调用该方法本身的编程方法
+2、应用：
+    裴波那契数列   1 1 2 3 5 8
+    汉诺塔问题 
+
+public class TestRecusive {
+
+   public static void main(String[] args) {
+   //print(10);
+
+   //System.out.println(febonacci(3));
+   //System.out.println(febonacci(5));
+
+       hanoi(3,&#39;A&#39;,&#39;B&#39;,&#39;C&#39;);
+   }
+
+   // 递归
+   public static void print(int i) {
+       if (i &gt; 0) {
+
+           System.out.println(i);
+           print(i - 1);
+       }
+   }
+
+
+   // 裴波那契数列
+   public static int febonacci(int i) {
+       if (i == 1 || i == 2) {
+           return 1;
+       } else {
+           return febonacci(i - 1) + febonacci(i - 2);
+       }
+   }
+
+
+  /**
+   *
+        * @param n  共有N个盒子
+        * @param from  开始柱子
+        * @param in   中间柱子
+        * @param to   目的柱子
+        */
+       public static void  hanoi(int n , char from , char in , char to){
+           // 只有一个盘子
+           if (n == 1){
+               System.out.println(&quot;第一个盘子&quot;+from + &quot;移动&quot;+to);
+           }else {
+               // 除了最下面的一个盘子外，全部的看成一个盘子
+               hanoi(n-1,from , to , in);
+               System.out.println(&quot;第&quot;+n+&quot;个盘子从&quot;+from + &quot;移动&quot;+to);
+               // 把最上面的盘子从中间移动到目标位置
+               hanoi(n-1,in,from,to);
+           }
+       }
+    }
+</code></pre><h4 id="8、排序算法"><a href="#8、排序算法" class="headerlink" title="8、排序算法"></a>8、排序算法</h4><h4 id="8-1、时间复杂度和空间复杂度概述"><a href="#8-1、时间复杂度和空间复杂度概述" class="headerlink" title="8.1、时间复杂度和空间复杂度概述"></a>8.1、时间复杂度和空间复杂度概述</h4><h4 id="8-2、8种常用排序算法"><a href="#8-2、8种常用排序算法" class="headerlink" title="8.2、8种常用排序算法"></a>8.2、8种常用排序算法</h4><h4 id="1、交换排序"><a href="#1、交换排序" class="headerlink" title="1、交换排序"></a>1、交换排序</h4><h5 id="1-1、冒泡排序"><a href="#1-1、冒泡排序" class="headerlink" title="1.1、冒泡排序"></a>1.1、冒泡排序</h5><pre><code>/**
+     * 冒泡排序
+     */
+    public class BubbleSort {
+
+        public static void main(String[] args) {
+            int[] arr = {2, 6, 1, 4, 0, 8, 19, 7};
+
+            System.out.println(Arrays.toString(arr));
+            bubbleSort(arr);
+            System.out.println(Arrays.toString(arr));
+        }
+
+
+        /**
+         * 冒泡排序
+         * 2,6,1,4,0,8,19,7  共比较arr.length-1轮
+         * 第一轮：2,6,1,4,0,8,19,7   2,1,6,4,0,8,19,7 。。。。
+         *
+         * @param arr
+         */
+        private static void bubbleSort(int[] arr) {
+            // 控制轮数
+            for (int i = 0; i &lt; arr.length - 1; i++) {
+                // 控制每一轮的里面比较的次数
+                for (int j = 0; j &lt; arr.length - 1 - i; j++) {
+                    if (arr[j] &gt; arr[j + 1]) {
+                        // 交换
+                        int temp = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = temp;
+                    }
+                }
+            }
+        }
+    }
+</code></pre><h5 id="1-2、快速排序"><a href="#1-2、快速排序" class="headerlink" title="1.2、快速排序"></a>1.2、快速排序</h5><pre><code>public class QuickSort {
+    public static void main(String[] args) {
+
+        int[] arr = {4, 2, 45, 12, 3, 1, 2, 10, 14, 15};
+
+        quickSort(arr, 0, arr.length - 1);
+
+        System.out.println(Arrays.toString(arr));
+    }
+
+    /**
+     * 快速排序
+     *
+     * @param arr
+     * @param i
+     * @param i1
+     */
+    private static void quickSort(int[] arr, int start, int end) {
+        if (start &lt; end) {
+            // 寻找一个标准数
+            int stard = arr[start];
+
+            // 低位指针
+            int low = start;
+
+            // 高位指针
+            int high = end;
+
+            while (low &lt; high) {
+                // 右边的数比标准数大
+                while (low &lt; high &amp;&amp; stard &lt;= arr[high]) {
+                    high--;
+                }
+                // 用右边的数字替换左边的数
+                arr[low] = arr[high];
+
+                while (low &lt; high &amp;&amp; arr[low] &lt;= stard) {
+                    low++;
+                }
+                // 不然替换到高位
+                arr[high] = arr[low];
+            }
+            // 重复赋值给两个指针重合的地方
+            arr[low] = stard;
+            // 递归处理小的数组
+            quickSort(arr, start, low);
+            // 递归处理大的数组
+            quickSort(arr, low + 1, end);
+        }
+
+    }
+}
+</code></pre><h4 id="2、插入排序"><a href="#2、插入排序" class="headerlink" title="2、插入排序"></a>2、插入排序</h4><h5 id="2-1、直接插入排序"><a href="#2-1、直接插入排序" class="headerlink" title="2.1、直接插入排序"></a>2.1、直接插入排序</h5><pre><code>public class InsertSort {
+    public static void main(String[] args) {
+
+        int[] arr = {5, 7, 9, 2, 3, 1, 10, 8};
+
+        // 插入排序
+        insertSort(arr);
+
+        System.out.println(Arrays.toString(arr));
+    }
+
+    /**
+     * 插入排序
+     *
+     * @param arr
+     */
+    private static void insertSort(int[] arr) {
+        // 从第二位开始遍历
+        for (int i = 1; i &lt; arr.length; i++) {
+            // 当前元素比前一元素小
+            if (arr[i] &lt; arr[i - 1]) {
+                // 把当前的元素的存入临时变量
+                int temp = arr[i];
+                int j;
+                // 遍历当前数字前面所有的数字(没有理解)
+                for (j = i-1; j &gt;= 0 &amp;&amp; temp &lt; arr[j]; j--) {
+                    // 把前一个数字赋给后一个数字
+                    arr[j + 1] = arr[j];
+                }
+                arr[j+1] = temp;
+            }
+        }
+    }
+
+}
+</code></pre><h5 id="2-2、希尔排序-未理解"><a href="#2-2、希尔排序-未理解" class="headerlink" title="2.2、希尔排序(未理解)"></a>2.2、希尔排序(未理解)</h5><pre><code>    public class ShellSort {
+
+    public static void main(String[] args) {
+        int[] arr = new int[]{3, 5, 2, 7, 8, 1, 2, 0, 4, 7, 4, 3, 8};
+
+        System.out.println(&quot;排序之前：&quot; + Arrays.toString(arr));
+
+        shellSort(arr);
+
+        System.out.println(&quot;排序之后：&quot; + Arrays.toString(arr));
+
+
+    }
+
+    /**
+     * 希尔排序
+     *
+     * @param arr
+     */
+    private static void shellSort(int[] arr) {
+        int k = 1;
+        // 遍历所有的步长
+        for (int d = arr.length / 2; d &gt; 0; d /= 2) {
+            // 遍历所有的元素
+            for (int i = d; i &lt; arr.length; i++) {
+                for (int j = i - d; j &gt;= 0; j -= d) {
+                    // 如果当前元素大于加上步长后的那个元素
+                    if (arr[j] &gt; arr[j + d]) {
+                        int temp = arr[j];
+                        arr[j] = arr[j + d];
+                        arr[j + d] = temp;
+                    }
+                }
+            }
+            System.out.println(&quot;第&quot; + k + &quot;次排序&quot; + Arrays.toString(arr));
+            k++;
+        }
+
+    }
+}
+</code></pre><h4 id="3、选择排序-未理解"><a href="#3、选择排序-未理解" class="headerlink" title="3、选择排序(未理解)"></a>3、选择排序(未理解)</h4><h5 id="3-1、简单选择排序"><a href="#3-1、简单选择排序" class="headerlink" title="3.1、简单选择排序"></a>3.1、简单选择排序</h5><pre><code>public class SelectSort {
+
+public static void main(String[] args) {
+    int[] arr = new int[]{4, 2, 7, 1, 8, 3, 6, 9};
+
+    selectSort(arr);
+
+    System.out.println(Arrays.toString(arr));
+}
+
+/**
+ * 选择排序
+ * @param arr
+ */
+private static void selectSort(int[] arr) {
+    // 遍历所有的数
+    for (int i = 0; i &lt; arr.length; i++) {
+        int minIndex = i;
+        // 把当前遍历的数和后面的所有数依次进行比较，并记录下最小的数的下标
+        for (int j = i+1;j&lt;arr.length;j++){
+            // 如果后面比较的数比记录的最小数小
+            if (arr[minIndex]&gt;arr[j]){
+                // 记录下最小的那个数的下标
+                minIndex = j;
+            }
+        }
+        // 如果最小的数和当前遍历数的下标不一致，说明下标为minIndex的数比当前遍历的数更小
+        if (i !=minIndex){
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
+}
+</code></pre><p>}</p>
+<h5 id="3-2、堆排序"><a href="#3-2、堆排序" class="headerlink" title="3.2、堆排序"></a>3.2、堆排序</h5><h4 id="4、归并排序-未理解"><a href="#4、归并排序-未理解" class="headerlink" title="4、归并排序(未理解)"></a>4、归并排序(未理解)</h4><h4 id="5、基数排序-未理解"><a href="#5、基数排序-未理解" class="headerlink" title="5、基数排序(未理解)"></a>5、基数排序(未理解)</h4><h5 id="8-3、8种常用算法的对比"><a href="#8-3、8种常用算法的对比" class="headerlink" title="8.3、8种常用算法的对比"></a>8.3、8种常用算法的对比</h5><h3 id="三、树结构"><a href="#三、树结构" class="headerlink" title="三、树结构"></a>三、树结构</h3><h4 id="1、树结构概述"><a href="#1、树结构概述" class="headerlink" title="1、树结构概述"></a>1、树结构概述</h4><pre><code>1、概念：
+    1、根节点
+    2、双亲节点
+    3、字节点
+    4、路径
+    5、节点的度
+    6、节点的权
+    7、叶子节点
+    8、子树
+    9、层
+    10、数的高度
+    11、森林
+</code></pre><h4 id="2、二叉树"><a href="#2、二叉树" class="headerlink" title="2、二叉树"></a>2、二叉树</h4><pre><code>1、概念
+    任何一个结点的子节点数量不超过2
+    二叉树的子节点分为左节点和右节点
+
+    满二叉树：所有的叶子节点都在最后一层，而且节点的总数为2^n-1,n为树的高度
+    完全二叉树：所有的叶子节点都在最后一层或倒数第二层，且最后一层的叶子节点在左边连续，倒数第二节的叶子节点在右边连续 
+2、存储结构
+    1、链式存储二叉树
+        1、创建二叉树
+        2、添加节点
+        3、树的遍历
+            1、前序遍历
+                根节点-左树-右树
+            2、中序遍历
+                左树-根-右树
+            3、后序遍历
+                左树-右树-根
+
+        4、查找节点
+        5、删除节点
+    2、顺序存储二叉树
+</code></pre><h4 id="3、线索二叉树"><a href="#3、线索二叉树" class="headerlink" title="3、线索二叉树"></a>3、线索二叉树</h4><h4 id="4、赫夫曼树"><a href="#4、赫夫曼树" class="headerlink" title="4、赫夫曼树"></a>4、赫夫曼树</h4><h4 id="5、二叉查找树"><a href="#5、二叉查找树" class="headerlink" title="5、二叉查找树"></a>5、二叉查找树</h4><h4 id="6、AVL树"><a href="#6、AVL树" class="headerlink" title="6、AVL树"></a>6、AVL树</h4><h4 id="7、多路查找树"><a href="#7、多路查找树" class="headerlink" title="7、多路查找树"></a>7、多路查找树</h4>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    XieSZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/11/16/V_数据结构与算法基础/" title="数据结构与算法基础">http://yoursite.com/2019/11/16/V_数据结构与算法基础/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/16/V_大型高并发与高可用缓存架构实战/" rel="next" title="大型高并发与高可用缓存架构实战">
+                <i class="fa fa-chevron-left"></i> 大型高并发与高可用缓存架构实战
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/16/V_pigX/" rel="prev" title="V_pigX">
+                V_pigX <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieSZ</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到XieSZ的技术分享站~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">234</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xie1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xieshanzhong66@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xie1.github.io/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="hexo" target="_blank">hexo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、思维导图"><span class="nav-text">一、思维导图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总知识点"><span class="nav-text">总知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#V-数据结构与算法基础"><span class="nav-text">V_数据结构与算法基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、概述"><span class="nav-text">一、概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、数据结构概述"><span class="nav-text">1、数据结构概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、算法概述"><span class="nav-text">2、算法概述</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、线性结构"><span class="nav-text">二、线性结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#顺序存储结构"><span class="nav-text">顺序存储结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1、数组"><span class="nav-text">1、数组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1、数组的基本使用"><span class="nav-text">1.1、数组的基本使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2、面向对象的数组"><span class="nav-text">1.2、面向对象的数组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3、数组的有序性"><span class="nav-text">1.3、数组的有序性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4、查找法"><span class="nav-text">1.4、查找法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、栈"><span class="nav-text">2、栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、队列"><span class="nav-text">3、队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#链式存储结构"><span class="nav-text">链式存储结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、单链表"><span class="nav-text">4、单链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、循环链表"><span class="nav-text">5、循环链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、双链表"><span class="nav-text">6、双链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、递归"><span class="nav-text">7、递归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、排序算法"><span class="nav-text">8、排序算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-1、时间复杂度和空间复杂度概述"><span class="nav-text">8.1、时间复杂度和空间复杂度概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-2、8种常用排序算法"><span class="nav-text">8.2、8种常用排序算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1、交换排序"><span class="nav-text">1、交换排序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1、冒泡排序"><span class="nav-text">1.1、冒泡排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2、快速排序"><span class="nav-text">1.2、快速排序</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、插入排序"><span class="nav-text">2、插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1、直接插入排序"><span class="nav-text">2.1、直接插入排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2、希尔排序-未理解"><span class="nav-text">2.2、希尔排序(未理解)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、选择排序-未理解"><span class="nav-text">3、选择排序(未理解)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1、简单选择排序"><span class="nav-text">3.1、简单选择排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2、堆排序"><span class="nav-text">3.2、堆排序</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、归并排序-未理解"><span class="nav-text">4、归并排序(未理解)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、基数排序-未理解"><span class="nav-text">5、基数排序(未理解)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8-3、8种常用算法的对比"><span class="nav-text">8.3、8种常用算法的对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、树结构"><span class="nav-text">三、树结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、树结构概述"><span class="nav-text">1、树结构概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、二叉树"><span class="nav-text">2、二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、线索二叉树"><span class="nav-text">3、线索二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、赫夫曼树"><span class="nav-text">4、赫夫曼树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、二叉查找树"><span class="nav-text">5、二叉查找树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、AVL树"><span class="nav-text">6、AVL树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、多路查找树"><span class="nav-text">7、多路查找树</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieSZ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytwYroRX';
+      var conf = 'a1ed94f3fa27338ebcb9c5f114025ca5';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

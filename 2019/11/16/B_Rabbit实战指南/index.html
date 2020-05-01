@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT,xiesz">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XieSZ'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、思维导图总知识点1、RabbitMQ简介1.1、什么是消息中间件是利用高效可靠的消息传递进行与平台无关的数据交流，并基于数据通信来进行分布式系统的集成。 两种传递模式：     1、点对点模式（P2P）     2、发布/订阅模式（Pub/Sub）         消息发布者将消息发布到某个主题，而消息订阅者则从主题中订阅消息，在消息一对多广播时使用  1.2、消息中间件作用1、解耦 2、冗余">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rabbit实战指南">
+<meta property="og:url" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/index.html">
+<meta property="og:site_name" content="XieSZ&#39;S BLOG">
+<meta property="og:description" content="一、思维导图总知识点1、RabbitMQ简介1.1、什么是消息中间件是利用高效可靠的消息传递进行与平台无关的数据交流，并基于数据通信来进行分布式系统的集成。 两种传递模式：     1、点对点模式（P2P）     2、发布/订阅模式（Pub/Sub）         消息发布者将消息发布到某个主题，而消息订阅者则从主题中订阅消息，在消息一对多广播时使用  1.2、消息中间件作用1、解耦 2、冗余">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561706075486.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561706748858.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561708341713.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561708350212.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561708209232.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561708363411.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561708384382.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561708492520.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561708868651.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561709451890.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561709744752.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561709901598.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561710253685.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561710583321.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561711435854.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561711573687.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561711589066.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561857694166.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561857864527.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561858143323.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561858781268.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561859151555.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561859778268.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561860143806.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561861096774.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561861351638.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561861465348.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561862146130.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561862370814.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561862465778.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561862482011.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561862725042.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561863024972.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561864007980.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561864215413.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561864397731.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561864704885.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561864982899.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561865515294.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561865666206.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561865949419.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561866066388.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561867029282.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561867045433.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561868002999.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561868121264.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561868143451.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561868303198.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561868428219.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561868438752.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561868476718.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561868494440.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561868658650.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561868750626.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561874053651.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561874468593.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561874783999.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561874980864.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561875168600.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561875268100.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561875995799.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561877490824.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561878289989.png">
+<meta property="og:updated_time" content="2019-11-16T10:35:03.505Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rabbit实战指南">
+<meta name="twitter:description" content="一、思维导图总知识点1、RabbitMQ简介1.1、什么是消息中间件是利用高效可靠的消息传递进行与平台无关的数据交流，并基于数据通信来进行分布式系统的集成。 两种传递模式：     1、点对点模式（P2P）     2、发布/订阅模式（Pub/Sub）         消息发布者将消息发布到某个主题，而消息订阅者则从主题中订阅消息，在消息一对多广播时使用  1.2、消息中间件作用1、解耦 2、冗余">
+<meta name="twitter:image" content="http://yoursite.com/2019/11/16/B_Rabbit实战指南/1561706075486.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/16/B_Rabbit实战指南/">
+
+
+
+
+
+  <title>Rabbit实战指南 | XieSZ'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XieSZ'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">xieshanzhong的博客小站</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/B_Rabbit实战指南/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieSZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XieSZ'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Rabbit实战指南</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-16T10:17:59+08:00">
+                2019-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/11/16/B_Rabbit实战指南/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/11/16/B_Rabbit实战指南/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><h1 id="总知识点"><a href="#总知识点" class="headerlink" title="总知识点"></a><em>总知识点</em></h1><h3 id="1、RabbitMQ简介"><a href="#1、RabbitMQ简介" class="headerlink" title="1、RabbitMQ简介"></a>1、RabbitMQ简介</h3><h4 id="1-1、什么是消息中间件"><a href="#1-1、什么是消息中间件" class="headerlink" title="1.1、什么是消息中间件"></a>1.1、什么是消息中间件</h4><pre><code>是利用高效可靠的消息传递进行与平台无关的数据交流，并基于数据通信来进行分布式系统的集成。
+两种传递模式：
+    1、点对点模式（P2P）
+    2、发布/订阅模式（Pub/Sub）
+        消息发布者将消息发布到某个主题，而消息订阅者则从主题中订阅消息，在消息一对多广播时使用
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561706075486.png" alt="Alt text"></p>
+<h4 id="1-2、消息中间件作用"><a href="#1-2、消息中间件作用" class="headerlink" title="1.2、消息中间件作用"></a>1.2、消息中间件作用</h4><pre><code>1、解耦
+2、冗余（存储）：有些情况下，处理数据的过程会失败，消息中间件可以吧数据进持久化直到它们已经被完全处理。
+3、扩展性：
+4、消峰
+5、可恢复性：当系统一部分组件失效时，不会影响到整个系统。
+6、顺序保证：在大多数使用场景下，数据处理的顺序很重要
+7、缓冲：
+8、异步通信
+</code></pre><h4 id="1-3、RabbitMQ的起源"><a href="#1-3、RabbitMQ的起源" class="headerlink" title="1.3、RabbitMQ的起源"></a>1.3、RabbitMQ的起源</h4><pre><code>是采用Erlang语言实现AMQP（高级消息队列协议）的消息中间件，用于在分布式系统中存储转发消息
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561706748858.png" alt="Alt text"></p>
+<h4 id="1-4、RabbitMQ的安装及简单使用"><a href="#1-4、RabbitMQ的安装及简单使用" class="headerlink" title="1.4、RabbitMQ的安装及简单使用"></a>1.4、RabbitMQ的安装及简单使用</h4><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561708341713.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561708350212.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561708209232.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561708363411.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561708384382.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561708492520.png" alt="Alt text"></p>
+<h3 id="2、RabbitMQ入门"><a href="#2、RabbitMQ入门" class="headerlink" title="2、RabbitMQ入门"></a>2、RabbitMQ入门</h3><h4 id="2-1、相关概念介绍"><a href="#2-1、相关概念介绍" class="headerlink" title="2.1、相关概念介绍"></a>2.1、相关概念介绍</h4><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561708868651.png" alt="Alt text"></p>
+<h5 id="2-1-1、生产者和消费者"><a href="#2-1-1、生产者和消费者" class="headerlink" title="2.1.1、生产者和消费者"></a>2.1.1、生产者和消费者</h5><pre><code>1、Producer：生产者，就是投递消息的一方
+生产者创建消息，然后发布到RabbitMQ中。消息一般可以包括2部分：消息体和标签。消息的标签用来表述这条消息，比如一个交换器的名称和一个路由器。
+2、Consumer：消费者，就是接收消息的一方
+3、Broker：消息中间件的服务节点
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561709451890.png" alt="Alt text"></p>
+<h5 id="2-1-2、队列"><a href="#2-1-2、队列" class="headerlink" title="2.1.2、队列"></a>2.1.2、队列</h5><pre><code>RabbitMQ中消息都只能存储在队列中。
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561709744752.png" alt="Alt text"></p>
+<h5 id="2-1-3、交换器、路由键、绑定"><a href="#2-1-3、交换器、路由键、绑定" class="headerlink" title="2.1.3、交换器、路由键、绑定"></a>2.1.3、交换器、路由键、绑定</h5><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561709901598.png" alt="Alt text"></p>
+<pre><code>1、交换器
+2、RoutingKey：路由键，生产者将消息发给交换器的时候，一般会指定一个RoutingKey，用于来指定这个消息的路由器规则，而这个RoutingKey需要与交换器类型和绑定键联合使用才能最终生效。
+3、Binding:绑定，RabbitMQ中通过绑定将交换器与队列关联起来，在绑定的时候一般会制定一个绑定键。
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561710253685.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561710583321.png" alt="Alt text"></p>
+<h5 id="2-1-4、交换器类型"><a href="#2-1-4、交换器类型" class="headerlink" title="2.1.4、交换器类型"></a>2.1.4、交换器类型</h5><pre><code>1、fanout:
+    它会把所有发送到该交换器的消息路由到所有与该交换器绑定队列中
+2、direct：
+    它会把消息路由到那些Bindingkey和RoutingKey完全匹配的队列中
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561711435854.png" alt="Alt text"></p>
+<pre><code>3、topic
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561711573687.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561711589066.png" alt="Alt text"></p>
+<pre><code>4、headers
+    headers类型的交换器不依赖于路由键的匹配规则来路由消息，而是根据发送的消息内容的heads顺序拧进行匹配。
+</code></pre><h5 id="2-1-5、RabbitMQ运转流程"><a href="#2-1-5、RabbitMQ运转流程" class="headerlink" title="2.1.5、RabbitMQ运转流程"></a>2.1.5、RabbitMQ运转流程</h5><pre><code>1、生产者发送消息的时候：
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561857694166.png" alt="Alt text"></p>
+<pre><code>2、消费者接收消息的过程:
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561857864527.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561858143323.png" alt="Alt text"></p>
+<h4 id="2-2、AMQP协议介绍"><a href="#2-2、AMQP协议介绍" class="headerlink" title="2.2、AMQP协议介绍"></a>2.2、AMQP协议介绍</h4><pre><code>AMQP的模型架构和RabbitMQ的模型是一样的，生产者将消息发送给交换器，交换器和队列绑定。当生产者发送消息时所携带的Rountingkey与BindingKey相匹配时，消息即被存入相应的队列之中。
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561858781268.png" alt="Alt text"></p>
+<h5 id="2-2-1、AMQP生产者流转过程"><a href="#2-2-1、AMQP生产者流转过程" class="headerlink" title="2.2.1、AMQP生产者流转过程"></a>2.2.1、AMQP生产者流转过程</h5><h5 id="2-2-2、AMQP消费者流转过程"><a href="#2-2-2、AMQP消费者流转过程" class="headerlink" title="2.2.2、AMQP消费者流转过程"></a>2.2.2、AMQP消费者流转过程</h5><h4 id="2-3、小结"><a href="#2-3、小结" class="headerlink" title="2.3、小结"></a>2.3、小结</h4><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561859151555.png" alt="Alt text"></p>
+<h3 id="3、客户端开发向导"><a href="#3、客户端开发向导" class="headerlink" title="3、客户端开发向导"></a>3、客户端开发向导</h3><h4 id="3-1、连接RabbitMQ"><a href="#3-1、连接RabbitMQ" class="headerlink" title="3.1、连接RabbitMQ"></a>3.1、连接RabbitMQ</h4><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561859778268.png" alt="Alt text"></p>
+<h4 id="3-2、使用交换器和队列"><a href="#3-2、使用交换器和队列" class="headerlink" title="3.2、使用交换器和队列"></a>3.2、使用交换器和队列</h4><pre><code>交换器和队列是AMQP中high-level层面的构建模块，应用程序需确保在使用它们的时候就已经存在，在使用之前需要先声明（declare）它们。
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561860143806.png" alt="Alt text"></p>
+<h5 id="3-2-1、exchangeDeclare方法详解"><a href="#3-2-1、exchangeDeclare方法详解" class="headerlink" title="3.2.1、exchangeDeclare方法详解"></a>3.2.1、exchangeDeclare方法详解</h5><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561861096774.png" alt="Alt text"></p>
+<h5 id="3-2-2、queueDeclare方法详解"><a href="#3-2-2、queueDeclare方法详解" class="headerlink" title="3.2.2、queueDeclare方法详解"></a>3.2.2、queueDeclare方法详解</h5><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561861351638.png" alt="Alt text"></p>
+<h5 id="3-2-3、queueBind方法详解"><a href="#3-2-3、queueBind方法详解" class="headerlink" title="3.2.3、queueBind方法详解"></a>3.2.3、queueBind方法详解</h5><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561861465348.png" alt="Alt text"></p>
+<h5 id="3-2-4、exchangeBind方法详解"><a href="#3-2-4、exchangeBind方法详解" class="headerlink" title="3.2.4、exchangeBind方法详解"></a>3.2.4、exchangeBind方法详解</h5><pre><code>将交换器与队列绑定，也可以将交换器与交换器绑定。
+</code></pre><h5 id="3-2-5、何时创建"><a href="#3-2-5、何时创建" class="headerlink" title="3.2.5、何时创建"></a>3.2.5、何时创建</h5><h4 id="3-3、发送消息"><a href="#3-3、发送消息" class="headerlink" title="3.3、发送消息"></a>3.3、发送消息</h4><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561862146130.png" alt="Alt text"></p>
+<h4 id="3-4、消费消息"><a href="#3-4、消费消息" class="headerlink" title="3.4、消费消息"></a>3.4、消费消息</h4><pre><code>RabbitMQ的消息模式分两种，推（Push）模式和拉（Pull）模式。推模式采用Basic.Consume进行消费，而拉模式则是调用Basic.Get进行消费
+</code></pre><h5 id="3-4-1、推模式"><a href="#3-4-1、推模式" class="headerlink" title="3.4.1、推模式"></a>3.4.1、推模式</h5><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561862370814.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561862465778.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561862482011.png" alt="Alt text"></p>
+<h5 id="3-4-2、拉模式"><a href="#3-4-2、拉模式" class="headerlink" title="3.4.2、拉模式"></a>3.4.2、拉模式</h5><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561862725042.png" alt="Alt text"></p>
+<h4 id="3-5、消费端的确认与拒绝"><a href="#3-5、消费端的确认与拒绝" class="headerlink" title="3.5、消费端的确认与拒绝"></a>3.5、消费端的确认与拒绝</h4><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561863024972.png" alt="Alt text"></p>
+<pre><code>消费者可以拒绝：
+1、Basic.Reject 命令一次只能拒绝一条信息，如果要拒绝使用Basic.Nack
+</code></pre><h4 id="3-6、关闭连接"><a href="#3-6、关闭连接" class="headerlink" title="3.6、关闭连接"></a>3.6、关闭连接</h4><h3 id="4、RabbitMQ进阶"><a href="#4、RabbitMQ进阶" class="headerlink" title="4、RabbitMQ进阶"></a>4、RabbitMQ进阶</h3><h4 id="4-1、消息何去何从"><a href="#4-1、消息何去何从" class="headerlink" title="4.1、消息何去何从"></a>4.1、消息何去何从</h4><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561864007980.png" alt="Alt text"></p>
+<h5 id="4-1-1、-mandatory参数"><a href="#4-1-1、-mandatory参数" class="headerlink" title="4.1.1、 mandatory参数"></a>4.1.1、 mandatory参数</h5><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561864215413.png" alt="Alt text"></p>
+<h5 id="4-1-2-、immediate参数"><a href="#4-1-2-、immediate参数" class="headerlink" title="4.1.2 、immediate参数"></a>4.1.2 、immediate参数</h5><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561864397731.png" alt="Alt text"></p>
+<h5 id="4-1-3-、备份交换器"><a href="#4-1-3-、备份交换器" class="headerlink" title="4.1.3 、备份交换器"></a>4.1.3 、备份交换器</h5><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561864704885.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561864982899.png" alt="Alt text"></p>
+<h4 id="4-2、过期时间（TTL）"><a href="#4-2、过期时间（TTL）" class="headerlink" title="4.2、过期时间（TTL）"></a>4.2、过期时间（TTL）</h4><h5 id="4-2-1、设置消息的TTL"><a href="#4-2-1、设置消息的TTL" class="headerlink" title="4.2.1、设置消息的TTL"></a>4.2.1、设置消息的TTL</h5><pre><code>1、通过队列属性设置，队列中所有消息都有相同的过期时间，、
+2、对消息本身进行单独的设置。（每条消息是否过期是在即将到消息消费者之前判定的）
+</code></pre><h5 id="4-2-2、设置队列的TTL"><a href="#4-2-2、设置队列的TTL" class="headerlink" title="4.2.2、设置队列的TTL"></a>4.2.2、设置队列的TTL</h5><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561865515294.png" alt="Alt text"></p>
+<h4 id="4-3、死信队列"><a href="#4-3、死信队列" class="headerlink" title="4.3、死信队列"></a>4.3、死信队列</h4><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561865666206.png" alt="Alt text"></p>
+<pre><code>可以用于分析异常的原因
+</code></pre><h4 id="4-4、延迟队列"><a href="#4-4、延迟队列" class="headerlink" title="4.4、延迟队列"></a>4.4、延迟队列</h4><pre><code>延迟队列存储的对象是对应的延迟消息，所谓“延迟消息”是指当消息被发送以后，并不想让消费者立刻拿到消息，而是等待特定的时间后，消费者才能拿到这个消息进行消费。
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561865949419.png" alt="Alt text"></p>
+<pre><code>可以通过DLX和TTL模拟出延迟队列的功能
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561866066388.png" alt="Alt text"></p>
+<h4 id="4-5、优先级队列"><a href="#4-5、优先级队列" class="headerlink" title="4.5、优先级队列"></a>4.5、优先级队列</h4><pre><code>设置优先级
+</code></pre><h4 id="4-6、RPC实现（理解）"><a href="#4-6、RPC实现（理解）" class="headerlink" title="4.6、RPC实现（理解）"></a>4.6、RPC实现（理解）</h4><pre><code>客户端发送请求消息，服务端回复响应的消息。为了接收响应的消息，我们需要在请求消息中发送一个回调队列，可以使用默认队列。
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561867029282.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561867045433.png" alt="Alt text"></p>
+<h4 id="4-7、持久化"><a href="#4-7、持久化" class="headerlink" title="4.7、持久化"></a>4.7、持久化</h4><pre><code>1、交换器的持久化
+2、队列的持久化
+3、消息的持久化
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561868002999.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561868121264.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561868143451.png" alt="Alt text"></p>
+<h4 id="4-8、生产者确认"><a href="#4-8、生产者确认" class="headerlink" title="4.8、生产者确认"></a>4.8、生产者确认</h4><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561868303198.png" alt="Alt text"></p>
+<h5 id="4-8-1、事务机制"><a href="#4-8-1、事务机制" class="headerlink" title="4.8.1、事务机制"></a>4.8.1、事务机制</h5><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561868428219.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561868438752.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561868476718.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561868494440.png" alt="Alt text"></p>
+<h5 id="4-8-2、发送方确认机制"><a href="#4-8-2、发送方确认机制" class="headerlink" title="4.8.2、发送方确认机制"></a>4.8.2、发送方确认机制</h5><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561868658650.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561868750626.png" alt="Alt text"></p>
+<pre><code>建议使用异步的confirm的方式。
+</code></pre><h4 id="4-9、消费端要点介绍"><a href="#4-9、消费端要点介绍" class="headerlink" title="4.9、消费端要点介绍"></a>4.9、消费端要点介绍</h4><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561874053651.png" alt="Alt text"></p>
+<pre><code>1、消息分发
+2、消息顺序性
+3、弃用QueueingConsumer
+</code></pre><h5 id="4-9-1、消息分发"><a href="#4-9-1、消息分发" class="headerlink" title="4.9.1、消息分发"></a>4.9.1、消息分发</h5><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561874468593.png" alt="Alt text"></p>
+<h5 id="4-9-2、消息顺序性"><a href="#4-9-2、消息顺序性" class="headerlink" title="4.9.2、消息顺序性"></a>4.9.2、消息顺序性</h5><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561874783999.png" alt="Alt text"></p>
+<pre><code>解决方法：在业务方法使用RabbitMQ之后做一步的处理，比如在消息体内添加全局有序标识（类似SequenceID）来实现
+</code></pre><h5 id="4-9-3、弃用QueueingConsumer"><a href="#4-9-3、弃用QueueingConsumer" class="headerlink" title="4.9.3、弃用QueueingConsumer"></a>4.9.3、弃用QueueingConsumer</h5><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561874980864.png" alt="Alt text"></p>
+<h4 id="4-10、消息传输保障"><a href="#4-10、消息传输保障" class="headerlink" title="4.10、消息传输保障"></a>4.10、消息传输保障</h4><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561875168600.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561875268100.png" alt="Alt text"></p>
+<h4 id="4-11、小结"><a href="#4-11、小结" class="headerlink" title="4.11、小结"></a>4.11、小结</h4><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561875995799.png" alt="Alt text"></p>
+<h3 id="5、RabbitMQ管理"><a href="#5、RabbitMQ管理" class="headerlink" title="5、RabbitMQ管理"></a>5、RabbitMQ管理</h3><h4 id="5-1、多租户与权限"><a href="#5-1、多租户与权限" class="headerlink" title="5.1、多租户与权限"></a>5.1、多租户与权限</h4><h4 id="5-2、用户管理"><a href="#5-2、用户管理" class="headerlink" title="5.2、用户管理"></a>5.2、用户管理</h4><h4 id="5-3、Web端管理"><a href="#5-3、Web端管理" class="headerlink" title="5.3、Web端管理"></a>5.3、Web端管理</h4><h4 id="5-4、应用与集群管理"><a href="#5-4、应用与集群管理" class="headerlink" title="5.4、应用与集群管理"></a>5.4、应用与集群管理</h4><h4 id="5-5、服务端状态"><a href="#5-5、服务端状态" class="headerlink" title="5.5、服务端状态"></a>5.5、服务端状态</h4><h4 id="5-6、HTTP-API接口管理"><a href="#5-6、HTTP-API接口管理" class="headerlink" title="5.6、HTTP API接口管理"></a>5.6、HTTP API接口管理</h4><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561877490824.png" alt="Alt text"></p>
+<h3 id="6、RabbitMQ配置"><a href="#6、RabbitMQ配置" class="headerlink" title="6、RabbitMQ配置"></a>6、RabbitMQ配置</h3><p><img src="//yoursite.com/2019/11/16/B_Rabbit实战指南/1561878289989.png" alt="Alt text"></p>
+<h4 id="6-1、环境变量"><a href="#6-1、环境变量" class="headerlink" title="6.1、环境变量"></a>6.1、环境变量</h4><h4 id="6-2、配置文件"><a href="#6-2、配置文件" class="headerlink" title="6.2、配置文件"></a>6.2、配置文件</h4><h4 id="6-3、参数及策略"><a href="#6-3、参数及策略" class="headerlink" title="6.3、参数及策略"></a>6.3、参数及策略</h4><h3 id="7、RabbitMQ运维"><a href="#7、RabbitMQ运维" class="headerlink" title="7、RabbitMQ运维"></a>7、RabbitMQ运维</h3><h4 id="7-1、集群搭建"><a href="#7-1、集群搭建" class="headerlink" title="7.1、集群搭建"></a>7.1、集群搭建</h4>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    XieSZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/11/16/B_Rabbit实战指南/" title="Rabbit实战指南">http://yoursite.com/2019/11/16/B_Rabbit实战指南/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/16/B_Redis设计与实现(第二版)/" rel="next" title="Redis设计与实现(第二版)">
+                <i class="fa fa-chevron-left"></i> Redis设计与实现(第二版)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/16/B_Java多线程编程核心技术/" rel="prev" title="Java多线程编程核心技术">
+                Java多线程编程核心技术 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieSZ</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到XieSZ的技术分享站~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">234</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xie1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xieshanzhong66@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xie1.github.io/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="hexo" target="_blank">hexo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、思维导图"><span class="nav-text">一、思维导图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总知识点"><span class="nav-text">总知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、RabbitMQ简介"><span class="nav-text">1、RabbitMQ简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1、什么是消息中间件"><span class="nav-text">1.1、什么是消息中间件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2、消息中间件作用"><span class="nav-text">1.2、消息中间件作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3、RabbitMQ的起源"><span class="nav-text">1.3、RabbitMQ的起源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4、RabbitMQ的安装及简单使用"><span class="nav-text">1.4、RabbitMQ的安装及简单使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、RabbitMQ入门"><span class="nav-text">2、RabbitMQ入门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1、相关概念介绍"><span class="nav-text">2.1、相关概念介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1、生产者和消费者"><span class="nav-text">2.1.1、生产者和消费者</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2、队列"><span class="nav-text">2.1.2、队列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-3、交换器、路由键、绑定"><span class="nav-text">2.1.3、交换器、路由键、绑定</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-4、交换器类型"><span class="nav-text">2.1.4、交换器类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-5、RabbitMQ运转流程"><span class="nav-text">2.1.5、RabbitMQ运转流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2、AMQP协议介绍"><span class="nav-text">2.2、AMQP协议介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-1、AMQP生产者流转过程"><span class="nav-text">2.2.1、AMQP生产者流转过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2、AMQP消费者流转过程"><span class="nav-text">2.2.2、AMQP消费者流转过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3、小结"><span class="nav-text">2.3、小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、客户端开发向导"><span class="nav-text">3、客户端开发向导</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1、连接RabbitMQ"><span class="nav-text">3.1、连接RabbitMQ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2、使用交换器和队列"><span class="nav-text">3.2、使用交换器和队列</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-1、exchangeDeclare方法详解"><span class="nav-text">3.2.1、exchangeDeclare方法详解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-2、queueDeclare方法详解"><span class="nav-text">3.2.2、queueDeclare方法详解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-3、queueBind方法详解"><span class="nav-text">3.2.3、queueBind方法详解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-4、exchangeBind方法详解"><span class="nav-text">3.2.4、exchangeBind方法详解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-5、何时创建"><span class="nav-text">3.2.5、何时创建</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3、发送消息"><span class="nav-text">3.3、发送消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4、消费消息"><span class="nav-text">3.4、消费消息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-1、推模式"><span class="nav-text">3.4.1、推模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-2、拉模式"><span class="nav-text">3.4.2、拉模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5、消费端的确认与拒绝"><span class="nav-text">3.5、消费端的确认与拒绝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6、关闭连接"><span class="nav-text">3.6、关闭连接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、RabbitMQ进阶"><span class="nav-text">4、RabbitMQ进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1、消息何去何从"><span class="nav-text">4.1、消息何去何从</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-1、-mandatory参数"><span class="nav-text">4.1.1、 mandatory参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-2-、immediate参数"><span class="nav-text">4.1.2 、immediate参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-3-、备份交换器"><span class="nav-text">4.1.3 、备份交换器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2、过期时间（TTL）"><span class="nav-text">4.2、过期时间（TTL）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-1、设置消息的TTL"><span class="nav-text">4.2.1、设置消息的TTL</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-2、设置队列的TTL"><span class="nav-text">4.2.2、设置队列的TTL</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3、死信队列"><span class="nav-text">4.3、死信队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4、延迟队列"><span class="nav-text">4.4、延迟队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5、优先级队列"><span class="nav-text">4.5、优先级队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6、RPC实现（理解）"><span class="nav-text">4.6、RPC实现（理解）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-7、持久化"><span class="nav-text">4.7、持久化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-8、生产者确认"><span class="nav-text">4.8、生产者确认</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-8-1、事务机制"><span class="nav-text">4.8.1、事务机制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-8-2、发送方确认机制"><span class="nav-text">4.8.2、发送方确认机制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-9、消费端要点介绍"><span class="nav-text">4.9、消费端要点介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-9-1、消息分发"><span class="nav-text">4.9.1、消息分发</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-9-2、消息顺序性"><span class="nav-text">4.9.2、消息顺序性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-9-3、弃用QueueingConsumer"><span class="nav-text">4.9.3、弃用QueueingConsumer</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-10、消息传输保障"><span class="nav-text">4.10、消息传输保障</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-11、小结"><span class="nav-text">4.11、小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、RabbitMQ管理"><span class="nav-text">5、RabbitMQ管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1、多租户与权限"><span class="nav-text">5.1、多租户与权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2、用户管理"><span class="nav-text">5.2、用户管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3、Web端管理"><span class="nav-text">5.3、Web端管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4、应用与集群管理"><span class="nav-text">5.4、应用与集群管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-5、服务端状态"><span class="nav-text">5.5、服务端状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6、HTTP-API接口管理"><span class="nav-text">5.6、HTTP API接口管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、RabbitMQ配置"><span class="nav-text">6、RabbitMQ配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1、环境变量"><span class="nav-text">6.1、环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2、配置文件"><span class="nav-text">6.2、配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-3、参数及策略"><span class="nav-text">6.3、参数及策略</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、RabbitMQ运维"><span class="nav-text">7、RabbitMQ运维</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1、集群搭建"><span class="nav-text">7.1、集群搭建</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieSZ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytwYroRX';
+      var conf = 'a1ed94f3fa27338ebcb9c5f114025ca5';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

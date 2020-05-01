@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT,xiesz">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XieSZ'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、思维导图总知识点4_Java学习/面试指南之数据库一、MySQL1、数据库系统原理1.1、事务 1、概念：事务是指满足ACID特性的一组操作，可以通过Commit提交一个事务，也可以使用Rollback进行回滚 2、ACID     1、原子性（Atomicity）         事务被视为不可分割的最小单位，事务的所有操作要么全部提交成功，要么全部失败回滚。         回滚可以用回滚">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java学习&#x2F;面试指南之数据库">
+<meta property="og:url" content="http://yoursite.com/2019/11/16/面试指南之数据库/index.html">
+<meta property="og:site_name" content="XieSZ&#39;S BLOG">
+<meta property="og:description" content="一、思维导图总知识点4_Java学习/面试指南之数据库一、MySQL1、数据库系统原理1.1、事务 1、概念：事务是指满足ACID特性的一组操作，可以通过Commit提交一个事务，也可以使用Rollback进行回滚 2、ACID     1、原子性（Atomicity）         事务被视为不可分割的最小单位，事务的所有操作要么全部提交成功，要么全部失败回滚。         回滚可以用回滚">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/t.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/ge.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/h1.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/h2.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/data1.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/111.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/Da1.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/re.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/1562378582035.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/1562378595491.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/1562378605732.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/1562378684109.png">
+<meta property="og:updated_time" content="2019-11-16T13:18:01.990Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java学习&#x2F;面试指南之数据库">
+<meta name="twitter:description" content="一、思维导图总知识点4_Java学习/面试指南之数据库一、MySQL1、数据库系统原理1.1、事务 1、概念：事务是指满足ACID特性的一组操作，可以通过Commit提交一个事务，也可以使用Rollback进行回滚 2、ACID     1、原子性（Atomicity）         事务被视为不可分割的最小单位，事务的所有操作要么全部提交成功，要么全部失败回滚。         回滚可以用回滚">
+<meta name="twitter:image" content="http://yoursite.com/2019/11/16/面试指南之数据库/t.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/16/面试指南之数据库/">
+
+
+
+
+
+  <title>Java学习/面试指南之数据库 | XieSZ'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XieSZ'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">xieshanzhong的博客小站</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/面试指南之数据库/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieSZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XieSZ'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java学习/面试指南之数据库</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-16T10:17:59+08:00">
+                2019-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/11/16/面试指南之数据库/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/11/16/面试指南之数据库/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  29
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><h1 id="总知识点"><a href="#总知识点" class="headerlink" title="总知识点"></a><em>总知识点</em></h1><h2 id="4-Java学习-面试指南之数据库"><a href="#4-Java学习-面试指南之数据库" class="headerlink" title="4_Java学习/面试指南之数据库"></a>4_Java学习/面试指南之数据库</h2><h3 id="一、MySQL"><a href="#一、MySQL" class="headerlink" title="一、MySQL"></a>一、MySQL</h3><h3 id="1、数据库系统原理"><a href="#1、数据库系统原理" class="headerlink" title="1、数据库系统原理"></a>1、数据库系统原理</h3><h4 id="1-1、事务"><a href="#1-1、事务" class="headerlink" title="1.1、事务"></a>1.1、事务</h4><p><img src="//yoursite.com/2019/11/16/面试指南之数据库/t.png" alt="Alt text"></p>
+<pre><code>1、概念：事务是指满足ACID特性的一组操作，可以通过Commit提交一个事务，也可以使用Rollback进行回滚
+2、ACID
+    1、原子性（Atomicity）
+        事务被视为不可分割的最小单位，事务的所有操作要么全部提交成功，要么全部失败回滚。
+        回滚可以用回滚日志来实现，回滚日志记录着事务所执行的修改操作。
+    2、一致性（Consistency）
+        数据库在事务执行前后都保持一致性状态。在一致性状态下，所有事务对一个数据的读取结果都会相同的
+    3、隔离性(Isolation)
+        一个事务所做的修改在最终提交一起，对其他事务都是不可见的。
+    4、持久性(Durability)
+        一旦事务提交，则其所做的修改将会永远保存到数据库中，即使系统崩溃，事务执行结果也不能丢失。使用重做日志来保证持久性
+3、事务进一步解析：
+    1、只有满足一致性，事务执行结果才是正确的
+    2、在无并发情况下，事务串性执行，隔离性一定要能够满足，此时只要满足原子性，就一定能满足一致性
+    3、在并发情况下，多个事务并行执行，事务不仅要满足原子性，还需要满足隔离性，才能一定满足一致性
+4、Mysql默认采用的自动提交模式（AutoCommit），每个查询都会被当做一个事务自动提交。
+</code></pre><h4 id="1-2、并发一致性问题"><a href="#1-2、并发一致性问题" class="headerlink" title="1.2、并发一致性问题"></a>1.2、并发一致性问题</h4><pre><code>主要原因：破坏事务的隔离性，解决方法是通过并发控制来保证隔离性。
+1、丢失数据：T1和T2两个事务都对一个数据进行修改，T1先修改，T2随后修改，T2的修改覆盖T1的修改
+2、读脏数据
+3、不可重复读：T1读取一个数据，T2对该数据做了修改，如果T1再次读取这个数据，此时读取的结果不同
+4、幻影读：T1读取某个范围的数据，T2在这个范围内给你插入新的数据，T1再次读取这个范围的数据，此时读取的结果和第一次读取的结果不同
+</code></pre><h4 id="1-3、封锁"><a href="#1-3、封锁" class="headerlink" title="1.3、封锁"></a>1.3、封锁</h4><pre><code>Mysql提供了两种封锁粒度：行级锁及表级锁。锁的粒度越小，系统开销就越大，并发程度就越高。
+封锁类型：
+    1、读写锁
+        1、排他锁（Exclusive），简写为X锁，又称为写锁
+        2、共享锁（Shared），简写为S锁，又称为读锁
+        有以下规定
+            1、一个事务对数据对象A加了X锁，就可以对A进行读取和更新。加锁期间其他事务补鞥呢对A加任何锁。
+            2、一个事务对数据对象A加了S锁，可以对A进行读取操作，但是不能更新，其他事务也可以加S锁
+    2、意向锁
+        意向锁在原来的X/S锁之上引入IX/IS,IX/IS都是表锁，用来表示一个事务想要在表中的某个数据上加X锁或S锁，有以下规定
+        1、一个事务在获取某个数据行对象的S锁之前，必须先获得表的IS锁或者更强的锁
+        2、一个事务在获得某个数据行对象的X锁之前，必须先获得表的IX锁
+    3、封锁协议
+        1、三级封锁协议
+        2、两段锁协议
+    4、Mysql隐式与显示锁定
+</code></pre><h4 id="1-4、隔离级别"><a href="#1-4、隔离级别" class="headerlink" title="1.4、隔离级别"></a>1.4、隔离级别</h4><pre><code>1、未提交读（read uncommitted）
+    事务中的修改，即使没有提交，对其他的事务也是可见
+2、提交读（read committed）
+    一个事务只能读取已经提交的事务所做的修改，一个事务所做的修改在提交之前对其他事务是不可见
+3、可重复读（repeatable read）
+    保证在同一事务中多次读取同样的数据的结果是一样的。
+4、可串行化
+    强制事务串行执行
+</code></pre><p><img src="//yoursite.com/2019/11/16/面试指南之数据库/ge.png" alt="Alt text"></p>
+<h4 id="1-5、多版本并发控制"><a href="#1-5、多版本并发控制" class="headerlink" title="1.5、多版本并发控制"></a>1.5、多版本并发控制</h4><pre><code>    MVVC是Mysql的InnoDB存储引擎实现隔离级别的一种具体方式。用来实现提交读和可重复读两种隔离级别。而未提交读隔离级别总是读取最新的数据行，无需使用MVVC，可串行化隔离级别需要对读取行都加锁。
+1、版本号：
+    1、系统版本号：是一个递增的数字，每开始一个新的事务，系统版本号就会自动递增
+    2、事务版本号：事务开始时系统版本号
+2、隐藏的列
+    MVVC在每行记录后面都保存着两个隐藏的列，用来存储两个版本号：
+    1、创建版本号：指示创建一个数据行的快照时的系统版本号
+    2、删除版本号：如果该快照的删除版本号大于当前事务版本号表示该快照有效，否则表示该快照已经被删除了
+3、Undo日志：MVVC使用到的快照存储在Undo日志中，该日志通过回滚指针把一个数据行的所有快照连接起来。
+针对可重复读隔离级别实现过程（重点理解）：
+    当开始一个事务时，该事务版本号肯定会大于当前所有数据行快照的创建版本号。
+    1、Select
+    2、insert:将当前系统版本号作为数据行快照的创建版本号
+    3、Delete：将当前系统版本号作为数据行快照的删除版本号
+    4、update：        
+</code></pre><h4 id="1-6、Next-Key-Locks"><a href="#1-6、Next-Key-Locks" class="headerlink" title="1.6、Next-Key Locks"></a>1.6、Next-Key Locks</h4><pre><code>Next-key Locks是Mysql的InnoDB存储引擎的一种锁实现，在可重复读隔离级别下，使用MVVC+Next-Key Locks可以解决幻读的问题
+1、Record Locks： 锁定一个记录上的索引，而不是记录本身
+2、Gap Locks ： 锁定索引之间的间隙，但是不包括索引本身
+3、Next-key Locks 是以上者的结合
+</code></pre><h3 id="2、SQL"><a href="#2、SQL" class="headerlink" title="2、SQL"></a>2、SQL</h3><h4 id="2-1、基础"><a href="#2-1、基础" class="headerlink" title="2.1、基础"></a>2.1、基础</h4><h4 id="2-2、创建表"><a href="#2-2、创建表" class="headerlink" title="2.2、创建表"></a>2.2、创建表</h4><pre><code>CREATE TABLE mytable (
+  id INT NOT NULL AUTO_INCREMENT,
+  col1 INT NOT NULL DEFAULT 1,
+  col2 VARCHAR(45) NULL,
+  col3 DATE NULL,
+  PRIMARY KEY (`id`));
+</code></pre><h4 id="2-3、修改表"><a href="#2-3、修改表" class="headerlink" title="2.3、修改表"></a>2.3、修改表</h4><pre><code> 1、添加列
+     ALTER TABLE mytable ADD col CHAR(20);
+ 2、删除列
+     ALTER TABLE mytable DROP COLUMN col;
+ 3、删除表
+     DROP TABLE mytable;
+</code></pre><h4 id="2-4、插入"><a href="#2-4、插入" class="headerlink" title="2.4、插入"></a>2.4、插入</h4><pre><code>1、普通插入
+    INSERT INTO mytable(col1, col2) VALUES(val1, val2);
+2、插入检索出来的数据
+    INSERT INTO mytable1(col1, col2) SELECT col1, col2 FROM mytable2;
+3、将一个表的内容插入到一个新表
+    CREATE TABLE newtable AS SELECT * FROM mytable;
+</code></pre><h4 id="2-5、更新"><a href="#2-5、更新" class="headerlink" title="2.5、更新"></a>2.5、更新</h4><pre><code>    UPDATE mytable
+    SET col = val
+    WHERE id = 1;
+</code></pre><h4 id="2-6、删除"><a href="#2-6、删除" class="headerlink" title="2.6、删除"></a>2.6、删除</h4><pre><code>    DELETE FROM mytable
+    WHERE id = 1;
+    Truncate table 可以清空表，也就是删除所有行
+</code></pre><h4 id="2-7、查询"><a href="#2-7、查询" class="headerlink" title="2.7、查询"></a>2.7、查询</h4><pre><code>1、distinct ：相同的值只会出现一次，它作用于所有列，也就是说所有列的值相同才算相同
+SELECT DISTINCT col1, col2
+FROM mytable;
+2、limit： 限制返回的行数。
+    SELECT *
+    FROM mytable
+    LIMIT 0, 5;
+</code></pre><h4 id="2-8、排序"><a href="#2-8、排序" class="headerlink" title="2.8、排序"></a>2.8、排序</h4><pre><code>asc ：升序，desc：降序
+    SELECT *
+    FROM mytable
+    ORDER BY col1 DESC, col2 ASC;
+</code></pre><h4 id="2-9、过滤"><a href="#2-9、过滤" class="headerlink" title="2.9、过滤"></a>2.9、过滤</h4><pre><code>    SELECT *
+    FROM mytable
+    WHERE col IS NULL;
+</code></pre><h4 id="2-10、通配符"><a href="#2-10、通配符" class="headerlink" title="2.10、通配符"></a>2.10、通配符</h4><pre><code>通配符也是用在过滤语句中，但它只能用于文本字段
+</code></pre><h4 id="2-11、计算字段"><a href="#2-11、计算字段" class="headerlink" title="2.11、计算字段"></a>2.11、计算字段</h4><pre><code>在数据库服务器上完成数据的转换和格式化的工作往往比客户端上快得多。
+1、SELECT col1 * col2 AS alias FROM mytable;
+2、SELECT CONCAT(TRIM(col1), &#39;(&#39;, TRIM(col2), &#39;)&#39;) AS concat_col FROM mytable;
+</code></pre><h4 id="2-12、函数"><a href="#2-12、函数" class="headerlink" title="2.12、函数"></a>2.12、函数</h4><p><img src="//yoursite.com/2019/11/16/面试指南之数据库/h1.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/面试指南之数据库/h2.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/面试指南之数据库/3.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/面试指南之数据库/4.png" alt="Alt text"></p>
+<h4 id="2-13、分组"><a href="#2-13、分组" class="headerlink" title="2.13、分组"></a>2.13、分组</h4><pre><code>分组就是把相同的数据值得行放在同一组中
+分组规定：
+    1、group by 子句出现在where 子句之后，order by 子句之前
+    2、除了汇总字段外，select 语句中的每一字段都必须group by 子句中给出
+    3、null 的行会单独分为一组
+    4、大多数sql实现不支持group by 列具有可变长度的数据类型
+
+
+    SELECT col, COUNT(*) AS num
+    FROM mytable
+    WHERE col &gt; 2
+    GROUP BY col
+    HAVING num &gt;= 2;
+</code></pre><h4 id="2-14、子查询"><a href="#2-14、子查询" class="headerlink" title="2.14、子查询"></a>2.14、子查询</h4><pre><code>子查询中只返回一个字段的数据
+    SELECT *
+    FROM mytable1
+    WHERE col1 IN (SELECT col2
+                   FROM mytable2);
+</code></pre><h4 id="2-15、连接"><a href="#2-15、连接" class="headerlink" title="2.15、连接"></a>2.15、连接</h4><pre><code>连接用于连接多个表，使用join关键字，而且条件语句使用on而不是where ，连接可以替换子查询，而且比子查询的效率一般会更快
+1、内连接 inner join
+    SELECT A.value, B.value
+    FROM tablea AS A INNER JOIN tableb AS B
+    ON A.key = B.key;
+2、外连接
+    外连接保留没有关联的那些行。分为左外连接，右外连接以及全外连接，左外连接保留左表没有关联的行
+</code></pre><h4 id="2-16、组合查询"><a href="#2-16、组合查询" class="headerlink" title="2.16、组合查询"></a>2.16、组合查询</h4><pre><code>1、使用union来组合两个查询，如果第一个查询返回M行，第二个查询返回N行，那么查询的结果一般为N+M行
+2、每个查询必须包含相同的列，表达式和聚集函数
+3、默认会去掉相同的行，如要保留，union all
+4、只能包含一个order by 子句，而且必须要位于语句的最后
+
+    SELECT col
+    FROM mytable
+    WHERE col = 1
+    UNION
+    SELECT col
+    FROM mytable
+    WHERE col =2;
+</code></pre><h4 id="2-17、视图"><a href="#2-17、视图" class="headerlink" title="2.17、视图"></a>2.17、视图</h4><pre><code>1、视图是虚拟的表，本身不包含数据，也就不能对其进行索引操作。对视图的操作和对普通表的操作一样。
+2、视图具有如下好处：
+    1、简化复杂的 SQL 操作，比如复杂的连接；
+    2、只使用实际表的一部分数据；
+    3、通过只给用户访问视图的权限，保证数据的安全性；
+    4、更改数据格式和表示。
+
+    CREATE VIEW myview AS
+    SELECT Concat(col1, col2) AS concat_col, col3*col4 AS compute_col
+    FROM mytable
+    WHERE col5 = val;
+</code></pre><h4 id="2-18、存储过程"><a href="#2-18、存储过程" class="headerlink" title="2.18、存储过程"></a>2.18、存储过程</h4><pre><code>存储过程可以看成是对一系列 SQL 操作的批处理。
+使用存储过程的好处：
+    1、代码封装，保证了一定的安全性；
+    2、代码复用；
+    3、由于是预先编译，因此具有很高的性能。
+命令行中创建存储过程需要自定义分隔符，因为命令行是以 ; 为结束符，而存储过程中也包含了分号，因此会错误把这部分分号当成是结束符，造成语法错误。
+包含 in、out 和 inout 三种参数。给变量赋值都需要用 select into 语句。
+每次只能给一个变量赋值，不支持集合的操作
+delimiter //
+create procedure myprocedure( out ret int )
+    begin
+        declare y int;
+        select sum(col1)
+        from mytable
+        into y;
+        select y*y into ret;
+    end //
+
+delimiter ;
+
+    call myprocedure(@ret);
+    select @ret;
+</code></pre><h4 id="2-19、游标"><a href="#2-19、游标" class="headerlink" title="2.19、游标"></a>2.19、游标</h4><pre><code>在存储过程中使用游标可以对一个结果集进行移动遍历。
+游标主要用于交互式应用，其中用户需要对数据集中的任意行进行浏览和修改。
+使用游标的四个步骤：
+    1、声明游标，这个过程没有实际检索出数据；
+    2、打开游标；
+    3、取出数据；
+    4、关闭游标；
+
+delimiter //
+create procedure myprocedure(out ret int)
+    begin
+        declare done boolean default 0;
+
+        declare mycursor cursor for
+        select col1 from mytable;
+        # 定义了一个 continue handler，当 sqlstate &#39;02000&#39; 这个条件出现时，会执行 set done = 1
+        declare continue handler for sqlstate &#39;02000&#39; set done = 1;
+
+        open mycursor;
+
+        repeat
+            fetch mycursor into ret;
+            select ret;
+        until done end repeat;
+
+        close mycursor;
+    end //
+ delimiter ;
+</code></pre><h4 id="2-20、触发器"><a href="#2-20、触发器" class="headerlink" title="2.20、触发器"></a>2.20、触发器</h4><h4 id="2-21、事务管理"><a href="#2-21、事务管理" class="headerlink" title="2.21、事务管理"></a>2.21、事务管理</h4><pre><code>基本术语：
+1、事务（transaction）指一组 SQL 语句；
+2、回退（rollback）指撤销指定 SQL 语句的过程；
+3、提交（commit）指将未存储的 SQL 语句结果写入数据库表；
+4、保留点（savepoint）指事务处理中设置的临时占位符（placeholder），你可以对它发布回退（与回退整个事务处理不同）。
+不能回退 SELECT 语句，回退 SELECT 语句也没意义；也不能回退 CREATE 和 DROP 语句
+MySQL 的事务提交默认是隐式提交，每执行一条语句就把这条语句当成一个事务然后进行提交。当出现 START TRANSACTION 语句时，会关闭隐式提交；当 COMMIT 或 ROLLBACK 语句执行后，事务会自动关闭，重新恢复隐式提交。
+通过设置 autocommit 为 0 可以取消自动提交；autocommit 标记是针对每个连接而不是针对服务器的。
+如果没有设置保留点，ROLLBACK 会回退到 START TRANSACTION 语句处；如果设置了保留点，并且在 ROLLBACK 中指定该保留点，则会回退到该保留点
+</code></pre><h4 id="2-22、字符集"><a href="#2-22、字符集" class="headerlink" title="2.22、字符集"></a>2.22、字符集</h4><pre><code>基本术语：
+    1、字符集为字母和符号的集合
+    2、编码为某个字符集成员的内部表示
+    3、校对字符指定如何比较，主要用于排序和分组
+</code></pre><h4 id="2-23、权限管理"><a href="#2-23、权限管理" class="headerlink" title="2.23、权限管理"></a>2.23、权限管理</h4><pre><code>mysql的账户信息保存在mysql这个数据库中
+1、创建账户
+    CREATE USER myuser IDENTIFIED BY &#39;mypassword&#39;;
+2、修改账户名
+    RENAME myuser TO newuser;
+3、删除账户
+    DROP USER myuser;
+4、查看权限
+    SHOW GRANTS FOR myuser;
+5、授予权限
+    账户用 username@host 的形式定义，username@% 使用的是默认主机名
+    GRANT SELECT, INSERT ON mydatabase.* TO myuser;
+6、删除权限
+    GRANT 和 REVOKE 可在几个层次上控制访问权限：
+    整个服务器，使用 GRANT ALL 和 REVOKE ALL；
+    整个数据库，使用 ON database.*；
+    特定的表，使用 ON database.table；
+    特定的列；
+    特定的存储过程
+    REVOKE SELECT, INSERT ON mydatabase.* FROM myuser;
+7、更改密码
+    SET PASSWROD FOR myuser = Password(&#39;new_password&#39;);
+</code></pre><h3 id="3、MySQL"><a href="#3、MySQL" class="headerlink" title="3、MySQL"></a>3、MySQL</h3><h3 id="3-1、MySQL-基础架构分析"><a href="#3-1、MySQL-基础架构分析" class="headerlink" title="3.1、MySQL 基础架构分析"></a>3.1、MySQL 基础架构分析</h3><p><img src="//yoursite.com/2019/11/16/面试指南之数据库/data1.png" alt="Alt text"></p>
+<pre><code>连接器： 身份认证和权限相关(登录 MySQL 的时候)。
+查询缓存: 执行查询语句的时候，会先查询缓存（MySQL 8.0 版本后移除，因为这个功能不太实用）。
+分析器: 没有命中缓存的话，SQL 语句就会经过分析器，分析器说白了就是要先看你的 SQL 语句要干嘛，再检查你的 SQL 语句语法是否正确。
+优化器： 按照 MySQL 认为最优的方案去执行。
+执行器: 执行语句，然后从存储引擎返回数据
+</code></pre><h4 id="1、概览"><a href="#1、概览" class="headerlink" title="1、概览"></a>1、概览</h4><pre><code>1、Server 层：主要包括连接器、查询缓存、分析器、优化器、执行器等，所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图，函数等，还有一个通用的日志模块 binglog 日志模块。
+2、存储引擎： 主要负责数据的存储和读取，采用可以替换的插件式架构，支持 InnoDB、MyISAM、Memory 等多个存储引擎，其中 InnoDB 引擎有自有的日志模块 redolog 模块。现在最常用的存储引擎是 InnoDB，它从 MySQL 5.5.5 版本开始就被当做默认存储引擎了
+</code></pre><h4 id="2、Server层基本组件介绍"><a href="#2、Server层基本组件介绍" class="headerlink" title="2、Server层基本组件介绍"></a>2、Server层基本组件介绍</h4><p><a href="https://snailclimb.gitee.io/javaguide/#/./database/%E4%B8%80%E6%9D%A1sql%E8%AF%AD%E5%8F%A5%E5%9C%A8mysql%E4%B8%AD%E5%A6%82%E4%BD%95%E6%89%A7%E8%A1%8C%E7%9A%84" target="_blank" rel="noopener">一条sql执行过程</a></p>
+<h3 id="3-2、索引"><a href="#3-2、索引" class="headerlink" title="3.2、索引"></a>3.2、索引</h3><p><a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html" target="_blank" rel="noopener">索引</a></p>
+<pre><code>数据库系统采用的B+Tree作为索引结构
+</code></pre><h4 id="1、B-Tree原理"><a href="#1、B-Tree原理" class="headerlink" title="1、B+Tree原理"></a>1、B+Tree原理</h4><p><img src="//yoursite.com/2019/11/16/面试指南之数据库/111.png" alt="Alt text"></p>
+<pre><code>1、数据结构：
+    1、B Tree 指的是Balance Tree，也就是平衡树。平衡树是一种查找树，而且所有的叶子节点位于同一层。
+    2、B+Tree 是基于B Tree 和叶子节点顺序访问指针进行实现，它具有B Tree的平衡性，而且通过顺序访问指针来提供区间查找的性能
+    3、在B+Tree中，一个节点中的key从左到右非递减排列，如果某个指针的左右相邻key分别是keyi和keyi+1，而且不为null，则该指针指向节点的所有key大于等于keyi而且小于等于keyi+1
+2、操作：
+    1、在进行查找操作时，首先在根节点进行二分查找，找到一个key所在的指针，然后递归地在指针所指向的节点进行查找。直到查找到叶子节点，然后在叶子节点上进行二分查找，找出key所对应的data。
+    2、插入删除操作会破坏平衡树的平衡性，因此在插入删除操作之后，需要对数进行一个分裂，合并，旋转等操作
+3、与红黑数的比较
+    1、更少的查找次数
+    2、利用磁盘预读特性
+</code></pre><h4 id="2、MySQL索引"><a href="#2、MySQL索引" class="headerlink" title="2、MySQL索引"></a>2、MySQL索引</h4><pre><code>索引是在存储引擎层实现的，而不是在服务器层实现，所以不同存储引擎具有不同的索引类型和实现
+1、B+Tree索引
+    1、特点：
+        不在需要进行全表扫描，只需要对树进行搜索即可，所以查找速度快很多
+        适用于全键值，键值范围和键前缀查找，其中键前缀查找只适合前缀查找
+    2、InnoDB的B+tree索引分为主索引和辅助索引
+        1、主索引的叶子节点data域记录着完整的数据记录，这种方式也被称为聚族索引，因为无法把数据行存放在两个地方，所以一个表只能有一个聚族索引
+        2、辅助索引的叶子节点的data域记录着主键的值，因此在使用辅助索引进行查找时，需要先查找到主键值，然后再到主索引中进行查找
+2、哈希索引
+    哈希索引能以O（1）时间进行查找，但是失去了有序性
+        1、无法支持拍下与分组
+        2、只支持精确查找，无法用于部分查找和范围查找
+    InnoDB存储引擎有一个特殊的功能叫做“自适应哈希索引”，当某个索引值被使用的非常的经常时，会在B+Tree索引之上再创建一个哈希索引，满足快速查找
+3、全文索引
+    MyISAMc存储引擎支持全文索引，用于查找文本的关键词，而不是直接比较是否相等
+4、空间数据索引
+    MyISAM存储引擎支持空间数据索引，可以用于地理数据存储。空间数据索引会从所有维度来索引数据，可以有效地使用任意维度来进行组合查找
+</code></pre><h4 id="3、索引优化"><a href="#3、索引优化" class="headerlink" title="3、索引优化"></a>3、索引优化</h4><pre><code>1、独立的列
+    在进行查找时，索引列不能是表达式的一部分，也不能是函数的参数，否则无法使用索引
+2、多列索引
+    在需要使用多个列作为条件进行查找时，使用多列索引比使用单个多列索引性能更好
+3、索引列的顺序
+    让选择性最强的索引列放在前面。
+    索引的选择性时指：不重复的索引值和记录总数的比值。最大值为1。
+4、前缀索引
+    对于BLOB、TEXT和VarChar类型的列，必须使用前缀索引，只索引开始的部分字符。
+    对于前缀长度的选取需要根据索引选择性来确定
+5、覆盖索引
+    索引包含所有需要查询的字段的值
+</code></pre><h4 id="4、索引优点"><a href="#4、索引优点" class="headerlink" title="4、索引优点"></a>4、索引优点</h4><pre><code>1、减少了服务器需要扫描的数据行数
+2、帮助服务器避免进行排序和分组，以及避免创建临时表
+3、将随机IO变为顺序IO
+</code></pre><h4 id="5、索引使用条件"><a href="#5、索引使用条件" class="headerlink" title="5、索引使用条件"></a>5、索引使用条件</h4><pre><code>1、非常小的表，大部分可以不使用所有
+2、中到大型表，索引有效
+3、特大型表，考虑使用
+</code></pre><h3 id="3-3、查询性能优化"><a href="#3-3、查询性能优化" class="headerlink" title="3.3、查询性能优化"></a>3.3、查询性能优化</h3><h4 id="1、使用Explain进行分析"><a href="#1、使用Explain进行分析" class="headerlink" title="1、使用Explain进行分析"></a>1、使用Explain进行分析</h4><pre><code>用来分析Select查询语句，开发人员可以通过分析Explain结果来优化查询语句
+    比较重要的字段：
+        1、select_type : 查询类型，简单查询，联合查询，子查询等
+        2、key : 使用索引
+        3、rows ： 扫描的行数
+</code></pre><p><a href="https://segmentfault.com/a/1190000008131735" target="_blank" rel="noopener">执行计划分析</a></p>
+<h4 id="2、优化数据访问"><a href="#2、优化数据访问" class="headerlink" title="2、优化数据访问"></a>2、优化数据访问</h4><pre><code>1、减少请求的数据量
+    1、返回必要的列
+    2、返回必要的行
+    3、缓存重复查询的数据
+2、减少服务器端扫描行数
+    最有效方式使用索引来覆盖查询
+</code></pre><h4 id="3、重构查询方式"><a href="#3、重构查询方式" class="headerlink" title="3、重构查询方式"></a>3、重构查询方式</h4><pre><code>1、切分大查询
+    一个大查询如果一次性执行的话，可能一次锁住很多的数据，占满整个事务日志，耗尽系统资源，阻塞很多小的很重要查询
+2、分解大连接查询
+    将一个大连接查询分解成对每一个表进行一次单表查询，然后在应用程序中关联
+    1、让缓存更高效
+    2、分解成多个单表查询
+    3、减少锁竞争
+    4、在应用层进行连接，可以更容易对数据库进行拆分
+    5、查询本身效率可能会有所提升
+</code></pre><h3 id="3-4、存储引擎"><a href="#3-4、存储引擎" class="headerlink" title="3.4、存储引擎"></a>3.4、存储引擎</h3><h4 id="1、InnoDB"><a href="#1、InnoDB" class="headerlink" title="1、InnoDB"></a>1、InnoDB</h4><pre><code>1、是mysql默认的事务型存储引擎
+2、实现了四个标准的隔离级别，默认级别是可重复读，在可重复读的情况下，通过MVVC+间隙锁防止幻影读
+3、主索引是聚族索引，索引中保持了数据，从而避免直接读取磁盘。
+4、内部做了很多优化，包括磁盘读取数据时采用可预测读，自适应哈希等
+5、支持真正的在线热备份
+</code></pre><h4 id="2、MyISAM"><a href="#2、MyISAM" class="headerlink" title="2、MyISAM"></a>2、MyISAM</h4><pre><code>1、不支持事务
+2、不支持行级锁，只能对整张表进行加锁
+3、崩溃修复，恢复速度更慢
+</code></pre><h4 id="3、比较"><a href="#3、比较" class="headerlink" title="3、比较"></a>3、比较</h4><pre><code>1、事务：InnoDB是事务型，
+2、并发：MyISAM只支持表级锁，而InnoDB还支持行级锁
+3、外键：InnoDB支持外键
+4、备份：InnoDB支持在线热备份
+5、崩溃恢复：MyISAM崩溃后发生损坏概率比InnoDB高很多
+6、其他特性：MyISAM 支持压缩表和空间数据索引
+</code></pre><h3 id="3-5、数据类型"><a href="#3-5、数据类型" class="headerlink" title="3.5、数据类型"></a>3.5、数据类型</h3><h4 id="1、整型"><a href="#1、整型" class="headerlink" title="1、整型"></a>1、整型</h4><h4 id="2、浮点型"><a href="#2、浮点型" class="headerlink" title="2、浮点型"></a>2、浮点型</h4><h4 id="3、字符串"><a href="#3、字符串" class="headerlink" title="3、字符串"></a>3、字符串</h4><pre><code>    主要有 CHAR 和 VARCHAR 两种类型，一种是定长的，一种是变长的。
+    VARCHAR 这种变长类型能够节省空间，因为只需要存储必要的内容。但是在执行 UPDATE 时可能会使行变得比原来长，当超出一个页所能容纳的大小时，就要执行额外的操作。MyISAM 会将行拆成不同的片段存储，而 InnoDB 则需要分裂页来使行放进页内
+</code></pre><h4 id="4、时间和日期"><a href="#4、时间和日期" class="headerlink" title="4、时间和日期"></a>4、时间和日期</h4><pre><code>1、Datetime : 能够保存从 1000 年到 9999 年的日期和时间
+2、timesteamp：保存从 1970 年 1 月 1 日午夜（格林威治时间）以来的秒数，使用 4 个字节
+</code></pre><h3 id="3-6、切分"><a href="#3-6、切分" class="headerlink" title="3.6、切分"></a>3.6、切分</h3><h4 id="1、水平切分"><a href="#1、水平切分" class="headerlink" title="1、水平切分"></a>1、水平切分</h4><pre><code>它是将同一个表中记录拆分到多个结构相同的表中
+当一个表的数据不断增多时，Sharding是必然的选择，它可以将数据分布到集群的不同节点，从而缓存单个数据库的压力
+</code></pre><h4 id="2、垂直切分"><a href="#2、垂直切分" class="headerlink" title="2、垂直切分"></a>2、垂直切分</h4><pre><code>将一张表按列切分成多个表，通常是按照列的关系密集程度进行划分，也可以利用垂直分将经常被使用的列和不经常使用的列划分到不同的表中。
+</code></pre><h4 id="3、Sharding策略"><a href="#3、Sharding策略" class="headerlink" title="3、Sharding策略"></a>3、Sharding策略</h4><pre><code>1、哈希取模：hash（key）%N
+2、范围：可以是ID范围也可以是时间范围
+3、映射表：使用单独的一个数控来存储映射关系
+</code></pre><h4 id="4、Sharding存在的问题"><a href="#4、Sharding存在的问题" class="headerlink" title="4、Sharding存在的问题"></a>4、Sharding存在的问题</h4><pre><code>1、事务问题：使用分布式事务来解决，比如XA接口
+2、连接：可以将原来的连接分解成多个单表查询，然后在用户程序中进行连接
+3、ID唯一性
+    1、使用全局唯一ID
+    2、为每个分片指定一个ID范围
+    3、分布式ID生成器
+</code></pre><h3 id="3-7、复制"><a href="#3-7、复制" class="headerlink" title="3.7、复制"></a>3.7、复制</h3><h4 id="1、主从复制"><a href="#1、主从复制" class="headerlink" title="1、主从复制"></a>1、主从复制</h4><pre><code>主要涉及三个线程：binlog线程，I/O线程和SQL线程
+1、binlog线程：负责将主服务器上的数据更改写入到二进制日志（Binary log）
+2、I/O线程：负责从主服务器上读取二进制日志，并写入从服务器的中继日志（Relay log）
+3、Sql线程:负责读取中继日志，解析出主服务器以及执行的数据更改并在从服务器上执行
+</code></pre><p><img src="//yoursite.com/2019/11/16/面试指南之数据库/1.png" alt="Alt text"></p>
+<h4 id="2、读写分离"><a href="#2、读写分离" class="headerlink" title="2、读写分离"></a>2、读写分离</h4><pre><code>主服务器处理写操作以及实时性要求比较高的读操作，而从服务器处理读操作
+能提高性能原因在于：
+    1、主从服务器负责各自的读和写，极大程度缓解了锁的作用
+    2、从服务器可以使用MyISAM，提升查询性能以及节约系开销
+    3、增加冗余，提高可用性
+</code></pre><p><img src="//yoursite.com/2019/11/16/面试指南之数据库/2.png" alt="Alt text"></p>
+<hr>
+<h3 id="二、Redis"><a href="#二、Redis" class="headerlink" title="二、Redis"></a>二、Redis</h3><h3 id="1、Redis总结"><a href="#1、Redis总结" class="headerlink" title="1、Redis总结"></a>1、Redis总结</h3><h4 id="1-1、概述"><a href="#1-1、概述" class="headerlink" title="1.1、概述"></a>1.1、概述</h4><pre><code>Redis是速度非常快的非关系型（NoSQL）内存键值数据库，可以存储键和五种不同类型的映射。
+1、键的类型只能是字符串，值支持五种数据类型：字符串，散列表，列表，集合，有序集合。
+2、Redis支持很多特性，例如：内存中数据持久化到硬盘，使用复制扩展读性能，使用分片来扩展写性能
+</code></pre><h4 id="1-2、数据类型"><a href="#1-2、数据类型" class="headerlink" title="1.2、数据类型"></a>1.2、数据类型</h4><p><img src="//yoursite.com/2019/11/16/面试指南之数据库/Da1.png" alt="Alt text"></p>
+<h5 id="1-2-1、String"><a href="#1-2-1、String" class="headerlink" title="1.2.1、String"></a>1.2.1、String</h5><pre><code>    &gt; set hello world
+    OK
+    &gt; get hello
+    &quot;world&quot;
+    &gt; del hello
+    (integer) 1
+    &gt; get hello
+    (nil)
+</code></pre><h5 id="1-2-2、Hash"><a href="#1-2-2、Hash" class="headerlink" title="1.2.2、Hash"></a>1.2.2、Hash</h5><pre><code>    &gt; hset hash-key sub-key1 value1
+    (integer) 1
+    &gt; hset hash-key sub-key2 value2
+    (integer) 1
+    &gt; hset hash-key sub-key1 value1
+    (integer) 0
+
+    &gt; hgetall hash-key
+    1) &quot;sub-key1&quot;
+    2) &quot;value1&quot;
+    3) &quot;sub-key2&quot;
+    4) &quot;value2&quot;
+
+    &gt; hdel hash-key sub-key2
+    (integer) 1
+    &gt; hdel hash-key sub-key2
+    (integer) 0
+
+    &gt; hget hash-key sub-key1
+    &quot;value1&quot;
+
+    &gt; hgetall hash-key
+    1) &quot;sub-key1&quot;
+    2) &quot;value1&quot;
+</code></pre><h5 id="1-2-3、List"><a href="#1-2-3、List" class="headerlink" title="1.2.3、List"></a>1.2.3、List</h5><pre><code>    &gt; rpush list-key item
+    (integer) 1
+    &gt; rpush list-key item2
+    (integer) 2
+    &gt; rpush list-key item
+    (integer) 3
+
+    &gt; lrange list-key 0 -1
+    1) &quot;item&quot;
+    2) &quot;item2&quot;
+    3) &quot;item&quot;
+
+    &gt; lindex list-key 1
+    &quot;item2&quot;
+
+    &gt; lpop list-key
+    &quot;item&quot;
+
+    &gt; lrange list-key 0 -1
+    1) &quot;item2&quot;
+    2) &quot;item&quot;
+</code></pre><h5 id="1-2-4、Set"><a href="#1-2-4、Set" class="headerlink" title="1.2.4、Set"></a>1.2.4、Set</h5><pre><code>    &gt; sadd set-key item
+    (integer) 1
+    &gt; sadd set-key item2
+    (integer) 1
+    &gt; sadd set-key item3
+    (integer) 1
+    &gt; sadd set-key item
+    (integer) 0
+
+    &gt; smembers set-key
+    1) &quot;item&quot;
+    2) &quot;item2&quot;
+    3) &quot;item3&quot;
+
+    &gt; sismember set-key item4
+    (integer) 0
+    &gt; sismember set-key item
+    (integer) 1
+
+    &gt; srem set-key item2
+    (integer) 1
+    &gt; srem set-key item2
+    (integer) 0
+
+    &gt; smembers set-key
+    1) &quot;item&quot;
+    2) &quot;item3&quot;
+</code></pre><h5 id="1-2-5、ZSet"><a href="#1-2-5、ZSet" class="headerlink" title="1.2.5、ZSet"></a>1.2.5、ZSet</h5><pre><code>    &gt; zadd zset-key 728 member1
+    (integer) 1
+    &gt; zadd zset-key 982 member0
+    (integer) 1
+    &gt; zadd zset-key 982 member0
+    (integer) 0
+
+    &gt; zrange zset-key 0 -1 withscores
+    1) &quot;member1&quot;
+    2) &quot;728&quot;
+    3) &quot;member0&quot;
+    4) &quot;982&quot;
+
+    &gt; zrangebyscore zset-key 0 800 withscores
+    1) &quot;member1&quot;
+    2) &quot;728&quot;
+
+    &gt; zrem zset-key member1
+    (integer) 1
+    &gt; zrem zset-key member1
+    (integer) 0
+
+    &gt; zrange zset-key 0 -1 withscores
+    1) &quot;member0&quot;
+    2) &quot;982&quot;
+</code></pre><h4 id="1-3、数据结构（重点）"><a href="#1-3、数据结构（重点）" class="headerlink" title="1.3、数据结构（重点）"></a>1.3、数据结构（重点）</h4><h4 id="1-3-1、字典"><a href="#1-3-1、字典" class="headerlink" title="1.3.1、字典"></a>1.3.1、字典</h4><pre><code>    dictht是一个散列表结构，使用拉链法保存哈希冲突（类似于HashMap）
+</code></pre><h4 id="1-3-2、跳跃表"><a href="#1-3-2、跳跃表" class="headerlink" title="1.3.2、跳跃表"></a>1.3.2、跳跃表</h4><pre><code>    是有序集合的底层实现之一，跳跃表基于多指针有序链表实现的，可以看成多个有序链表
+</code></pre><h4 id="1-4、使用场景"><a href="#1-4、使用场景" class="headerlink" title="1.4、使用场景"></a>1.4、使用场景</h4><h5 id="1-4-1、计数器"><a href="#1-4-1、计数器" class="headerlink" title="1.4.1、计数器"></a>1.4.1、计数器</h5><pre><code>可以对String进行自增自减运算，从而实现计数器功能
+Redis这种内存型数据库的读写性能非常高，很适合存储频繁读写的计数量
+</code></pre><h5 id="1-4-2、缓存"><a href="#1-4-2、缓存" class="headerlink" title="1.4.2、缓存"></a>1.4.2、缓存</h5><pre><code>将热点数据放在内存中，设置内存的最大使用量以及淘汰策略来保证缓存的命中率
+</code></pre><h5 id="1-4-3、查找表"><a href="#1-4-3、查找表" class="headerlink" title="1.4.3、查找表"></a>1.4.3、查找表</h5><h5 id="1-4-4、消息队列"><a href="#1-4-4、消息队列" class="headerlink" title="1.4.4、消息队列"></a>1.4.4、消息队列</h5><pre><code>List是双向链表，可以通过lpush和rpop写入和读取消息
+</code></pre><h5 id="1-4-5、会话缓存"><a href="#1-4-5、会话缓存" class="headerlink" title="1.4.5、会话缓存"></a>1.4.5、会话缓存</h5><pre><code>可以使用Redis来统一存储多台应用服务器的会话信息。当应用服务器不在存储用户的会话信息，也就不再具有状态，一个用户可以请求任意一个应用服务器，从而更容易实现高可用性以及可伸缩性
+</code></pre><h5 id="1-4-6、分布式锁实现"><a href="#1-4-6、分布式锁实现" class="headerlink" title="1.4.6、分布式锁实现"></a>1.4.6、分布式锁实现</h5><pre><code>可用使用Redis自带的Sent命令实现分布式锁，还可用RedLock分布式锁实现
+</code></pre><h5 id="1-4-7、其他"><a href="#1-4-7、其他" class="headerlink" title="1.4.7、其他"></a>1.4.7、其他</h5><h4 id="1-5、Redis与Memcached"><a href="#1-5、Redis与Memcached" class="headerlink" title="1.5、Redis与Memcached"></a>1.5、Redis与Memcached</h4><pre><code>1、数据类型： memchached 仅支持字符串类型，而redis支持五种不同的数据类型
+2、数据持久化：Redis支持两种持久化策略，RDB快照和AOF日志。而Memcached不支持持久化
+3、分布式：redis cluster实现了分布式支持
+4、内存管理机制
+    1、Redis中，并不是所有数据都一直存储在内存中，会把一些没有用的数据交换到磁盘中，memchached的数据会一直保存在内存中
+    2、memchached将内存分割成特定长度的块来存储数据，以完全解决内存碎片的问题。但会导致利用率不高
+</code></pre><h4 id="1-6、键的过期时间"><a href="#1-6、键的过期时间" class="headerlink" title="1.6、键的过期时间"></a>1.6、键的过期时间</h4><pre><code>1、对于散列表这种容器，只能为整个键设置过期时间（整个散列表），而不能为键里面的单个元素设置过期时间
+</code></pre><h4 id="1-7、数据淘汰策略"><a href="#1-7、数据淘汰策略" class="headerlink" title="1.7、数据淘汰策略"></a>1.7、数据淘汰策略</h4><pre><code>可以设置内存最大使用量，当内存使用量超出时，会施行数据淘汰策略
+</code></pre><p><img src="//yoursite.com/2019/11/16/面试指南之数据库/re.png" alt="Alt text"></p>
+<pre><code>使用 Redis 缓存数据时，为了提高缓存命中率，需要保证缓存数据都是热点数据
+</code></pre><h4 id="1-8、持久化"><a href="#1-8、持久化" class="headerlink" title="1.8、持久化"></a>1.8、持久化</h4><pre><code>Redis 是内存型数据库，为了保证数据在断电后不会丢失，需要将内存中的数据持久化到硬盘上
+1、RDB持久化
+    将某个时间点的所有数据都存放到硬盘上。
+    可以将快照复制到其它服务器从而创建具有相同数据的服务器副本。
+    如果系统发生故障，将会丢失最后一次创建快照之后的数据。
+    如果数据量很大，保存快照的时间会很长
+2、AOF持久化
+    将写命令添加到 AOF 文件（Append Only File）的末尾。
+    使用 AOF 持久化需要设置同步选项，从而确保写命令什么时候会同步到磁盘文件上。这是因为对文件进行写入并不会马上将内容同步到磁盘上，而是先存储到缓冲区，然后由操作系统决定什么时候同步到磁盘
+</code></pre><h4 id="1-9、事务"><a href="#1-9、事务" class="headerlink" title="1.9、事务"></a>1.9、事务</h4><pre><code>一个事务包含了多个命令，服务器在执行事务期间，不会改去执行其它客户端的命令请求
+Redis 最简单的事务实现方式是使用 MULTI 和 EXEC 命令将事务操作包围起来
+</code></pre><h4 id="1-10、事件"><a href="#1-10、事件" class="headerlink" title="1.10、事件"></a>1.10、事件</h4><pre><code>Redis服务器是一个事件驱动程序
+1、文件事件
+2、时间事件
+</code></pre><p><img src="//yoursite.com/2019/11/16/面试指南之数据库/1562378582035.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/面试指南之数据库/1562378595491.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/面试指南之数据库/1562378605732.png" alt="Alt text"></p>
+<h4 id="1-11、复制"><a href="#1-11、复制" class="headerlink" title="1.11、复制"></a>1.11、复制</h4><pre><code>通过使用slaveof host port 命令来让一个服务器成为另一个服务器的从服务器。
+一个从服务器只能有一个主服务器，而且不支持主主复制
+1、连接过程
+2、主从链
+</code></pre><p><img src="//yoursite.com/2019/11/16/面试指南之数据库/1562378684109.png" alt="Alt text"></p>
+<h4 id="1-12、Sentinel"><a href="#1-12、Sentinel" class="headerlink" title="1.12、Sentinel"></a>1.12、Sentinel</h4><pre><code>Sentinel（哨兵）可以监听集群中服务器，并在主服务器进入下线状态时，自动从从服务器选出新的主服务器。
+</code></pre><h4 id="1-13、分片"><a href="#1-13、分片" class="headerlink" title="1.13、分片"></a>1.13、分片</h4>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    XieSZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/11/16/面试指南之数据库/" title="Java学习/面试指南之数据库">http://yoursite.com/2019/11/16/面试指南之数据库/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/16/P_面试准备计划_面试题目/" rel="next" title="面试准备计划_面试题目">
+                <i class="fa fa-chevron-left"></i> 面试准备计划_面试题目
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/16/面试指南之计算机网络基础/" rel="prev" title="Java学习/面试指南之计算机网络基础">
+                Java学习/面试指南之计算机网络基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieSZ</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到XieSZ的技术分享站~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">234</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xie1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xieshanzhong66@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xie1.github.io/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="hexo" target="_blank">hexo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、思维导图"><span class="nav-text">一、思维导图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总知识点"><span class="nav-text">总知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Java学习-面试指南之数据库"><span class="nav-text">4_Java学习/面试指南之数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、MySQL"><span class="nav-text">一、MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1、数据库系统原理"><span class="nav-text">1、数据库系统原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1、事务"><span class="nav-text">1.1、事务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2、并发一致性问题"><span class="nav-text">1.2、并发一致性问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3、封锁"><span class="nav-text">1.3、封锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4、隔离级别"><span class="nav-text">1.4、隔离级别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5、多版本并发控制"><span class="nav-text">1.5、多版本并发控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6、Next-Key-Locks"><span class="nav-text">1.6、Next-Key Locks</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、SQL"><span class="nav-text">2、SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1、基础"><span class="nav-text">2.1、基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2、创建表"><span class="nav-text">2.2、创建表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3、修改表"><span class="nav-text">2.3、修改表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4、插入"><span class="nav-text">2.4、插入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5、更新"><span class="nav-text">2.5、更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6、删除"><span class="nav-text">2.6、删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7、查询"><span class="nav-text">2.7、查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8、排序"><span class="nav-text">2.8、排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9、过滤"><span class="nav-text">2.9、过滤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-10、通配符"><span class="nav-text">2.10、通配符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-11、计算字段"><span class="nav-text">2.11、计算字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-12、函数"><span class="nav-text">2.12、函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-13、分组"><span class="nav-text">2.13、分组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-14、子查询"><span class="nav-text">2.14、子查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-15、连接"><span class="nav-text">2.15、连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-16、组合查询"><span class="nav-text">2.16、组合查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-17、视图"><span class="nav-text">2.17、视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-18、存储过程"><span class="nav-text">2.18、存储过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-19、游标"><span class="nav-text">2.19、游标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-20、触发器"><span class="nav-text">2.20、触发器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-21、事务管理"><span class="nav-text">2.21、事务管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-22、字符集"><span class="nav-text">2.22、字符集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-23、权限管理"><span class="nav-text">2.23、权限管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、MySQL"><span class="nav-text">3、MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1、MySQL-基础架构分析"><span class="nav-text">3.1、MySQL 基础架构分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、概览"><span class="nav-text">1、概览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、Server层基本组件介绍"><span class="nav-text">2、Server层基本组件介绍</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2、索引"><span class="nav-text">3.2、索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、B-Tree原理"><span class="nav-text">1、B+Tree原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、MySQL索引"><span class="nav-text">2、MySQL索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、索引优化"><span class="nav-text">3、索引优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、索引优点"><span class="nav-text">4、索引优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、索引使用条件"><span class="nav-text">5、索引使用条件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3、查询性能优化"><span class="nav-text">3.3、查询性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、使用Explain进行分析"><span class="nav-text">1、使用Explain进行分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、优化数据访问"><span class="nav-text">2、优化数据访问</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、重构查询方式"><span class="nav-text">3、重构查询方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4、存储引擎"><span class="nav-text">3.4、存储引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、InnoDB"><span class="nav-text">1、InnoDB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、MyISAM"><span class="nav-text">2、MyISAM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、比较"><span class="nav-text">3、比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5、数据类型"><span class="nav-text">3.5、数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、整型"><span class="nav-text">1、整型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、浮点型"><span class="nav-text">2、浮点型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、字符串"><span class="nav-text">3、字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、时间和日期"><span class="nav-text">4、时间和日期</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6、切分"><span class="nav-text">3.6、切分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、水平切分"><span class="nav-text">1、水平切分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、垂直切分"><span class="nav-text">2、垂直切分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、Sharding策略"><span class="nav-text">3、Sharding策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、Sharding存在的问题"><span class="nav-text">4、Sharding存在的问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7、复制"><span class="nav-text">3.7、复制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、主从复制"><span class="nav-text">1、主从复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、读写分离"><span class="nav-text">2、读写分离</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Redis"><span class="nav-text">二、Redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1、Redis总结"><span class="nav-text">1、Redis总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1、概述"><span class="nav-text">1.1、概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2、数据类型"><span class="nav-text">1.2、数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-1、String"><span class="nav-text">1.2.1、String</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-2、Hash"><span class="nav-text">1.2.2、Hash</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-3、List"><span class="nav-text">1.2.3、List</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-4、Set"><span class="nav-text">1.2.4、Set</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-5、ZSet"><span class="nav-text">1.2.5、ZSet</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3、数据结构（重点）"><span class="nav-text">1.3、数据结构（重点）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-1、字典"><span class="nav-text">1.3.1、字典</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-2、跳跃表"><span class="nav-text">1.3.2、跳跃表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4、使用场景"><span class="nav-text">1.4、使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-1、计数器"><span class="nav-text">1.4.1、计数器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-2、缓存"><span class="nav-text">1.4.2、缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-3、查找表"><span class="nav-text">1.4.3、查找表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-4、消息队列"><span class="nav-text">1.4.4、消息队列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-5、会话缓存"><span class="nav-text">1.4.5、会话缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-6、分布式锁实现"><span class="nav-text">1.4.6、分布式锁实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-7、其他"><span class="nav-text">1.4.7、其他</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5、Redis与Memcached"><span class="nav-text">1.5、Redis与Memcached</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6、键的过期时间"><span class="nav-text">1.6、键的过期时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-7、数据淘汰策略"><span class="nav-text">1.7、数据淘汰策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-8、持久化"><span class="nav-text">1.8、持久化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-9、事务"><span class="nav-text">1.9、事务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-10、事件"><span class="nav-text">1.10、事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-11、复制"><span class="nav-text">1.11、复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-12、Sentinel"><span class="nav-text">1.12、Sentinel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-13、分片"><span class="nav-text">1.13、分片</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieSZ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytwYroRX';
+      var conf = 'a1ed94f3fa27338ebcb9c5f114025ca5';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT,xiesz">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XieSZ'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="1、算法简介1.1、介绍1.2、二分查找1.3、大O表示法1、一些常见的大O运行时间：     1、O（logn）：对数时间，这样的算法包括二分查找     2、O（n）：线性时间，这样的算法包括简单的查找     3、O（n*logn）：包括快速排序     4、O（n^2）:包括选择排序     5、O（n！） 2、选择排序2.1、内存的工作原理2.2、数组和链表1、数组：有序而且固定的 2、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法图解">
+<meta property="og:url" content="http://yoursite.com/2019/11/16/A_算法图解/index.html">
+<meta property="og:site_name" content="XieSZ&#39;S BLOG">
+<meta property="og:description" content="1、算法简介1.1、介绍1.2、二分查找1.3、大O表示法1、一些常见的大O运行时间：     1、O（logn）：对数时间，这样的算法包括二分查找     2、O（n）：线性时间，这样的算法包括简单的查找     3、O（n*logn）：包括快速排序     4、O（n^2）:包括选择排序     5、O（n！） 2、选择排序2.1、内存的工作原理2.2、数组和链表1、数组：有序而且固定的 2、">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-16T07:45:18.597Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法图解">
+<meta name="twitter:description" content="1、算法简介1.1、介绍1.2、二分查找1.3、大O表示法1、一些常见的大O运行时间：     1、O（logn）：对数时间，这样的算法包括二分查找     2、O（n）：线性时间，这样的算法包括简单的查找     3、O（n*logn）：包括快速排序     4、O（n^2）:包括选择排序     5、O（n！） 2、选择排序2.1、内存的工作原理2.2、数组和链表1、数组：有序而且固定的 2、">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/16/A_算法图解/">
+
+
+
+
+
+  <title>算法图解 | XieSZ'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XieSZ'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">xieshanzhong的博客小站</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/A_算法图解/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieSZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XieSZ'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">算法图解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-16T15:39:57+08:00">
+                2019-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/未整理/" itemprop="url" rel="index">
+                    <span itemprop="name">未整理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/11/16/A_算法图解/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/11/16/A_算法图解/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1、算法简介"><a href="#1、算法简介" class="headerlink" title="1、算法简介"></a>1、算法简介</h3><h4 id="1-1、介绍"><a href="#1-1、介绍" class="headerlink" title="1.1、介绍"></a>1.1、介绍</h4><h4 id="1-2、二分查找"><a href="#1-2、二分查找" class="headerlink" title="1.2、二分查找"></a>1.2、二分查找</h4><h4 id="1-3、大O表示法"><a href="#1-3、大O表示法" class="headerlink" title="1.3、大O表示法"></a>1.3、大O表示法</h4><pre><code>1、一些常见的大O运行时间：
+    1、O（logn）：对数时间，这样的算法包括二分查找
+    2、O（n）：线性时间，这样的算法包括简单的查找
+    3、O（n*logn）：包括快速排序
+    4、O（n^2）:包括选择排序
+    5、O（n！）
+</code></pre><h3 id="2、选择排序"><a href="#2、选择排序" class="headerlink" title="2、选择排序"></a>2、选择排序</h3><h4 id="2-1、内存的工作原理"><a href="#2-1、内存的工作原理" class="headerlink" title="2.1、内存的工作原理"></a>2.1、内存的工作原理</h4><h4 id="2-2、数组和链表"><a href="#2-2、数组和链表" class="headerlink" title="2.2、数组和链表"></a>2.2、数组和链表</h4><pre><code>1、数组：有序而且固定的
+2、链表：
+    链表中的每个元素存储了下一个元素的地址，从而使一系列随机的内存地址串在一起
+3、操作：
+    1、在中间插入
+    2、删除
+
+数组和链表还被用来实现其他的数据结构
+</code></pre><h4 id="2-3、选择排序"><a href="#2-3、选择排序" class="headerlink" title="2.3、选择排序"></a>2.3、选择排序</h4><pre><code>1、时间复杂度：O（n*n）
+2、算法的思路是
+</code></pre><h3 id="3、递归"><a href="#3、递归" class="headerlink" title="3、递归"></a>3、递归</h3><pre><code>递归是很多算法都使用的的一种编程方式。
+将问题分成基线条件和递归条件、
+</code></pre><h4 id="3-1、基线条件和递归条件"><a href="#3-1、基线条件和递归条件" class="headerlink" title="3.1、基线条件和递归条件"></a>3.1、基线条件和递归条件</h4><pre><code>每个递归函数都有两部分：基线条件和递归条件
+1、基线条件：函数不在调用自己，从而避免无限循环
+2、递归条件：函数自己调用自己
+</code></pre><h4 id="3-2、栈"><a href="#3-2、栈" class="headerlink" title="3.2、栈"></a>3.2、栈</h4><h5 id="3-2-1、调用栈"><a href="#3-2-1、调用栈" class="headerlink" title="3.2.1、调用栈"></a>3.2.1、调用栈</h5><h5 id="3-2-2、递归调用栈"><a href="#3-2-2、递归调用栈" class="headerlink" title="3.2.2、递归调用栈"></a>3.2.2、递归调用栈</h5><h3 id="4、快速排序"><a href="#4、快速排序" class="headerlink" title="4、快速排序"></a>4、快速排序</h3><h4 id="4-1、分而治之"><a href="#4-1、分而治之" class="headerlink" title="4.1、分而治之"></a>4.1、分而治之</h4><pre><code>工作原理：
+1、找出简单的基线条件
+2、确定如何缩小问题的规模，使其符合基线条件
+</code></pre><h4 id="4-2、快速排序"><a href="#4-2、快速排序" class="headerlink" title="4.2、快速排序"></a>4.2、快速排序</h4><pre><code>分区：
+1、一个由所有小于基准值的数字组成的子数组
+2、基准值
+3、一个由所有大于基准值的数组组成的子数组
+
+算法分析：
+1、如何建立多少个数组
+</code></pre><h4 id="4-3、再谈大O表示法"><a href="#4-3、再谈大O表示法" class="headerlink" title="4.3、再谈大O表示法"></a>4.3、再谈大O表示法</h4><pre><code>1、快速排序的平均时间复杂度：O（nlogn）,最坏时间复杂度是O（n^2）
+</code></pre><h5 id="4-3-1、比较合并排序和快速排序"><a href="#4-3-1、比较合并排序和快速排序" class="headerlink" title="4.3.1、比较合并排序和快速排序"></a>4.3.1、比较合并排序和快速排序</h5><h5 id="4-3-2、平均情况和最糟情况"><a href="#4-3-2、平均情况和最糟情况" class="headerlink" title="4.3.2、平均情况和最糟情况"></a>4.3.2、平均情况和最糟情况</h5><pre><code>最佳情况也是平均情况，只要你每次都随机选择一个数组元素作为基准值，快速排序的平均运行时间就将为O（nlogn）。快速排序是最快的排序算法之一，是D&amp;C典范
+</code></pre><h3 id="5、散列表"><a href="#5、散列表" class="headerlink" title="5、散列表"></a>5、散列表</h3><pre><code>学习散列表的内部机制：实现、冲突和散列函数、
+</code></pre><h4 id="5-1、散列函数"><a href="#5-1、散列函数" class="headerlink" title="5.1、散列函数"></a>5.1、散列函数</h4><pre><code>1、散列函数总是将同样的输入映射到相同的索引
+2、散列函数将不同的输入映射到不同的索引
+3、散列函数知道数组有多大，只返回有效的索引
+</code></pre><h4 id="5-2、应用案例"><a href="#5-2、应用案例" class="headerlink" title="5.2、应用案例"></a>5.2、应用案例</h4><h5 id="5-2-1、将散列表用于查找"><a href="#5-2-1、将散列表用于查找" class="headerlink" title="5.2.1、将散列表用于查找"></a>5.2.1、将散列表用于查找</h5><h5 id="5-2-2、防止重复"><a href="#5-2-2、防止重复" class="headerlink" title="5.2.2、防止重复"></a>5.2.2、防止重复</h5><h5 id="5-2-3、将散列表用作缓存"><a href="#5-2-3、将散列表用作缓存" class="headerlink" title="5.2.3、将散列表用作缓存"></a>5.2.3、将散列表用作缓存</h5><h4 id="5-3、冲突"><a href="#5-3、冲突" class="headerlink" title="5.3、冲突"></a>5.3、冲突</h4><pre><code>通过拉链法的链表创建解决冲突    
+</code></pre><h4 id="5-4、性能"><a href="#5-4、性能" class="headerlink" title="5.4、性能"></a>5.4、性能</h4><h5 id="5-4-1、填装因子"><a href="#5-4-1、填装因子" class="headerlink" title="5.4.1、填装因子"></a>5.4.1、填装因子</h5><h3 id="6、广度优先搜索"><a href="#6、广度优先搜索" class="headerlink" title="6、广度优先搜索"></a>6、广度优先搜索</h3><pre><code>让你能够找出两样东西之间的最短距离，解决最短路径问题的算法。
+</code></pre><h4 id="6-2、图是什么"><a href="#6-2、图是什么" class="headerlink" title="6.2、图是什么"></a>6.2、图是什么</h4><pre><code>图由节点（node）和边（edge）组成
+</code></pre><h4 id="6-3、广度优先搜索"><a href="#6-3、广度优先搜索" class="headerlink" title="6.3、广度优先搜索"></a>6.3、广度优先搜索</h4><h5 id="6-3-1、查找最短路径"><a href="#6-3-1、查找最短路径" class="headerlink" title="6.3.1、查找最短路径"></a>6.3.1、查找最短路径</h5><h5 id="6-3-2、队列"><a href="#6-3-2、队列" class="headerlink" title="6.3.2、队列"></a>6.3.2、队列</h5><h4 id="6-4、实现图"><a href="#6-4、实现图" class="headerlink" title="6.4、实现图"></a>6.4、实现图</h4><pre><code>1、有向图
+2、无向图
+</code></pre><h4 id="6-5、实现算法"><a href="#6-5、实现算法" class="headerlink" title="6.5、实现算法"></a>6.5、实现算法</h4><pre><code>1、运行时间：至少为O（边数）
+广度优先搜索的运行时间为O（人数+边数），这通常写作为O(V+E),其中V为顶点数，E为边数
+</code></pre><h3 id="7、狄克斯特拉算法"><a href="#7、狄克斯特拉算法" class="headerlink" title="7、狄克斯特拉算法"></a>7、狄克斯特拉算法</h3><h4 id="7-1、使用狄克斯特拉算法"><a href="#7-1、使用狄克斯特拉算法" class="headerlink" title="7.1、使用狄克斯特拉算法"></a>7.1、使用狄克斯特拉算法</h4><pre><code>1、找出“最便宜”的节点，即可在最短时间内到达的节点
+2、更新该节点的邻居开销，检查是否有前往它们的更短路径，如果有，就更新其开销
+3、重复这个过程，直到对图中的每个节点都这样做
+4、计算最终路径
+</code></pre><h4 id="7-2、术语"><a href="#7-2、术语" class="headerlink" title="7.2、术语"></a>7.2、术语</h4><pre><code>1、权重
+要计算非加权图中的最短路径，可使用广度优先搜索
+要计算加权图中的最短路径，可使用狄克斯特拉算法
+</code></pre><h4 id="7-3、负权边"><a href="#7-3、负权边" class="headerlink" title="7.3、负权边"></a>7.3、负权边</h4><h4 id="7-4、实现——》暂未学习"><a href="#7-4、实现——》暂未学习" class="headerlink" title="7.4、实现——》暂未学习"></a>7.4、实现——》暂未学习</h4><h3 id="8、贪婪算法"><a href="#8、贪婪算法" class="headerlink" title="8、贪婪算法"></a>8、贪婪算法</h3><pre><code>1、贪婪算法寻找局部最优解，企图以这种方式获得全局最优解
+2、NP完全问题，最佳做法使用近似算法
+</code></pre><h3 id="9、动态规划"><a href="#9、动态规划" class="headerlink" title="9、动态规划"></a>9、动态规划</h3><pre><code>1、最长公共子串
+    费曼算法：
+    1、将问题写下来
+    2、好好思考
+    3、将答案写下来
+</code></pre><h3 id="10、K最近邻算法"><a href="#10、K最近邻算法" class="headerlink" title="10、K最近邻算法"></a>10、K最近邻算法</h3><pre><code>1、分类：编组
+2、回归：预测结果（如一个数字）
+</code></pre><h4 id="10-3、机器学习简介"><a href="#10-3、机器学习简介" class="headerlink" title="10.3、机器学习简介"></a>10.3、机器学习简介</h4><h3 id="11、整理"><a href="#11、整理" class="headerlink" title="11、整理"></a>11、整理</h3><h4 id="11-1、树"><a href="#11-1、树" class="headerlink" title="11.1、树"></a>11.1、树</h4><pre><code>二叉树
+</code></pre><h4 id="11-2、反向索引"><a href="#11-2、反向索引" class="headerlink" title="11.2、反向索引"></a>11.2、反向索引</h4><h4 id="11-3、傅里叶变换"><a href="#11-3、傅里叶变换" class="headerlink" title="11.3、傅里叶变换"></a>11.3、傅里叶变换</h4><h4 id="11-4、并行算法"><a href="#11-4、并行算法" class="headerlink" title="11.4、并行算法"></a>11.4、并行算法</h4><h4 id="11-5、MapReduce"><a href="#11-5、MapReduce" class="headerlink" title="11.5、MapReduce"></a>11.5、MapReduce</h4><pre><code>分布式算法
+</code></pre><h5 id="11-5-1、分布式算法为何很有用"><a href="#11-5-1、分布式算法为何很有用" class="headerlink" title="11.5.1、分布式算法为何很有用"></a>11.5.1、分布式算法为何很有用</h5><pre><code>MapReduce基于两个简单的理念，映射（map）函数和归并（reduce）函数
+</code></pre><h5 id="11-5-2、映射函数"><a href="#11-5-2、映射函数" class="headerlink" title="11.5.2、映射函数"></a>11.5.2、映射函数</h5><pre><code>它接受一个数组，并对其中的每个元素执行同样的处理
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    XieSZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/11/16/A_算法图解/" title="算法图解">http://yoursite.com/2019/11/16/A_算法图解/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/16/算法/" rel="next" title="算法">
+                <i class="fa fa-chevron-left"></i> 算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieSZ</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到XieSZ的技术分享站~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">234</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xie1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xieshanzhong66@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xie1.github.io/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="hexo" target="_blank">hexo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、算法简介"><span class="nav-text">1、算法简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1、介绍"><span class="nav-text">1.1、介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2、二分查找"><span class="nav-text">1.2、二分查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3、大O表示法"><span class="nav-text">1.3、大O表示法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、选择排序"><span class="nav-text">2、选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1、内存的工作原理"><span class="nav-text">2.1、内存的工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2、数组和链表"><span class="nav-text">2.2、数组和链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3、选择排序"><span class="nav-text">2.3、选择排序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、递归"><span class="nav-text">3、递归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1、基线条件和递归条件"><span class="nav-text">3.1、基线条件和递归条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2、栈"><span class="nav-text">3.2、栈</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-1、调用栈"><span class="nav-text">3.2.1、调用栈</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-2、递归调用栈"><span class="nav-text">3.2.2、递归调用栈</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、快速排序"><span class="nav-text">4、快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1、分而治之"><span class="nav-text">4.1、分而治之</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2、快速排序"><span class="nav-text">4.2、快速排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3、再谈大O表示法"><span class="nav-text">4.3、再谈大O表示法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-1、比较合并排序和快速排序"><span class="nav-text">4.3.1、比较合并排序和快速排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-2、平均情况和最糟情况"><span class="nav-text">4.3.2、平均情况和最糟情况</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、散列表"><span class="nav-text">5、散列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1、散列函数"><span class="nav-text">5.1、散列函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2、应用案例"><span class="nav-text">5.2、应用案例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2-1、将散列表用于查找"><span class="nav-text">5.2.1、将散列表用于查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2-2、防止重复"><span class="nav-text">5.2.2、防止重复</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2-3、将散列表用作缓存"><span class="nav-text">5.2.3、将散列表用作缓存</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3、冲突"><span class="nav-text">5.3、冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4、性能"><span class="nav-text">5.4、性能</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-4-1、填装因子"><span class="nav-text">5.4.1、填装因子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、广度优先搜索"><span class="nav-text">6、广度优先搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2、图是什么"><span class="nav-text">6.2、图是什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-3、广度优先搜索"><span class="nav-text">6.3、广度优先搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-3-1、查找最短路径"><span class="nav-text">6.3.1、查找最短路径</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-3-2、队列"><span class="nav-text">6.3.2、队列</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4、实现图"><span class="nav-text">6.4、实现图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-5、实现算法"><span class="nav-text">6.5、实现算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、狄克斯特拉算法"><span class="nav-text">7、狄克斯特拉算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1、使用狄克斯特拉算法"><span class="nav-text">7.1、使用狄克斯特拉算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2、术语"><span class="nav-text">7.2、术语</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-3、负权边"><span class="nav-text">7.3、负权边</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-4、实现——》暂未学习"><span class="nav-text">7.4、实现——》暂未学习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、贪婪算法"><span class="nav-text">8、贪婪算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、动态规划"><span class="nav-text">9、动态规划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10、K最近邻算法"><span class="nav-text">10、K最近邻算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#10-3、机器学习简介"><span class="nav-text">10.3、机器学习简介</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11、整理"><span class="nav-text">11、整理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#11-1、树"><span class="nav-text">11.1、树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-2、反向索引"><span class="nav-text">11.2、反向索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-3、傅里叶变换"><span class="nav-text">11.3、傅里叶变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-4、并行算法"><span class="nav-text">11.4、并行算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-5、MapReduce"><span class="nav-text">11.5、MapReduce</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#11-5-1、分布式算法为何很有用"><span class="nav-text">11.5.1、分布式算法为何很有用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-5-2、映射函数"><span class="nav-text">11.5.2、映射函数</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieSZ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytwYroRX';
+      var conf = 'a1ed94f3fa27338ebcb9c5f114025ca5';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

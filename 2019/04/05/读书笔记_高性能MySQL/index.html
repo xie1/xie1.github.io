@@ -558,7 +558,7 @@
         3、服务器会进行sql解析，预处理，在由优化器生成对应的执行计划
         4、MySQL根据优化器生成的执行计划，调用存储引擎的API执行查询
         5、将结果返回客户端
-</code></pre><p><img src="/2019/04/05/读书笔记_高性能MySQL/QQ截图20181016204937.png" alt="Alt text"></p>
+</code></pre><p><img src="//yoursite.com/2019/04/05/读书笔记_高性能MySQL/QQ截图20181016204937.png" alt="Alt text"></p>
 <h6 id="6-4-1、MySql客户端-服务器通信协议"><a href="#6-4-1、MySql客户端-服务器通信协议" class="headerlink" title="6.4.1、MySql客户端/服务器通信协议"></a>6.4.1、MySql客户端/服务器通信协议</h6><pre><code>        通信协议是“半双工”
     查询状态（show full processlist）
         1、Sleep：线程正在等待客户端发送新的请求
@@ -679,7 +679,7 @@
         5、query_cache_wlock_invalidate:如果某个数据表被其他的连接锁住，是否依然从查询缓存中返回结果
     减少碎片
     提高查询缓存的使用率
-</code></pre><p><img src="/2019/04/05/读书笔记_高性能MySQL/微信图片_20181023203440.jpg" alt="Alt text"></p>
+</code></pre><p><img src="//yoursite.com/2019/04/05/读书笔记_高性能MySQL/微信图片_20181023203440.jpg" alt="Alt text"></p>
 <h6 id="7-12-5、InnoDB和查询缓存"><a href="#7-12-5、InnoDB和查询缓存" class="headerlink" title="7.12.5、InnoDB和查询缓存"></a>7.12.5、InnoDB和查询缓存</h6><pre><code>    事务是否可以访问查询缓存存取取决于当前事务ID，以及对应的数据表上是否有锁。每个InnoDB表的内存数据字典都保存在一个事务ID号中，如果当前事务ID小于该事务ID，则无法访问查询缓存
 </code></pre><h4 id="第8章、优化服务器设置"><a href="#第8章、优化服务器设置" class="headerlink" title="第8章、优化服务器设置"></a>第8章、优化服务器设置</h4><h5 id="8-1、MySQL配置的工作原理"><a href="#8-1、MySQL配置的工作原理" class="headerlink" title="8.1、MySQL配置的工作原理"></a>8.1、MySQL配置的工作原理</h5><h6 id="8-1-1、语法、作用域和动态性"><a href="#8-1-1、语法、作用域和动态性" class="headerlink" title="8.1.1、语法、作用域和动态性"></a>8.1.1、语法、作用域和动态性</h6><pre><code>    1、query_cache_size变量是全局的
     2、sort_buffer_size变量默认是全局相同的，但是每个线程里也可以设置
@@ -776,8 +776,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/05/读书笔记_深入理解Java虚拟机/" rel="next" title="读书笔记_深入理解Java虚拟机">
-                <i class="fa fa-chevron-left"></i> 读书笔记_深入理解Java虚拟机
+              <a href="/2019/04/05/读书笔记_深入浅出HTTPS/" rel="next" title="读书笔记_深入浅出HTTPS">
+                <i class="fa fa-chevron-left"></i> 读书笔记_深入浅出HTTPS
               </a>
             
           </div>
@@ -786,8 +786,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/05/读书笔记_人人都是架构师/" rel="prev" title="读书笔记_人人都是架构师">
-                读书笔记_人人都是架构师 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/05/读书笔记_大型网站系统与java中间件/" rel="prev" title="读书笔记_大型网站系统与Java中间件">
+                读书笔记_大型网站系统与Java中间件 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -870,7 +870,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">164</span>
+                  <span class="site-state-item-count">234</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -881,7 +881,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -892,7 +892,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -990,7 +990,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

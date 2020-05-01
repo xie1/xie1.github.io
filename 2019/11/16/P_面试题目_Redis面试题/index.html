@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT,xiesz">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XieSZ'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、思维导图总知识点1、项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？——》已理解1、面试官心理分析：     这个问题，互联网公司必问，要是一个人连缓存都不太清楚，那确实比较尴尬。只要问到缓存，上来第一个问题，肯定是先问问你项目哪里用了缓存？为啥要用？不用行不行？如果用了以后可能会有什么不良的后果？这就是看看你对缓存这个东西背后有没有思考，如果你就是傻乎乎的瞎用，没法给面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis面试题">
+<meta property="og:url" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/index.html">
+<meta property="og:site_name" content="XieSZ&#39;S BLOG">
+<meta property="og:description" content="一、思维导图总知识点1、项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？——》已理解1、面试官心理分析：     这个问题，互联网公司必问，要是一个人连缓存都不太清楚，那确实比较尴尬。只要问到缓存，上来第一个问题，肯定是先问问你项目哪里用了缓存？为啥要用？不用行不行？如果用了以后可能会有什么不良的后果？这就是看看你对缓存这个东西背后有没有思考，如果你就是傻乎乎的瞎用，没法给面试">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559378468429.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559381894148.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559381907310.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559382757442.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559382777390.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559382798389.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559382807586.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559386816035.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559386843881.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559386856819.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407759952.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407804361.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407815547.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407831368.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407891351.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407907751.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407927443.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407951802.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407968807.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407995248.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408008327.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408015948.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408536656.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408553593.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408570736.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408590963.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408170976.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408201632.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408211523.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408230320.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408654827.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408730187.png">
+<meta property="og:updated_time" content="2019-11-16T12:26:44.958Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis面试题">
+<meta name="twitter:description" content="一、思维导图总知识点1、项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？——》已理解1、面试官心理分析：     这个问题，互联网公司必问，要是一个人连缓存都不太清楚，那确实比较尴尬。只要问到缓存，上来第一个问题，肯定是先问问你项目哪里用了缓存？为啥要用？不用行不行？如果用了以后可能会有什么不良的后果？这就是看看你对缓存这个东西背后有没有思考，如果你就是傻乎乎的瞎用，没法给面试">
+<meta name="twitter:image" content="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559378468429.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/">
+
+
+
+
+
+  <title>Redis面试题 | XieSZ'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XieSZ'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">xieshanzhong的博客小站</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieSZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XieSZ'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Redis面试题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-16T10:17:59+08:00">
+                2019-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/11/16/P_面试题目_Redis面试题/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/11/16/P_面试题目_Redis面试题/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><h1 id="总知识点"><a href="#总知识点" class="headerlink" title="总知识点"></a><em>总知识点</em></h1><h3 id="1、项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？——》已理解"><a href="#1、项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？——》已理解" class="headerlink" title="1、项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？——》已理解"></a>1、项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？——》已理解</h3><pre><code>1、面试官心理分析：
+    这个问题，互联网公司必问，要是一个人连缓存都不太清楚，那确实比较尴尬。只要问到缓存，上来第一个问题，肯定是先问问你项目哪里用了缓存？为啥要用？不用行不行？如果用了以后可能会有什么不良的后果？这就是看看你对缓存这个东西背后有没有思考，如果你就是傻乎乎的瞎用，没法给面试官一个合理的解答，那面试官对你印象肯定不太好，觉得你平时思考太少，就知道干活儿
+
+2、面试题的剖析
+    1、项目中缓存是如何使用的？
+        主要有可以参考苗木超市的列表和采购单列表，分词的词库放于缓存中
+    2、为什么要用缓存？
+        高性能，高并发
+        1、高性能：苗木超市的列表（慢查询，数据变化不大的，就放于缓存中）
+        2、高并发：缓存是走内存的，内存天然就支撑高并发
+    3、缓存使用不当会造成后果？
+        1、缓存和数据库双写不一致
+        2、缓存雪崩，缓存穿透
+        3、缓存并发竞争    
+</code></pre><p><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559378468429.png" alt="Alt text"></p>
+<h3 id="2、redis和memcached有什么区别？redis的线程模型是什么？为什么redis单线程却能支持高并发？——》已理解"><a href="#2、redis和memcached有什么区别？redis的线程模型是什么？为什么redis单线程却能支持高并发？——》已理解" class="headerlink" title="2、redis和memcached有什么区别？redis的线程模型是什么？为什么redis单线程却能支持高并发？——》已理解"></a>2、redis和memcached有什么区别？redis的线程模型是什么？为什么redis单线程却能支持高并发？——》已理解</h3><pre><code>1、面试官的心理分析：
+ 这个是问 redis 的时候，最基本的问题吧，redis 最基本的一个内部原理和特点，就是 redis 实际上是个单线程工作模型，你要是这个都不知道，那后面玩儿 redis 的时候，出了问题岂不是什么都不知道？
+
+还有可能面试官会问问你 redis 和 memcached 的区别，但是 memcached 是早些年各大互联网公司常用的缓存方案，但是现在近几年基本都是 redis，没什么公司用 memcached 了。
+
+2、面试题剖析：
+    要理解：
+        1、什么导致的redis单线程？描述下文件事件驱动处理器的过程。
+        2、描述一下客户端与redis建立一次通信过程/
+redis 和 memcached 有啥区别？
+ 1、redis 支持复杂的数据结构
+ redis 相比 memcached 来说，拥有更多的数据结构，能支持更丰富的数据操作。如果需要缓存能够支持更复杂的结构和操作， redis会是不错的选择。
+
+2、redis 原生支持集群模式
+ 在 redis3.x 版本中，便能支持 cluster 模式，而 memcached 没有原生的集群模式，需要依靠客户端来实现往集群中分片写入数据。
+
+3、性能对比
+ 由于 redis 只使用单核，而 memcached 可以使用多核，所以平均每一个核上 redis 在存储小数据时比 memcached 性能更高。而在 100k 以上的数据中，memcached 性能要高于 redis。虽然 redis 最近也在存储大数据的性能上进行优化，但是比起 memcached，还是稍有逊色。
+</code></pre><p><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559381894148.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559381907310.png" alt="Alt text"></p>
+<h3 id="3、redis-都有哪些数据类型？分别在哪些场景下使用比较合适？——》已理解"><a href="#3、redis-都有哪些数据类型？分别在哪些场景下使用比较合适？——》已理解" class="headerlink" title="3、redis 都有哪些数据类型？分别在哪些场景下使用比较合适？——》已理解"></a>3、redis 都有哪些数据类型？分别在哪些场景下使用比较合适？——》已理解</h3><pre><code>1、面试官心理分析：
+    其实问这个问题，主要有两个原因：
+看看你到底有没有全面的了解 redis 有哪些功能，一般怎么来用，啥场景用什么，就怕你别就会最简单的 KV 操作；
+看看你在实际项目里都怎么玩儿过 redis
+2、面试题剖析
+</code></pre><p><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559382757442.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559382777390.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559382798389.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559382807586.png" alt="Alt text"></p>
+<h3 id="4、redis的过期策略有哪些？内存淘汰机制有哪些？手写一些LRU代码实现？——》已理解"><a href="#4、redis的过期策略有哪些？内存淘汰机制有哪些？手写一些LRU代码实现？——》已理解" class="headerlink" title="4、redis的过期策略有哪些？内存淘汰机制有哪些？手写一些LRU代码实现？——》已理解"></a>4、redis的过期策略有哪些？内存淘汰机制有哪些？手写一些LRU代码实现？——》已理解</h3><pre><code>1、面试官心理分析
+    如果你连这个问题都不知道，上来就懵了，回答不出来，那线上你写代码的时候，想当然的认为写进 redis 的数据就一定会存在，后面导致系统各种 bug，谁来负责？
+
+常见的有两个问题：
+
+往 redis 写入的数据怎么没了？
+可能有同学会遇到，在生产环境的 redis 经常会丢掉一些数据，写进去了，过一会儿可能就没了。我的天，同学，你问这个问题就说明 redis 你就没用对啊。redis 是缓存，你给当存储了是吧？
+
+啥叫缓存？用内存当缓存。内存是无限的吗，内存是很宝贵而且是有限的，磁盘是廉价而且是大量的。可能一台机器就几十个 G 的内存，但是可以有几个 T 的硬盘空间。redis 主要是基于内存来进行高性能、高并发的读写操作的。
+
+那既然内存是有限的，比如 redis 就只能用 10G，你要是往里面写了 20G 的数据，会咋办？当然会干掉 10G 的数据，然后就保留 10G 的数据了。那干掉哪些数据？保留哪些数据？当然是干掉不常用的数据，保留常用的数据了。
+
+数据明明过期了，怎么还占用着内存？
+这是由 redis 的过期策略来决定
+
+2、面试题剖析
+</code></pre><p><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559386816035.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559386843881.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1559386856819.png" alt="Alt text"></p>
+<h3 id="5、如何保证-Redis-高并发、高可用？Redis-的主从复制原理能介绍一下么？Redis-的哨兵原理能介绍一下么？——》已理解"><a href="#5、如何保证-Redis-高并发、高可用？Redis-的主从复制原理能介绍一下么？Redis-的哨兵原理能介绍一下么？——》已理解" class="headerlink" title="5、如何保证 Redis 高并发、高可用？Redis 的主从复制原理能介绍一下么？Redis 的哨兵原理能介绍一下么？——》已理解"></a>5、如何保证 Redis 高并发、高可用？Redis 的主从复制原理能介绍一下么？Redis 的哨兵原理能介绍一下么？——》已理解</h3><p><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407759952.png" alt="Alt text"></p>
+<h3 id="6、Redis-的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？——》已理解"><a href="#6、Redis-的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？——》已理解" class="headerlink" title="6、Redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？——》已理解"></a>6、Redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？——》已理解</h3><pre><code>持久化：
+1、RDB：生成快照，是对redis中的数据执行周期性持久化
+2、AOF：AOF机制对每条写命令追加至AOF文件，当redis重启时，通过回放AOF日志中的写指令来重新构建整个数据集。
+
+优缺点：
+1、RDB优缺点
+    1、会生成多个数据文件，非常适合做冷备
+    2、对redis对外提供读写服务，影响小，可以使redis保持高性能
+    3、基于RDB数据文件重启和恢复redis进程，更加快速
+    4、会丢失部分时间间隔段数据
+    5、如果文件特别大，服务暂停时间长
+2、AOF优缺点
+    1、可以保护数据不丢失
+    2、没有任何磁盘寻址，写入性能非常高
+    3、AOF日志文件的命令可以通过非常可读的方式进行记录，这个特性适合做灾难性误删紧急恢复
+    4、同一个数据，AOF日志比较大
+
+如何选择哪种持久化方式：
+同事开启两种持久化，用AOF保证数据不丢失，用RDB来做不同程度的冷备
+</code></pre><p><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407804361.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407815547.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407831368.png" alt="Alt text"></p>
+<h3 id="7、Redis-集群模式的工作原理能说一下么？在集群模式下，Redis-的-key-是如何寻址的？分布式寻址都有哪些算法？了解一致性-hash-算法吗？如何动态增加和删除一个节点？"><a href="#7、Redis-集群模式的工作原理能说一下么？在集群模式下，Redis-的-key-是如何寻址的？分布式寻址都有哪些算法？了解一致性-hash-算法吗？如何动态增加和删除一个节点？" class="headerlink" title="7、Redis 集群模式的工作原理能说一下么？在集群模式下，Redis 的 key 是如何寻址的？分布式寻址都有哪些算法？了解一致性 hash 算法吗？如何动态增加和删除一个节点？"></a>7、Redis 集群模式的工作原理能说一下么？在集群模式下，Redis 的 key 是如何寻址的？分布式寻址都有哪些算法？了解一致性 hash 算法吗？如何动态增加和删除一个节点？</h3><p><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407891351.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407907751.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407927443.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407951802.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407968807.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562407995248.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408008327.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408015948.png" alt="Alt text"></p>
+<h3 id="8、如何保证缓存与数据库的双写一致性？"><a href="#8、如何保证缓存与数据库的双写一致性？" class="headerlink" title="8、如何保证缓存与数据库的双写一致性？"></a>8、如何保证缓存与数据库的双写一致性？</h3><p><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408536656.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408553593.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408570736.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408590963.png" alt="Alt text"></p>
+<h3 id="9、了解什么是-redis-的雪崩、穿透和击穿？Redis-崩溃之后会怎么样？系统该如何应对这种情况？如何处理-Redis-的穿透？——》已理解"><a href="#9、了解什么是-redis-的雪崩、穿透和击穿？Redis-崩溃之后会怎么样？系统该如何应对这种情况？如何处理-Redis-的穿透？——》已理解" class="headerlink" title="9、了解什么是 redis 的雪崩、穿透和击穿？Redis 崩溃之后会怎么样？系统该如何应对这种情况？如何处理 Redis 的穿透？——》已理解"></a>9、了解什么是 redis 的雪崩、穿透和击穿？Redis 崩溃之后会怎么样？系统该如何应对这种情况？如何处理 Redis 的穿透？——》已理解</h3><pre><code>1、缓存雪崩
+    1、缓存机器挂了，请求全部落到数据库，数据库无法承受而挂掉
+    解决办法：
+    1、事前：redis高可用，主从+哨兵，redis cluster，避免全盘崩溃
+    2、事中：本地缓存+限流，降级，避免mysql被打死
+    3、事后：redis持久化，一旦重启，自动从磁盘恢复，加速恢复缓存数据
+2、缓存穿透
+    1、被恶意请求缓存中不存在的数据，导致请求全部落到数据库
+    解决办法：
+        只要没有查到的，就写入一个空值到缓存中，然后设置一个过期时间
+3、缓存击穿
+    1、某个key非常热点，访问频繁，当key失效瞬间，大量请求击穿缓存
+    解决办法:
+        设置热点永不过期，或通过redis和zookeeper实现互斥锁
+</code></pre><p><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408170976.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408201632.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408211523.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408230320.png" alt="Alt text"></p>
+<h3 id="10、Redis-的并发竞争问题是什么？如何解决这个问题？了解-Redis-事务的-CAS-方案吗？——》已理解"><a href="#10、Redis-的并发竞争问题是什么？如何解决这个问题？了解-Redis-事务的-CAS-方案吗？——》已理解" class="headerlink" title="10、Redis 的并发竞争问题是什么？如何解决这个问题？了解 Redis 事务的 CAS 方案吗？——》已理解"></a>10、Redis 的并发竞争问题是什么？如何解决这个问题？了解 Redis 事务的 CAS 方案吗？——》已理解</h3><pre><code>并发竞争问题：
+1、多客户端同时并发写一个key。
+
+解决方案：
+1、通过基于zookeeper实现分布式锁
+2、通过CAS类乐观方案
+    1、你要写缓存数据，都是从mysql里查出来，都将吸入mysql中，写入mysql中的时候必须保存一个时间戳
+    从mysql查出来的时候，时间戳也查出来。
+    2、每次都要写之前，先判断一下当前这个value的时间戳是否比缓存的value要新，如果新的话，可以写。不然用旧的数据覆盖新的数据
+</code></pre><p><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408654827.png" alt="Alt text"></p>
+<h3 id="11、生产环境中的-Redis-是怎么部署的？——》已理解"><a href="#11、生产环境中的-Redis-是怎么部署的？——》已理解" class="headerlink" title="11、生产环境中的 Redis 是怎么部署的？——》已理解"></a>11、生产环境中的 Redis 是怎么部署的？——》已理解</h3><pre><code>我们项目是单机
+
+但是对于Redis上的部署还是有些了解的。。。。。
+</code></pre><p><img src="//yoursite.com/2019/11/16/P_面试题目_Redis面试题/1562408730187.png" alt="Alt text"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    XieSZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/" title="Redis面试题">http://yoursite.com/2019/11/16/P_面试题目_Redis面试题/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/16/P_面试题目_MySQL面试题/" rel="next" title="MySQL面试题">
+                <i class="fa fa-chevron-left"></i> MySQL面试题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/16/P_面试题目_MyBatis面试题/" rel="prev" title="MyBatis面试题">
+                MyBatis面试题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieSZ</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到XieSZ的技术分享站~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">234</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xie1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xieshanzhong66@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xie1.github.io/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="hexo" target="_blank">hexo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、思维导图"><span class="nav-text">一、思维导图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总知识点"><span class="nav-text">总知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？——》已理解"><span class="nav-text">1、项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？——》已理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、redis和memcached有什么区别？redis的线程模型是什么？为什么redis单线程却能支持高并发？——》已理解"><span class="nav-text">2、redis和memcached有什么区别？redis的线程模型是什么？为什么redis单线程却能支持高并发？——》已理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、redis-都有哪些数据类型？分别在哪些场景下使用比较合适？——》已理解"><span class="nav-text">3、redis 都有哪些数据类型？分别在哪些场景下使用比较合适？——》已理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、redis的过期策略有哪些？内存淘汰机制有哪些？手写一些LRU代码实现？——》已理解"><span class="nav-text">4、redis的过期策略有哪些？内存淘汰机制有哪些？手写一些LRU代码实现？——》已理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、如何保证-Redis-高并发、高可用？Redis-的主从复制原理能介绍一下么？Redis-的哨兵原理能介绍一下么？——》已理解"><span class="nav-text">5、如何保证 Redis 高并发、高可用？Redis 的主从复制原理能介绍一下么？Redis 的哨兵原理能介绍一下么？——》已理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、Redis-的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？——》已理解"><span class="nav-text">6、Redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？——》已理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、Redis-集群模式的工作原理能说一下么？在集群模式下，Redis-的-key-是如何寻址的？分布式寻址都有哪些算法？了解一致性-hash-算法吗？如何动态增加和删除一个节点？"><span class="nav-text">7、Redis 集群模式的工作原理能说一下么？在集群模式下，Redis 的 key 是如何寻址的？分布式寻址都有哪些算法？了解一致性 hash 算法吗？如何动态增加和删除一个节点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、如何保证缓存与数据库的双写一致性？"><span class="nav-text">8、如何保证缓存与数据库的双写一致性？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、了解什么是-redis-的雪崩、穿透和击穿？Redis-崩溃之后会怎么样？系统该如何应对这种情况？如何处理-Redis-的穿透？——》已理解"><span class="nav-text">9、了解什么是 redis 的雪崩、穿透和击穿？Redis 崩溃之后会怎么样？系统该如何应对这种情况？如何处理 Redis 的穿透？——》已理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10、Redis-的并发竞争问题是什么？如何解决这个问题？了解-Redis-事务的-CAS-方案吗？——》已理解"><span class="nav-text">10、Redis 的并发竞争问题是什么？如何解决这个问题？了解 Redis 事务的 CAS 方案吗？——》已理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11、生产环境中的-Redis-是怎么部署的？——》已理解"><span class="nav-text">11、生产环境中的 Redis 是怎么部署的？——》已理解</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieSZ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytwYroRX';
+      var conf = 'a1ed94f3fa27338ebcb9c5f114025ca5';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

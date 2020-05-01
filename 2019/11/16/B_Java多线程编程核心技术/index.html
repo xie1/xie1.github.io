@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT,xiesz">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XieSZ'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、思维导图总知识点1、Java多线程技能 1.1、进程和多线程的概念及线程的优点1、进程是受操作系统管理的基本运行单元 2、线程是进程中独立运行的子任务 1.2、使用多线程1.2.1、继承Thread类 1.2.2、实现Runnbale接口 1.2.3、实例变量与线程安全1.2.4、留言i—与System.out.println()异常1.3、currentThread()方法返回代码段正在被哪">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java多线程编程核心技术">
+<meta property="og:url" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/index.html">
+<meta property="og:site_name" content="XieSZ&#39;S BLOG">
+<meta property="og:description" content="一、思维导图总知识点1、Java多线程技能 1.1、进程和多线程的概念及线程的优点1、进程是受操作系统管理的基本运行单元 2、线程是进程中独立运行的子任务 1.2、使用多线程1.2.1、继承Thread类 1.2.2、实现Runnbale接口 1.2.3、实例变量与线程安全1.2.4、留言i—与System.out.println()异常1.3、currentThread()方法返回代码段正在被哪">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559655153518.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559640657584.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559640994871.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559655096751.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559655907561.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559656209218.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559700740123.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559701411057.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559701938260.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559703387172.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559704811381.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559704885423.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559704895311.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559705194772.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559705450968.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559705467110.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559705713090.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559707342949.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559708468379.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559708585370.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559715775704.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559718605969.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559719734370.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559719909709.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559721501154.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559721571625.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559721770626.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559721743465.png">
+<meta property="og:updated_time" content="2019-11-16T10:34:28.338Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java多线程编程核心技术">
+<meta name="twitter:description" content="一、思维导图总知识点1、Java多线程技能 1.1、进程和多线程的概念及线程的优点1、进程是受操作系统管理的基本运行单元 2、线程是进程中独立运行的子任务 1.2、使用多线程1.2.1、继承Thread类 1.2.2、实现Runnbale接口 1.2.3、实例变量与线程安全1.2.4、留言i—与System.out.println()异常1.3、currentThread()方法返回代码段正在被哪">
+<meta name="twitter:image" content="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559655153518.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/">
+
+
+
+
+
+  <title>Java多线程编程核心技术 | XieSZ'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XieSZ'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">xieshanzhong的博客小站</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieSZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XieSZ'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java多线程编程核心技术</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-16T10:17:59+08:00">
+                2019-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/11/16/B_Java多线程编程核心技术/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/11/16/B_Java多线程编程核心技术/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><h1 id="总知识点"><a href="#总知识点" class="headerlink" title="总知识点"></a><em>总知识点</em></h1><h3 id="1、Java多线程技能"><a href="#1、Java多线程技能" class="headerlink" title="1、Java多线程技能"></a>1、Java多线程技能</h3><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559655153518.png" alt="Alt text"></p>
+<h4 id="1-1、进程和多线程的概念及线程的优点"><a href="#1-1、进程和多线程的概念及线程的优点" class="headerlink" title="1.1、进程和多线程的概念及线程的优点"></a>1.1、进程和多线程的概念及线程的优点</h4><pre><code>1、进程是受操作系统管理的基本运行单元
+2、线程是进程中独立运行的子任务
+</code></pre><h4 id="1-2、使用多线程"><a href="#1-2、使用多线程" class="headerlink" title="1.2、使用多线程"></a>1.2、使用多线程</h4><h5 id="1-2-1、继承Thread类"><a href="#1-2-1、继承Thread类" class="headerlink" title="1.2.1、继承Thread类"></a>1.2.1、继承Thread类</h5><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559640657584.png" alt="Alt text"></p>
+<h5 id="1-2-2、实现Runnbale接口"><a href="#1-2-2、实现Runnbale接口" class="headerlink" title="1.2.2、实现Runnbale接口"></a>1.2.2、实现Runnbale接口</h5><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559640994871.png" alt="Alt text"></p>
+<h5 id="1-2-3、实例变量与线程安全"><a href="#1-2-3、实例变量与线程安全" class="headerlink" title="1.2.3、实例变量与线程安全"></a>1.2.3、实例变量与线程安全</h5><h5 id="1-2-4、留言i—与System-out-println-异常"><a href="#1-2-4、留言i—与System-out-println-异常" class="headerlink" title="1.2.4、留言i—与System.out.println()异常"></a>1.2.4、留言i—与System.out.println()异常</h5><h4 id="1-3、currentThread-方法"><a href="#1-3、currentThread-方法" class="headerlink" title="1.3、currentThread()方法"></a>1.3、currentThread()方法</h4><pre><code>返回代码段正在被哪个线程调用信息
+</code></pre><h4 id="1-4、isAlive-方法"><a href="#1-4、isAlive-方法" class="headerlink" title="1.4、isAlive()方法"></a>1.4、isAlive()方法</h4><pre><code>判断线程是否处于活动状态
+</code></pre><h4 id="1-5、sleep-方法"><a href="#1-5、sleep-方法" class="headerlink" title="1.5、sleep()方法"></a>1.5、sleep()方法</h4><h4 id="1-6、getId-方法"><a href="#1-6、getId-方法" class="headerlink" title="1.6、getId()方法"></a>1.6、getId()方法</h4><h4 id="1-7、停止线程"><a href="#1-7、停止线程" class="headerlink" title="1.7、停止线程"></a>1.7、停止线程</h4><pre><code>1、使用退出标志，使线程正常退出，也就是当run方法完成后线程终止
+2、不推荐使用stop，suspend，resume
+3、使用interrupt方法中断线程
+</code></pre><h5 id="1-7-1、interrupt停止不了线程"><a href="#1-7-1、interrupt停止不了线程" class="headerlink" title="1.7.1、interrupt停止不了线程"></a>1.7.1、interrupt停止不了线程</h5><pre><code>interrupt停止不了线程，只是在当前线程中打了一个停止标记，并未真正停止线程
+</code></pre><h5 id="1-7-2、判断线程是否是停止状态"><a href="#1-7-2、判断线程是否是停止状态" class="headerlink" title="1.7.2、判断线程是否是停止状态"></a>1.7.2、判断线程是否是停止状态</h5><pre><code>1、this.interrupted():测试当前线程是否已经中断
+    具有清除状态的功能
+2、this.isInterrupted()：测试线程是否已经中断
+    测试线程Thread对象是否已经是中断状态，但不清楚状态标志
+</code></pre><h5 id="1-7-3、能停止的线程-异常法"><a href="#1-7-3、能停止的线程-异常法" class="headerlink" title="1.7.3、能停止的线程-异常法"></a>1.7.3、能停止的线程-异常法</h5><h5 id="1-7-4、在沉睡中停止"><a href="#1-7-4、在沉睡中停止" class="headerlink" title="1.7.4、在沉睡中停止"></a>1.7.4、在沉睡中停止</h5><h5 id="1-7-5、能停止的线程-暴力停止"><a href="#1-7-5、能停止的线程-暴力停止" class="headerlink" title="1.7.5、能停止的线程-暴力停止"></a>1.7.5、能停止的线程-暴力停止</h5><pre><code>使用stop（）方法停止线程则是非常的暴力
+</code></pre><h5 id="1-7-6、使用return停止线程"><a href="#1-7-6、使用return停止线程" class="headerlink" title="1.7.6、使用return停止线程"></a>1.7.6、使用return停止线程</h5><pre><code>将方法interrupt（）与return结合使用也能实现停止线程的效果
+</code></pre><h4 id="1-8、暂停线程"><a href="#1-8、暂停线程" class="headerlink" title="1.8、暂停线程"></a>1.8、暂停线程</h4><pre><code>暂停线程意味着此线程还可以恢复运行，在Java多线程中，可以使用suspend方法暂停线程，使用resume（）方法恢复线程的执行
+1、使用不当，很容易造成公共的同步对象独占。
+2、导致数据不同步、
+</code></pre><h4 id="1-9、yield方法"><a href="#1-9、yield方法" class="headerlink" title="1.9、yield方法"></a>1.9、yield方法</h4><pre><code>放弃当前的CPU资源，将它让给其他的任务去占用CPU执行时间，但放弃的时间不确定，有可能刚刚放弃，马上又获得CPU时间片
+</code></pre><h4 id="1-10、线程的优先级"><a href="#1-10、线程的优先级" class="headerlink" title="1.10、线程的优先级"></a>1.10、线程的优先级</h4><pre><code>使用setPriority（）方法，确定在哪一次线程来优先执行
+</code></pre><h4 id="1-11、守护线程"><a href="#1-11、守护线程" class="headerlink" title="1.11、守护线程"></a>1.11、守护线程</h4><pre><code>1、用户线程
+2、守护线程：垃圾回收线程
+</code></pre><h3 id="2、对象及变量的并发访问"><a href="#2、对象及变量的并发访问" class="headerlink" title="2、对象及变量的并发访问"></a>2、对象及变量的并发访问</h3><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559655096751.png" alt="Alt text"></p>
+<h4 id="2-1、synchronized同步方法"><a href="#2-1、synchronized同步方法" class="headerlink" title="2.1、synchronized同步方法"></a>2.1、synchronized同步方法</h4><h5 id="2-1-1、方法内的变量为线程安全"><a href="#2-1-1、方法内的变量为线程安全" class="headerlink" title="2.1.1、方法内的变量为线程安全"></a>2.1.1、方法内的变量为线程安全</h5><h5 id="2-1-2、实例变量为非线程安全"><a href="#2-1-2、实例变量为非线程安全" class="headerlink" title="2.1.2、实例变量为非线程安全"></a>2.1.2、实例变量为非线程安全</h5><h5 id="2-1-3、多个对象多个锁"><a href="#2-1-3、多个对象多个锁" class="headerlink" title="2.1.3、多个对象多个锁"></a>2.1.3、多个对象多个锁</h5><h5 id="2-1-4、synchronized方法与锁对象"><a href="#2-1-4、synchronized方法与锁对象" class="headerlink" title="2.1.4、synchronized方法与锁对象"></a>2.1.4、synchronized方法与锁对象</h5><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559655907561.png" alt="Alt text"></p>
+<pre><code>一个对象方法A是同步的，一个对象方法B是异步
+</code></pre><h5 id="2-1-5、脏读"><a href="#2-1-5、脏读" class="headerlink" title="2.1.5、脏读"></a>2.1.5、脏读</h5><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559656209218.png" alt="Alt text"></p>
+<h5 id="2-1-6、synchronized锁重入"><a href="#2-1-6、synchronized锁重入" class="headerlink" title="2.1.6、synchronized锁重入"></a>2.1.6、synchronized锁重入</h5><pre><code>拥有锁重入的功能，也就是在使用synchronized时，当一个线程得到一个对象锁后，再次请求一个对象此对象锁是可以再次得到该对象锁的。
+1、可重入锁也支持父子类继承的环境中
+    当存在父子类继承关系时，子类是完全可以通过可重入锁调用父类的同步方法
+</code></pre><h5 id="2-1-7、出现异常，锁自动释放"><a href="#2-1-7、出现异常，锁自动释放" class="headerlink" title="2.1.7、出现异常，锁自动释放"></a>2.1.7、出现异常，锁自动释放</h5><h5 id="2-1-8、同步不具有继承性"><a href="#2-1-8、同步不具有继承性" class="headerlink" title="2.1.8、同步不具有继承性"></a>2.1.8、同步不具有继承性</h5><pre><code>父类的同步方法，而子类继承之后调用，不具有同步性
+</code></pre><h4 id="2-2、synchronized同步语句块"><a href="#2-2、synchronized同步语句块" class="headerlink" title="2.2、synchronized同步语句块"></a>2.2、synchronized同步语句块</h4><h5 id="2-2-1、synchronized同步方法的弊端"><a href="#2-2-1、synchronized同步方法的弊端" class="headerlink" title="2.2.1、synchronized同步方法的弊端"></a>2.2.1、synchronized同步方法的弊端</h5><pre><code>执行长时间的任务，等待的时间过长
+</code></pre><h5 id="2-2-2、synchronized同步同步代码块的使用"><a href="#2-2-2、synchronized同步同步代码块的使用" class="headerlink" title="2.2.2、synchronized同步同步代码块的使用"></a>2.2.2、synchronized同步同步代码块的使用</h5><pre><code>1、当两个并发线程访问同一对象object中的synchronized(this)同步代码块时，一段时间内只能有一个线程被执行，另一个线程必须等待当前线程执行完这个代码块以后才能执行该代码。
+2、一般是一半异步一半同步
+</code></pre><h5 id="2-2-3、synchronized代码块间同步性"><a href="#2-2-3、synchronized代码块间同步性" class="headerlink" title="2.2.3、synchronized代码块间同步性"></a>2.2.3、synchronized代码块间同步性</h5><pre><code>当一个线程访问object的一个synchronized(this)同步代码块时，其他线程对同一个object中所有其他的synchronized(this)同步代码块的访问将被阻塞，这说明synchronized使用的“对象监视器”时一个
+</code></pre><h5 id="2-2-4、synchronized（this）代码块是锁定当前对象"><a href="#2-2-4、synchronized（this）代码块是锁定当前对象" class="headerlink" title="2.2.4、synchronized（this）代码块是锁定当前对象"></a>2.2.4、synchronized（this）代码块是锁定当前对象</h5><pre><code>synchronized方法和synchronized（this）代码块也是锁定当前对象的
+</code></pre><h5 id="2-2-5、将任意对象作为对象监视器"><a href="#2-2-5、将任意对象作为对象监视器" class="headerlink" title="2.2.5、将任意对象作为对象监视器"></a>2.2.5、将任意对象作为对象监视器</h5><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559700740123.png" alt="Alt text"></p>
+<pre><code>Java还支持对“任意对象”作为对象监视器来实现同步的功能，这个“任意对象”大多数是实例变量及方法的参数，使用格式为synchronized(非this对象)
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559701411057.png" alt="Alt text"></p>
+<pre><code>对象的监视器不同
+</code></pre><h5 id="2-2-6、细化验证3个结论"><a href="#2-2-6、细化验证3个结论" class="headerlink" title="2.2.6、细化验证3个结论"></a>2.2.6、细化验证3个结论</h5><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559701938260.png" alt="Alt text"></p>
+<h5 id="2-2-7、静态同步synchronized方法与synchronized-class-代码块"><a href="#2-2-7、静态同步synchronized方法与synchronized-class-代码块" class="headerlink" title="2.2.7、静态同步synchronized方法与synchronized(class)代码块"></a>2.2.7、静态同步synchronized方法与synchronized(class)代码块</h5><pre><code>关键字synchronized还可以应用在static静态方法上，如果这样写，那么对当前的*.java文件的Class类进行持锁。
+</code></pre><h5 id="2-2-8、数据类型String的常量池特性"><a href="#2-2-8、数据类型String的常量池特性" class="headerlink" title="2.2.8、数据类型String的常量池特性"></a>2.2.8、数据类型String的常量池特性</h5><pre><code>大多数情况下，同步synchronized代码块都不能使用String作为锁对象，而改用其他，比如new Object（）实例化一个Object对象，但它不能放入缓存中
+</code></pre><h5 id="2-2-9、多线程的死锁"><a href="#2-2-9、多线程的死锁" class="headerlink" title="2.2.9、多线程的死锁"></a>2.2.9、多线程的死锁</h5><pre><code>因为不同的线程都在等待根本不可能被释放的锁，从而导致所有的任务都无法继续完成。
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559703387172.png" alt="Alt text"></p>
+<h4 id="2-3、volatile关键字"><a href="#2-3、volatile关键字" class="headerlink" title="2.3、volatile关键字"></a>2.3、volatile关键字</h4><pre><code>关键字volatile的主要作用是使变量在多个线程间可见
+</code></pre><h5 id="2-3-1、关键字volatile与死循环"><a href="#2-3-1、关键字volatile与死循环" class="headerlink" title="2.3.1、关键字volatile与死循环"></a>2.3.1、关键字volatile与死循环</h5><pre><code>强制从公共堆栈中取得变量的值，而不是从线程私有数据栈中取得变量的值
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559704811381.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559704885423.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559704895311.png" alt="Alt text"></p>
+<h5 id="2-3-2、volatile非原子的特性"><a href="#2-3-2、volatile非原子的特性" class="headerlink" title="2.3.2、volatile非原子的特性"></a>2.3.2、volatile非原子的特性</h5><pre><code>需要注意的是，如果修改实例变量中的数据，比如i++也就是i=i+1,则这样的操作其实并不是一个原子操作，也就是非线程安全的。
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559705194772.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559705450968.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559705467110.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559705713090.png" alt="Alt text"></p>
+<pre><code>问题1：主内存变量发生改变，是由于其他的线程对它的操作还是主内存中自己的变化？
+问题2：如果是其他的线程的变量，已经通过volatile声明变量，为什么不会再从主内存读取？
+</code></pre><h5 id="2-3-3、使用原子类进行i-操作"><a href="#2-3-3、使用原子类进行i-操作" class="headerlink" title="2.3.3、使用原子类进行i++操作"></a>2.3.3、使用原子类进行i++操作</h5><pre><code>可以用AtomicInteger原子类进行实现
+
+学习多线程并发，要着重“外练互斥，内修可见”，这是掌握多线程，学习多线程并发重要技术点
+</code></pre><h3 id="3、线程间通信"><a href="#3、线程间通信" class="headerlink" title="3、线程间通信"></a>3、线程间通信</h3><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559707342949.png" alt="Alt text"></p>
+<h4 id="3-1、等待-通知机制"><a href="#3-1、等待-通知机制" class="headerlink" title="3.1、等待/通知机制"></a>3.1、等待/通知机制</h4><h5 id="3-1-1、不使用等待-通知机制实现线程间通信"><a href="#3-1-1、不使用等待-通知机制实现线程间通信" class="headerlink" title="3.1.1、不使用等待/通知机制实现线程间通信"></a>3.1.1、不使用等待/通知机制实现线程间通信</h5><h5 id="3-1-2、什么是等待-通知机制"><a href="#3-1-2、什么是等待-通知机制" class="headerlink" title="3.1.2、什么是等待/通知机制"></a>3.1.2、什么是等待/通知机制</h5><pre><code>    wait使线程停止运行，而notify使停止的线程继续运行
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559708468379.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559708585370.png" alt="Alt text"></p>
+<h5 id="3-1-3、方法wait-锁释放与notify-锁不释放"><a href="#3-1-3、方法wait-锁释放与notify-锁不释放" class="headerlink" title="3.1.3、方法wait()锁释放与notify()锁不释放"></a>3.1.3、方法wait()锁释放与notify()锁不释放</h5><pre><code>1、执行完同步代码块就会释放锁
+2、在执行同步代码块过程中，遇到异常而导致线程终止，锁也会被释放
+3、在执行同步代码块的过程中，执行了锁所属对象的wait（）方法，这个线程会释放对象锁，而此线程对象会进行线程等待池中，等待被唤醒
+</code></pre><h5 id="3-1-4、生产者-消费者模式实现"><a href="#3-1-4、生产者-消费者模式实现" class="headerlink" title="3.1.4、生产者/消费者模式实现"></a>3.1.4、生产者/消费者模式实现</h5><pre><code>可以在一个同步代码块中进行线程的等待，或者是唤醒
+1、一生产与一消费：操作值
+2、多生产与多消费：操作值-假死
+    有可能生产者唤醒的生产者
+    消费者唤醒的是消费者
+
+    这是由于通知过早，释放了锁了而导致
+3、多生产与多消费：操作值（可以唤醒全部）
+4、一生产与一消费：操作栈
+</code></pre><h5 id="3-1-5、通过管道进行线程间通信：字节流"><a href="#3-1-5、通过管道进行线程间通信：字节流" class="headerlink" title="3.1.5、通过管道进行线程间通信：字节流"></a>3.1.5、通过管道进行线程间通信：字节流</h5><pre><code>pipeStream是一种特殊的流，用于在不同线程间直接传送数据，一个线程发送数据到输出管道，另一个线程从输入管道中读取数据。通过使用管道，实现不同线程间的通信，而无须借助于类似临时文件之类的东西
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559715775704.png" alt="Alt text"></p>
+<h5 id="3-1-6、通过管道进行线程间通信：字符流"><a href="#3-1-6、通过管道进行线程间通信：字符流" class="headerlink" title="3.1.6、通过管道进行线程间通信：字符流"></a>3.1.6、通过管道进行线程间通信：字符流</h5><h4 id="3-2、方法join的使用"><a href="#3-2、方法join的使用" class="headerlink" title="3.2、方法join的使用"></a>3.2、方法join的使用</h4><pre><code>在很多情况下，主线程创建并启动子线程，如果子线程中要进行大量的耗时运算，主线程往往将早于子线程结束之前结束。这时，如果主线程想等待子线程执行完成之后再结束，比如子线程处理一个数据，主线程要取得这个数据中的值，就要用到join（）方法。方法join（）的作用是等待线程对象销毁。
+1、方法join的作用是使所属的线程对象x正常执行run（）方法中的任务，而使当前线程z进行无限期的阻塞，等待线程x销毁后再继续执行线程z后面的代码。
+2、方法join的功能是内部实现了wait方法来实现，具有释放锁的特点
+</code></pre><h4 id="3-3、类ThreadLocal的使用"><a href="#3-3、类ThreadLocal的使用" class="headerlink" title="3.3、类ThreadLocal的使用"></a>3.3、类ThreadLocal的使用</h4><pre><code>变量值得共享可以使用public static变量的形式，所有的线程都使用同一个public static变量。如果想实现每一个线程都有自己的共享变量，可以通过ThreadLocal。
+类ThreadLocal主要解决就是每个线程绑定自己的值，可以将ThreadLocal类比喻成全局存放数据的盒子，盒子中可以存储每个线程的私有数据。
+1、提供给每个私有线程存放自己的一份共享变量
+</code></pre><h5 id="3-3-1、方法get-与null"><a href="#3-3-1、方法get-与null" class="headerlink" title="3.3.1、方法get()与null"></a>3.3.1、方法get()与null</h5><pre><code>1、类ThreadLocal解决的是变量在不同线程间的隔离性，也就是不同线程拥有自己的值，不同线程中的值是可以放入ThreadLocal类中进行保存
+
+问题1：每个线程内的变量值发生了改变，最后是以哪个线程为主呢？？
+</code></pre><h4 id="3-4、类InheritableThreadLocal的使用"><a href="#3-4、类InheritableThreadLocal的使用" class="headerlink" title="3.4、类InheritableThreadLocal的使用"></a>3.4、类InheritableThreadLocal的使用</h4><pre><code>使用类InheritableThreadLocal可以在子线程找那个取得父线程继承下来的值
+</code></pre><h3 id="4、Lock的使用"><a href="#4、Lock的使用" class="headerlink" title="4、Lock的使用"></a>4、Lock的使用</h3><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559718605969.png" alt="Alt text"></p>
+<h4 id="4-1、使用ReentrantLock类（重入锁）"><a href="#4-1、使用ReentrantLock类（重入锁）" class="headerlink" title="4.1、使用ReentrantLock类（重入锁）"></a>4.1、使用ReentrantLock类（重入锁）</h4><pre><code>调用ReentrantLock对象的lock（）方法获取锁，调用unLock（）方法释放锁。
+</code></pre><h5 id="4-1-1、使用Condition实现等待-通知：错误用法与解决"><a href="#4-1-1、使用Condition实现等待-通知：错误用法与解决" class="headerlink" title="4.1.1、使用Condition实现等待/通知：错误用法与解决"></a>4.1.1、使用Condition实现等待/通知：错误用法与解决</h5><pre><code>必须在condition.await()方法调用之前调用lock.lock()代码获得同步监视器
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559719734370.png" alt="Alt text"></p>
+<h5 id="4-1-2、公平锁与非公平锁"><a href="#4-1-2、公平锁与非公平锁" class="headerlink" title="4.1.2、公平锁与非公平锁"></a>4.1.2、公平锁与非公平锁</h5><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559719909709.png" alt="Alt text"></p>
+<h4 id="4-2、使用ReentrantReadWriteLock类-读写锁"><a href="#4-2、使用ReentrantReadWriteLock类-读写锁" class="headerlink" title="4.2、使用ReentrantReadWriteLock类(读写锁)"></a>4.2、使用ReentrantReadWriteLock类(读写锁)</h4><pre><code>    读写锁表示也有两个锁，
+    1、一个是读操作相关的锁，也称为共享锁
+    2、一个是写操作相关的锁，也叫做排他锁。
+
+读写，写读，写写都是互斥，读读是异步的，非互斥
+</code></pre><h3 id="5、单例模式与多线程"><a href="#5、单例模式与多线程" class="headerlink" title="5、单例模式与多线程"></a>5、单例模式与多线程</h3><pre><code>如何使单例模式遇到多线程使安全的，正确的。
+</code></pre><h4 id="5-1、立即加载-“饿汉模式”"><a href="#5-1、立即加载-“饿汉模式”" class="headerlink" title="5.1、立即加载/“饿汉模式”"></a>5.1、立即加载/“饿汉模式”</h4><pre><code>立即加载就是使用类的时候已经将对象创建完毕，常见的实现办法就是直接new实例化
+</code></pre><h4 id="5-2、延迟加载-“懒汉模式”"><a href="#5-2、延迟加载-“懒汉模式”" class="headerlink" title="5.2、延迟加载/“懒汉模式”"></a>5.2、延迟加载/“懒汉模式”</h4><pre><code>解决方案：
+1、声明synchronized关键字
+2、尝试同步代码块
+3、针对某些重要的代码进行单独的同步
+4、使用DCL双检查锁机制
+</code></pre><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559721501154.png" alt="Alt text"></p>
+<h4 id="5-3、使用静态内置类实现单例模式"><a href="#5-3、使用静态内置类实现单例模式" class="headerlink" title="5.3、使用静态内置类实现单例模式"></a>5.3、使用静态内置类实现单例模式</h4><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559721571625.png" alt="Alt text"></p>
+<h4 id="5-4、使用序列化与反序列化实现单例模式"><a href="#5-4、使用序列化与反序列化实现单例模式" class="headerlink" title="5.4、使用序列化与反序列化实现单例模式"></a>5.4、使用序列化与反序列化实现单例模式</h4><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559721770626.png" alt="Alt text"></p>
+<h4 id="5-5、使用static代码块实现单例模式"><a href="#5-5、使用static代码块实现单例模式" class="headerlink" title="5.5、使用static代码块实现单例模式"></a>5.5、使用static代码块实现单例模式</h4><p><img src="//yoursite.com/2019/11/16/B_Java多线程编程核心技术/1559721743465.png" alt="Alt text"></p>
+<h4 id="5-6、使用enum枚举数据类型实现单例模式"><a href="#5-6、使用enum枚举数据类型实现单例模式" class="headerlink" title="5.6、使用enum枚举数据类型实现单例模式"></a>5.6、使用enum枚举数据类型实现单例模式</h4>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    XieSZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/" title="Java多线程编程核心技术">http://yoursite.com/2019/11/16/B_Java多线程编程核心技术/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/16/B_Rabbit实战指南/" rel="next" title="Rabbit实战指南">
+                <i class="fa fa-chevron-left"></i> Rabbit实战指南
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/16/B_MyBatis技术内幕/" rel="prev" title="MyBatis技术内幕">
+                MyBatis技术内幕 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieSZ</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到XieSZ的技术分享站~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">234</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xie1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xieshanzhong66@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xie1.github.io/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="hexo" target="_blank">hexo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、思维导图"><span class="nav-text">一、思维导图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总知识点"><span class="nav-text">总知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、Java多线程技能"><span class="nav-text">1、Java多线程技能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1、进程和多线程的概念及线程的优点"><span class="nav-text">1.1、进程和多线程的概念及线程的优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2、使用多线程"><span class="nav-text">1.2、使用多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-1、继承Thread类"><span class="nav-text">1.2.1、继承Thread类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-2、实现Runnbale接口"><span class="nav-text">1.2.2、实现Runnbale接口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-3、实例变量与线程安全"><span class="nav-text">1.2.3、实例变量与线程安全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-4、留言i—与System-out-println-异常"><span class="nav-text">1.2.4、留言i—与System.out.println()异常</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3、currentThread-方法"><span class="nav-text">1.3、currentThread()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4、isAlive-方法"><span class="nav-text">1.4、isAlive()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5、sleep-方法"><span class="nav-text">1.5、sleep()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6、getId-方法"><span class="nav-text">1.6、getId()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-7、停止线程"><span class="nav-text">1.7、停止线程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-7-1、interrupt停止不了线程"><span class="nav-text">1.7.1、interrupt停止不了线程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-7-2、判断线程是否是停止状态"><span class="nav-text">1.7.2、判断线程是否是停止状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-7-3、能停止的线程-异常法"><span class="nav-text">1.7.3、能停止的线程-异常法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-7-4、在沉睡中停止"><span class="nav-text">1.7.4、在沉睡中停止</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-7-5、能停止的线程-暴力停止"><span class="nav-text">1.7.5、能停止的线程-暴力停止</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-7-6、使用return停止线程"><span class="nav-text">1.7.6、使用return停止线程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-8、暂停线程"><span class="nav-text">1.8、暂停线程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-9、yield方法"><span class="nav-text">1.9、yield方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-10、线程的优先级"><span class="nav-text">1.10、线程的优先级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-11、守护线程"><span class="nav-text">1.11、守护线程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、对象及变量的并发访问"><span class="nav-text">2、对象及变量的并发访问</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1、synchronized同步方法"><span class="nav-text">2.1、synchronized同步方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1、方法内的变量为线程安全"><span class="nav-text">2.1.1、方法内的变量为线程安全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2、实例变量为非线程安全"><span class="nav-text">2.1.2、实例变量为非线程安全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-3、多个对象多个锁"><span class="nav-text">2.1.3、多个对象多个锁</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-4、synchronized方法与锁对象"><span class="nav-text">2.1.4、synchronized方法与锁对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-5、脏读"><span class="nav-text">2.1.5、脏读</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-6、synchronized锁重入"><span class="nav-text">2.1.6、synchronized锁重入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-7、出现异常，锁自动释放"><span class="nav-text">2.1.7、出现异常，锁自动释放</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-8、同步不具有继承性"><span class="nav-text">2.1.8、同步不具有继承性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2、synchronized同步语句块"><span class="nav-text">2.2、synchronized同步语句块</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-1、synchronized同步方法的弊端"><span class="nav-text">2.2.1、synchronized同步方法的弊端</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2、synchronized同步同步代码块的使用"><span class="nav-text">2.2.2、synchronized同步同步代码块的使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-3、synchronized代码块间同步性"><span class="nav-text">2.2.3、synchronized代码块间同步性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-4、synchronized（this）代码块是锁定当前对象"><span class="nav-text">2.2.4、synchronized（this）代码块是锁定当前对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-5、将任意对象作为对象监视器"><span class="nav-text">2.2.5、将任意对象作为对象监视器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-6、细化验证3个结论"><span class="nav-text">2.2.6、细化验证3个结论</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-7、静态同步synchronized方法与synchronized-class-代码块"><span class="nav-text">2.2.7、静态同步synchronized方法与synchronized(class)代码块</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-8、数据类型String的常量池特性"><span class="nav-text">2.2.8、数据类型String的常量池特性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-9、多线程的死锁"><span class="nav-text">2.2.9、多线程的死锁</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3、volatile关键字"><span class="nav-text">2.3、volatile关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-1、关键字volatile与死循环"><span class="nav-text">2.3.1、关键字volatile与死循环</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2、volatile非原子的特性"><span class="nav-text">2.3.2、volatile非原子的特性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-3、使用原子类进行i-操作"><span class="nav-text">2.3.3、使用原子类进行i++操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、线程间通信"><span class="nav-text">3、线程间通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1、等待-通知机制"><span class="nav-text">3.1、等待/通知机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-1、不使用等待-通知机制实现线程间通信"><span class="nav-text">3.1.1、不使用等待/通知机制实现线程间通信</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-2、什么是等待-通知机制"><span class="nav-text">3.1.2、什么是等待/通知机制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-3、方法wait-锁释放与notify-锁不释放"><span class="nav-text">3.1.3、方法wait()锁释放与notify()锁不释放</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-4、生产者-消费者模式实现"><span class="nav-text">3.1.4、生产者/消费者模式实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-5、通过管道进行线程间通信：字节流"><span class="nav-text">3.1.5、通过管道进行线程间通信：字节流</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-6、通过管道进行线程间通信：字符流"><span class="nav-text">3.1.6、通过管道进行线程间通信：字符流</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2、方法join的使用"><span class="nav-text">3.2、方法join的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3、类ThreadLocal的使用"><span class="nav-text">3.3、类ThreadLocal的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-1、方法get-与null"><span class="nav-text">3.3.1、方法get()与null</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4、类InheritableThreadLocal的使用"><span class="nav-text">3.4、类InheritableThreadLocal的使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、Lock的使用"><span class="nav-text">4、Lock的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1、使用ReentrantLock类（重入锁）"><span class="nav-text">4.1、使用ReentrantLock类（重入锁）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-1、使用Condition实现等待-通知：错误用法与解决"><span class="nav-text">4.1.1、使用Condition实现等待/通知：错误用法与解决</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-2、公平锁与非公平锁"><span class="nav-text">4.1.2、公平锁与非公平锁</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2、使用ReentrantReadWriteLock类-读写锁"><span class="nav-text">4.2、使用ReentrantReadWriteLock类(读写锁)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、单例模式与多线程"><span class="nav-text">5、单例模式与多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1、立即加载-“饿汉模式”"><span class="nav-text">5.1、立即加载/“饿汉模式”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2、延迟加载-“懒汉模式”"><span class="nav-text">5.2、延迟加载/“懒汉模式”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3、使用静态内置类实现单例模式"><span class="nav-text">5.3、使用静态内置类实现单例模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4、使用序列化与反序列化实现单例模式"><span class="nav-text">5.4、使用序列化与反序列化实现单例模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-5、使用static代码块实现单例模式"><span class="nav-text">5.5、使用static代码块实现单例模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6、使用enum枚举数据类型实现单例模式"><span class="nav-text">5.6、使用enum枚举数据类型实现单例模式</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieSZ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytwYroRX';
+      var conf = 'a1ed94f3fa27338ebcb9c5f114025ca5';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

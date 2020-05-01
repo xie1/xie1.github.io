@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT,xiesz">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XieSZ'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、思维导图总知识点1、数据结构绪论1.4、基本概念和术语1.4.1、数据数据是描述客观事物的符号，是计算机中可以操作的对象，是能被计算机识别，并输入给计算机处理的符号集合     1、可以输入计算机中     2、能被计算机程序处理 1.4.2、数据元素数据元素是组成数据的，有一定意义的基本单位，在计算机中通常作为整体处理。也称为记录 1.4.3、数据项数据项表示一个数据元素可以由若干个数据项组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大话数据结构">
+<meta property="og:url" content="http://yoursite.com/2019/11/16/A_大话数据结构/index.html">
+<meta property="og:site_name" content="XieSZ&#39;S BLOG">
+<meta property="og:description" content="一、思维导图总知识点1、数据结构绪论1.4、基本概念和术语1.4.1、数据数据是描述客观事物的符号，是计算机中可以操作的对象，是能被计算机识别，并输入给计算机处理的符号集合     1、可以输入计算机中     2、能被计算机程序处理 1.4.2、数据元素数据元素是组成数据的，有一定意义的基本单位，在计算机中通常作为整体处理。也称为记录 1.4.3、数据项数据项表示一个数据元素可以由若干个数据项组">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1558964593567.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1558964610127.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559034836674.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559035304963.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559036246846.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559036655474.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559036663713.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559036885991.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559038119837.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559117042349.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559117721373.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559118086026.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559118601583.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559181310284.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559181331297.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559182287735.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559184542252.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559185105891.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559185124459.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559186633643.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559188162247.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559188405930.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559188531830.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559199717464.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559200874377.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559200889786.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559200903201.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559204034152.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559206237077.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559207456122.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559208080283.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559208219342.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559210303731.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559210552299.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559210653875.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559210711311.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559211423646.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559211465310.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559266338986.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559267194234.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559267215245.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559267351481.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559267366343.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559268083111.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559268985559.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559268996508.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559269075295.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559270787722.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559281423821.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559281921646.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559281995783.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559282577171.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559282724647.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559282875138.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559283222656.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559283563055.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559286031347.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559292991861.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559293867387.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559293878177.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559294047834.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559294069696.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559294980798.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559295009758.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559295775097.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559295910907.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559296237834.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559296504441.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559296522322.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559296533382.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559297233698.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559297248403.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559298039688.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559298053174.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1559527026143.png">
+<meta property="og:updated_time" content="2019-11-16T10:32:52.220Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大话数据结构">
+<meta name="twitter:description" content="一、思维导图总知识点1、数据结构绪论1.4、基本概念和术语1.4.1、数据数据是描述客观事物的符号，是计算机中可以操作的对象，是能被计算机识别，并输入给计算机处理的符号集合     1、可以输入计算机中     2、能被计算机程序处理 1.4.2、数据元素数据元素是组成数据的，有一定意义的基本单位，在计算机中通常作为整体处理。也称为记录 1.4.3、数据项数据项表示一个数据元素可以由若干个数据项组">
+<meta name="twitter:image" content="http://yoursite.com/2019/11/16/A_大话数据结构/1558964593567.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/16/A_大话数据结构/">
+
+
+
+
+
+  <title>大话数据结构 | XieSZ'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XieSZ'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">xieshanzhong的博客小站</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/A_大话数据结构/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XieSZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XieSZ'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">大话数据结构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-16T10:17:59+08:00">
+                2019-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/11/16/A_大话数据结构/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/11/16/A_大话数据结构/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  24
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h1><h1 id="总知识点"><a href="#总知识点" class="headerlink" title="总知识点"></a><em>总知识点</em></h1><h3 id="1、数据结构绪论"><a href="#1、数据结构绪论" class="headerlink" title="1、数据结构绪论"></a>1、数据结构绪论</h3><h4 id="1-4、基本概念和术语"><a href="#1-4、基本概念和术语" class="headerlink" title="1.4、基本概念和术语"></a>1.4、基本概念和术语</h4><h5 id="1-4-1、数据"><a href="#1-4-1、数据" class="headerlink" title="1.4.1、数据"></a>1.4.1、数据</h5><pre><code>数据是描述客观事物的符号，是计算机中可以操作的对象，是能被计算机识别，并输入给计算机处理的符号集合
+    1、可以输入计算机中
+    2、能被计算机程序处理
+</code></pre><h5 id="1-4-2、数据元素"><a href="#1-4-2、数据元素" class="headerlink" title="1.4.2、数据元素"></a>1.4.2、数据元素</h5><pre><code>数据元素是组成数据的，有一定意义的基本单位，在计算机中通常作为整体处理。也称为记录
+</code></pre><h5 id="1-4-3、数据项"><a href="#1-4-3、数据项" class="headerlink" title="1.4.3、数据项"></a>1.4.3、数据项</h5><pre><code>数据项表示一个数据元素可以由若干个数据项组成
+数据项是数据不可分割的最小单位
+</code></pre><h5 id="1-4-4、数据对象"><a href="#1-4-4、数据对象" class="headerlink" title="1.4.4、数据对象"></a>1.4.4、数据对象</h5><pre><code>是性质相同的数据元素的集合，是数据的子集。
+</code></pre><h5 id="1-4-5、数据结构"><a href="#1-4-5、数据结构" class="headerlink" title="1.4.5、数据结构"></a>1.4.5、数据结构</h5><pre><code>是相互之间存在一种或多种特定关系的数据元素的集合
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1558964593567.png" alt="Alt text"></p>
+<h4 id="1-5、逻辑结构与物理结构"><a href="#1-5、逻辑结构与物理结构" class="headerlink" title="1.5、逻辑结构与物理结构"></a>1.5、逻辑结构与物理结构</h4><h5 id="1-5-1、逻辑结构"><a href="#1-5-1、逻辑结构" class="headerlink" title="1.5.1、逻辑结构"></a>1.5.1、逻辑结构</h5><pre><code>是指数据对象中数据元素之间的相互关系
+1、集合结构
+  集合结构中的数据元素除了同属于一个集合外，他们之间没有其他关系。
+2、线性结构
+    线性结构中的数据元素之间是一对一的关系
+3、树形结构
+    树形结构中的数据元素之间存在一种一对多的层次关系
+4、图形结构
+    图形结构的数据元素是多对多的关系
+</code></pre><h5 id="1-5-2、物理结构"><a href="#1-5-2、物理结构" class="headerlink" title="1.5.2、物理结构"></a>1.5.2、物理结构</h5><pre><code>是指数据的逻辑结构在计算机中的存储形式
+1、顺序存储结构
+    是把数据元素存放在地址连续的存储单元里，其数据间的逻辑关系和物理关系是一致的
+2、链式存储结构
+    是把数据元素放在任意的存储单元里，这组存储单元可以是连续的，也可以是不连续的。
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1558964610127.png" alt="Alt text"></p>
+<h4 id="1-6、抽象数据类型"><a href="#1-6、抽象数据类型" class="headerlink" title="1.6、抽象数据类型"></a>1.6、抽象数据类型</h4><h5 id="1-6-1、数据类型"><a href="#1-6-1、数据类型" class="headerlink" title="1.6.1、数据类型"></a>1.6.1、数据类型</h5><pre><code>是指一组性质相同的值的集合及定义在此集合上的一些操作总称
+</code></pre><h5 id="1-6-2、抽象数据类型"><a href="#1-6-2、抽象数据类型" class="headerlink" title="1.6.2、抽象数据类型"></a>1.6.2、抽象数据类型</h5><pre><code>ADT 是指一个数学模型及定义在该模型上的一组操作
+</code></pre><h3 id="2、算法"><a href="#2、算法" class="headerlink" title="2、算法"></a>2、算法</h3><h4 id="2-4、算法定义"><a href="#2-4、算法定义" class="headerlink" title="2.4、算法定义"></a>2.4、算法定义</h4><pre><code>是解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，而且每条指令表示一个或多个操作
+</code></pre><h4 id="2-5、算法的特性"><a href="#2-5、算法的特性" class="headerlink" title="2.5、算法的特性"></a>2.5、算法的特性</h4><pre><code>1、输入输出
+    算法具有零个或者多个输入，至少有一个或多个输出
+2、有穷性
+3、确定性
+4、可行性
+</code></pre><h4 id="2-6、算法设计的要求"><a href="#2-6、算法设计的要求" class="headerlink" title="2.6、算法设计的要求"></a>2.6、算法设计的要求</h4><pre><code>1、正确性
+    算法的正确性是指算法至少应该具有输入，输出和加工处理无歧义性，能正确反映出问题的需求，能够得到问题的正确答案
+2、可读性
+    算法设计的另一个目的是为了便于阅读，理解和交流
+3、健壮性
+    当输入数据不合法时，算法也能做出相关处理，而不是产生异常或莫名的结果
+4、时间效率高和存储量低
+</code></pre><h4 id="2-7、算法效率的度量方法"><a href="#2-7、算法效率的度量方法" class="headerlink" title="2.7、算法效率的度量方法"></a>2.7、算法效率的度量方法</h4><h5 id="2-7-1、事后统计方法"><a href="#2-7-1、事后统计方法" class="headerlink" title="2.7.1、事后统计方法"></a>2.7.1、事后统计方法</h5><pre><code>这种方法主要是通过设计好的测试程序和数据，利用计算机计时器对不同算法编制的程序的运行时间进行比较，从而确定算法效率的高低
+</code></pre><h5 id="2-7-2、事前分析估算方法"><a href="#2-7-2、事前分析估算方法" class="headerlink" title="2.7.2、事前分析估算方法"></a>2.7.2、事前分析估算方法</h5><pre><code>在计算机程序编制前，依据统计方法对算法进行估算
+1、算法采用的策略、方法
+2、编译产生的代码质量
+3、问题的输入规模
+4、机器执行指令的速度
+总的来说，一个程序的运行时间，依赖于算法的好坏和问题的输入规模
+最终，在分析程序的运行时间时，最重要的时把程序看成是独立于程序设计语言的算法或一系列的步骤
+</code></pre><h4 id="2-8、函数的渐进增长"><a href="#2-8、函数的渐进增长" class="headerlink" title="2.8、函数的渐进增长"></a>2.8、函数的渐进增长</h4><pre><code>给定两个函数f(n)和g(n),如果存在一个整数N，使得对于所有的n&gt;N,f(n)总比g(n)大，那么我们说f(n)的增长渐近快于g(n)
+</code></pre><h4 id="2-9、算法时间复杂度"><a href="#2-9、算法时间复杂度" class="headerlink" title="2.9、算法时间复杂度"></a>2.9、算法时间复杂度</h4><h5 id="2-9-1、算法时间复杂度"><a href="#2-9-1、算法时间复杂度" class="headerlink" title="2.9.1、算法时间复杂度"></a>2.9.1、算法时间复杂度</h5><pre><code>T（n）= O（f(n)）
+它表示随问题规模的n的增大，算法执行时间的增长率和f(n)的增长率相同,称作时间复杂度。
+</code></pre><h5 id="2-9-2、推导大O阶方法"><a href="#2-9-2、推导大O阶方法" class="headerlink" title="2.9.2、推导大O阶方法"></a>2.9.2、推导大O阶方法</h5><pre><code>1、用常数1取代运行时间中的所有加法常数
+2、在修改后的运行次数函数中，只保留最高阶项
+3、如果最高阶项存在且不是1吗，则去除与这个项想乘的常数
+</code></pre><h5 id="2-9-3、常数阶O-1"><a href="#2-9-3、常数阶O-1" class="headerlink" title="2.9.3、常数阶O(1)"></a>2.9.3、常数阶O(1)</h5><h5 id="2-9-4、线性阶O-n"><a href="#2-9-4、线性阶O-n" class="headerlink" title="2.9.4、线性阶O(n)"></a>2.9.4、线性阶O(n)</h5><h5 id="2-9-5、对数阶O-logn"><a href="#2-9-5、对数阶O-logn" class="headerlink" title="2.9.5、对数阶O(logn)"></a>2.9.5、对数阶O(logn)</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559034836674.png" alt="Alt text"></p>
+<h5 id="2-9-6、平方阶O-n-2"><a href="#2-9-6、平方阶O-n-2" class="headerlink" title="2.9.6、平方阶O(n^2)"></a>2.9.6、平方阶O(n^2)</h5><h4 id="2-10、常见的算法时间复杂度"><a href="#2-10、常见的算法时间复杂度" class="headerlink" title="2.10、常见的算法时间复杂度"></a>2.10、常见的算法时间复杂度</h4><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559035304963.png" alt="Alt text"></p>
+<h4 id="2-11、最坏情况与平均情况"><a href="#2-11、最坏情况与平均情况" class="headerlink" title="2.11、最坏情况与平均情况"></a>2.11、最坏情况与平均情况</h4><pre><code>一般没有特殊说明，都是指最坏的时间复杂度
+</code></pre><h4 id="2-12、算法空间复杂度"><a href="#2-12、算法空间复杂度" class="headerlink" title="2.12、算法空间复杂度"></a>2.12、算法空间复杂度</h4><h3 id="3、线性表"><a href="#3、线性表" class="headerlink" title="3、线性表"></a>3、线性表</h3><h4 id="3-2、线性表的定义"><a href="#3-2、线性表的定义" class="headerlink" title="3.2、线性表的定义"></a>3.2、线性表的定义</h4><pre><code>线性表（List）：零个或者多个数据元素的有限序列
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559036246846.png" alt="Alt text"></p>
+<pre><code>在较复杂的线性表中，一个数据元素可以由若干个数据项组成。
+</code></pre><h4 id="3-3、线性表的抽象数据类型"><a href="#3-3、线性表的抽象数据类型" class="headerlink" title="3.3、线性表的抽象数据类型"></a>3.3、线性表的抽象数据类型</h4><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559036655474.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559036663713.png" alt="Alt text"></p>
+<h4 id="3-4、线性表的顺序存储结构"><a href="#3-4、线性表的顺序存储结构" class="headerlink" title="3.4、线性表的顺序存储结构"></a>3.4、线性表的顺序存储结构</h4><h5 id="3-4-1、顺序存储定义"><a href="#3-4-1、顺序存储定义" class="headerlink" title="3.4.1、顺序存储定义"></a>3.4.1、顺序存储定义</h5><pre><code>线性表的顺序存储结构，是指是用一段地址连续的存储单元依次存储线性表的数据元素。
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559036885991.png" alt="Alt text"></p>
+<h5 id="3-4-2、顺序存储方式"><a href="#3-4-2、顺序存储方式" class="headerlink" title="3.4.2、顺序存储方式"></a>3.4.2、顺序存储方式</h5><pre><code>可以用一维数组来实现顺序存储结构
+描述顺序存储结构需要三个属性：
+    1、存储空间的起始位置; 数组data
+    2、线性表的最大存储容量; 数组长度MaxSize
+    3、线性表的当前长度：length
+</code></pre><h5 id="3-4-3、数据长度与线性表长度区别"><a href="#3-4-3、数据长度与线性表长度区别" class="headerlink" title="3.4.3、数据长度与线性表长度区别"></a>3.4.3、数据长度与线性表长度区别</h5><pre><code>1、数组长度是存放线性表的存储空间的长度，是不可变。
+2、线性表的长度是线性表中数据元素的个数，是可变的。
+</code></pre><h5 id="3-4-4、地址计算方法"><a href="#3-4-4、地址计算方法" class="headerlink" title="3.4.4、地址计算方法"></a>3.4.4、地址计算方法</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559038119837.png" alt="Alt text"></p>
+<h4 id="3-5、顺序存储结构的插入与删除"><a href="#3-5、顺序存储结构的插入与删除" class="headerlink" title="3.5、顺序存储结构的插入与删除"></a>3.5、顺序存储结构的插入与删除</h4><h5 id="3-5-1、获取元素操作"><a href="#3-5-1、获取元素操作" class="headerlink" title="3.5.1、获取元素操作"></a>3.5.1、获取元素操作</h5><h5 id="3-5-2、插入操作"><a href="#3-5-2、插入操作" class="headerlink" title="3.5.2、插入操作"></a>3.5.2、插入操作</h5><pre><code>插入算法的思路：
+1、如果插入位置不合理，抛出异常
+2、如果线性表长度大于等于数组长度，则抛出异常或动态增加容量
+3、从最后一个元素开始向前遍历到第i个位置，分别将他们都向后移动一位置
+4、将要插入元素的填入i处
+5、表长加1
+</code></pre><h5 id="3-5-3、删除操作"><a href="#3-5-3、删除操作" class="headerlink" title="3.5.3、删除操作"></a>3.5.3、删除操作</h5><h5 id="3-5-4、线性表顺序存储结构的优缺点"><a href="#3-5-4、线性表顺序存储结构的优缺点" class="headerlink" title="3.5.4、线性表顺序存储结构的优缺点"></a>3.5.4、线性表顺序存储结构的优缺点</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559117042349.png" alt="Alt text"></p>
+<h4 id="3-6、线性表的链式存储结构"><a href="#3-6、线性表的链式存储结构" class="headerlink" title="3.6、线性表的链式存储结构"></a>3.6、线性表的链式存储结构</h4><h5 id="3-6-2、线性表的链式存储结构定义"><a href="#3-6-2、线性表的链式存储结构定义" class="headerlink" title="3.6.2、线性表的链式存储结构定义"></a>3.6.2、线性表的链式存储结构定义</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559117721373.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559118086026.png" alt="Alt text"></p>
+<h5 id="3-6-3、线性表的链式存储结构代码描述"><a href="#3-6-3、线性表的链式存储结构代码描述" class="headerlink" title="3.6.3、线性表的链式存储结构代码描述"></a>3.6.3、线性表的链式存储结构代码描述</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559118601583.png" alt="Alt text"></p>
+<pre><code>结点是有存放在数据元素的数据域和存放后继结点地址的指针域组成
+p是指向线性表的第i个元素的指针，
+该结点的ai的数据域，可以p-&gt;data
+该结点ai的指针域，p-&gt;next ,p-&gt;next的值是一个指针
+即 p-&gt;data = ai
+  p-&gt;next-&gt;data = ai+1
+</code></pre><h4 id="3-7、单链表的读取"><a href="#3-7、单链表的读取" class="headerlink" title="3.7、单链表的读取"></a>3.7、单链表的读取</h4><pre><code>找到第一个元素，之后遍历找到第i元素
+</code></pre><h4 id="3-8、单链表的插入与删除"><a href="#3-8、单链表的插入与删除" class="headerlink" title="3.8、单链表的插入与删除"></a>3.8、单链表的插入与删除</h4><h5 id="3-8-1、单链表的插入"><a href="#3-8-1、单链表的插入" class="headerlink" title="3.8.1、单链表的插入"></a>3.8.1、单链表的插入</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559181310284.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559181331297.png" alt="Alt text"></p>
+<pre><code>操作：
+    s-&gt;next = p-&gt;next ,p-&gt;next = s;
+让p的后继结点改成s的后继结点，再把s结点变成p的后继结点
+
+单链表第i个数据插入结点的算法思路：
+1、声明一个指针p插入链表头结点，初始化j从1开始
+2、当j&lt;i时，就遍历链表，让p的指针向后移动，不断指向下一个结点，j累加1
+3、若到链表末尾p为空，则说明第i个结点不存在
+4、否则查找成功，在系统上生成一个空结点s
+5、将数据元素e复制给s-&gt;data;
+6、单链表的插入标准语句s-&gt;next = p-&gt;next; p-&gt;next = s
+7、返回成功
+</code></pre><h5 id="3-8-2、单链表的删除"><a href="#3-8-2、单链表的删除" class="headerlink" title="3.8.2、单链表的删除"></a>3.8.2、单链表的删除</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559182287735.png" alt="Alt text"></p>
+<pre><code>解析： q = p-&gt;next ; p-&gt;next = q-&gt;next
+就是把p的后继结点改成p的后继的后继结点
+单链表第i个数据删除结点的算法思路：
+1、声明一个指针p指向链表头指针，初始化j从1开始
+2、当j&lt;i时，就遍历链表，让p的指针向后移动，不断指向下一个结点，j累加1
+3、若到链表末尾p为空，则说明第i个结点不存在
+4、否则查找成功，将欲删除的结点p-&gt;next 赋值给q
+5、单链表的删除标准语句p-&gt;next = q -&gt;next
+6、将q结点中的数据赋值给e，作为返回
+7、释放q结点
+8、返回成功
+</code></pre><h4 id="3-9、单链表的整表创建"><a href="#3-9、单链表的整表创建" class="headerlink" title="3.9、单链表的整表创建"></a>3.9、单链表的整表创建</h4><pre><code>1、头插法
+2、尾插法
+</code></pre><h4 id="3-10、单链表的整表删除"><a href="#3-10、单链表的整表删除" class="headerlink" title="3.10、单链表的整表删除"></a>3.10、单链表的整表删除</h4><pre><code>算法思路：
+    1、声明一结点p和q
+    2、将第一个结点赋值给p
+    3、循环
+        1、将下一个结点赋值给q
+        2、将第一个结点赋值p
+        3、循环
+            1、将下一个结点赋值给q
+            2、释放p
+            3、将q赋值给p
+</code></pre><h4 id="3-11、单链表的结构与顺序存储结构优缺点"><a href="#3-11、单链表的结构与顺序存储结构优缺点" class="headerlink" title="3.11、单链表的结构与顺序存储结构优缺点"></a>3.11、单链表的结构与顺序存储结构优缺点</h4><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559184542252.png" alt="Alt text"></p>
+<h4 id="3-12、静态链表"><a href="#3-12、静态链表" class="headerlink" title="3.12、静态链表"></a>3.12、静态链表</h4><pre><code>用数组描述的链表叫做静态链表
+让数组元素都是由两个数据域组成，data和cur，数组的每一个下标都对应一个 data和一个cur。数据域data，用来存放数据元素，cur相当于单链表中的next指针，存放该元素的后继在数组中的下标，我们把cur叫做游标
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559185105891.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559185124459.png" alt="Alt text"></p>
+<pre><code>庚是最后一个有值元素，所以它的cur设置为0。而最后一个元素的cur则因“甲”是第一个有值元素而存在它的下标为1.而第一个元素则因空闲空间的一个元素下标为7，所以它的cur存有7
+</code></pre><h5 id="3-12-1、静态链表的插入操作—-gt-暂定学习"><a href="#3-12-1、静态链表的插入操作—-gt-暂定学习" class="headerlink" title="3.12.1、静态链表的插入操作—&gt;暂定学习"></a>3.12.1、静态链表的插入操作—&gt;暂定学习</h5><h5 id="3-12-2、静态链表的删除操作"><a href="#3-12-2、静态链表的删除操作" class="headerlink" title="3.12.2、静态链表的删除操作"></a>3.12.2、静态链表的删除操作</h5><h5 id="3-12-3、静态链表的优缺点"><a href="#3-12-3、静态链表的优缺点" class="headerlink" title="3.12.3、静态链表的优缺点"></a>3.12.3、静态链表的优缺点</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559186633643.png" alt="Alt text"></p>
+<h4 id="3-13、循环链表"><a href="#3-13、循环链表" class="headerlink" title="3.13、循环链表"></a>3.13、循环链表</h4><pre><code>将单链表中终端结点的指针端由空指针改为指向头结点，就使整个单链表形成一个环，这种头尾相接的单链表称为单循环链表，称为循环链表
+判断p-&gt;next 是否为空，现在则是p-&gt;next 不等于头结点，则循环未结束
+</code></pre><h4 id="3-14、双向链表"><a href="#3-14、双向链表" class="headerlink" title="3.14、双向链表"></a>3.14、双向链表</h4><pre><code>是在单链表的每个结点中，在设置一个指向其前驱结点的的指针域
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559188162247.png" alt="Alt text"></p>
+<pre><code>插入操作：先搞定s的前驱和后继，在搞定后结点的前驱，最后搞定解决前结点的后继
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559188405930.png" alt="Alt text"></p>
+<pre><code>删除操作：
+</code></pre><h4 id="3-15、总结"><a href="#3-15、总结" class="headerlink" title="3.15、总结"></a>3.15、总结</h4><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559188531830.png" alt="Alt text"></p>
+<h3 id="4、栈与队列"><a href="#4、栈与队列" class="headerlink" title="4、栈与队列"></a>4、栈与队列</h3><h4 id="4-2、栈的定义"><a href="#4-2、栈的定义" class="headerlink" title="4.2、栈的定义"></a>4.2、栈的定义</h4><h5 id="4-2-1、栈的定义"><a href="#4-2-1、栈的定义" class="headerlink" title="4.2.1、栈的定义"></a>4.2.1、栈的定义</h5><pre><code>栈（stack）是限定仅在表尾进行插入和删除操作的线性表
+允许插入和删除的一端称为栈顶，另一端称为栈底，不含任何数据元素称为空栈，栈又称为后进先出的线性表，称为LIFO结构
+</code></pre><h5 id="4-2-2、进栈出栈变化形式"><a href="#4-2-2、进栈出栈变化形式" class="headerlink" title="4.2.2、进栈出栈变化形式"></a>4.2.2、进栈出栈变化形式</h5><h4 id="4-3、栈的抽象数据类型"><a href="#4-3、栈的抽象数据类型" class="headerlink" title="4.3、栈的抽象数据类型"></a>4.3、栈的抽象数据类型</h4><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559199717464.png" alt="Alt text"></p>
+<h4 id="4-4、栈的顺序存储结构及实现"><a href="#4-4、栈的顺序存储结构及实现" class="headerlink" title="4.4、栈的顺序存储结构及实现"></a>4.4、栈的顺序存储结构及实现</h4><h5 id="4-4-2、栈的顺序存储结构——进栈操作"><a href="#4-4-2、栈的顺序存储结构——进栈操作" class="headerlink" title="4.4.2、栈的顺序存储结构——进栈操作"></a>4.4.2、栈的顺序存储结构——进栈操作</h5><h5 id="4-4-2、栈的顺序存储结构——出栈操作"><a href="#4-4-2、栈的顺序存储结构——出栈操作" class="headerlink" title="4.4.2、栈的顺序存储结构——出栈操作"></a>4.4.2、栈的顺序存储结构——出栈操作</h5><h4 id="4-5、两栈共享空间"><a href="#4-5、两栈共享空间" class="headerlink" title="4.5、两栈共享空间"></a>4.5、两栈共享空间</h4><h4 id="4-6、栈的链式存储结构及实现"><a href="#4-6、栈的链式存储结构及实现" class="headerlink" title="4.6、栈的链式存储结构及实现"></a>4.6、栈的链式存储结构及实现</h4><h5 id="4-6-1、栈的链式存储结构"><a href="#4-6-1、栈的链式存储结构" class="headerlink" title="4.6.1、栈的链式存储结构"></a>4.6.1、栈的链式存储结构</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559200874377.png" alt="Alt text"></p>
+<h5 id="4-6-2、栈的链式存储结构-——进栈操作"><a href="#4-6-2、栈的链式存储结构-——进栈操作" class="headerlink" title="4.6.2、栈的链式存储结构-——进栈操作"></a>4.6.2、栈的链式存储结构-——进栈操作</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559200889786.png" alt="Alt text"></p>
+<h5 id="4-6-3、栈的链式存储结构-——出栈操作"><a href="#4-6-3、栈的链式存储结构-——出栈操作" class="headerlink" title="4.6.3、栈的链式存储结构-——出栈操作"></a>4.6.3、栈的链式存储结构-——出栈操作</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559200903201.png" alt="Alt text"></p>
+<pre><code>对比顺序栈与链栈，它们的时间复杂度上都是一样的，均为O（1）
+</code></pre><h4 id="4-8、栈的应用——递归"><a href="#4-8、栈的应用——递归" class="headerlink" title="4.8、栈的应用——递归"></a>4.8、栈的应用——递归</h4><h5 id="4-8-1、斐波那契数列实现"><a href="#4-8-1、斐波那契数列实现" class="headerlink" title="4.8.1、斐波那契数列实现"></a>4.8.1、斐波那契数列实现</h5><pre><code>f(n) = f(n-1)+f(n-2) 当n&gt;1
+f(n) = 1， 当n = 1
+</code></pre><h5 id="4-8-2、递归定义"><a href="#4-8-2、递归定义" class="headerlink" title="4.8.2、递归定义"></a>4.8.2、递归定义</h5><pre><code>把一个直接调用自己或通过一系列的调用语句间接地调用自己的函数，称为递归函数
+</code></pre><h4 id="4-9、栈的应用——四则运算表达式求值"><a href="#4-9、栈的应用——四则运算表达式求值" class="headerlink" title="4.9、栈的应用——四则运算表达式求值"></a>4.9、栈的应用——四则运算表达式求值</h4><pre><code>1、后缀表达式计算结果：
+    遇到数字就进栈，遇到是符号，就将处于栈顶的两个数字出栈，进行运算，运算结果进栈，一直到最终获得结果
+2、将中缀表达式转化为后缀表达式（栈用来进出运算的符号）
+3、将后缀表达式进行运算得出结果（栈用来进出运算的数字）
+</code></pre><h4 id="4-10、队列的定义"><a href="#4-10、队列的定义" class="headerlink" title="4.10、队列的定义"></a>4.10、队列的定义</h4><pre><code>队列式只允许在一端进行插入操作，而在另一端进行删除操作的线性表
+队列是一种新进先出的线性表，FIFO，允许插入的一端称为队尾，允许删除的一端为队头
+</code></pre><h4 id="4-11、队列的抽象数据类型"><a href="#4-11、队列的抽象数据类型" class="headerlink" title="4.11、队列的抽象数据类型"></a>4.11、队列的抽象数据类型</h4><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559204034152.png" alt="Alt text"></p>
+<h4 id="4-12、循环队列"><a href="#4-12、循环队列" class="headerlink" title="4.12、循环队列"></a>4.12、循环队列</h4><pre><code>front指针指向队头元素，rear指针指向队尾元素的下一个位置，这样当front等于rear时，是空队列。
+</code></pre><h4 id="4-12-2、循环队列的定义"><a href="#4-12-2、循环队列的定义" class="headerlink" title="4.12.2、循环队列的定义"></a>4.12.2、循环队列的定义</h4><pre><code>队列的这种头尾相接的顺序存储结构成为循环队列
+</code></pre><h4 id="4-13、队列的链式存储结构及实现"><a href="#4-13、队列的链式存储结构及实现" class="headerlink" title="4.13、队列的链式存储结构及实现"></a>4.13、队列的链式存储结构及实现</h4><pre><code>其实就是线性表的单链表，只不过它只能尾进头出而已，简称链队列
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559206237077.png" alt="Alt text"></p>
+<h5 id="4-13-1、队列的链式存储结构——入队操作"><a href="#4-13-1、队列的链式存储结构——入队操作" class="headerlink" title="4.13.1、队列的链式存储结构——入队操作"></a>4.13.1、队列的链式存储结构——入队操作</h5><pre><code>入队操作时，就是在链表尾部插入结点
+</code></pre><h5 id="4-13-2、队列的链式存储结构——出队操作"><a href="#4-13-2、队列的链式存储结构——出队操作" class="headerlink" title="4.13.2、队列的链式存储结构——出队操作"></a>4.13.2、队列的链式存储结构——出队操作</h5><pre><code>出队操作，就是头结点的后继结点出队，将头结点后继改为它的后面的结点，若链表除头结点外只剩一个元素时，需要将rear指向头结点
+</code></pre><h4 id="4-14、总结"><a href="#4-14、总结" class="headerlink" title="4.14、总结"></a>4.14、总结</h4><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559207456122.png" alt="Alt text"></p>
+<h3 id="5、串"><a href="#5、串" class="headerlink" title="5、串"></a>5、串</h3><h4 id="5-2、串的定义"><a href="#5-2、串的定义" class="headerlink" title="5.2、串的定义"></a>5.2、串的定义</h4><pre><code>串时由零个或多个字符组成的有限序列，又名字符串
+</code></pre><h4 id="5-3、串的比较"><a href="#5-3、串的比较" class="headerlink" title="5.3、串的比较"></a>5.3、串的比较</h4><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559208080283.png" alt="Alt text"></p>
+<pre><code>根据编码比较，ASCII比较
+</code></pre><h4 id="5-4、串的抽象数据类型"><a href="#5-4、串的抽象数据类型" class="headerlink" title="5.4、串的抽象数据类型"></a>5.4、串的抽象数据类型</h4><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559208219342.png" alt="Alt text"></p>
+<h4 id="5-5、串的存储结构"><a href="#5-5、串的存储结构" class="headerlink" title="5.5、串的存储结构"></a>5.5、串的存储结构</h4><h5 id="5-5-1、串的顺序存储结构"><a href="#5-5-1、串的顺序存储结构" class="headerlink" title="5.5.1、串的顺序存储结构"></a>5.5.1、串的顺序存储结构</h5><pre><code>是用一组地址连续的存储单元来存储串的字符串序列
+不适合字符串的操作
+</code></pre><h5 id="5-5-2、串的链式存储结构"><a href="#5-5-2、串的链式存储结构" class="headerlink" title="5.5.2、串的链式存储结构"></a>5.5.2、串的链式存储结构</h5><h4 id="5-6、朴素的模式匹配算法"><a href="#5-6、朴素的模式匹配算法" class="headerlink" title="5.6、朴素的模式匹配算法"></a>5.6、朴素的模式匹配算法</h4><pre><code>字串的定位操作通常称做串的模式匹配，应该是串中最重要的操作之一
+思路：对主串的每一个字符作为子串开头，与要匹配的字符串进行匹配，对主串做大循环，每个字符串开头做T的长度的小循环，直到匹配成功或全部遍历完成为止.
+</code></pre><h4 id="5-7、KMP模式匹配算法—-》重要暂定学习"><a href="#5-7、KMP模式匹配算法—-》重要暂定学习" class="headerlink" title="5.7、KMP模式匹配算法—-》重要暂定学习"></a>5.7、KMP模式匹配算法—-》重要暂定学习</h4><h5 id="5-7-1、KMP模式匹配算法原理"><a href="#5-7-1、KMP模式匹配算法原理" class="headerlink" title="5.7.1、KMP模式匹配算法原理"></a>5.7.1、KMP模式匹配算法原理</h5><h3 id="6、树"><a href="#6、树" class="headerlink" title="6、树"></a>6、树</h3><h4 id="6-2、树的定义"><a href="#6-2、树的定义" class="headerlink" title="6.2、树的定义"></a>6.2、树的定义</h4><pre><code>处理的是一对多的结构
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559210303731.png" alt="Alt text"></p>
+<h5 id="6-2-1、结点分类"><a href="#6-2-1、结点分类" class="headerlink" title="6.2.1、结点分类"></a>6.2.1、结点分类</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559210552299.png" alt="Alt text"></p>
+<h5 id="6-2-2、结点间关系"><a href="#6-2-2、结点间关系" class="headerlink" title="6.2.2、结点间关系"></a>6.2.2、结点间关系</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559210653875.png" alt="Alt text"></p>
+<h5 id="6-2-3、树的其他相关概念"><a href="#6-2-3、树的其他相关概念" class="headerlink" title="6.2.3、树的其他相关概念"></a>6.2.3、树的其他相关概念</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559210711311.png" alt="Alt text"></p>
+<pre><code>森林是m（m&gt;=0）棵互不相交的树的集合。
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559211423646.png" alt="Alt text"></p>
+<h4 id="6-3、树的抽象数据类型"><a href="#6-3、树的抽象数据类型" class="headerlink" title="6.3、树的抽象数据类型"></a>6.3、树的抽象数据类型</h4><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559211465310.png" alt="Alt text"></p>
+<h4 id="6-4、树的存储结构"><a href="#6-4、树的存储结构" class="headerlink" title="6.4、树的存储结构"></a>6.4、树的存储结构</h4><h5 id="6-4-1、双亲表示法"><a href="#6-4-1、双亲表示法" class="headerlink" title="6.4.1、双亲表示法"></a>6.4.1、双亲表示法</h5><pre><code>在每个结点中，附设一个指示器指示其双亲结点在数组中的位置
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559266338986.png" alt="Alt text"></p>
+<h5 id="6-4-2、孩子表示法"><a href="#6-4-2、孩子表示法" class="headerlink" title="6.4.2、孩子表示法"></a>6.4.2、孩子表示法</h5><pre><code>每个结点有多个指针域，其中每个指针指向一棵子树的根结点，我们把这种方法叫做多重链表表示法
+方案一
+    一种是指针域的个数等于树的度，树的度是树各个结点度的最大值
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559267194234.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559267215245.png" alt="Alt text"></p>
+<pre><code>方案二
+    每个结点指针域的个数等于该结点的度，专门取一个位置来存储结点指针域的个数
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559267351481.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559267366343.png" alt="Alt text"></p>
+<pre><code>把每个结点的孩子排列起来，以单链表作存储结构，则n个结点有n个孩子链表，如果是叶子节点则此单链表为空，然后n个头指针又组成一个线性表，采用顺序存储结构，存放在一个一维数组中
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559268083111.png" alt="Alt text"></p>
+<pre><code>该结构优势：适合查找某个结点的某个孩子，或者找某个结点的兄弟，只需要查找这个结点的孩子单链表即可，对于遍历整棵树也是很方便，对头结点的数组循环即可。
+</code></pre><h5 id="6-4-3、孩子兄弟表示法"><a href="#6-4-3、孩子兄弟表示法" class="headerlink" title="6.4.3、孩子兄弟表示法"></a>6.4.3、孩子兄弟表示法</h5><pre><code>任意一棵树，它的结点的第一孩子如果存在就是唯一的，它的右兄弟如果存在也是唯一的。因此，我们设置两个指针，分别指向该结点的第一个孩子和此结点的右兄弟
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559268985559.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559268996508.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559269075295.png" alt="Alt text"></p>
+<h4 id="6-5、二叉树的定义"><a href="#6-5、二叉树的定义" class="headerlink" title="6.5、二叉树的定义"></a>6.5、二叉树的定义</h4><pre><code>二叉树是n（n&gt;=0）个结点的有限集合，该集合或者为空集（空二叉树）或者是一个根结点和两棵互不相交的，分别称为根结点的左子树和右子树
+</code></pre><h5 id="6-5-1、二叉树的特点"><a href="#6-5-1、二叉树的特点" class="headerlink" title="6.5.1、二叉树的特点"></a>6.5.1、二叉树的特点</h5><pre><code>1、每个结点最多有两棵子树
+2、左子树和右子树是有顺序的
+3、即使树中某结点只有一棵子树
+
+
+二叉树具有的五种基本形态
+1、空二叉树
+2、只有一个根结点
+3、根结点只有左子树
+4、根结点只有右子树
+5、根结点既有左子树又有右子树
+</code></pre><h5 id="6-5-2、特殊二叉树"><a href="#6-5-2、特殊二叉树" class="headerlink" title="6.5.2、特殊二叉树"></a>6.5.2、特殊二叉树</h5><pre><code>1、斜树
+2、满二叉树
+    在一棵二叉树中，如果所有的分支结点都存在左子树和右子树，而且所有的叶子都在同一层上，这样的二叉树称为满二叉树
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559270787722.png" alt="Alt text"></p>
+<pre><code>3、完全二叉树
+    对一棵具有n个结点的二叉树按层序编号，如果编号为i（1&lt;=i&lt;=n）的结点与同样深度的二叉树中编写为i的结点在二叉树中的位置完全相同，则称为完全二叉树
+    即，满二叉树肯定是完全二叉树，但是完全二叉树不是满二叉树    
+</code></pre><h4 id="6-6、二叉树的性质"><a href="#6-6、二叉树的性质" class="headerlink" title="6.6、二叉树的性质"></a>6.6、二叉树的性质</h4><h5 id="6-6-1、二叉树性质1"><a href="#6-6-1、二叉树性质1" class="headerlink" title="6.6.1、二叉树性质1"></a>6.6.1、二叉树性质1</h5><pre><code>1、在二叉树上的第i层上至多有2^i-1个结点
+</code></pre><h5 id="6-6-2、二叉树性质2"><a href="#6-6-2、二叉树性质2" class="headerlink" title="6.6.2、二叉树性质2"></a>6.6.2、二叉树性质2</h5><pre><code>2、深度为k的二叉树至多有2^k-1个结点
+</code></pre><h5 id="6-6-3、二叉树性质3"><a href="#6-6-3、二叉树性质3" class="headerlink" title="6.6.3、二叉树性质3"></a>6.6.3、二叉树性质3</h5><pre><code>3、对于任何一棵二叉树T，如果其终端结点数为n0,度为2的结点数为n2,则n0=n2+1        
+</code></pre><h5 id="6-6-4、二叉树性质4"><a href="#6-6-4、二叉树性质4" class="headerlink" title="6.6.4、二叉树性质4"></a>6.6.4、二叉树性质4</h5><pre><code>4、具有n个结点的完全二叉树的深度是[log2n]+1
+</code></pre><h5 id="6-6-5、二叉树性质5"><a href="#6-6-5、二叉树性质5" class="headerlink" title="6.6.5、二叉树性质5"></a>6.6.5、二叉树性质5</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559281423821.png" alt="Alt text"></p>
+<h4 id="6-7、二叉树的存储结构"><a href="#6-7、二叉树的存储结构" class="headerlink" title="6.7、二叉树的存储结构"></a>6.7、二叉树的存储结构</h4><h5 id="6-7-1、二叉树的顺序存储结构"><a href="#6-7-1、二叉树的顺序存储结构" class="headerlink" title="6.7.1、二叉树的顺序存储结构"></a>6.7.1、二叉树的顺序存储结构</h5><pre><code>顺序存储结构一般只是用于完全二叉树
+</code></pre><h5 id="6-7-2、二叉链表"><a href="#6-7-2、二叉链表" class="headerlink" title="6.7.2、二叉链表"></a>6.7.2、二叉链表</h5><pre><code>二叉树每个结点最多有两个孩子，所以为它设计一个数据域和两个指针域是比较自然的想法，叫做二叉链表
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559281921646.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559281995783.png" alt="Alt text"></p>
+<h4 id="6-8、遍历二叉树"><a href="#6-8、遍历二叉树" class="headerlink" title="6.8、遍历二叉树"></a>6.8、遍历二叉树</h4><h5 id="6-8-1、二叉树遍历原理"><a href="#6-8-1、二叉树遍历原理" class="headerlink" title="6.8.1、二叉树遍历原理"></a>6.8.1、二叉树遍历原理</h5><pre><code>是指从根结点出发，按照某种次序依次访问二叉树中所有结点，使得每个结点被访问一次且被访问一次
+</code></pre><h5 id="6-8-2、二叉树遍历方法"><a href="#6-8-2、二叉树遍历方法" class="headerlink" title="6.8.2、二叉树遍历方法"></a>6.8.2、二叉树遍历方法</h5><pre><code>1、前序遍历
+    规则是若二叉树为空，则空操作返回，否则先访问根结点，然后前序遍历左子树，在前序遍历右子树。
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559282577171.png" alt="Alt text"></p>
+<pre><code>2、中序遍历
+    规则是若树为空，则空操作返回，否则从根结点开始（注意并不是先访问根结点），中序遍历根结点的左子树，然后是访问根结点，最后中序遍历右子树
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559282724647.png" alt="Alt text"></p>
+<pre><code>3、后序遍历
+    规则是若树为空，则空操作返回，否则从左到右先叶子后结点的方式遍历访问左右子树，然后是访问根结点
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559282875138.png" alt="Alt text"></p>
+<pre><code>4、层序遍历
+    规则是若树为空，则空操作返回，否则从树的第一层，也就是根结点开始访问，从上到下遍历，在同一层，按从左到右的顺序对结点逐个访问
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559283222656.png" alt="Alt text"></p>
+<h5 id="6-8-3、前序遍历算法"><a href="#6-8-3、前序遍历算法" class="headerlink" title="6.8.3、前序遍历算法"></a>6.8.3、前序遍历算法</h5><pre><code>通过递归调用
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559283563055.png" alt="Alt text"></p>
+<h5 id="6-8-4、中序遍历算法"><a href="#6-8-4、中序遍历算法" class="headerlink" title="6.8.4、中序遍历算法"></a>6.8.4、中序遍历算法</h5><h5 id="6-8-5、后序遍历算法、"><a href="#6-8-5、后序遍历算法、" class="headerlink" title="6.8.5、后序遍历算法、"></a>6.8.5、后序遍历算法、</h5><h5 id="6-8-6、推导遍历结果"><a href="#6-8-6、推导遍历结果" class="headerlink" title="6.8.6、推导遍历结果"></a>6.8.6、推导遍历结果</h5><pre><code>二叉树遍历的性质：
+1、已知前序遍历和中序遍历序列，可以唯一确定一棵二叉树
+2、已知后序遍历和中序遍历序列，可以唯一确定一棵二叉树
+</code></pre><h4 id="6-9、二叉树建立"><a href="#6-9、二叉树建立" class="headerlink" title="6.9、二叉树建立"></a>6.9、二叉树建立</h4><pre><code>对于没有结点的位置可以从#表示
+</code></pre><h4 id="6-10、线索二叉树"><a href="#6-10、线索二叉树" class="headerlink" title="6.10、线索二叉树"></a>6.10、线索二叉树</h4><h5 id="6-10-1、线索二叉树原理"><a href="#6-10-1、线索二叉树原理" class="headerlink" title="6.10.1、线索二叉树原理"></a>6.10.1、线索二叉树原理</h5><pre><code>指向前驱和后继的指针称为线索，加上线索的二叉树链表称为线索链表，相应的二叉树称为线索二叉树
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559286031347.png" alt="Alt text"></p>
+<h5 id="6-10-2、线索二叉树结构实现——-gt-暂定学习"><a href="#6-10-2、线索二叉树结构实现——-gt-暂定学习" class="headerlink" title="6.10.2、线索二叉树结构实现——&gt;暂定学习"></a>6.10.2、线索二叉树结构实现——&gt;暂定学习</h5><h4 id="6-11、树、森林与二叉树的转换"><a href="#6-11、树、森林与二叉树的转换" class="headerlink" title="6.11、树、森林与二叉树的转换"></a>6.11、树、森林与二叉树的转换</h4><h5 id="6-11-1、树转换为二叉树"><a href="#6-11-1、树转换为二叉树" class="headerlink" title="6.11.1、树转换为二叉树"></a>6.11.1、树转换为二叉树</h5><h5 id="6-11-2、森林转换为二叉树"><a href="#6-11-2、森林转换为二叉树" class="headerlink" title="6.11.2、森林转换为二叉树"></a>6.11.2、森林转换为二叉树</h5><h5 id="6-11-3、二叉树转换为树"><a href="#6-11-3、二叉树转换为树" class="headerlink" title="6.11.3、二叉树转换为树"></a>6.11.3、二叉树转换为树</h5><h4 id="6-12、赫夫曼树及其应用"><a href="#6-12、赫夫曼树及其应用" class="headerlink" title="6.12、赫夫曼树及其应用"></a>6.12、赫夫曼树及其应用</h4><h5 id="6-12-2、赫夫曼树定义与原理——-gt-暂定学习"><a href="#6-12-2、赫夫曼树定义与原理——-gt-暂定学习" class="headerlink" title="6.12.2、赫夫曼树定义与原理——&gt;暂定学习"></a>6.12.2、赫夫曼树定义与原理——&gt;暂定学习</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559292991861.png" alt="Alt text"></p>
+<h5 id="6-12-3、赫夫曼编码"><a href="#6-12-3、赫夫曼编码" class="headerlink" title="6.12.3、赫夫曼编码"></a>6.12.3、赫夫曼编码</h5><h3 id="7、图"><a href="#7、图" class="headerlink" title="7、图"></a>7、图</h3><h4 id="7-2、图的定义"><a href="#7-2、图的定义" class="headerlink" title="7.2、图的定义"></a>7.2、图的定义</h4><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559293867387.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559293878177.png" alt="Alt text"></p>
+<h5 id="7-2-1、各种图的定义"><a href="#7-2-1、各种图的定义" class="headerlink" title="7.2.1、各种图的定义"></a>7.2.1、各种图的定义</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559294047834.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559294069696.png" alt="Alt text"></p>
+<h5 id="7-2-2、图的顶点与边间关系"><a href="#7-2-2、图的顶点与边间关系" class="headerlink" title="7.2.2、图的顶点与边间关系"></a>7.2.2、图的顶点与边间关系</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559294980798.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559295009758.png" alt="Alt text"></p>
+<pre><code>路径的长度是路径上的边和弧的数目
+简单回路或简单环：除了第一个顶点和最后一个顶点之外，其余顶点不重复出现回路，称为简单回路或简单环
+</code></pre><h5 id="7-2-3、连通图相关术语"><a href="#7-2-3、连通图相关术语" class="headerlink" title="7.2.3、连通图相关术语"></a>7.2.3、连通图相关术语</h5><h5 id="7-2-4、图的定义与术语总结"><a href="#7-2-4、图的定义与术语总结" class="headerlink" title="7.2.4、图的定义与术语总结"></a>7.2.4、图的定义与术语总结</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559295775097.png" alt="Alt text"></p>
+<h4 id="7-3、图的抽象数据类型"><a href="#7-3、图的抽象数据类型" class="headerlink" title="7.3、图的抽象数据类型"></a>7.3、图的抽象数据类型</h4><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559295910907.png" alt="Alt text"></p>
+<h4 id="7-4、图的存储结构"><a href="#7-4、图的存储结构" class="headerlink" title="7.4、图的存储结构"></a>7.4、图的存储结构</h4><h5 id="7-4-1、邻接矩阵"><a href="#7-4-1、邻接矩阵" class="headerlink" title="7.4.1、邻接矩阵"></a>7.4.1、邻接矩阵</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559296237834.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559296504441.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559296522322.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559296533382.png" alt="Alt text"></p>
+<h5 id="7-4-2、邻接表"><a href="#7-4-2、邻接表" class="headerlink" title="7.4.2、邻接表"></a>7.4.2、邻接表</h5><pre><code>数组与链表相结合的存储方式称为邻接表
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559297233698.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559297248403.png" alt="Alt text"></p>
+<h5 id="7-4-3、十字链表"><a href="#7-4-3、十字链表" class="headerlink" title="7.4.3、十字链表"></a>7.4.3、十字链表</h5><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559298039688.png" alt="Alt text"><br><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559298053174.png" alt="Alt text"></p>
+<h5 id="7-4-4、邻接多重表"><a href="#7-4-4、邻接多重表" class="headerlink" title="7.4.4、邻接多重表"></a>7.4.4、邻接多重表</h5><h5 id="7-4-5、边集数组"><a href="#7-4-5、边集数组" class="headerlink" title="7.4.5、边集数组"></a>7.4.5、边集数组</h5><pre><code>边集数组是两个一维数组构成。一个是存储顶点信息，另一个是存储边的信息。这个边数组每个数据元素由一条边的起点下标（begin）、终点下标（end）和权（weight）组成
+</code></pre><p><img src="//yoursite.com/2019/11/16/A_大话数据结构/1559527026143.png" alt="Alt text"></p>
+<h4 id="7-5、图的遍历"><a href="#7-5、图的遍历" class="headerlink" title="7.5、图的遍历"></a>7.5、图的遍历</h4><pre><code>从图中某一顶点出发访遍图中其余顶点，且使每个顶点仅被访问一次，这个过程叫做图的遍历
+</code></pre><h5 id="7-5-1、深度优先遍历"><a href="#7-5-1、深度优先遍历" class="headerlink" title="7.5.1、深度优先遍历"></a>7.5.1、深度优先遍历</h5><pre><code>它从图中某个顶点v出发，访问此顶点，然后从v的未被访问的邻接点出发深度优先遍历图，直至图中所有和v有路径想通的顶点都被访问到。
+若图中尚有顶点未被访问，则另选图中一个未曾被访问的顶点作起始点，重复上述过程，直至图中顶点都被访问到为止
+</code></pre><h5 id="7-5-2、广度优先遍历"><a href="#7-5-2、广度优先遍历" class="headerlink" title="7.5.2、广度优先遍历"></a>7.5.2、广度优先遍历</h5><pre><code>类似于树的层序遍历
+</code></pre><h4 id="7-6、最小生成树"><a href="#7-6、最小生成树" class="headerlink" title="7.6、最小生成树"></a>7.6、最小生成树</h4><pre><code>把构造连通网最小代价生成树称为最小生成树
+</code></pre><h5 id="7-6-1、普里姆算法"><a href="#7-6-1、普里姆算法" class="headerlink" title="7.6.1、普里姆算法"></a>7.6.1、普里姆算法</h5><h5 id="7-6-2、克鲁斯卡尔算法"><a href="#7-6-2、克鲁斯卡尔算法" class="headerlink" title="7.6.2、克鲁斯卡尔算法"></a>7.6.2、克鲁斯卡尔算法</h5><h3 id="8、查找"><a href="#8、查找" class="headerlink" title="8、查找"></a>8、查找</h3><h4 id="8-2、查找概论"><a href="#8-2、查找概论" class="headerlink" title="8.2、查找概论"></a>8.2、查找概论</h4><pre><code>查找就是根据给定的某个值，在查找表中确定一个其关键字等于给定值的数据元素（或记录）
+静态查找表：只作为查找操作的查找表
+1、查询某个特定的数据元素是否在查找表中
+2、检索某个特定的数据元素和各种属性
+
+动态查找表：
+在查找过程中同时插入查找表中不存在的数据元素，或者从查找表中删除已经存在的某个数据元素
+    1、查找时插入数据元素
+    2、查找时删除数据元素
+</code></pre><h4 id="8-3、顺序表查找"><a href="#8-3、顺序表查找" class="headerlink" title="8.3、顺序表查找"></a>8.3、顺序表查找</h4><pre><code>又叫线性查找，是最基本的查找技术，它的查找过程是，从表中的第一个（或最后一个）记录开始，逐个进行记录的关键字和给定值的比较，若某个记录的关键字和给定值相等，则查找成功，找到所查的记录，如果直到最后一个（或第一个）记录，其关键字和给定值比较不等时，则表中没有所查的记录，查找不成功
+</code></pre><h5 id="8-3-1、顺序表查找算法"><a href="#8-3-1、顺序表查找算法" class="headerlink" title="8.3.1、顺序表查找算法"></a>8.3.1、顺序表查找算法</h5><h5 id="8-3-2、顺序表查找优化"><a href="#8-3-2、顺序表查找优化" class="headerlink" title="8.3.2、顺序表查找优化"></a>8.3.2、顺序表查找优化</h5><h4 id="8-4、有序表查找"><a href="#8-4、有序表查找" class="headerlink" title="8.4、有序表查找"></a>8.4、有序表查找</h4><h5 id="8-4-1、折半查找"><a href="#8-4-1、折半查找" class="headerlink" title="8.4.1、折半查找"></a>8.4.1、折半查找</h5><pre><code>又称为二分查找，它的前提是线性表中的记录必须是关键码有序，线性表必须采用顺序存储。折半查找的思想，在有序中，取中间记录作为比较对象，若给定值与中间记录的关键字相等，则查找成功。若给定值小于中间记录的关键字，则在中间记录的左半区继续查找，若给定的值大于中间记录的关键字，则在中间记录的右半区继续查找。不断重复上述过程，直到成功，或所有查找区域无记录，查找失败
+</code></pre><h5 id="8-4-2、插值查找"><a href="#8-4-2、插值查找" class="headerlink" title="8.4.2、插值查找"></a>8.4.2、插值查找</h5><pre><code>是根据要查找的关键字key与查找表中最大最小记录的关键字比较后的查找放方法，其核心就在于插值得计算公式key-a[low]/a[high]-a[low]
+</code></pre><h5 id="8-4-3、斐波那契查找"><a href="#8-4-3、斐波那契查找" class="headerlink" title="8.4.3、斐波那契查找"></a>8.4.3、斐波那契查找</h5><h4 id="8-5、线性索引查找"><a href="#8-5、线性索引查找" class="headerlink" title="8.5、线性索引查找"></a>8.5、线性索引查找</h4><h5 id="8-5-1、稠密索引"><a href="#8-5-1、稠密索引" class="headerlink" title="8.5.1、稠密索引"></a>8.5.1、稠密索引</h5><pre><code>稠密索引是指在线性索引中，将数据集中的每个记录对应一个索引项。
+对于稠密索引这个索引表来说，索引项一定是按照关键码有序排列
+</code></pre><h5 id="8-5-2、分块索引"><a href="#8-5-2、分块索引" class="headerlink" title="8.5.2、分块索引"></a>8.5.2、分块索引</h5><pre><code>是把数据集的记录分成了若干块，而且这些块需要满足两个条件
+1、块内无序
+2、块内有序
+</code></pre><h5 id="8-5-3、倒排索引"><a href="#8-5-3、倒排索引" class="headerlink" title="8.5.3、倒排索引"></a>8.5.3、倒排索引</h5><pre><code>索引项的通用结构：
+1、次关键码：例如上面的英文单词
+2、记录号表：例如上面的文章编码
+
+其中记录号表存储具有相同的次关键字的所有记录的记录号，（可以是指向记录的指针或者该记录的主关键字）。这样的索引方法就是倒排序索引
+</code></pre><h4 id="8-6、二叉排序树"><a href="#8-6、二叉排序树" class="headerlink" title="8.6、二叉排序树"></a>8.6、二叉排序树</h4><pre><code>二叉排序树，又称为二叉查找树。它或者是一棵空树，或者是具有下列性质的二叉树
+1、若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值
+2、若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值
+3、它的左，右子树也分别为二叉排序树
+</code></pre><h5 id="8-6-1、二叉排序树查找操作"><a href="#8-6-1、二叉排序树查找操作" class="headerlink" title="8.6.1、二叉排序树查找操作"></a>8.6.1、二叉排序树查找操作</h5><h5 id="8-6-2、二叉排序树插入操作"><a href="#8-6-2、二叉排序树插入操作" class="headerlink" title="8.6.2、二叉排序树插入操作"></a>8.6.2、二叉排序树插入操作</h5><h5 id="8-6-2、二叉排序树删除操作"><a href="#8-6-2、二叉排序树删除操作" class="headerlink" title="8.6.2、二叉排序树删除操作"></a>8.6.2、二叉排序树删除操作</h5><h4 id="8-7、平衡二叉树（AVL树）"><a href="#8-7、平衡二叉树（AVL树）" class="headerlink" title="8.7、平衡二叉树（AVL树）"></a>8.7、平衡二叉树（AVL树）</h4>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    XieSZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/11/16/A_大话数据结构/" title="大话数据结构">http://yoursite.com/2019/11/16/A_大话数据结构/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/16/B_Dubbo学习教程/" rel="next" title="Dubbo学习教程">
+                <i class="fa fa-chevron-left"></i> Dubbo学习教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/16/算法/" rel="prev" title="算法">
+                算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XieSZ</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到XieSZ的技术分享站~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">234</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xie1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xieshanzhong66@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xie1.github.io/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度搜索" target="_blank">百度搜索</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="hexo" target="_blank">hexo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、思维导图"><span class="nav-text">一、思维导图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总知识点"><span class="nav-text">总知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、数据结构绪论"><span class="nav-text">1、数据结构绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4、基本概念和术语"><span class="nav-text">1.4、基本概念和术语</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-1、数据"><span class="nav-text">1.4.1、数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-2、数据元素"><span class="nav-text">1.4.2、数据元素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-3、数据项"><span class="nav-text">1.4.3、数据项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-4、数据对象"><span class="nav-text">1.4.4、数据对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-5、数据结构"><span class="nav-text">1.4.5、数据结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5、逻辑结构与物理结构"><span class="nav-text">1.5、逻辑结构与物理结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-1、逻辑结构"><span class="nav-text">1.5.1、逻辑结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-2、物理结构"><span class="nav-text">1.5.2、物理结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6、抽象数据类型"><span class="nav-text">1.6、抽象数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-6-1、数据类型"><span class="nav-text">1.6.1、数据类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-6-2、抽象数据类型"><span class="nav-text">1.6.2、抽象数据类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、算法"><span class="nav-text">2、算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4、算法定义"><span class="nav-text">2.4、算法定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5、算法的特性"><span class="nav-text">2.5、算法的特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6、算法设计的要求"><span class="nav-text">2.6、算法设计的要求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7、算法效率的度量方法"><span class="nav-text">2.7、算法效率的度量方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-7-1、事后统计方法"><span class="nav-text">2.7.1、事后统计方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-7-2、事前分析估算方法"><span class="nav-text">2.7.2、事前分析估算方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8、函数的渐进增长"><span class="nav-text">2.8、函数的渐进增长</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9、算法时间复杂度"><span class="nav-text">2.9、算法时间复杂度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-9-1、算法时间复杂度"><span class="nav-text">2.9.1、算法时间复杂度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-9-2、推导大O阶方法"><span class="nav-text">2.9.2、推导大O阶方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-9-3、常数阶O-1"><span class="nav-text">2.9.3、常数阶O(1)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-9-4、线性阶O-n"><span class="nav-text">2.9.4、线性阶O(n)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-9-5、对数阶O-logn"><span class="nav-text">2.9.5、对数阶O(logn)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-9-6、平方阶O-n-2"><span class="nav-text">2.9.6、平方阶O(n^2)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-10、常见的算法时间复杂度"><span class="nav-text">2.10、常见的算法时间复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-11、最坏情况与平均情况"><span class="nav-text">2.11、最坏情况与平均情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-12、算法空间复杂度"><span class="nav-text">2.12、算法空间复杂度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、线性表"><span class="nav-text">3、线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2、线性表的定义"><span class="nav-text">3.2、线性表的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3、线性表的抽象数据类型"><span class="nav-text">3.3、线性表的抽象数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4、线性表的顺序存储结构"><span class="nav-text">3.4、线性表的顺序存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-1、顺序存储定义"><span class="nav-text">3.4.1、顺序存储定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-2、顺序存储方式"><span class="nav-text">3.4.2、顺序存储方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-3、数据长度与线性表长度区别"><span class="nav-text">3.4.3、数据长度与线性表长度区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-4、地址计算方法"><span class="nav-text">3.4.4、地址计算方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5、顺序存储结构的插入与删除"><span class="nav-text">3.5、顺序存储结构的插入与删除</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-1、获取元素操作"><span class="nav-text">3.5.1、获取元素操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-2、插入操作"><span class="nav-text">3.5.2、插入操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-3、删除操作"><span class="nav-text">3.5.3、删除操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-4、线性表顺序存储结构的优缺点"><span class="nav-text">3.5.4、线性表顺序存储结构的优缺点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6、线性表的链式存储结构"><span class="nav-text">3.6、线性表的链式存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-2、线性表的链式存储结构定义"><span class="nav-text">3.6.2、线性表的链式存储结构定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-3、线性表的链式存储结构代码描述"><span class="nav-text">3.6.3、线性表的链式存储结构代码描述</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7、单链表的读取"><span class="nav-text">3.7、单链表的读取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8、单链表的插入与删除"><span class="nav-text">3.8、单链表的插入与删除</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-8-1、单链表的插入"><span class="nav-text">3.8.1、单链表的插入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-8-2、单链表的删除"><span class="nav-text">3.8.2、单链表的删除</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-9、单链表的整表创建"><span class="nav-text">3.9、单链表的整表创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-10、单链表的整表删除"><span class="nav-text">3.10、单链表的整表删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-11、单链表的结构与顺序存储结构优缺点"><span class="nav-text">3.11、单链表的结构与顺序存储结构优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-12、静态链表"><span class="nav-text">3.12、静态链表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-12-1、静态链表的插入操作—-gt-暂定学习"><span class="nav-text">3.12.1、静态链表的插入操作—&gt;暂定学习</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-12-2、静态链表的删除操作"><span class="nav-text">3.12.2、静态链表的删除操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-12-3、静态链表的优缺点"><span class="nav-text">3.12.3、静态链表的优缺点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-13、循环链表"><span class="nav-text">3.13、循环链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-14、双向链表"><span class="nav-text">3.14、双向链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-15、总结"><span class="nav-text">3.15、总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、栈与队列"><span class="nav-text">4、栈与队列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2、栈的定义"><span class="nav-text">4.2、栈的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-1、栈的定义"><span class="nav-text">4.2.1、栈的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-2、进栈出栈变化形式"><span class="nav-text">4.2.2、进栈出栈变化形式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3、栈的抽象数据类型"><span class="nav-text">4.3、栈的抽象数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4、栈的顺序存储结构及实现"><span class="nav-text">4.4、栈的顺序存储结构及实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4-2、栈的顺序存储结构——进栈操作"><span class="nav-text">4.4.2、栈的顺序存储结构——进栈操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4-2、栈的顺序存储结构——出栈操作"><span class="nav-text">4.4.2、栈的顺序存储结构——出栈操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5、两栈共享空间"><span class="nav-text">4.5、两栈共享空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6、栈的链式存储结构及实现"><span class="nav-text">4.6、栈的链式存储结构及实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-6-1、栈的链式存储结构"><span class="nav-text">4.6.1、栈的链式存储结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-6-2、栈的链式存储结构-——进栈操作"><span class="nav-text">4.6.2、栈的链式存储结构-——进栈操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-6-3、栈的链式存储结构-——出栈操作"><span class="nav-text">4.6.3、栈的链式存储结构-——出栈操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-8、栈的应用——递归"><span class="nav-text">4.8、栈的应用——递归</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-8-1、斐波那契数列实现"><span class="nav-text">4.8.1、斐波那契数列实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-8-2、递归定义"><span class="nav-text">4.8.2、递归定义</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-9、栈的应用——四则运算表达式求值"><span class="nav-text">4.9、栈的应用——四则运算表达式求值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-10、队列的定义"><span class="nav-text">4.10、队列的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-11、队列的抽象数据类型"><span class="nav-text">4.11、队列的抽象数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-12、循环队列"><span class="nav-text">4.12、循环队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-12-2、循环队列的定义"><span class="nav-text">4.12.2、循环队列的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-13、队列的链式存储结构及实现"><span class="nav-text">4.13、队列的链式存储结构及实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-13-1、队列的链式存储结构——入队操作"><span class="nav-text">4.13.1、队列的链式存储结构——入队操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-13-2、队列的链式存储结构——出队操作"><span class="nav-text">4.13.2、队列的链式存储结构——出队操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-14、总结"><span class="nav-text">4.14、总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、串"><span class="nav-text">5、串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2、串的定义"><span class="nav-text">5.2、串的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3、串的比较"><span class="nav-text">5.3、串的比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4、串的抽象数据类型"><span class="nav-text">5.4、串的抽象数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-5、串的存储结构"><span class="nav-text">5.5、串的存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-5-1、串的顺序存储结构"><span class="nav-text">5.5.1、串的顺序存储结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-5-2、串的链式存储结构"><span class="nav-text">5.5.2、串的链式存储结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6、朴素的模式匹配算法"><span class="nav-text">5.6、朴素的模式匹配算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-7、KMP模式匹配算法—-》重要暂定学习"><span class="nav-text">5.7、KMP模式匹配算法—-》重要暂定学习</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-7-1、KMP模式匹配算法原理"><span class="nav-text">5.7.1、KMP模式匹配算法原理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、树"><span class="nav-text">6、树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2、树的定义"><span class="nav-text">6.2、树的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2-1、结点分类"><span class="nav-text">6.2.1、结点分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2-2、结点间关系"><span class="nav-text">6.2.2、结点间关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2-3、树的其他相关概念"><span class="nav-text">6.2.3、树的其他相关概念</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-3、树的抽象数据类型"><span class="nav-text">6.3、树的抽象数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4、树的存储结构"><span class="nav-text">6.4、树的存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-4-1、双亲表示法"><span class="nav-text">6.4.1、双亲表示法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-4-2、孩子表示法"><span class="nav-text">6.4.2、孩子表示法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-4-3、孩子兄弟表示法"><span class="nav-text">6.4.3、孩子兄弟表示法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-5、二叉树的定义"><span class="nav-text">6.5、二叉树的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-5-1、二叉树的特点"><span class="nav-text">6.5.1、二叉树的特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-5-2、特殊二叉树"><span class="nav-text">6.5.2、特殊二叉树</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-6、二叉树的性质"><span class="nav-text">6.6、二叉树的性质</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-6-1、二叉树性质1"><span class="nav-text">6.6.1、二叉树性质1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-6-2、二叉树性质2"><span class="nav-text">6.6.2、二叉树性质2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-6-3、二叉树性质3"><span class="nav-text">6.6.3、二叉树性质3</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-6-4、二叉树性质4"><span class="nav-text">6.6.4、二叉树性质4</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-6-5、二叉树性质5"><span class="nav-text">6.6.5、二叉树性质5</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-7、二叉树的存储结构"><span class="nav-text">6.7、二叉树的存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-7-1、二叉树的顺序存储结构"><span class="nav-text">6.7.1、二叉树的顺序存储结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-7-2、二叉链表"><span class="nav-text">6.7.2、二叉链表</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-8、遍历二叉树"><span class="nav-text">6.8、遍历二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-8-1、二叉树遍历原理"><span class="nav-text">6.8.1、二叉树遍历原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-8-2、二叉树遍历方法"><span class="nav-text">6.8.2、二叉树遍历方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-8-3、前序遍历算法"><span class="nav-text">6.8.3、前序遍历算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-8-4、中序遍历算法"><span class="nav-text">6.8.4、中序遍历算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-8-5、后序遍历算法、"><span class="nav-text">6.8.5、后序遍历算法、</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-8-6、推导遍历结果"><span class="nav-text">6.8.6、推导遍历结果</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-9、二叉树建立"><span class="nav-text">6.9、二叉树建立</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-10、线索二叉树"><span class="nav-text">6.10、线索二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-10-1、线索二叉树原理"><span class="nav-text">6.10.1、线索二叉树原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-10-2、线索二叉树结构实现——-gt-暂定学习"><span class="nav-text">6.10.2、线索二叉树结构实现——&gt;暂定学习</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-11、树、森林与二叉树的转换"><span class="nav-text">6.11、树、森林与二叉树的转换</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-11-1、树转换为二叉树"><span class="nav-text">6.11.1、树转换为二叉树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-11-2、森林转换为二叉树"><span class="nav-text">6.11.2、森林转换为二叉树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-11-3、二叉树转换为树"><span class="nav-text">6.11.3、二叉树转换为树</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-12、赫夫曼树及其应用"><span class="nav-text">6.12、赫夫曼树及其应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-12-2、赫夫曼树定义与原理——-gt-暂定学习"><span class="nav-text">6.12.2、赫夫曼树定义与原理——&gt;暂定学习</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-12-3、赫夫曼编码"><span class="nav-text">6.12.3、赫夫曼编码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、图"><span class="nav-text">7、图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2、图的定义"><span class="nav-text">7.2、图的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-2-1、各种图的定义"><span class="nav-text">7.2.1、各种图的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-2-2、图的顶点与边间关系"><span class="nav-text">7.2.2、图的顶点与边间关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-2-3、连通图相关术语"><span class="nav-text">7.2.3、连通图相关术语</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-2-4、图的定义与术语总结"><span class="nav-text">7.2.4、图的定义与术语总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-3、图的抽象数据类型"><span class="nav-text">7.3、图的抽象数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-4、图的存储结构"><span class="nav-text">7.4、图的存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-4-1、邻接矩阵"><span class="nav-text">7.4.1、邻接矩阵</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-4-2、邻接表"><span class="nav-text">7.4.2、邻接表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-4-3、十字链表"><span class="nav-text">7.4.3、十字链表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-4-4、邻接多重表"><span class="nav-text">7.4.4、邻接多重表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-4-5、边集数组"><span class="nav-text">7.4.5、边集数组</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-5、图的遍历"><span class="nav-text">7.5、图的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-5-1、深度优先遍历"><span class="nav-text">7.5.1、深度优先遍历</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-5-2、广度优先遍历"><span class="nav-text">7.5.2、广度优先遍历</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-6、最小生成树"><span class="nav-text">7.6、最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-6-1、普里姆算法"><span class="nav-text">7.6.1、普里姆算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-6-2、克鲁斯卡尔算法"><span class="nav-text">7.6.2、克鲁斯卡尔算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、查找"><span class="nav-text">8、查找</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-2、查找概论"><span class="nav-text">8.2、查找概论</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-3、顺序表查找"><span class="nav-text">8.3、顺序表查找</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8-3-1、顺序表查找算法"><span class="nav-text">8.3.1、顺序表查找算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-3-2、顺序表查找优化"><span class="nav-text">8.3.2、顺序表查找优化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-4、有序表查找"><span class="nav-text">8.4、有序表查找</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8-4-1、折半查找"><span class="nav-text">8.4.1、折半查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-4-2、插值查找"><span class="nav-text">8.4.2、插值查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-4-3、斐波那契查找"><span class="nav-text">8.4.3、斐波那契查找</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-5、线性索引查找"><span class="nav-text">8.5、线性索引查找</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8-5-1、稠密索引"><span class="nav-text">8.5.1、稠密索引</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-5-2、分块索引"><span class="nav-text">8.5.2、分块索引</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-5-3、倒排索引"><span class="nav-text">8.5.3、倒排索引</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-6、二叉排序树"><span class="nav-text">8.6、二叉排序树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8-6-1、二叉排序树查找操作"><span class="nav-text">8.6.1、二叉排序树查找操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-6-2、二叉排序树插入操作"><span class="nav-text">8.6.2、二叉排序树插入操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-6-2、二叉排序树删除操作"><span class="nav-text">8.6.2、二叉排序树删除操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-7、平衡二叉树（AVL树）"><span class="nav-text">8.7、平衡二叉树（AVL树）</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XieSZ</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytwYroRX';
+      var conf = 'a1ed94f3fa27338ebcb9c5f114025ca5';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

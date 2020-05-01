@@ -425,7 +425,7 @@
     3、SqlSession定义了所有执行SQL的所有方法，之后根据映射文件执行sql对数据库进行操作
     4、完成事务的提交，关闭SqlSession对象
 </code></pre><h5 id="1-4、MyBatis整体架构"><a href="#1-4、MyBatis整体架构" class="headerlink" title="1.4、MyBatis整体架构"></a>1.4、MyBatis整体架构</h5><pre><code>整体架构分成三层：基础支持层，核心处理层，接口层    
-</code></pre><p><img src="/2019/04/05/读书笔记_Mybatis技术内幕/1.png" alt="Alt text"></p>
+</code></pre><p><img src="//yoursite.com/2019/04/05/读书笔记_Mybatis技术内幕/1.png" alt="Alt text"></p>
 <h6 id="1-4-1、基础支持层"><a href="#1-4-1、基础支持层" class="headerlink" title="1.4.1、基础支持层"></a>1.4.1、基础支持层</h6><pre><code>1、反射模块
 2、类型转换模块
 3、日志模块
@@ -441,7 +441,7 @@
         初始化得到的SqlSessionFactory创建SqlSession对象并完成数据库操作
     2、SQL解析与scripting模块
     3、SQL执行：涉及多个组件，其中Executor，StatementHandler、ParameterHandler和ResultSetHandler
-</code></pre><p><img src="/2019/04/05/读书笔记_Mybatis技术内幕/2.png" alt="Alt text"></p>
+</code></pre><p><img src="//yoursite.com/2019/04/05/读书笔记_Mybatis技术内幕/2.png" alt="Alt text"></p>
 <pre><code>    4、插件
 </code></pre><h6 id="1-4-3、接口层"><a href="#1-4-3、接口层" class="headerlink" title="1.4.3、接口层"></a>1.4.3、接口层</h6><h4 id="第2章、基础支持层"><a href="#第2章、基础支持层" class="headerlink" title="第2章、基础支持层"></a>第2章、基础支持层</h4><h5 id="2-1、解析器模块"><a href="#2-1、解析器模块" class="headerlink" title="2.1、解析器模块"></a>2.1、解析器模块</h5><pre><code>XMl解析常见的方式有三种：DOM解析，SAX解析 ，StAX解析
     1、DOM解析
@@ -451,7 +451,7 @@
 </code></pre><h6 id="2-1-1、XPath"><a href="#2-1-1、XPath" class="headerlink" title="2.1.1、XPath"></a>2.1.1、XPath</h6><h6 id="2-1-2、XPathParser"><a href="#2-1-2、XPathParser" class="headerlink" title="2.1.2、XPathParser"></a>2.1.2、XPathParser</h6><h5 id="2-2、反射工具箱"><a href="#2-2、反射工具箱" class="headerlink" title="2.2、反射工具箱"></a>2.2、反射工具箱</h5><pre><code>    Mybatis在进行参数处理，结果映射等操作时，会涉及大量反射操作。
 </code></pre><h6 id="2-2-1、Reflector-amp-ReflectorFactory"><a href="#2-2-1、Reflector-amp-ReflectorFactory" class="headerlink" title="2.2.1、Reflector&amp;ReflectorFactory"></a>2.2.1、Reflector&amp;ReflectorFactory</h6><pre><code>Reflector是mybatis中反射模块的基础，每个Reflector对象都对象一个类，再Reflector中缓存了反射操作需要使用的类元信息
 </code></pre><h6 id="2-2-2、TypeParameterResolver"><a href="#2-2-2、TypeParameterResolver" class="headerlink" title="2.2.2、TypeParameterResolver"></a>2.2.2、TypeParameterResolver</h6><pre><code>类型解析过程
-</code></pre><p><img src="/2019/04/05/读书笔记_Mybatis技术内幕/1.png" alt="Alt text"></p>
+</code></pre><p><img src="//yoursite.com/2019/04/05/读书笔记_Mybatis技术内幕/1.png" alt="Alt text"></p>
 <h6 id="2-2-3、ObjectFactory"><a href="#2-2-3、ObjectFactory" class="headerlink" title="2.2.3、ObjectFactory"></a>2.2.3、ObjectFactory</h6><h6 id="2-2-4、Property工具集"><a href="#2-2-4、Property工具集" class="headerlink" title="2.2.4、Property工具集"></a>2.2.4、Property工具集</h6><pre><code>1、PropertyTokenizer
 2、PropertyCopier
 3、PropertyNamer
@@ -501,8 +501,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/05/读书笔记_编程珠玑/" rel="next" title="读书笔记_编程珠玑">
-                <i class="fa fa-chevron-left"></i> 读书笔记_编程珠玑
+              <a href="/2019/04/05/读书笔记_Spring实战 /" rel="next" title="读书笔记_Spring实战">
+                <i class="fa fa-chevron-left"></i> 读书笔记_Spring实战
               </a>
             
           </div>
@@ -511,8 +511,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/05/读书笔记_SpringBoot实战/" rel="prev" title="读书笔记_SpringBoot实战">
-                读书笔记_SpringBoot实战 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/05/读书笔记_Zookeeper/" rel="prev" title="读书笔记_Zookeeper">
+                读书笔记_Zookeeper <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -595,7 +595,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">164</span>
+                  <span class="site-state-item-count">234</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -606,7 +606,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -617,7 +617,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -715,7 +715,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
