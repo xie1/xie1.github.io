@@ -32,7 +32,9 @@ categories: 工具
 			1、创建并初始化一个仓库
 ![创建一个仓库](https://i.imgur.com/15mnQMx.png)
 			
-	2、在项目的setting找到GitHub Pages如下，选模板进行生成GitHub Pages项目
+
+2、在项目的setting找到GitHub Pages如下，选模板进行生成GitHub Pages项目
+
 ![](https://i.imgur.com/wxNUzoN.png)
 ![](https://i.imgur.com/Oa4Rt8d.png)
 

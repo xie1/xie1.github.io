@@ -18,9 +18,10 @@ categories:
 		
 ![Alt text](./QQ截图20190517171916.png)
 	
-	2、Spring子项目
-		1、Spring Boot ： Spring应用快速开发工具，用来简化Spring应用开发过程
-		2、Spring Cloud : Spring为开发者提供了在分布式系统（如配置管理，服务发现，断路器，只能路由，微代理，控制总线，一次性Token，全局锁，决策竞选，分布式会话和集群状态）中操作的开发工具。使用Spring Cloud
+
+2、Spring子项目
+	1、Spring Boot ： Spring应用快速开发工具，用来简化Spring应用开发过程
+	2、Spring Cloud : Spring为开发者提供了在分布式系统（如配置管理，服务发现，断路器，只能路由，微代理，控制总线，一次性Token，全局锁，决策竞选，分布式会话和集群状态）中操作的开发工具。使用Spring Cloud
 
 ###2、Spring Boot
 ####2.1、概览
@@ -39,10 +40,12 @@ categories:
 	
 ![Alt text](./QQ截图20190519090441.png)
 
-	2、属性注入
+2、属性注入
+
 ![Alt text](./QQ截图20190519090859.png)
 
-	3、接口注入（暂定）
+3、接口注入（暂定）
+
 ####3.2、相关Java基础知识
 	1、反射机制（通过获取对应的class类，实例对象，反射获取Method方法）
 	2、类加载机制
@@ -67,32 +70,33 @@ categories:
 ![Alt text](./QQ截图20190519104842.png)
 ![Alt text](./QQ截图20190519104936.png)
 
-	BeanFactory中Bean生命周期和ApplicationContext中Bean的生命周期
-	
-	Bean的完整生命周期从Spring容器着手实例化Bean开始，直到最终销毁Bean
-		1、Bean自身方法： 如调用Bean构造器函数实例化Bean、调用Setter设置Bean的属性值及通过<bean>的init-method和destroy-method所指定的方法
-		2、Bean级生命周期接口方法：如BeanNameAware,BeanFactoryAware、InitializingBean和DisposableBean,这些接口方法由Bean类直接实现
-		3、容器级生命周期接口方法
-		4、工厂后处理接口方法
-		
+BeanFactory中Bean生命周期和ApplicationContext中Bean的生命周期
+
+Bean的完整生命周期从Spring容器着手实例化Bean开始，直到最终销毁Bean
+	1、Bean自身方法： 如调用Bean构造器函数实例化Bean、调用Setter设置Bean的属性值及通过<bean>的init-method和destroy-method所指定的方法
+	2、Bean级生命周期接口方法：如BeanNameAware,BeanFactoryAware、InitializingBean和DisposableBean,这些接口方法由Bean类直接实现
+	3、容器级生命周期接口方法
+	4、工厂后处理接口方法
+
 ###4、在IoC容器中装配Bean
 ####4.1、Spring配置概述
 	Spring启动时读取应用程序提供的Bean配置信息，并在Spring容器中生成一份相应的Bean配置注册表，然后根据这张注册表实例化Bean，装配好Bean宅男的依赖关系，为上层应用提供准备就绪的运行环境
 ![Alt text](./QQ截图20190519112147.png)
 
-	Bean配置信息首先定义了Bean的实现及依赖关系，Spring容器根据各种新式的Bean配置信息在容器内部建立Bean定义注册表；然后根据注册表加载，实例化Bean，并建立Bean和Bean之间的依赖关系；最后将这些准备就绪的Bean放到Bean缓存池中，以供外层的应用程序进行调用
+Bean配置信息首先定义了Bean的实现及依赖关系，Spring容器根据各种新式的Bean配置信息在容器内部建立Bean定义注册表；然后根据注册表加载，实例化Bean，并建立Bean和Bean之间的依赖关系；最后将这些准备就绪的Bean放到Bean缓存池中，以供外层的应用程序进行调用
 
-	配置类型：
-	1、基于XML的配置
-	2、基于注解配置方式默认采用byType自动装配策略
-		提供了3个功能基本和@Component等效的注解
-		@Repository: 用于对DAO实现类进行标注
-		@Service ： 用于对Service实现类进行标注
-		@Controller ：用于对Controller实现类进行标注
-		使用@Autowired进行自动注入 ，默认按类型（ByType）匹配的方式在容器中查找匹配的Bean，当有而且仅有一个匹配的Bean时，Spring将其注入@Autowired标注的变量中
-	2、基于Java类的配置
-		@Configuration
-		@Bean
+配置类型：
+1、基于XML的配置
+2、基于注解配置方式默认采用byType自动装配策略
+	提供了3个功能基本和@Component等效的注解
+	@Repository: 用于对DAO实现类进行标注
+	@Service ： 用于对Service实现类进行标注
+	@Controller ：用于对Controller实现类进行标注
+	使用@Autowired进行自动注入 ，默认按类型（ByType）匹配的方式在容器中查找匹配的Bean，当有而且仅有一个匹配的Bean时，Spring将其注入@Autowired标注的变量中
+2、基于Java类的配置
+	@Configuration
+	@Bean
+
 ![Alt text](./QQ截图20190519122120.png)
 ![Alt text](./QQ截图20190519122147.png)
 
@@ -120,12 +124,14 @@ categories:
 ![Alt text](./1558246430195.png)
 ![Alt text](./1558246446203.png)
 		
-	在查看Spring框架的源码时，有两条清晰可见的
-		1、接口层描述了容器的重要组件及组件间的协作关系
-		2、继承体系逐步实现组件的各项功能
-	1、Spring组件按其所承担的角色可以划分为两类：
-		1、物料组件：Resource、BeanDefinition、PropertyEditor及最终的Bean等，它们是加工流程中被加工、被消费的组件、就像流水线上被加工的物料一样
-		2、设备组件：ResourceLoader、BeanDefinitionReader、BeanFactoryPostProcessor、InstantionStrategy及BeanWrapper等。它们就像流水线上不同环节的加工设备，对物料组件进行加工处理
+
+在查看Spring框架的源码时，有两条清晰可见的
+	1、接口层描述了容器的重要组件及组件间的协作关系
+	2、继承体系逐步实现组件的各项功能
+1、Spring组件按其所承担的角色可以划分为两类：
+	1、物料组件：Resource、BeanDefinition、PropertyEditor及最终的Bean等，它们是加工流程中被加工、被消费的组件、就像流水线上被加工的物料一样
+	2、设备组件：ResourceLoader、BeanDefinitionReader、BeanFactoryPostProcessor、InstantionStrategy及BeanWrapper等。它们就像流水线上不同环节的加工设备，对物料组件进行加工处理
+
 #####5.1.2、BeanDefinition
 	Spring通过BeanDefinition将配置文件中的<bean>配置信息转换为容器的内部表示，并将这些BeanDefinition注册到BeanDefinitionRegistry中。Spring容器的BeanDefinitionRegistry就像Spring配置信息的内存数据库，后续操作直接从此种读取配置信息。一般情况下，BeanDefinition只在容器启动时加载并解析。
 ![Alt text](./1558248041072.png)
@@ -137,7 +143,7 @@ categories:
 
 ![Alt text](./1558248211501.png)
 
-	类似于java语言中new功能，它并不会参与Bean属性的设置工作。实际上返回的Bean实例时一个半成品的Bean实例，属性填充的工作留给BeanWrapper来完成
+类似于java语言中new功能，它并不会参与Bean属性的设置工作。实际上返回的Bean实例时一个半成品的Bean实例，属性填充的工作留给BeanWrapper来完成
 
 #####5.1.4、BeanWrapper
 	BeanWrapper相当于一个代理器。Spring委托BeanWrapper完成Bean属性的填充工作
@@ -159,8 +165,7 @@ categories:
 
 ![Alt text](./1558318980108.png)
 
-
-	这代码是方法性能监测代码，它在方法调用前启动，在方法调用后返回前结束，并在内部记录性能监视的结果信息。	
+这代码是方法性能监测代码，它在方法调用前启动，在方法调用后返回前结束，并在内部记录性能监视的结果信息。	
 
 #####6.1.2、AOP的术语
 	1、连接点（Joinpoint）
@@ -226,13 +231,15 @@ categories:
 ![Alt text](./1558326509132.png)
 ![Alt text](./1558326612084.png)
 
-	其中：method为目标类的方法，args为目标类方法的入参，obj为目标类实例
+其中：method为目标类的方法，args为目标类方法的入参，obj为目标类实例
 
-	1、解剖ProxyFactory
-		ProxyFactory代理工厂将增加织入目标类NativeWaiter,内部实现就是使用JDK或CGlib动态代理技术将增强应用到目标类中。
+1、解剖ProxyFactory
+	ProxyFactory代理工厂将增加织入目标类NativeWaiter,内部实现就是使用JDK或CGlib动态代理技术将增强应用到目标类中。
+
 ![Alt text](./1558327017095.png)
 
-	需要在Spring中配置
+需要在Spring中配置
+
 ![Alt text](./1558327200847.png)
 ![Alt text](./1558327214350.png)
 
@@ -249,7 +256,8 @@ categories:
 	2、切点切面（PointcutAdvisor）
 ![Alt text](./1558332456818.png)
 
-	3、引介切面（IntroductionAdvisor）
+3、引介切面（IntroductionAdvisor）
+
 ![Alt text](./1558332479107.png)
 
 ###7、基于@AspectJ和Schema的AOP
@@ -263,8 +271,8 @@ categories:
 ![Alt text](./1558334289169.png)
 ![Alt text](./1558334298321.png)
 
-	2、XML配置形式使用@AspectJ切面
-	
+2、XML配置形式使用@AspectJ切面
+
 ![Alt text](./1558334337528.png)
 ![Alt text](./1558334370678.png)
 ![Alt text](./1558334380202.png)
@@ -277,7 +285,7 @@ categories:
 ![Alt text](./1558335025961.png)
 ![Alt text](./1558335062039.png)
 
-	使用@AspectJ定义切面比基于接口定义切面更加直观，更加简洁
+使用@AspectJ定义切面比基于接口定义切面更加直观，更加简洁
 
 ###8、Spring SpEL
 
@@ -305,26 +313,33 @@ categories:
 	3、隔离性
 	4、持久性
 	
-	在这些事务特性中，数据“一致性” 是最终目标，其他特性都是为达到这个目标而采取的手段
-	  1、数据库管理系统一般采用重执行日志来保证原子性，一致性和持久性
-	  2、和java程序采用对象锁机制进行线程同步类似，数据库管理系统采用数据库锁机制保证事务的隔离性
+
+在这些事务特性中，数据“一致性” 是最终目标，其他特性都是为达到这个目标而采取的手段
+  1、数据库管理系统一般采用重执行日志来保证原子性，一致性和持久性
+  2、和java程序采用对象锁机制进行线程同步类似，数据库管理系统采用数据库锁机制保证事务的隔离性
+
 #####10.1.2、数据并发的问题
 	1、脏读
 ![Alt text](./1558342021413.png)
 		
-	2、不可重复读
+
+2、不可重复读
+
 ![Alt text](./1558342046824.png)
 ![Alt text](./1558342054740.png)
 
-	3、幻读
-	多次统计结果不一致
+3、幻读
+多次统计结果不一致
+
 ![Alt text](./1558342091705.png)
 
-	4、第一类丢失更新
+4、第一类丢失更新
+
 ![Alt text](./1558342242614.png)
 ![Alt text](./1558342249762.png)
 
-	5、第二类丢失更新
+5、第二类丢失更新
+
 ![Alt text](./1558342261580.png)
 
 
@@ -384,10 +399,12 @@ categories:
 ![Alt text](./1558346048717.png)
 ![Alt text](./1558346061305.png)
 	
-	这些事务管理器都是对特定事务实现框架的代理，这样就可以通过Spring所提交的高级抽象对不同种类的食物实现使用相同的方式进行管理，而不用关心具体的实现。
-	要实现事务管理，首先要在Spring中配置好相应的事务管理器，为事务管理器指定数据资源及一些其他的事务控制属性
 
-	1、Spring JDBC 和Mybatis
+这些事务管理器都是对特定事务实现框架的代理，这样就可以通过Spring所提交的高级抽象对不同种类的食物实现使用相同的方式进行管理，而不用关心具体的实现。
+要实现事务管理，首先要在Spring中配置好相应的事务管理器，为事务管理器指定数据资源及一些其他的事务控制属性
+
+1、Spring JDBC 和Mybatis
+
 ![Alt text](./1558402682287.png)
 
 #####10.3.3、事务同步管理器
@@ -410,7 +427,9 @@ categories:
 ![Alt text](./1558406283127.png)
 ![Alt text](./1558406305836.png)
 		
-	基于aop/tx命名空间的配置
+
+基于aop/tx命名空间的配置
+
 ![Alt text](./1558406383377.png)
 	
 ####10.6、使用注解配置声明式事务
@@ -432,16 +451,19 @@ categories:
 #####13.1.1、缓存的概念
 ![Alt text](./1558409988611.png)
 	
-	1、缓存命中率
-		即从缓存中读取数据的次数与总读取次数的比率，一般来说，命中率越高越好
+
+1、缓存命中率
+	即从缓存中读取数据的次数与总读取次数的比率，一般来说，命中率越高越好
 
 ![Alt text](./1558410123772.png)
 
-	2、过期策略
-		即如果缓存满了，从缓存中移除数据的策略。常见的有LFU、LRU、FIFO
+2、过期策略
+	即如果缓存满了，从缓存中移除数据的策略。常见的有LFU、LRU、FIFO
+
 ![Alt text](./1558410315470.png)
 
-	Spring Cache仅提供一种抽象而未提供具体实现。
+Spring Cache仅提供一种抽象而未提供具体实现。
+
 ![Alt text](./1558410678347.png)
 #####13.1.2、使用Spring Cache
 
@@ -462,19 +484,21 @@ categories:
 ![Alt text](./1558418216280.png)
 ![Alt text](./1558418332455.png)
 	
-	SpringMVC通过一个前端Servlet接收所有请求，并将具体工作委托给其他的组件进行处理，DispatcherServlet就是SpringMVC的前端Servlet。
-	
+
+SpringMVC通过一个前端Servlet接收所有请求，并将具体工作委托给其他的组件进行处理，DispatcherServlet就是SpringMVC的前端Servlet。
+
 #####14.1.2、配置DispatcherServlet
 	它负责接收HTTP请求并协调Spring MVC 的各个组件请求处理工作。
 	三个问题：
 		1、DispatcherServlet框架如何截获特定的HTTP请求并交由Spring MVC 框架处理？
 ![Alt text](./1558420693119.png)
 
-		2、位于Web层的Spring容器（WebApplicationContext）如何与位于业务层的Spring容器（ApplicationContext）建立关联，使Web层的Bean可以调用业务层的Bean？
-		3、如何初始化SpringMVC的各个组件，并将它们装配到DispatcherSerlvet中？
+​	2、位于Web层的Spring容器（WebApplicationContext）如何与位于业务层的Spring容器（ApplicationContext）建立关联，使Web层的Bean可以调用业务层的Bean？
+​	3、如何初始化SpringMVC的各个组件，并将它们装配到DispatcherSerlvet中？
+
 ![Alt text](./1558420839818.png)
 
-	initStrategies()方法将在WebApplicationContext初始化自动执行，此时Spring上下文中的Bean已经初始化完毕。该方法原理：通过反射机制查找并装配Spring容器中用户显示自定义的组件Bean。如果找不到，则装配默认的组件实例。
+initStrategies()方法将在WebApplicationContext初始化自动执行，此时Spring上下文中的Bean已经初始化完毕。该方法原理：通过反射机制查找并装配Spring容器中用户显示自定义的组件Bean。如果找不到，则装配默认的组件实例。
 
 
 ####14.2、注解驱动的控制器

@@ -16,24 +16,25 @@ categories: 读书笔记
 	2、消息中间件：解决应用之间的消息传递，解耦，异步的问题
 	3、数据访问中间件：主要解决应用访问数据库的共性问题的组件
 	
-	基础知识：
-	1、JVM
-	2、Java并发编程的类，接口和方法
-		1、线程池
-		2、synchronized
-		3、ReentrantLock
-		4、Volatile
-		5、Atomics
-		6、wait，notity，notityAll
-		7、CountDownLutch
-		8、CyclicBarrier
-		9、Semaphone
-		10、Exchanger
-		11、Future/FutureTask
-		12、并发容器
-	3、动态代理
-	4、反射
-	5、网络通信实现选择
+
+基础知识：
+1、JVM
+2、Java并发编程的类，接口和方法
+	1、线程池
+	2、synchronized
+	3、ReentrantLock
+	4、Volatile
+	5、Atomics
+	6、wait，notity，notityAll
+	7、CountDownLutch
+	8、CyclicBarrier
+	9、Semaphone
+	10、Exchanger
+	11、Future/FutureTask
+	12、并发容器
+3、动态代理
+4、反射
+5、网络通信实现选择
 
 ##四、服务框架
 	1、接口调用，寻址路由，编码，通信

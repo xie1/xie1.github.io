@@ -20,7 +20,9 @@ categories: 源码篇
 			一致性：对于任何非null的引用值x和y，只要equals的比较操作在对象中所用的信息没有被修改，多次调用x.equals(y)就会一致的返回ture，或者一致的返回false。
 			非空性：对于任何非null的引用值x，x.equals(null)必须返回false。
 	
-	  重写equals()方法时，应同时重写hashCode()方法
+
+  重写equals()方法时，应同时重写hashCode()方法
+
 ####2.2、public native int hashCode()
 		- 在程序相同执行过程中多次调用同个对象，哈希值必须返回相同。但不是相同调用过程则不必相同； 
 		- 如果两个对象调用equals()方法相同，则hashCode()方法返回值必须相同； 
@@ -79,7 +81,7 @@ categories: 源码篇
 
 
 
-	
+
 ###3、其他方法
 ####3.1、public final Class<?> getClass()
 		返回此对象运行时的类。返回的类对象是由static锁方法锁住的对象

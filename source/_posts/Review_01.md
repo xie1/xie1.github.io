@@ -21,12 +21,12 @@ categories: Review计划
 		CCS:32位指针的Class
 		CodeCache:JIT编译后的本地代码、JNI使用的C代码
 
+常用参数：
+	1、-Xms -Xmx
+	2、-XX:NewSize -XX:MaxNewSize  ,新生代大小
+	3、-XX:NewRatio -XX:SurvivorRatio ，新生代比率，
+	4、-XX:MetaspaceSize -XX:MaxMetaspaceSize
 
-	常用参数：
-		1、-Xms -Xmx
-		2、-XX:NewSize -XX:MaxNewSize  ,新生代大小
-		3、-XX:NewRatio -XX:SurvivorRatio ，新生代比率，
-		4、-XX:MetaspaceSize -XX:MaxMetaspaceSize
 ####2.2、垃圾回收算法
 	
 ####2.3、垃圾收集器
@@ -44,13 +44,13 @@ categories: Review计划
 	3、CMS-concurrent-preclean：并发标记
 	
 
-	4、特点：
-		1、CPU敏感
-		2、浮动垃圾
-		3、空间碎片
+4、特点：
+	1、CPU敏感
+	2、浮动垃圾
+	3、空间碎片
 
-	5、CMS的相关参数
-	
+5、CMS的相关参数
+
 #####2.3.3、G1垃圾收集器
 	1、新生代和老年代收集器
 	

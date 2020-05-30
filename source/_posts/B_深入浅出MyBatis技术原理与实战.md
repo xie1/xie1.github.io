@@ -53,7 +53,8 @@ categories:
 ###3、配置
 ![Alt text](./1558425672551.png)
 	
-	了解各配置的用处及属性有哪些
+
+了解各配置的用处及属性有哪些
 
 ###4、映射器
 ####4.1、映射器的主要元素
@@ -63,25 +64,27 @@ categories:
 ![Alt text](./1558489105079.png)
 ![Alt text](./1558489120328.png)
 
-	1、自动映射
-	2、传递多个参数
-		1、使用Map传递参数
+1、自动映射
+2、传递多个参数
+	1、使用Map传递参数
+
 ![Alt text](./1558489535476.png)
 
-		2、使用注解方式传递参数
+​	2、使用注解方式传递参数
+
 ![Alt text](./1558489603034.png)
 
-		3、使用JavaBean传递参数
+​	3、使用JavaBean传递参数
 
-	总结：使用Map传递参数以及废弃。使用@Param注解传递多个参数，当n<=5时可以采用，n>5时可以采用Javabean方式
-	3、使用ResultMap映射结果集
-		1、定义一个唯一的标识id，用type属性去定义它对应的是哪个JaveBean
+总结：使用Map传递参数以及废弃。使用@Param注解传递多个参数，当n<=5时可以采用，n>5时可以采用Javabean方式
+3、使用ResultMap映射结果集
+	1、定义一个唯一的标识id，用type属性去定义它对应的是哪个JaveBean
 
 ####4.3、insert元素
 ![Alt text](./1558490294124.png)
 
-	1、主键回填和自定义
-		首先我们可以使用keyProperty属性指定哪个是主键字段，同时使用useGeneratedkeys属性高数MyBatis这个主键是否使用数据库内置的策略生成。
+1、主键回填和自定义
+	首先我们可以使用keyProperty属性指定哪个是主键字段，同时使用useGeneratedkeys属性高数MyBatis这个主键是否使用数据库内置的策略生成。
 
 ####4.4、update元素和delete元素
 ####4.5、参数
@@ -95,23 +98,24 @@ categories:
 
 ![Alt text](./1558491625344.png)
 
-	1、使用Map存储结果集
-	2、使用POJO存储结果集
-	3、级联
-		1、association ，代表一对一关系
-		2、collection ，代表一对多的关系
-		3、discriminator,是鉴别器，它可以更加实际选择采用哪个类作为实例，允许你根据特定的条件去关联不同的结果集
-	性能问题：
-		1、性能分析和N+1问题
-		2、延迟加载
+1、使用Map存储结果集
+2、使用POJO存储结果集
+3、级联
+	1、association ，代表一对一关系
+	2、collection ，代表一对多的关系
+	3、discriminator,是鉴别器，它可以更加实际选择采用哪个类作为实例，允许你根据特定的条件去关联不同的结果集
+性能问题：
+	1、性能分析和N+1问题
+	2、延迟加载
 
 ####4.8、缓存cache
 #####4.8.1、系统缓存（一级缓存和二级缓存）
 ![Alt text](./1558492987273.png)
 	
-	一级缓存是sqlSession
-	二级缓存是SqlSessionFactory ，默认是一级缓存
-	
+
+一级缓存是sqlSession
+二级缓存是SqlSessionFactory ，默认是一级缓存
+
 #####4.8.2、自定义缓存
 
 
@@ -180,7 +184,9 @@ categories:
 ######6.3.2.1、执行器（Executor）
 ![Alt text](./1558504661187.png)
 		
-	Mybatis是如何创建执行器？
+
+Mybatis是如何创建执行器？
+
 ######6.3.2.2、数据库会话器（StatementHandler）
 	Mybatis是如何创建数据库会话器？
 ![Alt text](./1558505352073.png)
@@ -207,14 +213,16 @@ categories:
 
 ![Alt text](./1558506922844.png)
 	
-	配置MyBatis-Spring分为下面几部分：
-		1、配置数据源
-		2、配置SqlSessionFactory
-		3、配置SqlSessionTemplate
-		4、配置Mapper
-		5、事务处理
 
-	在MyBatis 中要构建SqlSessionFactory对象，让它来产生SqlSession，而在Mybatis-Spring项目中SqlSession的使用是通过SqlSessionTemplate来实现的，它提供了对SqlSession操作的封装。所以通过SqlSessionTemplate可以得到Mapper.
+配置MyBatis-Spring分为下面几部分：
+	1、配置数据源
+	2、配置SqlSessionFactory
+	3、配置SqlSessionTemplate
+	4、配置Mapper
+	5、事务处理
+
+在MyBatis 中要构建SqlSessionFactory对象，让它来产生SqlSession，而在Mybatis-Spring项目中SqlSession的使用是通过SqlSessionTemplate来实现的，它提供了对SqlSession操作的封装。所以通过SqlSessionTemplate可以得到Mapper.
+
 ![Alt text](./1558507752495.png)
 ![Alt text](./1558507775358.png)
 ![Alt text](./1558507794599.png)

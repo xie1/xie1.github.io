@@ -30,12 +30,12 @@ categories:
 		Spring配置类，配置和启动引导
 ![Alt text](./1558517592444.png)
 
-	@SpringBootApplication将三个有用的注解组合在一起
-		1、@Configuration ：标明该类使用Spring基于Java的配置
-		2、@ComponetScan : 启动组件扫描
-		3、@EnableAutoConfiguration ：这是一样配置开启了Spring Boot自动配置的魔力
+@SpringBootApplication将三个有用的注解组合在一起
+	1、@Configuration ：标明该类使用Spring基于Java的配置
+	2、@ComponetScan : 启动组件扫描
+	3、@EnableAutoConfiguration ：这是一样配置开启了Spring Boot自动配置的魔力
 
-	如果你的应用程序需要Spring Boot自动配置以外的其他Spring配置，一般来说，最好把它写到一个单独的@Configuration标注的类（组件扫描会发现并使用这些类）
+如果你的应用程序需要Spring Boot自动配置以外的其他Spring配置，一般来说，最好把它写到一个单独的@Configuration标注的类（组件扫描会发现并使用这些类）
 
 ####2.2、使用起步依赖
 ####2.2.1、指定基于功能的依赖
@@ -70,7 +70,7 @@ categories:
 
 ![Alt text](./1558582618910.png)
 
-	@SpringApplicationConfiguration代替@ContextConfiguration
+@SpringApplicationConfiguration代替@ContextConfiguration
 
 
 
@@ -83,15 +83,14 @@ categories:
 		要了解应用程序中Spring上下文的情况，最重要的端点就是/beans。它会返回一个JSON文档，藐视上下文里每个Bean情况，包括其Java类型以及诸如的其他Bean
 ![Alt text](./1558583762970.png)
 
-	2、详解自动配置
-		/autoconfig端点能告诉你为什么会有这个Bean，为什么没有这个Bean
+2、详解自动配置
+	/autoconfig端点能告诉你为什么会有这个Bean，为什么没有这个Bean
 
+3、查看配置属性
+	/env端点会生成应用程序可用的所有环境属性的列表，无论这些属性是否用到。这其中包括环境变量，JVM属性，命令行参数，以及application.properties或application.yml属性
 
-	3、查看配置属性
-		/env端点会生成应用程序可用的所有环境属性的列表，无论这些属性是否用到。这其中包括环境变量，JVM属性，命令行参数，以及application.properties或application.yml属性
-	
-	4、生成端点到控制器的映射
-		/mappings端点
+4、生成端点到控制器的映射
+	/mappings端点
 
 
 ###6、部署到应用服务器

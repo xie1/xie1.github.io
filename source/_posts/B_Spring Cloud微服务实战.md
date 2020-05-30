@@ -50,13 +50,13 @@ categories:
 	从Eureka的客户端作为入口看它是如何完成这些主动通信行为
 ![Alt text](./1566047547081.png)
 
+Eureka Client 负责下面的任务：
+1、向Eureka Server 注册服务实例
+2、向Eureka Server 服务租约
+3、当服务关闭期间，向Eureka Server取消租约
+4、查询Eureka Server中的服务实例列表
+5、Eureka Client 还需要配置一个Eureka Server的URL列表
 
-	Eureka Client 负责下面的任务：
-	1、向Eureka Server 注册服务实例
-	2、向Eureka Server 服务租约
-	3、当服务关闭期间，向Eureka Server取消租约
-	4、查询Eureka Server中的服务实例列表
-	5、Eureka Client 还需要配置一个Eureka Server的URL列表
 ####3.6、配置详解
 	服务端为服务注册中心，而客户端为各个提供接口的微服务应用
 	Eureka客户端的配置主要分为：
@@ -76,11 +76,11 @@ categories:
 	2、软件负载均衡则是通过在服务器上安装一些具有均衡负载功能或者模块的软件来完成请求分发工作，例如nginx
 ![Alt text](./1566999034764.png)
 
+客户端的负载均衡:所有客户端节点都维护着自己要访问的服务端清单，而这些服务端的清单来自于服务注册中心
+调用：
+	1、服务提供者只需要启动多个服务实例并注册到一个注册中心
+	2、服务消费者直接通过调用被@LoadBalanced注解修饰过的RestTemplate来实现面向服务的接口调用
 
-	客户端的负载均衡:所有客户端节点都维护着自己要访问的服务端清单，而这些服务端的清单来自于服务注册中心
-	调用：
-		1、服务提供者只需要启动多个服务实例并注册到一个注册中心
-		2、服务消费者直接通过调用被@LoadBalanced注解修饰过的RestTemplate来实现面向服务的接口调用
 ####4.2、RestTemplate详解
 	对于get\Post请求的实现
 	1、getForEntity

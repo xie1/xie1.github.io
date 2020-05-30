@@ -222,12 +222,12 @@ categories: 读书笔记
 			3、ServletRequestListener
 			4、HttpSessionAttributelistener
 
-		2、LifeCycleListeners(生命周期不同状态触发)
-			1、ServletContextListener
-			2、HttpSessionListener
-		Spring的contextLoader就实现了一个ServletContextListener，当容器启动时启动Spring容器
-		通过在Web.xml的<context-param> 标签中配置Spring的ApplicationContext.xml
-	
+​	2、LifeCycleListeners(生命周期不同状态触发)
+​		1、ServletContextListener
+​		2、HttpSessionListener
+​	Spring的contextLoader就实现了一个ServletContextListener，当容器启动时启动Spring容器
+​	通过在Web.xml的<context-param> 标签中配置Spring的ApplicationContext.xml
+
 
 ###5.2、Filter工作
 	1、init(FilterConfig):初始化接口
@@ -267,52 +267,53 @@ categories: 读书笔记
 	2、connector 主要任务，负责接受浏览器发过来TCP请求，创建一个request和response对象分别用于和请求端交换数据，然后产生一个线程来处理整个请求，并把产生的requet和response对象传给处理整个请求的线程，container就是处理整个线程
 	3、container容器设计用的是典型的责任链模式，分别是Engine，Host，Context，wrapper4个组件组成
 	
-	设计模式：
-	1、模板模式
-	2、工厂模式
-	3、单例模式
-	4、门面模式
-	5、观察者模式（发布-订阅模式）
-	6、命令模式（connector通过命令模式用container）
-	7、责任链模式
-		
+
+设计模式：
+1、模板模式
+2、工厂模式
+3、单例模式
+4、门面模式
+5、观察者模式（发布-订阅模式）
+6、命令模式（connector通过命令模式用container）
+7、责任链模式
+
 ##第7章、Spring框架的设计理念与设计模式
 ###1、Spring框架核心组件有三个，Core，Context和Bean
 		即Bean比作一场演出的演员，Context是舞台的背景，core应该是演出的道具
 		Context就是一个Bean关系的集合，整个集合又叫IOC容器，core是一系列的工具
 
-		1、Bean组件：
-			1、定义
-			2、创建-》是典型的工厂模式
-			3、解析
-	
-		2、Context组件：Spring容器中运行主体对象是Bean
-			Application必须完成
-				1、标识一个应用环境
-				2、利用BeanFactory创建Bean对象
-				3、保存对象关系表
-				4、能够捕获各种事件
-		3、core组件：定义了资源的访问方式
-	2、IOC容器
-		实际上是Context组件结合其他两个组件共同构建了一个Bean关系网，
-		reflesh方法：
-			1、构建BeanFactory，以便产生所需的“演员”
-			2、注册可能感兴趣的事件
-			3、创建Bean实例对象
-			4、触发被监视的事件
+​	1、Bean组件：
+​		1、定义
+​		2、创建-》是典型的工厂模式
+​		3、解析
 
-		BeanFactory：生产Bean的工厂
-		FactoryBean：工厂Bean，可以产生Bean的bean,Bean实例
-		Applicationtext.xml就是IOC容器的默认配置文件，Spring特性功能都是基于IOC容器工作的
-	3、AOP
-		动态代理的实现原理
-		代理的目的是调用目标方法时，可以转而执行InvocationHandle类的方法
-	设计模式：
-		1、工厂模式
-		2、单例模式
-		3、代理模式
-		4、模板方法模式
-		5、策略模式：AOP两种实现，JDK动态代理，CGlib代理
+​	2、Context组件：Spring容器中运行主体对象是Bean
+​		Application必须完成
+​			1、标识一个应用环境
+​			2、利用BeanFactory创建Bean对象
+​			3、保存对象关系表
+​			4、能够捕获各种事件
+​	3、core组件：定义了资源的访问方式
+2、IOC容器
+​	实际上是Context组件结合其他两个组件共同构建了一个Bean关系网，
+​	reflesh方法：
+​		1、构建BeanFactory，以便产生所需的“演员”
+​		2、注册可能感兴趣的事件
+​		3、创建Bean实例对象
+​		4、触发被监视的事件
+
+​	BeanFactory：生产Bean的工厂
+​	FactoryBean：工厂Bean，可以产生Bean的bean,Bean实例
+​	Applicationtext.xml就是IOC容器的默认配置文件，Spring特性功能都是基于IOC容器工作的
+3、AOP
+​	动态代理的实现原理
+​	代理的目的是调用目标方法时，可以转而执行InvocationHandle类的方法
+设计模式：
+​	1、工厂模式
+​	2、单例模式
+​	3、代理模式
+​	4、模板方法模式
+​	5、策略模式：AOP两种实现，JDK动态代理，CGlib代理
 
 ###2、SpringMVC的工作机制
 	要使用SpringMVC，只要在web.xml配置DispatcherServlet,在定义一个DispatchServlet-Servlet.xml配置文件

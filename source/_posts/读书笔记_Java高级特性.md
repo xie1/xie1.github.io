@@ -77,7 +77,7 @@ categories: 读书笔记
 			2、类文件：modified UTF-8
 			3、虚拟机：UTF-16
 
-	7、资源包
+7、资源包
 
 
 ##6、JavaBean构建

@@ -29,39 +29,42 @@ https://mp.weixin.qq.com/s/BzXNfBzq-2TOCbiHG3xcsQ
 	.properties和.yml。主要的区别是书写格式不同,另外.yml格式不支持@propertySource注解导入配置
 ###5、Spring Boot 的核心注解是哪个？它主要由哪几个注解组成的？——》已理解
 	
-	启动类上面的注解是@SpringBootApplication，它也是 Spring Boot 的核心注解，主要组合包含了以下 3 个注解：
 
-	1、@SpringBootConfiguration：组合了 @Configuration 注解，实现配置文件的功能。
-	
-	2、@EnableAutoConfiguration：打开自动配置的功能，也可以关闭某个自动配置的选项，如关闭数据源自动配置功能： @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })。
-	
-	3、@ComponentScan：Spring组件扫描
+启动类上面的注解是@SpringBootApplication，它也是 Spring Boot 的核心注解，主要组合包含了以下 3 个注解：
+
+1、@SpringBootConfiguration：组合了 @Configuration 注解，实现配置文件的功能。
+
+2、@EnableAutoConfiguration：打开自动配置的功能，也可以关闭某个自动配置的选项，如关闭数据源自动配置功能： @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })。
+
+3、@ComponentScan：Spring组件扫描
 
 ###6、开启 Spring Boot 特性有哪几种方式？——》已理解
 
-	1）继承spring-boot-starter-parent项目
+1）继承spring-boot-starter-parent项目
 
-    2）导入spring-boot-dependencies项目依赖
+2）导入spring-boot-dependencies项目依赖
 
 ###7、运行 Spring Boot 有哪几种方式？——》已理解
 	1）打包用命令或者放到容器中运行
 
-	2）用 Maven/ Gradle 插件运行
-	
-	3）直接执行 main 方法运行
+2）用 Maven/ Gradle 插件运行
+
+3）直接执行 main 方法运行
+
 ###8、Spring Boot 需要独立的容器运行吗？——》已理解
 	可以不需要，内置了tomcat/Jetty等容器
 
 ###9、Spring Boot 自动配置原理是什么？——》已理解
 
-	注解 @EnableAutoConfiguration, @Configuration, @ConditionalOnClass 就是自动配置的核心，首先它得是一个配置文件，其次根据类路径下是否有这个类去自动配置
+注解 @EnableAutoConfiguration, @Configuration, @ConditionalOnClass 就是自动配置的核心，首先它得是一个配置文件，其次根据类路径下是否有这个类去自动配置
+
 https://mp.weixin.qq.com/s/gs2zLSH6m9ijO0-pP2sr9Q
 
 ###10、你如何理解 Spring Boot 中的 Starters？——》已理解
 
-	Starters可以理解为启动器，它包含了一系列可以集成到应用里面的依赖包，你可以一站式集成 Spring 及其他技术，而不需要到处找示例代码和依赖包。如你想使用 Spring JPA 访问数据库，只要加入 spring-boot-starter-data-jpa 启动器依赖就能使用了。
+Starters可以理解为启动器，它包含了一系列可以集成到应用里面的依赖包，你可以一站式集成 Spring 及其他技术，而不需要到处找示例代码和依赖包。如你想使用 Spring JPA 访问数据库，只要加入 spring-boot-starter-data-jpa 启动器依赖就能使用了。
 
-	Starters包含了许多项目中需要用到的依赖，它们能快速持续的运行，都是一系列得到支持的管理传递性依赖
+Starters包含了许多项目中需要用到的依赖，它们能快速持续的运行，都是一系列得到支持的管理传递性依赖
 
 https://mp.weixin.qq.com/s/9HJVGlplze5p0eBayvhFCA
 
@@ -81,68 +84,72 @@ https://mp.weixin.qq.com/s/aen2PIh0ut-BSHad-Bw7hg
 
 ###13、Spring Boot 支持哪些日志框架？推荐和默认的日志框架是哪个？——》已理解
 
-	Spring Boot 支持 Java Util Logging, Log4j2, Lockback 作为日志框架，如果你使用 Starters 启动器，Spring Boot 将使用 Logback 作为默认日志框架
+Spring Boot 支持 Java Util Logging, Log4j2, Lockback 作为日志框架，如果你使用 Starters 启动器，Spring Boot 将使用 Logback 作为默认日志框架
+
 https://mp.weixin.qq.com/s/OAyzUNIgBPkPVCy23gh-WA
 
 
 ###14、SpringBoot 实现热部署有哪几种方式？——》已理解
 
-	主要有两种方式：
-		Spring Loaded
-		Spring-boot-devtools
+主要有两种方式：
+	Spring Loaded
+	Spring-boot-devtools
+
 https://mp.weixin.qq.com/s/uv8jIztilO_QvGc7qGhSAA
 
 
 ###15、你如何理解 Spring Boot 配置加载顺序？——》已理解
 
-	在 Spring Boot 里面，可以使用以下几种方式来加载配置。
+在 Spring Boot 里面，可以使用以下几种方式来加载配置。
 
-	1）properties文件；
-	
-	2）YAML文件；
-	
-	3）系统环境变量；
-	
-	4）命令行参数；
-	
+1）properties文件；
+
+2）YAML文件；
+
+3）系统环境变量；
+
+4）命令行参数；
+
 https://mp.weixin.qq.com/s/tFrRMM25LVE_2AG23lK5qQ
 
 
 ###16、Spring Boot 如何定义多套不同环境配置？——》已理解
 
-	提供多套配置文件，如：
+提供多套配置文件，如：
 
-	applcation.properties
-	
-	application-dev.properties
-	
-	application-test.properties
-	
-	application-prod.properties
+applcation.properties
+
+application-dev.properties
+
+application-test.properties
+
+application-prod.properties
 
 https://mp.weixin.qq.com/s/K0kdQwoo2t5FDsTUJttSAA
 
 
 ###17、Spring Boot 可以兼容老 Spring 项目吗，如何做？——》已理解
 
-	可以兼容，使用 @ImportResource 注解导入老 Spring 项目配置文件。
+可以兼容，使用 @ImportResource 注解导入老 Spring 项目配置文件。
 
 ###18、保护 Spring Boot 应用有哪些方法？——》已理解
 
-	在生产中使用HTTPS
-	使用Snyk检查你的依赖关系
-	升级到最新版本
-	启用CSRF保护
-	使用内容安全策略防止XSS攻击
+在生产中使用HTTPS
+使用Snyk检查你的依赖关系
+升级到最新版本
+启用CSRF保护
+使用内容安全策略防止XSS攻击
+
 https://mp.weixin.qq.com/s/HG4_StZyNCoWx02mUVCs1g
 
 
 ###19、Spring Boot 2.X 有什么新特性？与 1.X 有什么区别？——》已理解
 
-		配置变更
-		JDK 版本升级
-		第三方类库升级
-		响应式 Spring 编程支持
-		HTTP/2 支持
-		配置属性绑定
+​	配置变更
+​	JDK 版本升级
+​	第三方类库升级
+​	响应式 Spring 编程支持
+​	HTTP/2 支持
+​	配置属性绑定
+
 https://mp.weixin.qq.com/s/-WWBvWpD0Prib02XoU1sjw

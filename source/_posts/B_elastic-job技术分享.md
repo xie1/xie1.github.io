@@ -82,7 +82,6 @@ Elastic-Job并不直接提供数据处理的功能，框架只会将分片项分
 
 ####  2、elastic-job控制台的使用
 
-```
 运维平台和elastic-job-lite并无直接关系，是通过读取作业注册中心数据展现作业状态，或更新注册中心数据修改全局配置。控制台只能控制作业本身是否运行，但不能控制作业进程的启动，因为控制台和作业本身服务器是完全分离的，控制台并不能控制作业服务器
 
 控制台的功能列表： 
@@ -98,7 +97,6 @@ Elastic-Job并不直接提供数据处理的功能，框架只会将分片项分
 因为控制台和作业本身服务器是完全分离的，控制台并不能控制作业服务器。
 
 界面展示及相应功能介绍
-```
 
 ####  3、应用过程遇到的问题
 
@@ -118,12 +116,13 @@ Elastic-Job并不直接提供数据处理的功能，框架只会将分片项分
 
 ![Alt text](./图片1.png)
 
-	模块说明
-	1、Registry注册中心提供Job config，Job instance，Job status 存储；提供Rest API方便外部应用（Console）对Job生命周期进行统一控制；如：获取Job信息及运行信息，更新Job配置信息，暂停或禁止Job运行等操作
-	
-	2、Console提供可视化页面，采集Job列表，配置信息，运行信息，分片状态，Job事件信息及Job命令下发；
-	
-	3、Lite 作为Elastic Job的起承转合：主要负责 作业机器（Job instance）选主，作业分片，作业创建，作业注册，作业启动/暂停/禁止/misfire/failover；并通过一些列的Listener完成zookeeper节点变化的监听，实现宕机自动切换，失效转移，命令下发等功能；基于事件监听实现Job运行轨迹的跟踪
+模块说明
+1、Registry注册中心提供Job config，Job instance，Job status 存储；提供Rest API方便外部应用（Console）对Job生命周期进行统一控制；如：获取Job信息及运行信息，更新Job配置信息，暂停或禁止Job运行等操作
+
+2、Console提供可视化页面，采集Job列表，配置信息，运行信息，分片状态，Job事件信息及Job命令下发；
+
+3、Lite 作为Elastic Job的起承转合：主要负责 作业机器（Job instance）选主，作业分片，作业创建，作业注册，作业启动/暂停/禁止/misfire/failover；并通过一些列的Listener完成zookeeper节点变化的监听，实现宕机自动切换，失效转移，命令下发等功能；基于事件监听实现Job运行轨迹的跟踪
+
 ####  2、elastic-job启动过程
 
 ​		1、一个job是如何启动及注册
@@ -141,22 +140,22 @@ Elastic-Job并不直接提供数据处理的功能，框架只会将分片项分
 
 1、源码分析：https://blog.csdn.net/spy19881201/article/category/6784965
 
+Elastic-Job-Lite 源码分析 —— 作业配置
+Elastic-Job-Lite 源码分析 —— 作业初始化
+Elastic-Job-Lite 源码分析 —— 作业执行
+Elastic-Job-Lite 源码分析 —— 注册中心
+Elastic-Job-Lite 源码分析 —— 作业数据存储
+Elastic-Job-Lite 源码分析 —— 注册中心监听器
+Elastic-Job-Lite 源码分析 —— 主节点选举
+Elastic-Job-Lite 源码分析 —— 作业分片策略
+Elastic-Job-Lite 源码分析 —— 作业分片
+Elastic-Job-Lite 源码分析 —— 作业失效转移
+Elastic-Job-Lite 源码分析 —— 作业事件追踪
+Elastic-Job-Lite 源码分析 —— 作业监听器
+Elastic-Job-Lite 源码分析 —— 自诊断修复
+Elastic-Job-Lite 源码分析 —— 作业监控服务
+Elastic-Job-Lite 源码分析 —— 运维平台
 
-	Elastic-Job-Lite 源码分析 —— 作业配置
-	Elastic-Job-Lite 源码分析 —— 作业初始化
-	Elastic-Job-Lite 源码分析 —— 作业执行
-	Elastic-Job-Lite 源码分析 —— 注册中心
-	Elastic-Job-Lite 源码分析 —— 作业数据存储
-	Elastic-Job-Lite 源码分析 —— 注册中心监听器
-	Elastic-Job-Lite 源码分析 —— 主节点选举
-	Elastic-Job-Lite 源码分析 —— 作业分片策略
-	Elastic-Job-Lite 源码分析 —— 作业分片
-	Elastic-Job-Lite 源码分析 —— 作业失效转移
-	Elastic-Job-Lite 源码分析 —— 作业事件追踪
-	Elastic-Job-Lite 源码分析 —— 作业监听器
-	Elastic-Job-Lite 源码分析 —— 自诊断修复
-	Elastic-Job-Lite 源码分析 —— 作业监控服务
-	Elastic-Job-Lite 源码分析 —— 运维平台
 ### 五、总结
 
 ​	思维导图

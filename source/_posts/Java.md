@@ -18,20 +18,22 @@ categories: Java基础
 	布尔型 ： boolean
 	字符型 ：char
 
-	思维扩展：有基本类型-》他们的初始值，大小，相互之间可以进行转换-》包装类及相互转换-》合适选择基本类型或包装类-》基本类型/包装类的源码
+思维扩展：有基本类型-》他们的初始值，大小，相互之间可以进行转换-》包装类及相互转换-》合适选择基本类型或包装类-》基本类型/包装类的源码
+
 ####1.1.2、引用类型
 	类  接口  数组
 
-	思维扩展：
-	1、这三者概念
-	2、类主要包括什么类型的类及各有什么特性
-	3、接口有什么特性，接口和类之间的关系是什么
+思维扩展：
+1、这三者概念
+2、类主要包括什么类型的类及各有什么特性
+3、接口有什么特性，接口和类之间的关系是什么
+
 ####1.1.3、字符串
 	String
 
-	思维扩展：
-	1、String、StringBuffer、StringBuilder三者关系
-	2、String的API（重点理解及应用）
+思维扩展：
+1、String、StringBuffer、StringBuilder三者关系
+2、String的API（重点理解及应用）
 
 ###1.2、基本语法
 
@@ -86,12 +88,13 @@ categories: Java基础
 		 StringBuilder(优先)
 		 StringBuffer(线程安全)
 	
-	 包装类
-	 	8种基本类型包装类
-	 Date/Calendar
-	
-	 SimpleDateFormat
-	 Math
+
+ 包装类
+ 	8种基本类型包装类
+ Date/Calendar
+
+ SimpleDateFormat
+ Math
 
 ### 4、数据结构
 
@@ -136,59 +139,60 @@ categories: Java基础
 		 Rector/Proactor
 		 netty/mina
 	
-	 3、对象序列化
-		原理
-		自定义序列化方式
+
+ 3、对象序列化
+	原理
+	自定义序列化方式
 
 ### 7、多线程并发
+
+ 1、Excutors
 	
-	 1、Excutors
+	1、Callable
 		
-		1、Callable
-			
-		2、Future
-			
-		3、线程中断
-			
-		4、ThreadFactory
-			
-		5、newFixedThreadPool
-			
-		6、newCachedThreadPool
-			
-		7、newScheduledThreadPool
-			
-		8、ExecutorCompletionService
-			
-		9、Fork/Join
-	
-	 2、Actor模式
-	
-	 3、线程间安全共享
-	
-		 1、Lock
+	2、Future
 		
-		 2、Atomic
-	
-			1、ReentrantLock
-			
-			2、ReadWriteLock
-			
-			3、ReentrantReadWriteLock
-			
-			4、Condition
-			
-		3、volatile的原理
-	
-	4、线程内共享
-	
-		ThreadLocal
-	
-	5、concurrent包
-	
-		Semaphore
+	3、线程中断
 		
-		countdownlatch
+	4、ThreadFactory
+		
+	5、newFixedThreadPool
+		
+	6、newCachedThreadPool
+		
+	7、newScheduledThreadPool
+		
+	8、ExecutorCompletionService
+		
+	9、Fork/Join
+
+ 2、Actor模式
+
+ 3、线程间安全共享
+
+​	 1、Lock
+​	
+​	 2、Atomic
+
+​		1、ReentrantLock
+​		
+​		2、ReadWriteLock
+​		
+​		3、ReentrantReadWriteLock
+​		
+​		4、Condition
+​		
+​	3、volatile的原理
+
+4、线程内共享
+
+​	ThreadLocal
+
+5、concurrent包
+
+​	Semaphore
+​	
+​	countdownlatch
 
 ###8、Java网络编程
 
@@ -217,15 +221,16 @@ categories: Java基础
 
  	1、申明在对象上
 	
-	 2、方法返回值
-	
-	 3、方法参数
-	
-	 4、泛型的继承
-	
-	 5、通配符
-	
-	 6、发生在编译时，运行时不存在
+
+ 2、方法返回值
+
+ 3、方法参数
+
+ 4、泛型的继承
+
+ 5、通配符
+
+ 6、发生在编译时，运行时不存在
 
 
 ####9.3、枚举及注解
