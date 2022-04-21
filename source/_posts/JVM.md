@@ -1,18 +1,17 @@
 
-​---
+
 title: JVM整体介绍
 abstract: 
 url: 
 date: 2018-11-18 14:17:59
 category:Java基础
 tags: JVM
-​---
+
+---
 
 #### 一、*思维导图*
 
-[http://naotu.baidu.com/file/b9498e3305b1f1e0f23ba2545bcc3893](http://naotu.baidu.com/file/b9498e3305b1f1e0f23ba2545bcc3893)
-
-![JVM整体图](D:\google\JVM.xmind.png)
+![JVM整体图](https://note-img1.oss-cn-shenzhen.aliyuncs.com/img/JVM.xmind.png)
 
 #### 二、*JVM知识点*
 JVM的组成：JVM = 类加载器 classloader  + 运行时数据区域 runtime data area + 执行引擎 execution engine（解析class文件）
