@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、思维导图1、http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;b930dac74f4d0908c263cc59ff21341c二、总知识点IO流1、定义流可以被定义为一个序列的数据。输入流用来从一个源中读数据，输出流用来向一个目的地写数据1、用于处理设备之间的数据传输2、Java对数据的操作时通过流的方式3、流只能操作数据2、流对象的基本规律1、 明确源和目的源：输入流InputStre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_IO流(六)">
+<meta property="og:url" content="http://yoursite.com/2018/11/21/Java_6_IO%E6%B5%81/index.html">
+<meta property="og:site_name" content="XIE&#39;S BLOG">
+<meta property="og:description" content="一、思维导图1、http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;b930dac74f4d0908c263cc59ff21341c二、总知识点IO流1、定义流可以被定义为一个序列的数据。输入流用来从一个源中读数据，输出流用来向一个目的地写数据1、用于处理设备之间的数据传输2、Java对数据的操作时通过流的方式3、流只能操作数据2、流对象的基本规律1、 明确源和目的源：输入流InputStre">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-11-21T09:17:59.000Z">
+<meta property="article:modified_time" content="2023-11-03T08:46:51.454Z">
+<meta property="article:author" content="xieshanzhong">
+<meta property="article:tag" content="Java IO">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2018/11/21/Java_6_IO%E6%B5%81/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>Java_IO流(六) | XIE'S BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="XIE'S BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XIE'S BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">xieshanzhong的博客小站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/Java_6_IO%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xieshanzhong">
+      <meta itemprop="description" content="欢迎来到xieshanzhong的技术分享站~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XIE'S BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java_IO流(六)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-21 17:17:59" itemprop="dateCreated datePublished" datetime="2018-11-21T17:17:59+08:00">2018-11-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-11-03 16:46:51" itemprop="dateModified" datetime="2023-11-03T16:46:51+08:00">2023-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h4><h5 id="1、http-naotu-baidu-com-file-b930dac74f4d0908c263cc59ff21341c"><a href="#1、http-naotu-baidu-com-file-b930dac74f4d0908c263cc59ff21341c" class="headerlink" title="1、http://naotu.baidu.com/file/b930dac74f4d0908c263cc59ff21341c"></a>1、<a href="http://naotu.baidu.com/file/b930dac74f4d0908c263cc59ff21341c">http://naotu.baidu.com/file/b930dac74f4d0908c263cc59ff21341c</a></h5><h4 id="二、总知识点"><a href="#二、总知识点" class="headerlink" title="二、总知识点"></a>二、<em>总知识点</em></h4><h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><h2 id="1、定义"><a href="#1、定义" class="headerlink" title="1、定义"></a>1、定义</h2><h3 id="流可以被定义为一个序列的数据。输入流用来从一个源中读数据，输出流用来向一个目的地写数据"><a href="#流可以被定义为一个序列的数据。输入流用来从一个源中读数据，输出流用来向一个目的地写数据" class="headerlink" title="流可以被定义为一个序列的数据。输入流用来从一个源中读数据，输出流用来向一个目的地写数据"></a>流可以被定义为一个序列的数据。输入流用来从一个源中读数据，输出流用来向一个目的地写数据</h3><h3 id="1、用于处理设备之间的数据传输"><a href="#1、用于处理设备之间的数据传输" class="headerlink" title="1、用于处理设备之间的数据传输"></a>1、用于处理设备之间的数据传输</h3><h3 id="2、Java对数据的操作时通过流的方式"><a href="#2、Java对数据的操作时通过流的方式" class="headerlink" title="2、Java对数据的操作时通过流的方式"></a>2、Java对数据的操作时通过流的方式</h3><h3 id="3、流只能操作数据"><a href="#3、流只能操作数据" class="headerlink" title="3、流只能操作数据"></a>3、流只能操作数据</h3><h2 id="2、流对象的基本规律"><a href="#2、流对象的基本规律" class="headerlink" title="2、流对象的基本规律"></a>2、流对象的基本规律</h2><h3 id="1、-明确源和目的"><a href="#1、-明确源和目的" class="headerlink" title="1、 明确源和目的"></a>1、 明确源和目的</h3><h4 id="源：输入流"><a href="#源：输入流" class="headerlink" title="源：输入流"></a>源：输入流</h4><h5 id="InputStream"><a href="#InputStream" class="headerlink" title="InputStream"></a>InputStream</h5><h5 id="Reader"><a href="#Reader" class="headerlink" title="Reader"></a>Reader</h5><h4 id="目的：输出流"><a href="#目的：输出流" class="headerlink" title="目的：输出流"></a>目的：输出流</h4><h5 id="OutputStream"><a href="#OutputStream" class="headerlink" title="OutputStream"></a>OutputStream</h5><h5 id="Writer"><a href="#Writer" class="headerlink" title="Writer"></a>Writer</h5><h3 id="2、明确操作的数据是否为纯文本"><a href="#2、明确操作的数据是否为纯文本" class="headerlink" title="2、明确操作的数据是否为纯文本"></a>2、明确操作的数据是否为纯文本</h3><h4 id="纯文本，字符流"><a href="#纯文本，字符流" class="headerlink" title="纯文本，字符流"></a>纯文本，字符流</h4><h4 id="非纯文本，字节流"><a href="#非纯文本，字节流" class="headerlink" title="非纯文本，字节流"></a>非纯文本，字节流</h4><h3 id="3、当体系明确后，在明确要使用的那个具体对象"><a href="#3、当体系明确后，在明确要使用的那个具体对象" class="headerlink" title="3、当体系明确后，在明确要使用的那个具体对象"></a>3、当体系明确后，在明确要使用的那个具体对象</h3><h2 id="3、IO异常处理"><a href="#3、IO异常处理" class="headerlink" title="3、IO异常处理"></a>3、IO异常处理</h2><h3 id="处理方式"><a href="#处理方式" class="headerlink" title="处理方式"></a>处理方式</h3><h4 id="在外建立引用，在try内建立对象"><a href="#在外建立引用，在try内建立对象" class="headerlink" title="在外建立引用，在try内建立对象"></a>在外建立引用，在try内建立对象</h4><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><h4 id="家人存在多个流，一定要分别去判断关闭流，不能只判断一次"><a href="#家人存在多个流，一定要分别去判断关闭流，不能只判断一次" class="headerlink" title="家人存在多个流，一定要分别去判断关闭流，不能只判断一次"></a>家人存在多个流，一定要分别去判断关闭流，不能只判断一次</h4><h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h4 id="log4j-可以完成日志信息的建立"><a href="#log4j-可以完成日志信息的建立" class="headerlink" title="log4j,可以完成日志信息的建立"></a>log4j,可以完成日志信息的建立</h4><h2 id="4、分类"><a href="#4、分类" class="headerlink" title="4、分类"></a>4、分类</h2><h3 id="1、按流向分类"><a href="#1、按流向分类" class="headerlink" title="1、按流向分类"></a>1、按流向分类</h3><h4 id="输入流"><a href="#输入流" class="headerlink" title="输入流"></a>输入流</h4><h5 id="程序从输入流中读取数据"><a href="#程序从输入流中读取数据" class="headerlink" title="程序从输入流中读取数据"></a>程序从输入流中读取数据</h5><h4 id="输出流"><a href="#输出流" class="headerlink" title="输出流"></a>输出流</h4><h5 id="程序向输出流中写入数据"><a href="#程序向输出流中写入数据" class="headerlink" title="程序向输出流中写入数据"></a>程序向输出流中写入数据</h5><h3 id="2、按操作数据分类"><a href="#2、按操作数据分类" class="headerlink" title="2、按操作数据分类"></a>2、按操作数据分类</h3><h4 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h4><h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><h6 id="用于处理文字"><a href="#用于处理文字" class="headerlink" title="用于处理文字"></a>用于处理文字</h6><h5 id="抽象基类"><a href="#抽象基类" class="headerlink" title="抽象基类"></a>抽象基类</h5><h6 id="InputStream-1"><a href="#InputStream-1" class="headerlink" title="InputStream"></a>InputStream</h6><h6 id="是字节输入流的所有类的超类"><a href="#是字节输入流的所有类的超类" class="headerlink" title="# 是字节输入流的所有类的超类"></a># 是字节输入流的所有类的超类</h6><h6 id="已知直接子类"><a href="#已知直接子类" class="headerlink" title="# 已知直接子类"></a># 已知直接子类</h6><h6 id="FileInputStream"><a href="#FileInputStream" class="headerlink" title="## FileInputStream"></a>## FileInputStream</h6><h6 id="FillterInputStream"><a href="#FillterInputStream" class="headerlink" title="## FillterInputStream"></a>## FillterInputStream</h6><h6 id="AudioInputStream"><a href="#AudioInputStream" class="headerlink" title="## AudioInputStream"></a>## AudioInputStream</h6><h6 id="ByteArrayInputStream"><a href="#ByteArrayInputStream" class="headerlink" title="## ByteArrayInputStream"></a>## ByteArrayInputStream</h6><h6 id="操作字节数组"><a href="#操作字节数组" class="headerlink" title="### 操作字节数组"></a>### 操作字节数组</h6><h6 id="ObjectInputStream"><a href="#ObjectInputStream" class="headerlink" title="## ObjectInputStream"></a>## ObjectInputStream</h6><h6 id="PipedInputStream"><a href="#PipedInputStream" class="headerlink" title="## PipedInputStream"></a>## PipedInputStream</h6><h6 id="SequenceInputStream"><a href="#SequenceInputStream" class="headerlink" title="##   SequenceInputStream"></a>##   SequenceInputStream</h6><h6 id="OutputStream-1"><a href="#OutputStream-1" class="headerlink" title="OutputStream"></a>OutputStream</h6><h6 id="输出字节流的所有类的超类"><a href="#输出字节流的所有类的超类" class="headerlink" title="# 输出字节流的所有类的超类"></a># 输出字节流的所有类的超类</h6><h6 id="不需要刷新。一般不需要缓冲区"><a href="#不需要刷新。一般不需要缓冲区" class="headerlink" title="# 不需要刷新。一般不需要缓冲区"></a># 不需要刷新。一般不需要缓冲区</h6><h6 id="已知直接子类-1"><a href="#已知直接子类-1" class="headerlink" title="# 已知直接子类"></a># 已知直接子类</h6><h6 id="FileOutputStream"><a href="#FileOutputStream" class="headerlink" title="## FileOutputStream"></a>## FileOutputStream</h6><h6 id="FillteOutputStream"><a href="#FillteOutputStream" class="headerlink" title="## FillteOutputStream"></a>## FillteOutputStream</h6><h6 id="ByteArrayOutputStream"><a href="#ByteArrayOutputStream" class="headerlink" title="## ByteArrayOutputStream"></a>## ByteArrayOutputStream</h6><h6 id="操作字节数组-1"><a href="#操作字节数组-1" class="headerlink" title="### 操作字节数组"></a>### 操作字节数组</h6><h6 id="ObjectOutputStream"><a href="#ObjectOutputStream" class="headerlink" title="## ObjectOutputStream"></a>## ObjectOutputStream</h6><h6 id="PipedOutputStream"><a href="#PipedOutputStream" class="headerlink" title="## PipedOutputStream"></a>## PipedOutputStream</h6><h5 id="缓冲区"><a href="#缓冲区" class="headerlink" title="缓冲区"></a>缓冲区</h5><h6 id="BuffedOutputStream"><a href="#BuffedOutputStream" class="headerlink" title="BuffedOutputStream"></a>BuffedOutputStream</h6><h6 id="BufferedInputStream"><a href="#BufferedInputStream" class="headerlink" title="BufferedInputStream"></a>BufferedInputStream</h6><h4 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h4><h5 id="1、作用"><a href="#1、作用" class="headerlink" title="1、作用"></a>1、作用</h5><h6 id="用于处理文字-1"><a href="#用于处理文字-1" class="headerlink" title="用于处理文字"></a>用于处理文字</h6><h5 id="2、抽象基类"><a href="#2、抽象基类" class="headerlink" title="2、抽象基类"></a>2、抽象基类</h5><h6 id="Reader-1"><a href="#Reader-1" class="headerlink" title="Reader"></a>Reader</h6><h6 id="读取字符流"><a href="#读取字符流" class="headerlink" title="# 读取字符流"></a># 读取字符流</h6><h6 id="已知直接子类-2"><a href="#已知直接子类-2" class="headerlink" title="# 已知直接子类"></a># 已知直接子类</h6><h6 id="FileReader"><a href="#FileReader" class="headerlink" title="## FileReader"></a>## FileReader</h6><h6 id="CharArrayReader"><a href="#CharArrayReader" class="headerlink" title="## CharArrayReader"></a>## CharArrayReader</h6><h6 id="InputStreamReader"><a href="#InputStreamReader" class="headerlink" title="## InputStreamReader"></a>## InputStreamReader</h6><h6 id="PipedReader"><a href="#PipedReader" class="headerlink" title="## PipedReader"></a>## PipedReader</h6><h6 id="PrintReader"><a href="#PrintReader" class="headerlink" title="## PrintReader"></a>## PrintReader</h6><h6 id="StringReader"><a href="#StringReader" class="headerlink" title="## StringReader"></a>## StringReader</h6><h6 id="BufferedReader"><a href="#BufferedReader" class="headerlink" title="##  BufferedReader"></a>##  BufferedReader</h6><h6 id="操作字符串"><a href="#操作字符串" class="headerlink" title="### 操作字符串"></a>### 操作字符串</h6><h6 id="Writer-1"><a href="#Writer-1" class="headerlink" title="Writer"></a>Writer</h6><h6 id="写入字符流"><a href="#写入字符流" class="headerlink" title="# 写入字符流"></a># 写入字符流</h6><h6 id="已知直接子类-3"><a href="#已知直接子类-3" class="headerlink" title="# 已知直接子类"></a># 已知直接子类</h6><h6 id="FileWriter"><a href="#FileWriter" class="headerlink" title="## FileWriter"></a>## FileWriter</h6><h6 id="继承OutputStreamWriter类"><a href="#继承OutputStreamWriter类" class="headerlink" title="###  继承OutputStreamWriter类"></a>###  继承OutputStreamWriter类</h6><h6 id="用于操作文件"><a href="#用于操作文件" class="headerlink" title="### 用于操作文件"></a>### 用于操作文件</h6><h6 id="步骤"><a href="#步骤" class="headerlink" title="### 步骤"></a>### 步骤</h6><h6 id="1、创建文件（FileWriter对象）"><a href="#1、创建文件（FileWriter对象）" class="headerlink" title="#### 1、创建文件（FileWriter对象）"></a>#### 1、创建文件（FileWriter对象）</h6><h6 id="2、调用writer方法，将字符串写入（内存）流中"><a href="#2、调用writer方法，将字符串写入（内存）流中" class="headerlink" title="#### 2、调用writer方法，将字符串写入（内存）流中"></a>#### 2、调用writer方法，将字符串写入（内存）流中</h6><h6 id="3、刷新流对象中的缓冲区数据：fw-flush"><a href="#3、刷新流对象中的缓冲区数据：fw-flush" class="headerlink" title="#### 3、刷新流对象中的缓冲区数据：fw.flush()"></a>#### 3、刷新流对象中的缓冲区数据：fw.flush()</h6><h6 id="4、关闭流资源-fw-close"><a href="#4、关闭流资源-fw-close" class="headerlink" title="#### 4、关闭流资源:fw.close()"></a>#### 4、关闭流资源:fw.close()</h6><h6 id="flush与close的区别"><a href="#flush与close的区别" class="headerlink" title="### flush与close的区别"></a>### flush与close的区别</h6><h6 id="flush刷新后，流一直存在，可以继续写入数据"><a href="#flush刷新后，流一直存在，可以继续写入数据" class="headerlink" title="#### flush刷新后，流一直存在，可以继续写入数据"></a>#### flush刷新后，流一直存在，可以继续写入数据</h6><h6 id="close刷新后会将流关闭，不能再继续写入数据，关闭资源"><a href="#close刷新后会将流关闭，不能再继续写入数据，关闭资源" class="headerlink" title="#### close刷新后会将流关闭，不能再继续写入数据，关闭资源"></a>#### close刷新后会将流关闭，不能再继续写入数据，关闭资源</h6><h6 id="CharArrayWriter"><a href="#CharArrayWriter" class="headerlink" title="## CharArrayWriter"></a>## CharArrayWriter</h6><h6 id="操作字符数组"><a href="#操作字符数组" class="headerlink" title="### 操作字符数组"></a>### 操作字符数组</h6><h6 id="不用进行close关闭"><a href="#不用进行close关闭" class="headerlink" title="### 不用进行close关闭"></a>### 不用进行close关闭</h6><h6 id="OutputStreamWriter"><a href="#OutputStreamWriter" class="headerlink" title="## OutputStreamWriter"></a>## OutputStreamWriter</h6><h6 id="PipedWriter"><a href="#PipedWriter" class="headerlink" title="## PipedWriter"></a>## PipedWriter</h6><h6 id="PrintWriter"><a href="#PrintWriter" class="headerlink" title="## PrintWriter"></a>## PrintWriter</h6><h6 id="StringWriter"><a href="#StringWriter" class="headerlink" title="## StringWriter"></a>## StringWriter</h6><h6 id="操作字符串-1"><a href="#操作字符串-1" class="headerlink" title="### 操作字符串"></a>### 操作字符串</h6><h6 id="BufferedWriter"><a href="#BufferedWriter" class="headerlink" title="## BufferedWriter"></a>## BufferedWriter</h6><h5 id="3、缓冲区"><a href="#3、缓冲区" class="headerlink" title="3、缓冲区"></a>3、缓冲区</h5><h6 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h6><h6 id="将数组封装，变成对象再使用"><a href="#将数组封装，变成对象再使用" class="headerlink" title="# 将数组封装，变成对象再使用"></a># 将数组封装，变成对象再使用</h6><h6 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h6><h6 id="提高流的操作效率"><a href="#提高流的操作效率" class="headerlink" title="# 提高流的操作效率"></a># 提高流的操作效率</h6><h6 id="对应类"><a href="#对应类" class="headerlink" title="对应类"></a>对应类</h6><h6 id="BufferedReader-1"><a href="#BufferedReader-1" class="headerlink" title="# BufferedReader"></a># BufferedReader</h6><h6 id="从字符输入流中读取文本，缓冲各个字符，从而实现字符，数组和行的高效读取"><a href="#从字符输入流中读取文本，缓冲各个字符，从而实现字符，数组和行的高效读取" class="headerlink" title="## 从字符输入流中读取文本，缓冲各个字符，从而实现字符，数组和行的高效读取"></a>## 从字符输入流中读取文本，缓冲各个字符，从而实现字符，数组和行的高效读取</h6><h6 id="步骤-1"><a href="#步骤-1" class="headerlink" title="## 步骤"></a>## 步骤</h6><h6 id="1、创建一个读取流对象和文件相关联"><a href="#1、创建一个读取流对象和文件相关联" class="headerlink" title="### 1、创建一个读取流对象和文件相关联"></a>### 1、创建一个读取流对象和文件相关联</h6><h6 id="2、为了提高效率，加入缓冲技术。将字符读取流对象作为参数传递给缓冲对象函数的构造函数"><a href="#2、为了提高效率，加入缓冲技术。将字符读取流对象作为参数传递给缓冲对象函数的构造函数" class="headerlink" title="### 2、为了提高效率，加入缓冲技术。将字符读取流对象作为参数传递给缓冲对象函数的构造函数"></a>### 2、为了提高效率，加入缓冲技术。将字符读取流对象作为参数传递给缓冲对象函数的构造函数</h6><h6 id="3、读取缓冲区"><a href="#3、读取缓冲区" class="headerlink" title="### 3、读取缓冲区"></a>### 3、读取缓冲区</h6><h6 id="4、关闭缓冲区资源"><a href="#4、关闭缓冲区资源" class="headerlink" title="### 4、关闭缓冲区资源"></a>### 4、关闭缓冲区资源</h6><h6 id="子类"><a href="#子类" class="headerlink" title="## 子类"></a>## 子类</h6><h6 id="LineNumberReader"><a href="#LineNumberReader" class="headerlink" title="### LineNumberReader"></a>### LineNumberReader</h6><h6 id="跟踪行号缓冲字符输入流"><a href="#跟踪行号缓冲字符输入流" class="headerlink" title="#### 跟踪行号缓冲字符输入流"></a>#### 跟踪行号缓冲字符输入流</h6><h6 id="默认行编号从0开始"><a href="#默认行编号从0开始" class="headerlink" title="#### 默认行编号从0开始"></a>#### 默认行编号从0开始</h6><h6 id="BufferedWriter-1"><a href="#BufferedWriter-1" class="headerlink" title="# BufferedWriter"></a># BufferedWriter</h6><h6 id="字符流的缓冲区"><a href="#字符流的缓冲区" class="headerlink" title="## 字符流的缓冲区"></a>## 字符流的缓冲区</h6><h6 id="提高了对数据的读写效率"><a href="#提高了对数据的读写效率" class="headerlink" title="## 提高了对数据的读写效率"></a>## 提高了对数据的读写效率</h6><h6 id="在创建缓冲区前，必须要先用流对象"><a href="#在创建缓冲区前，必须要先用流对象" class="headerlink" title="## 在创建缓冲区前，必须要先用流对象"></a>## 在创建缓冲区前，必须要先用流对象</h6><h6 id="缓冲技术步骤"><a href="#缓冲技术步骤" class="headerlink" title="## 缓冲技术步骤"></a>## 缓冲技术步骤</h6><h5 id="4、转换类"><a href="#4、转换类" class="headerlink" title="4、转换类"></a>4、转换类</h5><h6 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h6><h6 id="字符编码转换"><a href="#字符编码转换" class="headerlink" title="# 字符编码转换"></a># 字符编码转换</h6><h6 id="字符和字节之间的桥梁"><a href="#字符和字节之间的桥梁" class="headerlink" title="# 字符和字节之间的桥梁"></a># 字符和字节之间的桥梁</h6><h6 id="字节转字符"><a href="#字节转字符" class="headerlink" title="字节转字符"></a>字节转字符</h6><h6 id="InputStreamReader-1"><a href="#InputStreamReader-1" class="headerlink" title="# InputStreamReader"></a># InputStreamReader</h6><h6 id="本身是字符流"><a href="#本身是字符流" class="headerlink" title="## 本身是字符流"></a>## 本身是字符流</h6><h6 id="为提高效率，可以在BufferedReader内包装InputStreamReader"><a href="#为提高效率，可以在BufferedReader内包装InputStreamReader" class="headerlink" title="## 为提高效率，可以在BufferedReader内包装InputStreamReader"></a>## 为提高效率，可以在BufferedReader内包装InputStreamReader</h6><h6 id="字符转字节"><a href="#字符转字节" class="headerlink" title="字符转字节"></a>字符转字节</h6><h6 id="OutputStreamWriter-1"><a href="#OutputStreamWriter-1" class="headerlink" title="# OutputStreamWriter"></a># OutputStreamWriter</h6><h6 id="本身是字符流-1"><a href="#本身是字符流-1" class="headerlink" title="## 本身是字符流"></a>## 本身是字符流</h6><h6 id="主要操作在控制台"><a href="#主要操作在控制台" class="headerlink" title="## 主要操作在控制台"></a>## 主要操作在控制台</h6><h6 id="为获取最高效率，可将OutputStreamWriter包装到BufferedWriter，避免频繁调用转换器"><a href="#为获取最高效率，可将OutputStreamWriter包装到BufferedWriter，避免频繁调用转换器" class="headerlink" title="## 为获取最高效率，可将OutputStreamWriter包装到BufferedWriter，避免频繁调用转换器"></a>## 为获取最高效率，可将OutputStreamWriter包装到BufferedWriter，避免频繁调用转换器</h6><h3 id="3、IO包其他类"><a href="#3、IO包其他类" class="headerlink" title="3、IO包其他类"></a>3、IO包其他类</h3><h4 id="打印流"><a href="#打印流" class="headerlink" title="打印流"></a>打印流</h4><h5 id="可以直接操作输入流和文件"><a href="#可以直接操作输入流和文件" class="headerlink" title="可以直接操作输入流和文件"></a>可以直接操作输入流和文件</h5><h5 id="PrintWriter-1"><a href="#PrintWriter-1" class="headerlink" title="PrintWriter"></a>PrintWriter</h5><h6 id="字符打印流"><a href="#字符打印流" class="headerlink" title="字符打印流"></a>字符打印流</h6><h6 id="为其他输出流添加功能"><a href="#为其他输出流添加功能" class="headerlink" title="为其他输出流添加功能"></a>为其他输出流添加功能</h6><h6 id="永远不会抛出IOException"><a href="#永远不会抛出IOException" class="headerlink" title="永远不会抛出IOException"></a>永远不会抛出IOException</h6><h6 id="在需要写入字符而不是写入字节的情况下使用"><a href="#在需要写入字符而不是写入字节的情况下使用" class="headerlink" title="在需要写入字符而不是写入字节的情况下使用"></a>在需要写入字符而不是写入字节的情况下使用</h6><h5 id="PrintStream"><a href="#PrintStream" class="headerlink" title="PrintStream"></a>PrintStream</h5><h6 id="字节打印流"><a href="#字节打印流" class="headerlink" title="字节打印流"></a>字节打印流</h6><h6 id="打印的所有字符都使用平台的默认字符编码转换为字节"><a href="#打印的所有字符都使用平台的默认字符编码转换为字节" class="headerlink" title="打印的所有字符都使用平台的默认字符编码转换为字节"></a>打印的所有字符都使用平台的默认字符编码转换为字节</h6><h4 id="序列流"><a href="#序列流" class="headerlink" title="序列流"></a>序列流</h4><h5 id="对多个流进行合并"><a href="#对多个流进行合并" class="headerlink" title="对多个流进行合并"></a>对多个流进行合并</h5><h5 id="SequenceInputStream-1"><a href="#SequenceInputStream-1" class="headerlink" title="SequenceInputStream"></a>SequenceInputStream</h5><h6 id="表示其他输入流的逻辑串联"><a href="#表示其他输入流的逻辑串联" class="headerlink" title="表示其他输入流的逻辑串联"></a>表示其他输入流的逻辑串联</h6><h6 id="没有对应的输出流类"><a href="#没有对应的输出流类" class="headerlink" title="没有对应的输出流类"></a>没有对应的输出流类</h6><h4 id="操作对象"><a href="#操作对象" class="headerlink" title="操作对象"></a>操作对象</h4><h5 id="被操作的对象需要实现Serializable（标记接口）"><a href="#被操作的对象需要实现Serializable（标记接口）" class="headerlink" title="被操作的对象需要实现Serializable（标记接口）"></a>被操作的对象需要实现Serializable（标记接口）</h5><h5 id="ObjectInputStream-1"><a href="#ObjectInputStream-1" class="headerlink" title="ObjectInputStream"></a>ObjectInputStream</h5><h5 id="ObjectOutputStream-1"><a href="#ObjectOutputStream-1" class="headerlink" title="ObjectOutputStream"></a>ObjectOutputStream</h5><h6 id="将java对象的基本类型和图形写入OutputStream"><a href="#将java对象的基本类型和图形写入OutputStream" class="headerlink" title="将java对象的基本类型和图形写入OutputStream"></a>将java对象的基本类型和图形写入OutputStream</h6><h4 id="操作文件"><a href="#操作文件" class="headerlink" title="操作文件"></a>操作文件</h4><h5 id="随机访问文件，自身具备读写的方法"><a href="#随机访问文件，自身具备读写的方法" class="headerlink" title="随机访问文件，自身具备读写的方法"></a>随机访问文件，自身具备读写的方法</h5><h5 id="RandomAccessFile"><a href="#RandomAccessFile" class="headerlink" title="RandomAccessFile"></a>RandomAccessFile</h5><h6 id="父类是Object的特殊类"><a href="#父类是Object的特殊类" class="headerlink" title="父类是Object的特殊类"></a>父类是Object的特殊类</h6><h6 id="通过skipByte（int-seek-int-x-来达到随机访问"><a href="#通过skipByte（int-seek-int-x-来达到随机访问" class="headerlink" title="通过skipByte（int),seek(int x)来达到随机访问"></a>通过skipByte（int),seek(int x)来达到随机访问</h6><h6 id="可以实现多线程下载"><a href="#可以实现多线程下载" class="headerlink" title="可以实现多线程下载"></a>可以实现多线程下载</h6><h4 id="管道流"><a href="#管道流" class="headerlink" title="管道流"></a>管道流</h4><h5 id="输入输出流可以直接进行连接，通过结合线程使用"><a href="#输入输出流可以直接进行连接，通过结合线程使用" class="headerlink" title="输入输出流可以直接进行连接，通过结合线程使用"></a>输入输出流可以直接进行连接，通过结合线程使用</h5><h5 id="PipedOutputStream-1"><a href="#PipedOutputStream-1" class="headerlink" title="PipedOutputStream"></a>PipedOutputStream</h5><h5 id="PipedInputStream-1"><a href="#PipedInputStream-1" class="headerlink" title="PipedInputStream"></a>PipedInputStream</h5><h4 id="操作基本数据类型"><a href="#操作基本数据类型" class="headerlink" title="操作基本数据类型"></a>操作基本数据类型</h4><h5 id="输入输出可以直接进行连接，通过结合线程使用"><a href="#输入输出可以直接进行连接，通过结合线程使用" class="headerlink" title="输入输出可以直接进行连接，通过结合线程使用"></a>输入输出可以直接进行连接，通过结合线程使用</h5><h5 id="DataInputStream"><a href="#DataInputStream" class="headerlink" title="DataInputStream"></a>DataInputStream</h5><h5 id="DataOutputStream"><a href="#DataOutputStream" class="headerlink" title="DataOutputStream"></a>DataOutputStream</h5><h4 id="三、重点知识点实例"><a href="#三、重点知识点实例" class="headerlink" title="三、重点知识点实例"></a>三、<em>重点知识点实例</em></h4><h4 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h4><h4 id="五、思维扩展"><a href="#五、思维扩展" class="headerlink" title="五、思维扩展"></a>五、<em>思维扩展</em></h4><h4 id="六、存在疑问"><a href="#六、存在疑问" class="headerlink" title="六、存在疑问"></a>六、<em>存在疑问</em></h4>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java-IO/" rel="tag"># Java IO</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/11/21/Java_5_%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/" rel="prev" title="Java_集合框架(五)">
+      <i class="fa fa-chevron-left"></i> Java_集合框架(五)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/11/21/Java_8_%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/" rel="next" title="Java_多线程并发(七)">
+      Java_多线程并发(七) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">一、思维导图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81http-naotu-baidu-com-file-b930dac74f4d0908c263cc59ff21341c"><span class="nav-number">1.1.</span> <span class="nav-text">1、http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;b930dac74f4d0908c263cc59ff21341c</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%80%BB%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">二、总知识点</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO%E6%B5%81"><span class="nav-number"></span> <span class="nav-text">IO流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E5%AE%9A%E4%B9%89"><span class="nav-number"></span> <span class="nav-text">1、定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%AE%9A%E4%B9%89%E4%B8%BA%E4%B8%80%E4%B8%AA%E5%BA%8F%E5%88%97%E7%9A%84%E6%95%B0%E6%8D%AE%E3%80%82%E8%BE%93%E5%85%A5%E6%B5%81%E7%94%A8%E6%9D%A5%E4%BB%8E%E4%B8%80%E4%B8%AA%E6%BA%90%E4%B8%AD%E8%AF%BB%E6%95%B0%E6%8D%AE%EF%BC%8C%E8%BE%93%E5%87%BA%E6%B5%81%E7%94%A8%E6%9D%A5%E5%90%91%E4%B8%80%E4%B8%AA%E7%9B%AE%E7%9A%84%E5%9C%B0%E5%86%99%E6%95%B0%E6%8D%AE"><span class="nav-number"></span> <span class="nav-text">流可以被定义为一个序列的数据。输入流用来从一个源中读数据，输出流用来向一个目的地写数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E7%94%A8%E4%BA%8E%E5%A4%84%E7%90%86%E8%AE%BE%E5%A4%87%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93"><span class="nav-number"></span> <span class="nav-text">1、用于处理设备之间的数据传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81Java%E5%AF%B9%E6%95%B0%E6%8D%AE%E7%9A%84%E6%93%8D%E4%BD%9C%E6%97%B6%E9%80%9A%E8%BF%87%E6%B5%81%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number"></span> <span class="nav-text">2、Java对数据的操作时通过流的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E6%B5%81%E5%8F%AA%E8%83%BD%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE"><span class="nav-number"></span> <span class="nav-text">3、流只能操作数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E6%B5%81%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%BE%8B"><span class="nav-number"></span> <span class="nav-text">2、流对象的基本规律</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81-%E6%98%8E%E7%A1%AE%E6%BA%90%E5%92%8C%E7%9B%AE%E7%9A%84"><span class="nav-number"></span> <span class="nav-text">1、 明确源和目的</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BA%90%EF%BC%9A%E8%BE%93%E5%85%A5%E6%B5%81"><span class="nav-number">1.</span> <span class="nav-text">源：输入流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#InputStream"><span class="nav-number">1.1.</span> <span class="nav-text">InputStream</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Reader"><span class="nav-number">1.2.</span> <span class="nav-text">Reader</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%AE%E7%9A%84%EF%BC%9A%E8%BE%93%E5%87%BA%E6%B5%81"><span class="nav-number">2.</span> <span class="nav-text">目的：输出流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#OutputStream"><span class="nav-number">2.1.</span> <span class="nav-text">OutputStream</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Writer"><span class="nav-number">2.2.</span> <span class="nav-text">Writer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%98%8E%E7%A1%AE%E6%93%8D%E4%BD%9C%E7%9A%84%E6%95%B0%E6%8D%AE%E6%98%AF%E5%90%A6%E4%B8%BA%E7%BA%AF%E6%96%87%E6%9C%AC"><span class="nav-number"></span> <span class="nav-text">2、明确操作的数据是否为纯文本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%AF%E6%96%87%E6%9C%AC%EF%BC%8C%E5%AD%97%E7%AC%A6%E6%B5%81"><span class="nav-number">1.</span> <span class="nav-text">纯文本，字符流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E7%BA%AF%E6%96%87%E6%9C%AC%EF%BC%8C%E5%AD%97%E8%8A%82%E6%B5%81"><span class="nav-number">2.</span> <span class="nav-text">非纯文本，字节流</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%BD%93%E4%BD%93%E7%B3%BB%E6%98%8E%E7%A1%AE%E5%90%8E%EF%BC%8C%E5%9C%A8%E6%98%8E%E7%A1%AE%E8%A6%81%E4%BD%BF%E7%94%A8%E7%9A%84%E9%82%A3%E4%B8%AA%E5%85%B7%E4%BD%93%E5%AF%B9%E8%B1%A1"><span class="nav-number"></span> <span class="nav-text">3、当体系明确后，在明确要使用的那个具体对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81IO%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="nav-number"></span> <span class="nav-text">3、IO异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="nav-number"></span> <span class="nav-text">处理方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E5%A4%96%E5%BB%BA%E7%AB%8B%E5%BC%95%E7%94%A8%EF%BC%8C%E5%9C%A8try%E5%86%85%E5%BB%BA%E7%AB%8B%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">在外建立引用，在try内建立对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number"></span> <span class="nav-text">注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%B6%E4%BA%BA%E5%AD%98%E5%9C%A8%E5%A4%9A%E4%B8%AA%E6%B5%81%EF%BC%8C%E4%B8%80%E5%AE%9A%E8%A6%81%E5%88%86%E5%88%AB%E5%8E%BB%E5%88%A4%E6%96%AD%E5%85%B3%E9%97%AD%E6%B5%81%EF%BC%8C%E4%B8%8D%E8%83%BD%E5%8F%AA%E5%88%A4%E6%96%AD%E4%B8%80%E6%AC%A1"><span class="nav-number">1.</span> <span class="nav-text">家人存在多个流，一定要分别去判断关闭流，不能只判断一次</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number"></span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#log4j-%E5%8F%AF%E4%BB%A5%E5%AE%8C%E6%88%90%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF%E7%9A%84%E5%BB%BA%E7%AB%8B"><span class="nav-number">1.</span> <span class="nav-text">log4j,可以完成日志信息的建立</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number"></span> <span class="nav-text">4、分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%8C%89%E6%B5%81%E5%90%91%E5%88%86%E7%B1%BB"><span class="nav-number"></span> <span class="nav-text">1、按流向分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%B5%81"><span class="nav-number">1.</span> <span class="nav-text">输入流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E4%BB%8E%E8%BE%93%E5%85%A5%E6%B5%81%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">1.1.</span> <span class="nav-text">程序从输入流中读取数据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%B5%81"><span class="nav-number">2.</span> <span class="nav-text">输出流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%90%91%E8%BE%93%E5%87%BA%E6%B5%81%E4%B8%AD%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="nav-number">2.1.</span> <span class="nav-text">程序向输出流中写入数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%8C%89%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%88%86%E7%B1%BB"><span class="nav-number"></span> <span class="nav-text">2、按操作数据分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E8%8A%82%E6%B5%81"><span class="nav-number">1.</span> <span class="nav-text">字节流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-number">1.1.</span> <span class="nav-text">作用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%94%A8%E4%BA%8E%E5%A4%84%E7%90%86%E6%96%87%E5%AD%97"><span class="nav-number">1.1.1.</span> <span class="nav-text">用于处理文字</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E5%9F%BA%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">抽象基类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#InputStream-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">InputStream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%98%AF%E5%AD%97%E8%8A%82%E8%BE%93%E5%85%A5%E6%B5%81%E7%9A%84%E6%89%80%E6%9C%89%E7%B1%BB%E7%9A%84%E8%B6%85%E7%B1%BB"><span class="nav-number">1.2.2.</span> <span class="nav-text"># 是字节输入流的所有类的超类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B7%B2%E7%9F%A5%E7%9B%B4%E6%8E%A5%E5%AD%90%E7%B1%BB"><span class="nav-number">1.2.3.</span> <span class="nav-text"># 已知直接子类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#FileInputStream"><span class="nav-number">1.2.4.</span> <span class="nav-text">## FileInputStream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#FillterInputStream"><span class="nav-number">1.2.5.</span> <span class="nav-text">## FillterInputStream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#AudioInputStream"><span class="nav-number">1.2.6.</span> <span class="nav-text">## AudioInputStream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ByteArrayInputStream"><span class="nav-number">1.2.7.</span> <span class="nav-text">## ByteArrayInputStream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E5%AD%97%E8%8A%82%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.8.</span> <span class="nav-text">### 操作字节数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ObjectInputStream"><span class="nav-number">1.2.9.</span> <span class="nav-text">## ObjectInputStream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PipedInputStream"><span class="nav-number">1.2.10.</span> <span class="nav-text">## PipedInputStream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SequenceInputStream"><span class="nav-number">1.2.11.</span> <span class="nav-text">##   SequenceInputStream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#OutputStream-1"><span class="nav-number">1.2.12.</span> <span class="nav-text">OutputStream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E5%AD%97%E8%8A%82%E6%B5%81%E7%9A%84%E6%89%80%E6%9C%89%E7%B1%BB%E7%9A%84%E8%B6%85%E7%B1%BB"><span class="nav-number">1.2.13.</span> <span class="nav-text"># 输出字节流的所有类的超类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%8D%E9%9C%80%E8%A6%81%E5%88%B7%E6%96%B0%E3%80%82%E4%B8%80%E8%88%AC%E4%B8%8D%E9%9C%80%E8%A6%81%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="nav-number">1.2.14.</span> <span class="nav-text"># 不需要刷新。一般不需要缓冲区</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B7%B2%E7%9F%A5%E7%9B%B4%E6%8E%A5%E5%AD%90%E7%B1%BB-1"><span class="nav-number">1.2.15.</span> <span class="nav-text"># 已知直接子类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#FileOutputStream"><span class="nav-number">1.2.16.</span> <span class="nav-text">## FileOutputStream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#FillteOutputStream"><span class="nav-number">1.2.17.</span> <span class="nav-text">## FillteOutputStream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ByteArrayOutputStream"><span class="nav-number">1.2.18.</span> <span class="nav-text">## ByteArrayOutputStream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E5%AD%97%E8%8A%82%E6%95%B0%E7%BB%84-1"><span class="nav-number">1.2.19.</span> <span class="nav-text">### 操作字节数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ObjectOutputStream"><span class="nav-number">1.2.20.</span> <span class="nav-text">## ObjectOutputStream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PipedOutputStream"><span class="nav-number">1.2.21.</span> <span class="nav-text">## PipedOutputStream</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="nav-number">1.3.</span> <span class="nav-text">缓冲区</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#BuffedOutputStream"><span class="nav-number">1.3.1.</span> <span class="nav-text">BuffedOutputStream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#BufferedInputStream"><span class="nav-number">1.3.2.</span> <span class="nav-text">BufferedInputStream</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E6%B5%81"><span class="nav-number">2.</span> <span class="nav-text">字符流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E4%BD%9C%E7%94%A8"><span class="nav-number">2.1.</span> <span class="nav-text">1、作用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%94%A8%E4%BA%8E%E5%A4%84%E7%90%86%E6%96%87%E5%AD%97-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">用于处理文字</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E6%8A%BD%E8%B1%A1%E5%9F%BA%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text">2、抽象基类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Reader-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Reader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E5%AD%97%E7%AC%A6%E6%B5%81"><span class="nav-number">2.2.2.</span> <span class="nav-text"># 读取字符流</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B7%B2%E7%9F%A5%E7%9B%B4%E6%8E%A5%E5%AD%90%E7%B1%BB-2"><span class="nav-number">2.2.3.</span> <span class="nav-text"># 已知直接子类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#FileReader"><span class="nav-number">2.2.4.</span> <span class="nav-text">## FileReader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#CharArrayReader"><span class="nav-number">2.2.5.</span> <span class="nav-text">## CharArrayReader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#InputStreamReader"><span class="nav-number">2.2.6.</span> <span class="nav-text">## InputStreamReader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PipedReader"><span class="nav-number">2.2.7.</span> <span class="nav-text">## PipedReader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PrintReader"><span class="nav-number">2.2.8.</span> <span class="nav-text">## PrintReader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#StringReader"><span class="nav-number">2.2.9.</span> <span class="nav-text">## StringReader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#BufferedReader"><span class="nav-number">2.2.10.</span> <span class="nav-text">##  BufferedReader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">2.2.11.</span> <span class="nav-text">### 操作字符串</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Writer-1"><span class="nav-number">2.2.12.</span> <span class="nav-text">Writer</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E5%AD%97%E7%AC%A6%E6%B5%81"><span class="nav-number">2.2.13.</span> <span class="nav-text"># 写入字符流</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B7%B2%E7%9F%A5%E7%9B%B4%E6%8E%A5%E5%AD%90%E7%B1%BB-3"><span class="nav-number">2.2.14.</span> <span class="nav-text"># 已知直接子类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#FileWriter"><span class="nav-number">2.2.15.</span> <span class="nav-text">## FileWriter</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%BB%A7%E6%89%BFOutputStreamWriter%E7%B1%BB"><span class="nav-number">2.2.16.</span> <span class="nav-text">###  继承OutputStreamWriter类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%94%A8%E4%BA%8E%E6%93%8D%E4%BD%9C%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.17.</span> <span class="nav-text">### 用于操作文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.2.18.</span> <span class="nav-text">### 步骤</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%EF%BC%88FileWriter%E5%AF%B9%E8%B1%A1%EF%BC%89"><span class="nav-number">2.2.19.</span> <span class="nav-text">#### 1、创建文件（FileWriter对象）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2%E3%80%81%E8%B0%83%E7%94%A8writer%E6%96%B9%E6%B3%95%EF%BC%8C%E5%B0%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%86%99%E5%85%A5%EF%BC%88%E5%86%85%E5%AD%98%EF%BC%89%E6%B5%81%E4%B8%AD"><span class="nav-number">2.2.20.</span> <span class="nav-text">#### 2、调用writer方法，将字符串写入（内存）流中</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3%E3%80%81%E5%88%B7%E6%96%B0%E6%B5%81%E5%AF%B9%E8%B1%A1%E4%B8%AD%E7%9A%84%E7%BC%93%E5%86%B2%E5%8C%BA%E6%95%B0%E6%8D%AE%EF%BC%9Afw-flush"><span class="nav-number">2.2.21.</span> <span class="nav-text">#### 3、刷新流对象中的缓冲区数据：fw.flush()</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4%E3%80%81%E5%85%B3%E9%97%AD%E6%B5%81%E8%B5%84%E6%BA%90-fw-close"><span class="nav-number">2.2.22.</span> <span class="nav-text">#### 4、关闭流资源:fw.close()</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#flush%E4%B8%8Eclose%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.2.23.</span> <span class="nav-text">### flush与close的区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#flush%E5%88%B7%E6%96%B0%E5%90%8E%EF%BC%8C%E6%B5%81%E4%B8%80%E7%9B%B4%E5%AD%98%E5%9C%A8%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%BB%A7%E7%BB%AD%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="nav-number">2.2.24.</span> <span class="nav-text">#### flush刷新后，流一直存在，可以继续写入数据</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#close%E5%88%B7%E6%96%B0%E5%90%8E%E4%BC%9A%E5%B0%86%E6%B5%81%E5%85%B3%E9%97%AD%EF%BC%8C%E4%B8%8D%E8%83%BD%E5%86%8D%E7%BB%A7%E7%BB%AD%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%85%B3%E9%97%AD%E8%B5%84%E6%BA%90"><span class="nav-number">2.2.25.</span> <span class="nav-text">#### close刷新后会将流关闭，不能再继续写入数据，关闭资源</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#CharArrayWriter"><span class="nav-number">2.2.26.</span> <span class="nav-text">## CharArrayWriter</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="nav-number">2.2.27.</span> <span class="nav-text">### 操作字符数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%8D%E7%94%A8%E8%BF%9B%E8%A1%8Cclose%E5%85%B3%E9%97%AD"><span class="nav-number">2.2.28.</span> <span class="nav-text">### 不用进行close关闭</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#OutputStreamWriter"><span class="nav-number">2.2.29.</span> <span class="nav-text">## OutputStreamWriter</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PipedWriter"><span class="nav-number">2.2.30.</span> <span class="nav-text">## PipedWriter</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PrintWriter"><span class="nav-number">2.2.31.</span> <span class="nav-text">## PrintWriter</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#StringWriter"><span class="nav-number">2.2.32.</span> <span class="nav-text">## StringWriter</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E5%AD%97%E7%AC%A6%E4%B8%B2-1"><span class="nav-number">2.2.33.</span> <span class="nav-text">### 操作字符串</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#BufferedWriter"><span class="nav-number">2.2.34.</span> <span class="nav-text">## BufferedWriter</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="nav-number">2.3.</span> <span class="nav-text">3、缓冲区</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">2.3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B0%86%E6%95%B0%E7%BB%84%E5%B0%81%E8%A3%85%EF%BC%8C%E5%8F%98%E6%88%90%E5%AF%B9%E8%B1%A1%E5%86%8D%E4%BD%BF%E7%94%A8"><span class="nav-number">2.3.2.</span> <span class="nav-text"># 将数组封装，变成对象再使用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-1"><span class="nav-number">2.3.3.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%8F%90%E9%AB%98%E6%B5%81%E7%9A%84%E6%93%8D%E4%BD%9C%E6%95%88%E7%8E%87"><span class="nav-number">2.3.4.</span> <span class="nav-text"># 提高流的操作效率</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AF%B9%E5%BA%94%E7%B1%BB"><span class="nav-number">2.3.5.</span> <span class="nav-text">对应类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#BufferedReader-1"><span class="nav-number">2.3.6.</span> <span class="nav-text"># BufferedReader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BB%8E%E5%AD%97%E7%AC%A6%E8%BE%93%E5%85%A5%E6%B5%81%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%96%87%E6%9C%AC%EF%BC%8C%E7%BC%93%E5%86%B2%E5%90%84%E4%B8%AA%E5%AD%97%E7%AC%A6%EF%BC%8C%E4%BB%8E%E8%80%8C%E5%AE%9E%E7%8E%B0%E5%AD%97%E7%AC%A6%EF%BC%8C%E6%95%B0%E7%BB%84%E5%92%8C%E8%A1%8C%E7%9A%84%E9%AB%98%E6%95%88%E8%AF%BB%E5%8F%96"><span class="nav-number">2.3.7.</span> <span class="nav-text">## 从字符输入流中读取文本，缓冲各个字符，从而实现字符，数组和行的高效读取</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-1"><span class="nav-number">2.3.8.</span> <span class="nav-text">## 步骤</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%AF%BB%E5%8F%96%E6%B5%81%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3%E8%81%94"><span class="nav-number">2.3.9.</span> <span class="nav-text">### 1、创建一个读取流对象和文件相关联</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2%E3%80%81%E4%B8%BA%E4%BA%86%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%EF%BC%8C%E5%8A%A0%E5%85%A5%E7%BC%93%E5%86%B2%E6%8A%80%E6%9C%AF%E3%80%82%E5%B0%86%E5%AD%97%E7%AC%A6%E8%AF%BB%E5%8F%96%E6%B5%81%E5%AF%B9%E8%B1%A1%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E7%BB%99%E7%BC%93%E5%86%B2%E5%AF%B9%E8%B1%A1%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.10.</span> <span class="nav-text">### 2、为了提高效率，加入缓冲技术。将字符读取流对象作为参数传递给缓冲对象函数的构造函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3%E3%80%81%E8%AF%BB%E5%8F%96%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="nav-number">2.3.11.</span> <span class="nav-text">### 3、读取缓冲区</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4%E3%80%81%E5%85%B3%E9%97%AD%E7%BC%93%E5%86%B2%E5%8C%BA%E8%B5%84%E6%BA%90"><span class="nav-number">2.3.12.</span> <span class="nav-text">### 4、关闭缓冲区资源</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AD%90%E7%B1%BB"><span class="nav-number">2.3.13.</span> <span class="nav-text">## 子类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LineNumberReader"><span class="nav-number">2.3.14.</span> <span class="nav-text">### LineNumberReader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%B7%9F%E8%B8%AA%E8%A1%8C%E5%8F%B7%E7%BC%93%E5%86%B2%E5%AD%97%E7%AC%A6%E8%BE%93%E5%85%A5%E6%B5%81"><span class="nav-number">2.3.15.</span> <span class="nav-text">#### 跟踪行号缓冲字符输入流</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E8%A1%8C%E7%BC%96%E5%8F%B7%E4%BB%8E0%E5%BC%80%E5%A7%8B"><span class="nav-number">2.3.16.</span> <span class="nav-text">#### 默认行编号从0开始</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#BufferedWriter-1"><span class="nav-number">2.3.17.</span> <span class="nav-text"># BufferedWriter</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E6%B5%81%E7%9A%84%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="nav-number">2.3.18.</span> <span class="nav-text">## 字符流的缓冲区</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%8F%90%E9%AB%98%E4%BA%86%E5%AF%B9%E6%95%B0%E6%8D%AE%E7%9A%84%E8%AF%BB%E5%86%99%E6%95%88%E7%8E%87"><span class="nav-number">2.3.19.</span> <span class="nav-text">## 提高了对数据的读写效率</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9C%A8%E5%88%9B%E5%BB%BA%E7%BC%93%E5%86%B2%E5%8C%BA%E5%89%8D%EF%BC%8C%E5%BF%85%E9%A1%BB%E8%A6%81%E5%85%88%E7%94%A8%E6%B5%81%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.3.20.</span> <span class="nav-text">## 在创建缓冲区前，必须要先用流对象</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%BC%93%E5%86%B2%E6%8A%80%E6%9C%AF%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.3.21.</span> <span class="nav-text">## 缓冲技术步骤</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%E3%80%81%E8%BD%AC%E6%8D%A2%E7%B1%BB"><span class="nav-number">2.4.</span> <span class="nav-text">4、转换类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-2"><span class="nav-number">2.4.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.4.2.</span> <span class="nav-text"># 字符编码转换</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E8%8A%82%E4%B9%8B%E9%97%B4%E7%9A%84%E6%A1%A5%E6%A2%81"><span class="nav-number">2.4.3.</span> <span class="nav-text"># 字符和字节之间的桥梁</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AD%97%E8%8A%82%E8%BD%AC%E5%AD%97%E7%AC%A6"><span class="nav-number">2.4.4.</span> <span class="nav-text">字节转字符</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#InputStreamReader-1"><span class="nav-number">2.4.5.</span> <span class="nav-text"># InputStreamReader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9C%AC%E8%BA%AB%E6%98%AF%E5%AD%97%E7%AC%A6%E6%B5%81"><span class="nav-number">2.4.6.</span> <span class="nav-text">## 本身是字符流</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%BA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%9C%A8BufferedReader%E5%86%85%E5%8C%85%E8%A3%85InputStreamReader"><span class="nav-number">2.4.7.</span> <span class="nav-text">## 为提高效率，可以在BufferedReader内包装InputStreamReader</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E8%BD%AC%E5%AD%97%E8%8A%82"><span class="nav-number">2.4.8.</span> <span class="nav-text">字符转字节</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#OutputStreamWriter-1"><span class="nav-number">2.4.9.</span> <span class="nav-text"># OutputStreamWriter</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9C%AC%E8%BA%AB%E6%98%AF%E5%AD%97%E7%AC%A6%E6%B5%81-1"><span class="nav-number">2.4.10.</span> <span class="nav-text">## 本身是字符流</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E6%93%8D%E4%BD%9C%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0"><span class="nav-number">2.4.11.</span> <span class="nav-text">## 主要操作在控制台</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%BA%E8%8E%B7%E5%8F%96%E6%9C%80%E9%AB%98%E6%95%88%E7%8E%87%EF%BC%8C%E5%8F%AF%E5%B0%86OutputStreamWriter%E5%8C%85%E8%A3%85%E5%88%B0BufferedWriter%EF%BC%8C%E9%81%BF%E5%85%8D%E9%A2%91%E7%B9%81%E8%B0%83%E7%94%A8%E8%BD%AC%E6%8D%A2%E5%99%A8"><span class="nav-number">2.4.12.</span> <span class="nav-text">## 为获取最高效率，可将OutputStreamWriter包装到BufferedWriter，避免频繁调用转换器</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81IO%E5%8C%85%E5%85%B6%E4%BB%96%E7%B1%BB"><span class="nav-number"></span> <span class="nav-text">3、IO包其他类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E6%B5%81"><span class="nav-number">1.</span> <span class="nav-text">打印流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E6%93%8D%E4%BD%9C%E8%BE%93%E5%85%A5%E6%B5%81%E5%92%8C%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">可以直接操作输入流和文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PrintWriter-1"><span class="nav-number">1.2.</span> <span class="nav-text">PrintWriter</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E6%89%93%E5%8D%B0%E6%B5%81"><span class="nav-number">1.2.1.</span> <span class="nav-text">字符打印流</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%BA%E5%85%B6%E4%BB%96%E8%BE%93%E5%87%BA%E6%B5%81%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD"><span class="nav-number">1.2.2.</span> <span class="nav-text">为其他输出流添加功能</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B0%B8%E8%BF%9C%E4%B8%8D%E4%BC%9A%E6%8A%9B%E5%87%BAIOException"><span class="nav-number">1.2.3.</span> <span class="nav-text">永远不会抛出IOException</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9C%A8%E9%9C%80%E8%A6%81%E5%86%99%E5%85%A5%E5%AD%97%E7%AC%A6%E8%80%8C%E4%B8%8D%E6%98%AF%E5%86%99%E5%85%A5%E5%AD%97%E8%8A%82%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.4.</span> <span class="nav-text">在需要写入字符而不是写入字节的情况下使用</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PrintStream"><span class="nav-number">1.3.</span> <span class="nav-text">PrintStream</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AD%97%E8%8A%82%E6%89%93%E5%8D%B0%E6%B5%81"><span class="nav-number">1.3.1.</span> <span class="nav-text">字节打印流</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E7%9A%84%E6%89%80%E6%9C%89%E5%AD%97%E7%AC%A6%E9%83%BD%E4%BD%BF%E7%94%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E9%BB%98%E8%AE%A4%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E8%8A%82"><span class="nav-number">1.3.2.</span> <span class="nav-text">打印的所有字符都使用平台的默认字符编码转换为字节</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%8F%E5%88%97%E6%B5%81"><span class="nav-number">2.</span> <span class="nav-text">序列流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%B9%E5%A4%9A%E4%B8%AA%E6%B5%81%E8%BF%9B%E8%A1%8C%E5%90%88%E5%B9%B6"><span class="nav-number">2.1.</span> <span class="nav-text">对多个流进行合并</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SequenceInputStream-1"><span class="nav-number">2.2.</span> <span class="nav-text">SequenceInputStream</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%A1%A8%E7%A4%BA%E5%85%B6%E4%BB%96%E8%BE%93%E5%85%A5%E6%B5%81%E7%9A%84%E9%80%BB%E8%BE%91%E4%B8%B2%E8%81%94"><span class="nav-number">2.2.1.</span> <span class="nav-text">表示其他输入流的逻辑串联</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B2%A1%E6%9C%89%E5%AF%B9%E5%BA%94%E7%9A%84%E8%BE%93%E5%87%BA%E6%B5%81%E7%B1%BB"><span class="nav-number">2.2.2.</span> <span class="nav-text">没有对应的输出流类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.</span> <span class="nav-text">操作对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A2%AB%E6%93%8D%E4%BD%9C%E7%9A%84%E5%AF%B9%E8%B1%A1%E9%9C%80%E8%A6%81%E5%AE%9E%E7%8E%B0Serializable%EF%BC%88%E6%A0%87%E8%AE%B0%E6%8E%A5%E5%8F%A3%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">被操作的对象需要实现Serializable（标记接口）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ObjectInputStream-1"><span class="nav-number">3.2.</span> <span class="nav-text">ObjectInputStream</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ObjectOutputStream-1"><span class="nav-number">3.3.</span> <span class="nav-text">ObjectOutputStream</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B0%86java%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%9B%BE%E5%BD%A2%E5%86%99%E5%85%A5OutputStream"><span class="nav-number">3.3.1.</span> <span class="nav-text">将java对象的基本类型和图形写入OutputStream</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">操作文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%E6%96%87%E4%BB%B6%EF%BC%8C%E8%87%AA%E8%BA%AB%E5%85%B7%E5%A4%87%E8%AF%BB%E5%86%99%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">随机访问文件，自身具备读写的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RandomAccessFile"><span class="nav-number">4.2.</span> <span class="nav-text">RandomAccessFile</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%88%B6%E7%B1%BB%E6%98%AFObject%E7%9A%84%E7%89%B9%E6%AE%8A%E7%B1%BB"><span class="nav-number">4.2.1.</span> <span class="nav-text">父类是Object的特殊类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%9A%E8%BF%87skipByte%EF%BC%88int-seek-int-x-%E6%9D%A5%E8%BE%BE%E5%88%B0%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE"><span class="nav-number">4.2.2.</span> <span class="nav-text">通过skipByte（int),seek(int x)来达到随机访问</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD"><span class="nav-number">4.2.3.</span> <span class="nav-text">可以实现多线程下载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%A1%E9%81%93%E6%B5%81"><span class="nav-number">5.</span> <span class="nav-text">管道流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E8%BF%9B%E8%A1%8C%E8%BF%9E%E6%8E%A5%EF%BC%8C%E9%80%9A%E8%BF%87%E7%BB%93%E5%90%88%E7%BA%BF%E7%A8%8B%E4%BD%BF%E7%94%A8"><span class="nav-number">5.1.</span> <span class="nav-text">输入输出流可以直接进行连接，通过结合线程使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PipedOutputStream-1"><span class="nav-number">5.2.</span> <span class="nav-text">PipedOutputStream</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PipedInputStream-1"><span class="nav-number">5.3.</span> <span class="nav-text">PipedInputStream</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">6.</span> <span class="nav-text">操作基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E8%BF%9B%E8%A1%8C%E8%BF%9E%E6%8E%A5%EF%BC%8C%E9%80%9A%E8%BF%87%E7%BB%93%E5%90%88%E7%BA%BF%E7%A8%8B%E4%BD%BF%E7%94%A8"><span class="nav-number">6.1.</span> <span class="nav-text">输入输出可以直接进行连接，通过结合线程使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DataInputStream"><span class="nav-number">6.2.</span> <span class="nav-text">DataInputStream</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DataOutputStream"><span class="nav-number">6.3.</span> <span class="nav-text">DataOutputStream</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%87%8D%E7%82%B9%E7%9F%A5%E8%AF%86%E7%82%B9%E5%AE%9E%E4%BE%8B"><span class="nav-number">7.</span> <span class="nav-text">三、重点知识点实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">四、参考资料</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%80%9D%E7%BB%B4%E6%89%A9%E5%B1%95"><span class="nav-number">9.</span> <span class="nav-text">五、思维扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AD%98%E5%9C%A8%E7%96%91%E9%97%AE"><span class="nav-number">10.</span> <span class="nav-text">六、存在疑问</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xieshanzhong</p>
+  <div class="site-description" itemprop="description">欢迎来到xieshanzhong的技术分享站~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xie1" title="GitHub → https://github.com/xie1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xieshanzhong66@gmail.com" title="E-Mail → mailto:xieshanzhong66@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://xie1.github.io/" title="https://xie1.github.io/" rel="noopener" target="_blank">Title</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.baidu.com/" title="https://www.baidu.com/" rel="noopener" target="_blank">百度搜索</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/" title="https://hexo.io/" rel="noopener" target="_blank">hexo</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xieshanzhong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

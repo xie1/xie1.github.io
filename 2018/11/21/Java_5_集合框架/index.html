@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、思维导图1、http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;2d6abbec078914fd7ad058cddf4945e0二、总知识点 1、Collection1、List列表（元素有序并且可以重复的集合，被称为序列）1、ArrayList1、排列有序，可重复2、底层使用数组3、查询快，增删慢4、线程不安全5、当容量不够时，ArrayList是当前容量*1.5+12、LinkedLi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_集合框架(五)">
+<meta property="og:url" content="http://yoursite.com/2018/11/21/Java_5_%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/index.html">
+<meta property="og:site_name" content="XIE&#39;S BLOG">
+<meta property="og:description" content="一、思维导图1、http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;2d6abbec078914fd7ad058cddf4945e0二、总知识点 1、Collection1、List列表（元素有序并且可以重复的集合，被称为序列）1、ArrayList1、排列有序，可重复2、底层使用数组3、查询快，增删慢4、线程不安全5、当容量不够时，ArrayList是当前容量*1.5+12、LinkedLi">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.imgur.com/bli2T5A.png">
+<meta property="article:published_time" content="2018-11-21T08:17:59.000Z">
+<meta property="article:modified_time" content="2023-11-03T08:46:51.453Z">
+<meta property="article:author" content="xieshanzhong">
+<meta property="article:tag" content="集合框架">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/bli2T5A.png">
+
+<link rel="canonical" href="http://yoursite.com/2018/11/21/Java_5_%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>Java_集合框架(五) | XIE'S BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="XIE'S BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XIE'S BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">xieshanzhong的博客小站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/Java_5_%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xieshanzhong">
+      <meta itemprop="description" content="欢迎来到xieshanzhong的技术分享站~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XIE'S BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java_集合框架(五)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-21 16:17:59" itemprop="dateCreated datePublished" datetime="2018-11-21T16:17:59+08:00">2018-11-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-11-03 16:46:51" itemprop="dateModified" datetime="2023-11-03T16:46:51+08:00">2023-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h4><h5 id="1、http-naotu-baidu-com-file-2d6abbec078914fd7ad058cddf4945e0"><a href="#1、http-naotu-baidu-com-file-2d6abbec078914fd7ad058cddf4945e0" class="headerlink" title="1、http://naotu.baidu.com/file/2d6abbec078914fd7ad058cddf4945e0"></a>1、<a href="http://naotu.baidu.com/file/2d6abbec078914fd7ad058cddf4945e0">http://naotu.baidu.com/file/2d6abbec078914fd7ad058cddf4945e0</a></h5><h4 id="二、总知识点"><a href="#二、总知识点" class="headerlink" title="二、总知识点"></a>二、<em>总知识点</em></h4><p><img src="https://i.imgur.com/bli2T5A.png" alt></p>
+<h2 id="1、Collection"><a href="#1、Collection" class="headerlink" title="1、Collection"></a>1、Collection</h2><h3 id="1、List列表（元素有序并且可以重复的集合，被称为序列）"><a href="#1、List列表（元素有序并且可以重复的集合，被称为序列）" class="headerlink" title="1、List列表（元素有序并且可以重复的集合，被称为序列）"></a>1、List列表（元素有序并且可以重复的集合，被称为序列）</h3><h4 id="1、ArrayList"><a href="#1、ArrayList" class="headerlink" title="1、ArrayList"></a>1、ArrayList</h4><h5 id="1、排列有序，可重复"><a href="#1、排列有序，可重复" class="headerlink" title="1、排列有序，可重复"></a>1、排列有序，可重复</h5><h5 id="2、底层使用数组"><a href="#2、底层使用数组" class="headerlink" title="2、底层使用数组"></a>2、底层使用数组</h5><h5 id="3、查询快，增删慢"><a href="#3、查询快，增删慢" class="headerlink" title="3、查询快，增删慢"></a>3、查询快，增删慢</h5><h5 id="4、线程不安全"><a href="#4、线程不安全" class="headerlink" title="4、线程不安全"></a>4、线程不安全</h5><h5 id="5、当容量不够时，ArrayList是当前容量-1-5-1"><a href="#5、当容量不够时，ArrayList是当前容量-1-5-1" class="headerlink" title="5、当容量不够时，ArrayList是当前容量*1.5+1"></a>5、当容量不够时，ArrayList是当前容量*1.5+1</h5><h4 id="2、LinkedList"><a href="#2、LinkedList" class="headerlink" title="2、LinkedList"></a>2、LinkedList</h4><h5 id="1、排列有序，可重复-1"><a href="#1、排列有序，可重复-1" class="headerlink" title="1、排列有序，可重复"></a>1、排列有序，可重复</h5><h5 id="2、底层使用双向循环链接数据结构"><a href="#2、底层使用双向循环链接数据结构" class="headerlink" title="2、底层使用双向循环链接数据结构"></a>2、底层使用双向循环链接数据结构</h5><h5 id="3、查询慢，增删快"><a href="#3、查询慢，增删快" class="headerlink" title="3、查询慢，增删快"></a>3、查询慢，增删快</h5><h5 id="4、线程不安全-1"><a href="#4、线程不安全-1" class="headerlink" title="4、线程不安全"></a>4、线程不安全</h5><h4 id="3、Vector"><a href="#3、Vector" class="headerlink" title="3、Vector"></a>3、Vector</h4><h5 id="1、排列有序，可重复-2"><a href="#1、排列有序，可重复-2" class="headerlink" title="1、排列有序，可重复"></a>1、排列有序，可重复</h5><h5 id="2、底层使用数组-1"><a href="#2、底层使用数组-1" class="headerlink" title="2、底层使用数组"></a>2、底层使用数组</h5><h5 id="3、查询快，增删慢-1"><a href="#3、查询快，增删慢-1" class="headerlink" title="3、查询快，增删慢"></a>3、查询快，增删慢</h5><h5 id="4、线程安全，效率低"><a href="#4、线程安全，效率低" class="headerlink" title="4、线程安全，效率低"></a>4、线程安全，效率低</h5><h5 id="5、当容量不够时，Vector是当前容量1"><a href="#5、当容量不够时，Vector是当前容量1" class="headerlink" title="5、当容量不够时，Vector是当前容量1"></a>5、当容量不够时，Vector是当前容量1</h5><h4 id="4、Stack"><a href="#4、Stack" class="headerlink" title="4、Stack"></a>4、Stack</h4><h5 id="栈是Vector的一个子类，它实现了一个标准的后进先出的栈"><a href="#栈是Vector的一个子类，它实现了一个标准的后进先出的栈" class="headerlink" title="栈是Vector的一个子类，它实现了一个标准的后进先出的栈"></a>栈是Vector的一个子类，它实现了一个标准的后进先出的栈</h5><h3 id="2、-Set集合（不能加入重复元素，无序）"><a href="#2、-Set集合（不能加入重复元素，无序）" class="headerlink" title="2、 Set集合（不能加入重复元素，无序）"></a>2、 Set集合（不能加入重复元素，无序）</h3><h4 id="1、散列存放：HashSet"><a href="#1、散列存放：HashSet" class="headerlink" title="1、散列存放：HashSet"></a>1、散列存放：HashSet</h4><h5 id="1、排列无序，不可重复"><a href="#1、排列无序，不可重复" class="headerlink" title="1、排列无序，不可重复"></a>1、排列无序，不可重复</h5><h5 id="2、底层使用Hash表实现"><a href="#2、底层使用Hash表实现" class="headerlink" title="2、底层使用Hash表实现"></a>2、底层使用Hash表实现</h5><h5 id="3、存取速度快"><a href="#3、存取速度快" class="headerlink" title="3、存取速度快"></a>3、存取速度快</h5><h5 id="4、内部是HashMap"><a href="#4、内部是HashMap" class="headerlink" title="4、内部是HashMap"></a>4、内部是HashMap</h5><h4 id="2、有序存放：TreeSet"><a href="#2、有序存放：TreeSet" class="headerlink" title="2、有序存放：TreeSet"></a>2、有序存放：TreeSet</h4><h5 id="1、排列无序，不可重复-1"><a href="#1、排列无序，不可重复-1" class="headerlink" title="1、排列无序，不可重复"></a>1、排列无序，不可重复</h5><h5 id="2、底层使用二叉树实现"><a href="#2、底层使用二叉树实现" class="headerlink" title="2、底层使用二叉树实现"></a>2、底层使用二叉树实现</h5><h5 id="3、排序存储"><a href="#3、排序存储" class="headerlink" title="3、排序存储"></a>3、排序存储</h5><h5 id="4、内部是TreeMap的SortedSet"><a href="#4、内部是TreeMap的SortedSet" class="headerlink" title="4、内部是TreeMap的SortedSet"></a>4、内部是TreeMap的SortedSet</h5><h4 id="3、LinkedHashSet"><a href="#3、LinkedHashSet" class="headerlink" title="3、LinkedHashSet"></a>3、LinkedHashSet</h4><h5 id="1、采用hash表存储，并用双向链表记录插入顺序"><a href="#1、采用hash表存储，并用双向链表记录插入顺序" class="headerlink" title="1、采用hash表存储，并用双向链表记录插入顺序"></a>1、采用hash表存储，并用双向链表记录插入顺序</h5><h5 id="2、内部是LinkedHashMap"><a href="#2、内部是LinkedHashMap" class="headerlink" title="2、内部是LinkedHashMap"></a>2、内部是LinkedHashMap</h5><h3 id="3、Queue"><a href="#3、Queue" class="headerlink" title="3、Queue"></a>3、Queue</h3><h4 id="在两端出入的List，所以也可以用数组或链表来实现"><a href="#在两端出入的List，所以也可以用数组或链表来实现" class="headerlink" title="在两端出入的List，所以也可以用数组或链表来实现"></a>在两端出入的List，所以也可以用数组或链表来实现</h4><h2 id="2、Map"><a href="#2、Map" class="headerlink" title="2、Map"></a>2、Map</h2><h3 id="1、HashMap"><a href="#1、HashMap" class="headerlink" title="1、HashMap"></a>1、HashMap</h3><h4 id="Map提供了一种映射关系，其中的元素是以键值对（key-value）的形式存储的，能够实现根据key快速查找value"><a href="#Map提供了一种映射关系，其中的元素是以键值对（key-value）的形式存储的，能够实现根据key快速查找value" class="headerlink" title="Map提供了一种映射关系，其中的元素是以键值对（key-value）的形式存储的，能够实现根据key快速查找value"></a>Map提供了一种映射关系，其中的元素是以键值对（key-value）的形式存储的，能够实现根据key快速查找value</h4><h4 id="Map中的键值对以Entry类型的对象实例形式存在"><a href="#Map中的键值对以Entry类型的对象实例形式存在" class="headerlink" title="Map中的键值对以Entry类型的对象实例形式存在"></a>Map中的键值对以Entry类型的对象实例形式存在</h4><h4 id="键（key值）不可重复，value值可以"><a href="#键（key值）不可重复，value值可以" class="headerlink" title="键（key值）不可重复，value值可以"></a>键（key值）不可重复，value值可以</h4><h4 id="每个建最多只能映射到一个值"><a href="#每个建最多只能映射到一个值" class="headerlink" title="每个建最多只能映射到一个值"></a>每个建最多只能映射到一个值</h4><h4 id="Map接口提供了分别返回key值集合、value值集合以及Entry（键值对）集合的方法"><a href="#Map接口提供了分别返回key值集合、value值集合以及Entry（键值对）集合的方法" class="headerlink" title="Map接口提供了分别返回key值集合、value值集合以及Entry（键值对）集合的方法"></a>Map接口提供了分别返回key值集合、value值集合以及Entry（键值对）集合的方法</h4><h4 id="Map支持泛型，形式如：Map"><a href="#Map支持泛型，形式如：Map" class="headerlink" title="Map支持泛型，形式如：Map"></a>Map支持泛型，形式如：Map<K,V></K,V></h4><h3 id="2、HashTable"><a href="#2、HashTable" class="headerlink" title="2、HashTable"></a>2、HashTable</h3><h4 id="1、键不可重复，值可重复"><a href="#1、键不可重复，值可重复" class="headerlink" title="1、键不可重复，值可重复"></a>1、键不可重复，值可重复</h4><h4 id="2、底层哈希表"><a href="#2、底层哈希表" class="headerlink" title="2、底层哈希表"></a>2、底层哈希表</h4><h4 id="3、线程安全"><a href="#3、线程安全" class="headerlink" title="3、线程安全"></a>3、线程安全</h4><h4 id="4、key、value都不允许"><a href="#4、key、value都不允许" class="headerlink" title="4、key、value都不允许"></a>4、key、value都不允许</h4><h3 id="3、TreeMap"><a href="#3、TreeMap" class="headerlink" title="3、TreeMap"></a>3、TreeMap</h3><h4 id="1、键不可重复，值可以重复"><a href="#1、键不可重复，值可以重复" class="headerlink" title="1、键不可重复，值可以重复"></a>1、键不可重复，值可以重复</h4><h4 id="2、底层二叉树"><a href="#2、底层二叉树" class="headerlink" title="2、底层二叉树"></a>2、底层二叉树</h4><h2 id="3、工具类"><a href="#3、工具类" class="headerlink" title="3、工具类"></a>3、工具类</h2><h3 id="1、Iterator迭代器"><a href="#1、Iterator迭代器" class="headerlink" title="1、Iterator迭代器"></a>1、Iterator迭代器</h3><h3 id="2、Enumeration枚举类"><a href="#2、Enumeration枚举类" class="headerlink" title="2、Enumeration枚举类"></a>2、Enumeration枚举类</h3><h3 id="3、Arrays"><a href="#3、Arrays" class="headerlink" title="3、Arrays"></a>3、Arrays</h3><h3 id="4、Collections"><a href="#4、Collections" class="headerlink" title="4、Collections"></a>4、Collections</h3><h4 id="三、重点知识点实例"><a href="#三、重点知识点实例" class="headerlink" title="三、重点知识点实例"></a>三、<em>重点知识点实例</em></h4><h4 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h4><h4 id="五、思维扩展"><a href="#五、思维扩展" class="headerlink" title="五、思维扩展"></a>五、<em>思维扩展</em></h4><h4 id="六、存在疑问"><a href="#六、存在疑问" class="headerlink" title="六、存在疑问"></a>六、<em>存在疑问</em></h4>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/" rel="tag"># 集合框架</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/11/21/Java_3_%E5%B8%B8%E7%94%A8API/" rel="prev" title="Java_常用API(四)">
+      <i class="fa fa-chevron-left"></i> Java_常用API(四)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/11/21/Java_6_IO%E6%B5%81/" rel="next" title="Java_IO流(六)">
+      Java_IO流(六) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">一、思维导图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81http-naotu-baidu-com-file-2d6abbec078914fd7ad058cddf4945e0"><span class="nav-number">1.1.</span> <span class="nav-text">1、http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;2d6abbec078914fd7ad058cddf4945e0</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%80%BB%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">二、总知识点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81Collection"><span class="nav-number"></span> <span class="nav-text">1、Collection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81List%E5%88%97%E8%A1%A8%EF%BC%88%E5%85%83%E7%B4%A0%E6%9C%89%E5%BA%8F%E5%B9%B6%E4%B8%94%E5%8F%AF%E4%BB%A5%E9%87%8D%E5%A4%8D%E7%9A%84%E9%9B%86%E5%90%88%EF%BC%8C%E8%A2%AB%E7%A7%B0%E4%B8%BA%E5%BA%8F%E5%88%97%EF%BC%89"><span class="nav-number"></span> <span class="nav-text">1、List列表（元素有序并且可以重复的集合，被称为序列）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81ArrayList"><span class="nav-number">1.</span> <span class="nav-text">1、ArrayList</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E6%8E%92%E5%88%97%E6%9C%89%E5%BA%8F%EF%BC%8C%E5%8F%AF%E9%87%8D%E5%A4%8D"><span class="nav-number">1.1.</span> <span class="nav-text">1、排列有序，可重复</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E5%BA%95%E5%B1%82%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.</span> <span class="nav-text">2、底层使用数组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E6%9F%A5%E8%AF%A2%E5%BF%AB%EF%BC%8C%E5%A2%9E%E5%88%A0%E6%85%A2"><span class="nav-number">1.3.</span> <span class="nav-text">3、查询快，增删慢</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%E3%80%81%E7%BA%BF%E7%A8%8B%E4%B8%8D%E5%AE%89%E5%85%A8"><span class="nav-number">1.4.</span> <span class="nav-text">4、线程不安全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5%E3%80%81%E5%BD%93%E5%AE%B9%E9%87%8F%E4%B8%8D%E5%A4%9F%E6%97%B6%EF%BC%8CArrayList%E6%98%AF%E5%BD%93%E5%89%8D%E5%AE%B9%E9%87%8F-1-5-1"><span class="nav-number">1.5.</span> <span class="nav-text">5、当容量不够时，ArrayList是当前容量*1.5+1</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81LinkedList"><span class="nav-number">2.</span> <span class="nav-text">2、LinkedList</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E6%8E%92%E5%88%97%E6%9C%89%E5%BA%8F%EF%BC%8C%E5%8F%AF%E9%87%8D%E5%A4%8D-1"><span class="nav-number">2.1.</span> <span class="nav-text">1、排列有序，可重复</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E5%BA%95%E5%B1%82%E4%BD%BF%E7%94%A8%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.2.</span> <span class="nav-text">2、底层使用双向循环链接数据结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E6%9F%A5%E8%AF%A2%E6%85%A2%EF%BC%8C%E5%A2%9E%E5%88%A0%E5%BF%AB"><span class="nav-number">2.3.</span> <span class="nav-text">3、查询慢，增删快</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%E3%80%81%E7%BA%BF%E7%A8%8B%E4%B8%8D%E5%AE%89%E5%85%A8-1"><span class="nav-number">2.4.</span> <span class="nav-text">4、线程不安全</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81Vector"><span class="nav-number">3.</span> <span class="nav-text">3、Vector</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E6%8E%92%E5%88%97%E6%9C%89%E5%BA%8F%EF%BC%8C%E5%8F%AF%E9%87%8D%E5%A4%8D-2"><span class="nav-number">3.1.</span> <span class="nav-text">1、排列有序，可重复</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E5%BA%95%E5%B1%82%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84-1"><span class="nav-number">3.2.</span> <span class="nav-text">2、底层使用数组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E6%9F%A5%E8%AF%A2%E5%BF%AB%EF%BC%8C%E5%A2%9E%E5%88%A0%E6%85%A2-1"><span class="nav-number">3.3.</span> <span class="nav-text">3、查询快，增删慢</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%E3%80%81%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%8C%E6%95%88%E7%8E%87%E4%BD%8E"><span class="nav-number">3.4.</span> <span class="nav-text">4、线程安全，效率低</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5%E3%80%81%E5%BD%93%E5%AE%B9%E9%87%8F%E4%B8%8D%E5%A4%9F%E6%97%B6%EF%BC%8CVector%E6%98%AF%E5%BD%93%E5%89%8D%E5%AE%B9%E9%87%8F1"><span class="nav-number">3.5.</span> <span class="nav-text">5、当容量不够时，Vector是当前容量1</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81Stack"><span class="nav-number">4.</span> <span class="nav-text">4、Stack</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%88%E6%98%AFVector%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AD%90%E7%B1%BB%EF%BC%8C%E5%AE%83%E5%AE%9E%E7%8E%B0%E4%BA%86%E4%B8%80%E4%B8%AA%E6%A0%87%E5%87%86%E7%9A%84%E5%90%8E%E8%BF%9B%E5%85%88%E5%87%BA%E7%9A%84%E6%A0%88"><span class="nav-number">4.1.</span> <span class="nav-text">栈是Vector的一个子类，它实现了一个标准的后进先出的栈</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81-Set%E9%9B%86%E5%90%88%EF%BC%88%E4%B8%8D%E8%83%BD%E5%8A%A0%E5%85%A5%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%A0%E5%BA%8F%EF%BC%89"><span class="nav-number"></span> <span class="nav-text">2、 Set集合（不能加入重复元素，无序）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%95%A3%E5%88%97%E5%AD%98%E6%94%BE%EF%BC%9AHashSet"><span class="nav-number">1.</span> <span class="nav-text">1、散列存放：HashSet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E6%8E%92%E5%88%97%E6%97%A0%E5%BA%8F%EF%BC%8C%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D"><span class="nav-number">1.1.</span> <span class="nav-text">1、排列无序，不可重复</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E5%BA%95%E5%B1%82%E4%BD%BF%E7%94%A8Hash%E8%A1%A8%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.2.</span> <span class="nav-text">2、底层使用Hash表实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E5%AD%98%E5%8F%96%E9%80%9F%E5%BA%A6%E5%BF%AB"><span class="nav-number">1.3.</span> <span class="nav-text">3、存取速度快</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%E3%80%81%E5%86%85%E9%83%A8%E6%98%AFHashMap"><span class="nav-number">1.4.</span> <span class="nav-text">4、内部是HashMap</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%9C%89%E5%BA%8F%E5%AD%98%E6%94%BE%EF%BC%9ATreeSet"><span class="nav-number">2.</span> <span class="nav-text">2、有序存放：TreeSet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E6%8E%92%E5%88%97%E6%97%A0%E5%BA%8F%EF%BC%8C%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D-1"><span class="nav-number">2.1.</span> <span class="nav-text">1、排列无序，不可重复</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E5%BA%95%E5%B1%82%E4%BD%BF%E7%94%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.2.</span> <span class="nav-text">2、底层使用二叉树实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E6%8E%92%E5%BA%8F%E5%AD%98%E5%82%A8"><span class="nav-number">2.3.</span> <span class="nav-text">3、排序存储</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%E3%80%81%E5%86%85%E9%83%A8%E6%98%AFTreeMap%E7%9A%84SortedSet"><span class="nav-number">2.4.</span> <span class="nav-text">4、内部是TreeMap的SortedSet</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81LinkedHashSet"><span class="nav-number">3.</span> <span class="nav-text">3、LinkedHashSet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E9%87%87%E7%94%A8hash%E8%A1%A8%E5%AD%98%E5%82%A8%EF%BC%8C%E5%B9%B6%E7%94%A8%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E8%AE%B0%E5%BD%95%E6%8F%92%E5%85%A5%E9%A1%BA%E5%BA%8F"><span class="nav-number">3.1.</span> <span class="nav-text">1、采用hash表存储，并用双向链表记录插入顺序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E5%86%85%E9%83%A8%E6%98%AFLinkedHashMap"><span class="nav-number">3.2.</span> <span class="nav-text">2、内部是LinkedHashMap</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81Queue"><span class="nav-number"></span> <span class="nav-text">3、Queue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E4%B8%A4%E7%AB%AF%E5%87%BA%E5%85%A5%E7%9A%84List%EF%BC%8C%E6%89%80%E4%BB%A5%E4%B9%9F%E5%8F%AF%E4%BB%A5%E7%94%A8%E6%95%B0%E7%BB%84%E6%88%96%E9%93%BE%E8%A1%A8%E6%9D%A5%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">在两端出入的List，所以也可以用数组或链表来实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81Map"><span class="nav-number"></span> <span class="nav-text">2、Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81HashMap"><span class="nav-number"></span> <span class="nav-text">1、HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Map%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%80%E7%A7%8D%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB%EF%BC%8C%E5%85%B6%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0%E6%98%AF%E4%BB%A5%E9%94%AE%E5%80%BC%E5%AF%B9%EF%BC%88key-value%EF%BC%89%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%AD%98%E5%82%A8%E7%9A%84%EF%BC%8C%E8%83%BD%E5%A4%9F%E5%AE%9E%E7%8E%B0%E6%A0%B9%E6%8D%AEkey%E5%BF%AB%E9%80%9F%E6%9F%A5%E6%89%BEvalue"><span class="nav-number">1.</span> <span class="nav-text">Map提供了一种映射关系，其中的元素是以键值对（key-value）的形式存储的，能够实现根据key快速查找value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map%E4%B8%AD%E7%9A%84%E9%94%AE%E5%80%BC%E5%AF%B9%E4%BB%A5Entry%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%BD%A2%E5%BC%8F%E5%AD%98%E5%9C%A8"><span class="nav-number">2.</span> <span class="nav-text">Map中的键值对以Entry类型的对象实例形式存在</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%94%AE%EF%BC%88key%E5%80%BC%EF%BC%89%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%EF%BC%8Cvalue%E5%80%BC%E5%8F%AF%E4%BB%A5"><span class="nav-number">3.</span> <span class="nav-text">键（key值）不可重复，value值可以</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%8F%E4%B8%AA%E5%BB%BA%E6%9C%80%E5%A4%9A%E5%8F%AA%E8%83%BD%E6%98%A0%E5%B0%84%E5%88%B0%E4%B8%80%E4%B8%AA%E5%80%BC"><span class="nav-number">4.</span> <span class="nav-text">每个建最多只能映射到一个值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map%E6%8E%A5%E5%8F%A3%E6%8F%90%E4%BE%9B%E4%BA%86%E5%88%86%E5%88%AB%E8%BF%94%E5%9B%9Ekey%E5%80%BC%E9%9B%86%E5%90%88%E3%80%81value%E5%80%BC%E9%9B%86%E5%90%88%E4%BB%A5%E5%8F%8AEntry%EF%BC%88%E9%94%AE%E5%80%BC%E5%AF%B9%EF%BC%89%E9%9B%86%E5%90%88%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">Map接口提供了分别返回key值集合、value值集合以及Entry（键值对）集合的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%EF%BC%8C%E5%BD%A2%E5%BC%8F%E5%A6%82%EF%BC%9AMap"><span class="nav-number">6.</span> <span class="nav-text">Map支持泛型，形式如：Map</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81HashTable"><span class="nav-number"></span> <span class="nav-text">2、HashTable</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E9%94%AE%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%EF%BC%8C%E5%80%BC%E5%8F%AF%E9%87%8D%E5%A4%8D"><span class="nav-number">1.</span> <span class="nav-text">1、键不可重复，值可重复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%BA%95%E5%B1%82%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">2、底层哈希表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8"><span class="nav-number">3.</span> <span class="nav-text">3、线程安全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81key%E3%80%81value%E9%83%BD%E4%B8%8D%E5%85%81%E8%AE%B8"><span class="nav-number">4.</span> <span class="nav-text">4、key、value都不允许</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81TreeMap"><span class="nav-number"></span> <span class="nav-text">3、TreeMap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E9%94%AE%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%EF%BC%8C%E5%80%BC%E5%8F%AF%E4%BB%A5%E9%87%8D%E5%A4%8D"><span class="nav-number">1.</span> <span class="nav-text">1、键不可重复，值可以重复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%BA%95%E5%B1%82%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">2.</span> <span class="nav-text">2、底层二叉树</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="nav-number"></span> <span class="nav-text">3、工具类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81Iterator%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number"></span> <span class="nav-text">1、Iterator迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81Enumeration%E6%9E%9A%E4%B8%BE%E7%B1%BB"><span class="nav-number"></span> <span class="nav-text">2、Enumeration枚举类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81Arrays"><span class="nav-number"></span> <span class="nav-text">3、Arrays</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81Collections"><span class="nav-number"></span> <span class="nav-text">4、Collections</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%87%8D%E7%82%B9%E7%9F%A5%E8%AF%86%E7%82%B9%E5%AE%9E%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">三、重点知识点实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">四、参考资料</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%80%9D%E7%BB%B4%E6%89%A9%E5%B1%95"><span class="nav-number">3.</span> <span class="nav-text">五、思维扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AD%98%E5%9C%A8%E7%96%91%E9%97%AE"><span class="nav-number">4.</span> <span class="nav-text">六、存在疑问</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xieshanzhong</p>
+  <div class="site-description" itemprop="description">欢迎来到xieshanzhong的技术分享站~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xie1" title="GitHub → https://github.com/xie1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xieshanzhong66@gmail.com" title="E-Mail → mailto:xieshanzhong66@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://xie1.github.io/" title="https://xie1.github.io/" rel="noopener" target="_blank">Title</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.baidu.com/" title="https://www.baidu.com/" rel="noopener" target="_blank">百度搜索</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/" title="https://hexo.io/" rel="noopener" target="_blank">hexo</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xieshanzhong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

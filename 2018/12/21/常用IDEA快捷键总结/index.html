@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="IntelliJ IDEA 常用快捷键整理 1、代码结构优化Ctrl+Alt+L：格式化代码Ctrl+Alt+I：将选中的代码进行自动缩进编排，这个功能在编辑JSP文件时也可以工作 Ctrl+Alt+O：优化导入的类和包(去掉无用的import语句) Ctrl+&#x2F;或Ctrl+Shift+&#x2F;：注释(&#x2F;&#x2F;或者&#x2F;**&#x2F;) Ctrl+Shift+J：两行合成一行，删去不必要的空格匹配代码格式 2、跳转定位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用IDEA快捷键使用">
+<meta property="og:url" content="http://yoursite.com/2018/12/21/%E5%B8%B8%E7%94%A8IDEA%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="XIE&#39;S BLOG">
+<meta property="og:description" content="IntelliJ IDEA 常用快捷键整理 1、代码结构优化Ctrl+Alt+L：格式化代码Ctrl+Alt+I：将选中的代码进行自动缩进编排，这个功能在编辑JSP文件时也可以工作 Ctrl+Alt+O：优化导入的类和包(去掉无用的import语句) Ctrl+&#x2F;或Ctrl+Shift+&#x2F;：注释(&#x2F;&#x2F;或者&#x2F;**&#x2F;) Ctrl+Shift+J：两行合成一行，删去不必要的空格匹配代码格式 2、跳转定位">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-12-21T09:17:59.000Z">
+<meta property="article:modified_time" content="2023-11-03T08:46:51.494Z">
+<meta property="article:author" content="xieshanzhong">
+<meta property="article:tag" content="IDEA">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2018/12/21/%E5%B8%B8%E7%94%A8IDEA%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%80%BB%E7%BB%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>常用IDEA快捷键使用 | XIE'S BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="XIE'S BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XIE'S BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">xieshanzhong的博客小站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/21/%E5%B8%B8%E7%94%A8IDEA%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xieshanzhong">
+      <meta itemprop="description" content="欢迎来到xieshanzhong的技术分享站~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XIE'S BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          常用IDEA快捷键使用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-21 17:17:59" itemprop="dateCreated datePublished" datetime="2018-12-21T17:17:59+08:00">2018-12-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-11-03 16:46:51" itemprop="dateModified" datetime="2023-11-03T16:46:51+08:00">2023-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>IntelliJ IDEA 常用快捷键整理</p>
+<h5 id="1、代码结构优化"><a href="#1、代码结构优化" class="headerlink" title="1、代码结构优化"></a>1、代码结构优化</h5><p>Ctrl+Alt+L：格式化代码<br>Ctrl+Alt+I：将选中的代码进行自动缩进编排，这个功能在编辑JSP文件时也可以工作</p>
+<p>Ctrl+Alt+O：优化导入的类和包(去掉无用的import语句)</p>
+<p>Ctrl+/或Ctrl+Shift+/：注释(//或者/**/)</p>
+<p>Ctrl+Shift+J：两行合成一行，删去不必要的空格匹配代码格式</p>
+<h5 id="2、跳转定位"><a href="#2、跳转定位" class="headerlink" title="2、跳转定位"></a>2、跳转定位</h5><p>Ctrl+Alt+B：跳转到方法实现处<br>Ctrl+B：快速打开光标处的类或方法</p>
+<p>Ctrl+Alt+left/right(左右箭头)：返回至上次浏览的位置<br>Ctrl+Shift+Backspace：跳转到上次编辑的地方</p>
+<p>F2/Shift+F2：高亮错误或警告快速定位(跳转至报错的位置)<br>Ctrl+G：定位行(跳到输入的指定行数)</p>
+<p>Alt+ Up/Down(上下箭头)：在方法间快速移动定位<br>Ctrl+[ OR ]：可以跑到大括号的开头与结尾(方便if或者方法范围查看)</p>
+<p>Alt+F3：逐个往下查找相同文本，并高亮显示</p>
+<h5 id="3、查找定位"><a href="#3、查找定位" class="headerlink" title="3、查找定位"></a>3、查找定位</h5><p>Ctrl+N：可以快速打开类<br>Ctrl+Shift+N：可以快速打开文件<br>Ctrl+Shift+Alt+N：查找类中的方法或变量</p>
+<p>Ctrl+F：查找(本文件中查找)<br>Ctrl+Shift+F：全局查找(在路径中查找)<br>Shift+Shift：全局搜索</p>
+<h5 id="4、代码操作"><a href="#4、代码操作" class="headerlink" title="4、代码操作"></a>4、代码操作</h5><p>Ctrl+W：选中代码，连续按会有其他效果(选中范围越来越大)<br>Ctrl+R：在本文件替换文本<br>Ctrl+Shift+R：在路径中替换(整个路径替换)<br>Ctrl+X：删除行<br>Ctrl+D：复制行<br>Ctrl+Y：删除当前行</p>
+<p>Alt+Shift+Up/Down：上/下移一行<br>Ctrl+Shift+U：大小写转化</p>
+<p>Ctrl+Shift+Z：重做，即反撤销(与搜狗输入法查看字符冲突)<br>Ctrl+Shift+V：查看最近复制的多条内容，并选择需要的内容粘贴</p>
+<h5 id="5、代码-方法-生成"><a href="#5、代码-方法-生成" class="headerlink" title="5、代码(方法)生成"></a>5、代码(方法)生成</h5><p>psvm/sout：main函数/System.out.println();快捷键(Ctrl+J，查看更多)</p>
+<p>Alt+Insert：可以生成构造器/Getter/Setter等(建议使用lombok插件及@Data注解)</p>
+<p>Ctrl+Alt+T：可以把代码包在一个块内，例如：try/catch<br>Ctrl+shift+回车：自动补全、换行<br>Ctrl+空格，代码提示（与系统输入法快捷键冲突）</p>
+<h5 id="6、其他"><a href="#6、其他" class="headerlink" title="6、其他"></a>6、其他</h5><p>提示</p>
+<p>Alt+F7：查找整个工程中使用地某一个类、方法或者变量的位置<br>Ctrl+F7：可以查询当前元素在当前文件中的引用，然后按 F3 可以选择<br>Ctrl+Shift+F7：高亮显示所有该文本，按 Esc 高亮消失</p>
+<p>Ctrl+P：可以显示参数信息<br>Ctrl+F12：可以显示当前文件的结构<br>Ctrl+H：显示类结构图（类的继承层次）</p>
+<p>代码结构</p>
+<p>Alt+6：查看所有TODO<br>Alt+7：查看本类结构</p>
+<p>Ctrl+”+/-“：当前方法展开、折叠<br>Ctrl+Shift+”+/-：全部展开、折叠</p>
+<p>文件操作<br>Ctrl+E：显示最近操作过的文件Alt+Shift+C：显示最近的更改操作</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a><em>分类</em></h3><h5 id="1、Ctrl："><a href="#1、Ctrl：" class="headerlink" title="1、Ctrl："></a>1、Ctrl：</h5><h6 id="Ctrl-J-插入自定义动态代码模板"><a href="#Ctrl-J-插入自定义动态代码模板" class="headerlink" title="Ctrl + J    插入自定义动态代码模板"></a>Ctrl + J    插入自定义动态代码模板</h6><h6 id="Ctrl-F1-在光标所在的错误代码处显示错误信息"><a href="#Ctrl-F1-在光标所在的错误代码处显示错误信息" class="headerlink" title="Ctrl + F1  在光标所在的错误代码处显示错误信息"></a>Ctrl + F1  在光标所在的错误代码处显示错误信息</h6><h6 id="Ctrl-F3-调转到所选中的词的下一个引用位置"><a href="#Ctrl-F3-调转到所选中的词的下一个引用位置" class="headerlink" title="Ctrl + F3  调转到所选中的词的下一个引用位置"></a>Ctrl + F3  调转到所选中的词的下一个引用位置</h6><h6 id="Ctrl-F11-选中文件-文件夹，使用助记符设定-取消书签"><a href="#Ctrl-F11-选中文件-文件夹，使用助记符设定-取消书签" class="headerlink" title="Ctrl + F11  选中文件 / 文件夹，使用助记符设定 / 取消书签"></a>Ctrl + F11  选中文件 / 文件夹，使用助记符设定 / 取消书签</h6><h6 id="Ctrl-Delete-删除光标后面的单词或是中文句"><a href="#Ctrl-Delete-删除光标后面的单词或是中文句" class="headerlink" title="Ctrl + Delete  删除光标后面的单词或是中文句"></a>Ctrl + Delete  删除光标后面的单词或是中文句</h6><h6 id="Ctrl-BackSpace-删除光标前面的单词或是中文句"><a href="#Ctrl-BackSpace-删除光标前面的单词或是中文句" class="headerlink" title="Ctrl + BackSpace 删除光标前面的单词或是中文句"></a>Ctrl + BackSpace 删除光标前面的单词或是中文句</h6><h6 id="Ctrl-左键单击-在打开的文件标题上，弹出该文件路径"><a href="#Ctrl-左键单击-在打开的文件标题上，弹出该文件路径" class="headerlink" title="Ctrl + 左键单击  在打开的文件标题上，弹出该文件路径"></a>Ctrl + 左键单击  在打开的文件标题上，弹出该文件路径</h6><h6 id="Ctrl-左方向键光标跳转到当前单词-中文句的左侧开头位置-（必备）"><a href="#Ctrl-左方向键光标跳转到当前单词-中文句的左侧开头位置-（必备）" class="headerlink" title="Ctrl + 左方向键光标跳转到当前单词 / 中文句的左侧开头位置 （必备）"></a>Ctrl + 左方向键光标跳转到当前单词 / 中文句的左侧开头位置 （必备）</h6><h6 id="Ctrl-右方向键光标跳转到当前单词-中文句的右侧开头位置-（必备）"><a href="#Ctrl-右方向键光标跳转到当前单词-中文句的右侧开头位置-（必备）" class="headerlink" title="Ctrl + 右方向键光标跳转到当前单词 / 中文句的右侧开头位置 （必备）"></a>Ctrl + 右方向键光标跳转到当前单词 / 中文句的右侧开头位置 （必备）</h6><h6 id="Ctrl-前方向键等效于鼠标滚轮向前效果-（必备）"><a href="#Ctrl-前方向键等效于鼠标滚轮向前效果-（必备）" class="headerlink" title="Ctrl + 前方向键等效于鼠标滚轮向前效果 （必备）"></a>Ctrl + 前方向键等效于鼠标滚轮向前效果 （必备）</h6><h6 id="Ctrl-后方向键等效于鼠标滚轮向后效果-（必备"><a href="#Ctrl-后方向键等效于鼠标滚轮向后效果-（必备" class="headerlink" title="Ctrl + 后方向键等效于鼠标滚轮向后效果 （必备"></a>Ctrl + 后方向键等效于鼠标滚轮向后效果 （必备</h6><h5 id="2、Alt："><a href="#2、Alt：" class="headerlink" title="2、Alt："></a>2、Alt：</h5><h6 id="Alt-F1显示当前文件选择目标弹出层，弹出层中有很多目标可以进行选择-（必备）"><a href="#Alt-F1显示当前文件选择目标弹出层，弹出层中有很多目标可以进行选择-（必备）" class="headerlink" title="Alt + F1显示当前文件选择目标弹出层，弹出层中有很多目标可以进行选择 （必备）"></a>Alt + F1显示当前文件选择目标弹出层，弹出层中有很多目标可以进行选择 （必备）</h6><h6 id="Alt-显示版本控制常用操作菜单弹出层-（必备）"><a href="#Alt-显示版本控制常用操作菜单弹出层-（必备）" class="headerlink" title="Alt + `|显示版本控制常用操作菜单弹出层 （必备）"></a>Alt + `|显示版本控制常用操作菜单弹出层 （必备）</h6><h6 id="Alt-Enter-IntelliJ-IDEA-根据光标所在问题，提供快速修复选择，光标放在的位置不同提示的结果也不同-（必备）"><a href="#Alt-Enter-IntelliJ-IDEA-根据光标所在问题，提供快速修复选择，光标放在的位置不同提示的结果也不同-（必备）" class="headerlink" title="Alt + Enter  IntelliJ IDEA 根据光标所在问题，提供快速修复选择，光标放在的位置不同提示的结果也不同 （必备）"></a>Alt + Enter  IntelliJ IDEA 根据光标所在问题，提供快速修复选择，光标放在的位置不同提示的结果也不同 （必备）</h6><h5 id="3、Shift"><a href="#3、Shift" class="headerlink" title="3、Shift:"></a>3、Shift:</h5><h6 id="Shift-F11弹出书签显示层-（必备）"><a href="#Shift-F11弹出书签显示层-（必备）" class="headerlink" title="Shift + F11弹出书签显示层 （必备）"></a>Shift + F11弹出书签显示层 （必备）</h6><h6 id="Shift-Tab取消缩进-（必备）"><a href="#Shift-Tab取消缩进-（必备）" class="headerlink" title="Shift + Tab取消缩进 （必备）"></a>Shift + Tab取消缩进 （必备）</h6><h6 id="Shift-左键单击在打开的文件名上按此快捷键，可以关闭当前打开文件-（必备）"><a href="#Shift-左键单击在打开的文件名上按此快捷键，可以关闭当前打开文件-（必备）" class="headerlink" title="Shift + 左键单击在打开的文件名上按此快捷键，可以关闭当前打开文件 （必备）"></a>Shift + 左键单击在打开的文件名上按此快捷键，可以关闭当前打开文件 （必备）</h6><h6 id="Shift-滚轮前后滚动当前文件的横向滚动轴滚动-（必备）"><a href="#Shift-滚轮前后滚动当前文件的横向滚动轴滚动-（必备）" class="headerlink" title="Shift + 滚轮前后滚动当前文件的横向滚动轴滚动 （必备）"></a>Shift + 滚轮前后滚动当前文件的横向滚动轴滚动 （必备）</h6><h5 id="4、Ctrl-Alt"><a href="#4、Ctrl-Alt" class="headerlink" title="4、Ctrl + Alt:"></a>4、Ctrl + Alt:</h5><h6 id="Ctrl-Alt-L格式化代码，可以对当前文件和整个包目录使用-（必备）"><a href="#Ctrl-Alt-L格式化代码，可以对当前文件和整个包目录使用-（必备）" class="headerlink" title="Ctrl + Alt + L格式化代码，可以对当前文件和整个包目录使用 （必备）"></a>Ctrl + Alt + L格式化代码，可以对当前文件和整个包目录使用 （必备）</h6><h6 id="Ctrl-Alt-O优化导入的类，可以对当前文件和整个包目录使用-（必备）"><a href="#Ctrl-Alt-O优化导入的类，可以对当前文件和整个包目录使用-（必备）" class="headerlink" title="Ctrl + Alt + O优化导入的类，可以对当前文件和整个包目录使用 （必备）"></a>Ctrl + Alt + O优化导入的类，可以对当前文件和整个包目录使用 （必备）</h6><h6 id="Ctrl-Alt-T对选中的代码弹出环绕选项弹出层-（必备）"><a href="#Ctrl-Alt-T对选中的代码弹出环绕选项弹出层-（必备）" class="headerlink" title="Ctrl + Alt + T对选中的代码弹出环绕选项弹出层 （必备）"></a>Ctrl + Alt + T对选中的代码弹出环绕选项弹出层 （必备）</h6><h6 id="Ctrl-Alt-S打开-IntelliJ-IDEA-系统设置-（必备）"><a href="#Ctrl-Alt-S打开-IntelliJ-IDEA-系统设置-（必备）" class="headerlink" title="Ctrl + Alt + S打开 IntelliJ IDEA 系统设置 （必备）"></a>Ctrl + Alt + S打开 IntelliJ IDEA 系统设置 （必备）</h6><h6 id="Ctrl-Alt-左方向键退回到上一个操作的地方-（必备）"><a href="#Ctrl-Alt-左方向键退回到上一个操作的地方-（必备）" class="headerlink" title="Ctrl + Alt + 左方向键退回到上一个操作的地方 （必备）"></a>Ctrl + Alt + 左方向键退回到上一个操作的地方 （必备）</h6><h6 id="Ctrl-Alt-右方向键前进到上一个操作的地方-（必备）"><a href="#Ctrl-Alt-右方向键前进到上一个操作的地方-（必备）" class="headerlink" title="Ctrl + Alt + 右方向键前进到上一个操作的地方 （必备）"></a>Ctrl + Alt + 右方向键前进到上一个操作的地方 （必备）</h6><h5 id="5、Ctrl-Shift"><a href="#5、Ctrl-Shift" class="headerlink" title="5、Ctrl + Shift:"></a>5、Ctrl + Shift:</h5><h6 id="Ctrl-Shift-J自动将下一行合并到当前行末尾-（必备）"><a href="#Ctrl-Shift-J自动将下一行合并到当前行末尾-（必备）" class="headerlink" title="Ctrl + Shift + J自动将下一行合并到当前行末尾 （必备）"></a>Ctrl + Shift + J自动将下一行合并到当前行末尾 （必备）</h6><h6 id="Ctrl-Shift-W递进式取消选择代码块。可选中光标所在的单词或段落，连续按会在原有选中的基础上再扩展取消选中范围-（必备）"><a href="#Ctrl-Shift-W递进式取消选择代码块。可选中光标所在的单词或段落，连续按会在原有选中的基础上再扩展取消选中范围-（必备）" class="headerlink" title="Ctrl + Shift + W递进式取消选择代码块。可选中光标所在的单词或段落，连续按会在原有选中的基础上再扩展取消选中范围 （必备）"></a>Ctrl + Shift + W递进式取消选择代码块。可选中光标所在的单词或段落，连续按会在原有选中的基础上再扩展取消选中范围 （必备）</h6><h6 id="Ctrl-Shift-N通过文件名定位-打开文件-目录，打开目录需要在输入的内容后面多加一个正斜杠-（必备）"><a href="#Ctrl-Shift-N通过文件名定位-打开文件-目录，打开目录需要在输入的内容后面多加一个正斜杠-（必备）" class="headerlink" title="Ctrl + Shift + N通过文件名定位 / 打开文件 / 目录，打开目录需要在输入的内容后面多加一个正斜杠 （必备）"></a>Ctrl + Shift + N通过文件名定位 / 打开文件 / 目录，打开目录需要在输入的内容后面多加一个正斜杠 （必备）</h6><h6 id="Ctrl-Shift-U对选中的代码进行大-小写轮流转换-（必备）"><a href="#Ctrl-Shift-U对选中的代码进行大-小写轮流转换-（必备）" class="headerlink" title="Ctrl + Shift + U对选中的代码进行大 / 小写轮流转换 （必备）"></a>Ctrl + Shift + U对选中的代码进行大 / 小写轮流转换 （必备）</h6><h6 id="Ctrl-Shift-T对当前类生成单元测试类，如果已经存在的单元测试类则可以进行选择-（必备）"><a href="#Ctrl-Shift-T对当前类生成单元测试类，如果已经存在的单元测试类则可以进行选择-（必备）" class="headerlink" title="Ctrl + Shift + T对当前类生成单元测试类，如果已经存在的单元测试类则可以进行选择 （必备）"></a>Ctrl + Shift + T对当前类生成单元测试类，如果已经存在的单元测试类则可以进行选择 （必备）</h6><h6 id="Ctrl-Shift-C复制当前文件磁盘路径到剪贴板-（必备）"><a href="#Ctrl-Shift-C复制当前文件磁盘路径到剪贴板-（必备）" class="headerlink" title="Ctrl + Shift + C复制当前文件磁盘路径到剪贴板 （必备）"></a>Ctrl + Shift + C复制当前文件磁盘路径到剪贴板 （必备）</h6><h6 id="Ctrl-Shift-B跳转到类型声明处-（必备）"><a href="#Ctrl-Shift-B跳转到类型声明处-（必备）" class="headerlink" title="Ctrl + Shift + B跳转到类型声明处 （必备）"></a>Ctrl + Shift + B跳转到类型声明处 （必备）</h6><h6 id="Ctrl-Shift-代码块注释-（必备）"><a href="#Ctrl-Shift-代码块注释-（必备）" class="headerlink" title="Ctrl + Shift + /代码块注释 （必备）"></a>Ctrl + Shift + /代码块注释 （必备）</h6><h6 id="Ctrl-Shift-选中从光标所在位置到它的顶部中括号位置-（必备）"><a href="#Ctrl-Shift-选中从光标所在位置到它的顶部中括号位置-（必备）" class="headerlink" title="Ctrl + Shift + [选中从光标所在位置到它的顶部中括号位置 （必备）"></a>Ctrl + Shift + [选中从光标所在位置到它的顶部中括号位置 （必备）</h6><h6 id="Ctrl-Shift-选中从光标所在位置到它的底部中括号位置-（必备）"><a href="#Ctrl-Shift-选中从光标所在位置到它的底部中括号位置-（必备）" class="headerlink" title="Ctrl + Shift + ]选中从光标所在位置到它的底部中括号位置 （必备）"></a>Ctrl + Shift + ]选中从光标所在位置到它的底部中括号位置 （必备）</h6><h6 id="Ctrl-Shift-展开所有代码-（必备）"><a href="#Ctrl-Shift-展开所有代码-（必备）" class="headerlink" title="Ctrl + Shift + +展开所有代码 （必备）"></a>Ctrl + Shift + +展开所有代码 （必备）</h6><h6 id="Ctrl-Shift-折叠所有代码-（必备）"><a href="#Ctrl-Shift-折叠所有代码-（必备）" class="headerlink" title="Ctrl + Shift + -折叠所有代码 （必备）"></a>Ctrl + Shift + -折叠所有代码 （必备）</h6><h6 id="Ctrl-Shift-F7高亮显示所有该选中文本，按Esc高亮消失-（必备）"><a href="#Ctrl-Shift-F7高亮显示所有该选中文本，按Esc高亮消失-（必备）" class="headerlink" title="Ctrl + Shift + F7高亮显示所有该选中文本，按Esc高亮消失 （必备）"></a>Ctrl + Shift + F7高亮显示所有该选中文本，按Esc高亮消失 （必备）</h6><h6 id="Ctrl-Shift-F12编辑器最大化-（必备）"><a href="#Ctrl-Shift-F12编辑器最大化-（必备）" class="headerlink" title="Ctrl + Shift + F12编辑器最大化 （必备）"></a>Ctrl + Shift + F12编辑器最大化 （必备）</h6><h6 id="Ctrl-Shift-Enter自动结束代码，行末自动添加分号-（必备）"><a href="#Ctrl-Shift-Enter自动结束代码，行末自动添加分号-（必备）" class="headerlink" title="Ctrl + Shift + Enter自动结束代码，行末自动添加分号 （必备）"></a>Ctrl + Shift + Enter自动结束代码，行末自动添加分号 （必备）</h6><h6 id="Ctrl-Shift-Backspace退回到上次修改的地方-（必备）"><a href="#Ctrl-Shift-Backspace退回到上次修改的地方-（必备）" class="headerlink" title="Ctrl + Shift + Backspace退回到上次修改的地方 （必备）"></a>Ctrl + Shift + Backspace退回到上次修改的地方 （必备）</h6><h6 id="Ctrl-Shift-1-2-3…9快速添加指定数值的书签-（必备）"><a href="#Ctrl-Shift-1-2-3…9快速添加指定数值的书签-（必备）" class="headerlink" title="Ctrl + Shift + 1,2,3…9快速添加指定数值的书签 （必备）"></a>Ctrl + Shift + 1,2,3…9快速添加指定数值的书签 （必备）</h6><h6 id="Ctrl-Shift-左键单击把光标放在某个类变量上，按此快捷键可以直接定位到该类中-（必备）"><a href="#Ctrl-Shift-左键单击把光标放在某个类变量上，按此快捷键可以直接定位到该类中-（必备）" class="headerlink" title="Ctrl + Shift + 左键单击把光标放在某个类变量上，按此快捷键可以直接定位到该类中 （必备）"></a>Ctrl + Shift + 左键单击把光标放在某个类变量上，按此快捷键可以直接定位到该类中 （必备）</h6><h6 id="Ctrl-Shift-左方向键在代码文件上，光标跳转到当前单词-中文句的左侧开头位置，同时选中该单词-中文句-（必备）"><a href="#Ctrl-Shift-左方向键在代码文件上，光标跳转到当前单词-中文句的左侧开头位置，同时选中该单词-中文句-（必备）" class="headerlink" title="Ctrl + Shift + 左方向键在代码文件上，光标跳转到当前单词 / 中文句的左侧开头位置，同时选中该单词 / 中文句 （必备）"></a>Ctrl + Shift + 左方向键在代码文件上，光标跳转到当前单词 / 中文句的左侧开头位置，同时选中该单词 / 中文句 （必备）</h6><h6 id="Ctrl-Shift-右方向键在代码文件上，光标跳转到当前单词-中文句的右侧开头位置，同时选中该单词-中文句-（必备）"><a href="#Ctrl-Shift-右方向键在代码文件上，光标跳转到当前单词-中文句的右侧开头位置，同时选中该单词-中文句-（必备）" class="headerlink" title="Ctrl + Shift + 右方向键在代码文件上，光标跳转到当前单词 / 中文句的右侧开头位置，同时选中该单词 / 中文句 （必备）"></a>Ctrl + Shift + 右方向键在代码文件上，光标跳转到当前单词 / 中文句的右侧开头位置，同时选中该单词 / 中文句 （必备）</h6><h6 id="Ctrl-Shift-前方向键光标放在方法名上，将方法移动到上一个方法前面，调整方法排序-（必备）"><a href="#Ctrl-Shift-前方向键光标放在方法名上，将方法移动到上一个方法前面，调整方法排序-（必备）" class="headerlink" title="Ctrl + Shift + 前方向键光标放在方法名上，将方法移动到上一个方法前面，调整方法排序 （必备）"></a>Ctrl + Shift + 前方向键光标放在方法名上，将方法移动到上一个方法前面，调整方法排序 （必备）</h6><h6 id="Ctrl-Shift-后方向键光标放在方法名上，将方法移动到下一个方法前面，调整方法排序-（必备）"><a href="#Ctrl-Shift-后方向键光标放在方法名上，将方法移动到下一个方法前面，调整方法排序-（必备）" class="headerlink" title="Ctrl + Shift + 后方向键光标放在方法名上，将方法移动到下一个方法前面，调整方法排序 （必备）"></a>Ctrl + Shift + 后方向键光标放在方法名上，将方法移动到下一个方法前面，调整方法排序 （必备）</h6><h5 id="6、Alt-Shift"><a href="#6、Alt-Shift" class="headerlink" title="6、Alt + Shift:"></a>6、Alt + Shift:</h5><h6 id="Alt-Shift-左键双击选择被双击的单词-中文句，按住不放，可以同时选择其他单词-中文句-（必备）"><a href="#Alt-Shift-左键双击选择被双击的单词-中文句，按住不放，可以同时选择其他单词-中文句-（必备）" class="headerlink" title="Alt + Shift + 左键双击选择被双击的单词 / 中文句，按住不放，可以同时选择其他单词 / 中文句 （必备）"></a>Alt + Shift + 左键双击选择被双击的单词 / 中文句，按住不放，可以同时选择其他单词 / 中文句 （必备）</h6><h6 id="Alt-Shift-前方向键移动光标所在行向上移动-（必备）"><a href="#Alt-Shift-前方向键移动光标所在行向上移动-（必备）" class="headerlink" title="Alt + Shift + 前方向键移动光标所在行向上移动 （必备）"></a>Alt + Shift + 前方向键移动光标所在行向上移动 （必备）</h6><h6 id="Alt-Shift-后方向键移动光标所在行向下移动-（必备）"><a href="#Alt-Shift-后方向键移动光标所在行向下移动-（必备）" class="headerlink" title="Alt + Shift + 后方向键移动光标所在行向下移动 （必备）"></a>Alt + Shift + 后方向键移动光标所在行向下移动 （必备）</h6><h6 id="Alt-Shift-N选择-添加-task-（必备）"><a href="#Alt-Shift-N选择-添加-task-（必备）" class="headerlink" title="Alt + Shift + N选择 / 添加 task （必备）"></a>Alt + Shift + N选择 / 添加 task （必备）</h6>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IDEA/" rel="tag"># IDEA</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/11/21/Java_9_%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7_%E5%8F%8D%E5%B0%84/" rel="prev" title="Java_高级特性_反射机制(九)">
+      <i class="fa fa-chevron-left"></i> Java_高级特性_反射机制(九)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/06/%E5%9F%BA%E7%A1%80_Linux%E5%AD%A6%E4%B9%A0/" rel="next" title="Linux学习">
+      Linux学习 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">1、代码结构优化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E8%B7%B3%E8%BD%AC%E5%AE%9A%E4%BD%8D"><span class="nav-number">2.</span> <span class="nav-text">2、跳转定位</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E6%9F%A5%E6%89%BE%E5%AE%9A%E4%BD%8D"><span class="nav-number">3.</span> <span class="nav-text">3、查找定位</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%E3%80%81%E4%BB%A3%E7%A0%81%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">4、代码操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5%E3%80%81%E4%BB%A3%E7%A0%81-%E6%96%B9%E6%B3%95-%E7%94%9F%E6%88%90"><span class="nav-number">5.</span> <span class="nav-text">5、代码(方法)生成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6%E3%80%81%E5%85%B6%E4%BB%96"><span class="nav-number">6.</span> <span class="nav-text">6、其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number"></span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81Ctrl%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">1、Ctrl：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-J-%E6%8F%92%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8A%A8%E6%80%81%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.1.</span> <span class="nav-text">Ctrl + J    插入自定义动态代码模板</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-F1-%E5%9C%A8%E5%85%89%E6%A0%87%E6%89%80%E5%9C%A8%E7%9A%84%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81%E5%A4%84%E6%98%BE%E7%A4%BA%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF"><span class="nav-number">1.2.</span> <span class="nav-text">Ctrl + F1  在光标所在的错误代码处显示错误信息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-F3-%E8%B0%83%E8%BD%AC%E5%88%B0%E6%89%80%E9%80%89%E4%B8%AD%E7%9A%84%E8%AF%8D%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E5%BC%95%E7%94%A8%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">Ctrl + F3  调转到所选中的词的下一个引用位置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-F11-%E9%80%89%E4%B8%AD%E6%96%87%E4%BB%B6-%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E4%BD%BF%E7%94%A8%E5%8A%A9%E8%AE%B0%E7%AC%A6%E8%AE%BE%E5%AE%9A-%E5%8F%96%E6%B6%88%E4%B9%A6%E7%AD%BE"><span class="nav-number">1.4.</span> <span class="nav-text">Ctrl + F11  选中文件 &#x2F; 文件夹，使用助记符设定 &#x2F; 取消书签</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Delete-%E5%88%A0%E9%99%A4%E5%85%89%E6%A0%87%E5%90%8E%E9%9D%A2%E7%9A%84%E5%8D%95%E8%AF%8D%E6%88%96%E6%98%AF%E4%B8%AD%E6%96%87%E5%8F%A5"><span class="nav-number">1.5.</span> <span class="nav-text">Ctrl + Delete  删除光标后面的单词或是中文句</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-BackSpace-%E5%88%A0%E9%99%A4%E5%85%89%E6%A0%87%E5%89%8D%E9%9D%A2%E7%9A%84%E5%8D%95%E8%AF%8D%E6%88%96%E6%98%AF%E4%B8%AD%E6%96%87%E5%8F%A5"><span class="nav-number">1.6.</span> <span class="nav-text">Ctrl + BackSpace 删除光标前面的单词或是中文句</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-%E5%B7%A6%E9%94%AE%E5%8D%95%E5%87%BB-%E5%9C%A8%E6%89%93%E5%BC%80%E7%9A%84%E6%96%87%E4%BB%B6%E6%A0%87%E9%A2%98%E4%B8%8A%EF%BC%8C%E5%BC%B9%E5%87%BA%E8%AF%A5%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84"><span class="nav-number">1.7.</span> <span class="nav-text">Ctrl + 左键单击  在打开的文件标题上，弹出该文件路径</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-%E5%B7%A6%E6%96%B9%E5%90%91%E9%94%AE%E5%85%89%E6%A0%87%E8%B7%B3%E8%BD%AC%E5%88%B0%E5%BD%93%E5%89%8D%E5%8D%95%E8%AF%8D-%E4%B8%AD%E6%96%87%E5%8F%A5%E7%9A%84%E5%B7%A6%E4%BE%A7%E5%BC%80%E5%A4%B4%E4%BD%8D%E7%BD%AE-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">1.8.</span> <span class="nav-text">Ctrl + 左方向键光标跳转到当前单词 &#x2F; 中文句的左侧开头位置 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-%E5%8F%B3%E6%96%B9%E5%90%91%E9%94%AE%E5%85%89%E6%A0%87%E8%B7%B3%E8%BD%AC%E5%88%B0%E5%BD%93%E5%89%8D%E5%8D%95%E8%AF%8D-%E4%B8%AD%E6%96%87%E5%8F%A5%E7%9A%84%E5%8F%B3%E4%BE%A7%E5%BC%80%E5%A4%B4%E4%BD%8D%E7%BD%AE-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">1.9.</span> <span class="nav-text">Ctrl + 右方向键光标跳转到当前单词 &#x2F; 中文句的右侧开头位置 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-%E5%89%8D%E6%96%B9%E5%90%91%E9%94%AE%E7%AD%89%E6%95%88%E4%BA%8E%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E5%90%91%E5%89%8D%E6%95%88%E6%9E%9C-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">1.10.</span> <span class="nav-text">Ctrl + 前方向键等效于鼠标滚轮向前效果 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-%E5%90%8E%E6%96%B9%E5%90%91%E9%94%AE%E7%AD%89%E6%95%88%E4%BA%8E%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E5%90%91%E5%90%8E%E6%95%88%E6%9E%9C-%EF%BC%88%E5%BF%85%E5%A4%87"><span class="nav-number">1.11.</span> <span class="nav-text">Ctrl + 后方向键等效于鼠标滚轮向后效果 （必备</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81Alt%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">2、Alt：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Alt-F1%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E9%80%89%E6%8B%A9%E7%9B%AE%E6%A0%87%E5%BC%B9%E5%87%BA%E5%B1%82%EF%BC%8C%E5%BC%B9%E5%87%BA%E5%B1%82%E4%B8%AD%E6%9C%89%E5%BE%88%E5%A4%9A%E7%9B%AE%E6%A0%87%E5%8F%AF%E4%BB%A5%E8%BF%9B%E8%A1%8C%E9%80%89%E6%8B%A9-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">Alt + F1显示当前文件选择目标弹出层，弹出层中有很多目标可以进行选择 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Alt-%E6%98%BE%E7%A4%BA%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E8%8F%9C%E5%8D%95%E5%BC%B9%E5%87%BA%E5%B1%82-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">Alt + &#96;|显示版本控制常用操作菜单弹出层 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Alt-Enter-IntelliJ-IDEA-%E6%A0%B9%E6%8D%AE%E5%85%89%E6%A0%87%E6%89%80%E5%9C%A8%E9%97%AE%E9%A2%98%EF%BC%8C%E6%8F%90%E4%BE%9B%E5%BF%AB%E9%80%9F%E4%BF%AE%E5%A4%8D%E9%80%89%E6%8B%A9%EF%BC%8C%E5%85%89%E6%A0%87%E6%94%BE%E5%9C%A8%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%B8%8D%E5%90%8C%E6%8F%90%E7%A4%BA%E7%9A%84%E7%BB%93%E6%9E%9C%E4%B9%9F%E4%B8%8D%E5%90%8C-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">Alt + Enter  IntelliJ IDEA 根据光标所在问题，提供快速修复选择，光标放在的位置不同提示的结果也不同 （必备）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81Shift"><span class="nav-number">3.</span> <span class="nav-text">3、Shift:</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Shift-F11%E5%BC%B9%E5%87%BA%E4%B9%A6%E7%AD%BE%E6%98%BE%E7%A4%BA%E5%B1%82-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">Shift + F11弹出书签显示层 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Shift-Tab%E5%8F%96%E6%B6%88%E7%BC%A9%E8%BF%9B-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">Shift + Tab取消缩进 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Shift-%E5%B7%A6%E9%94%AE%E5%8D%95%E5%87%BB%E5%9C%A8%E6%89%93%E5%BC%80%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D%E4%B8%8A%E6%8C%89%E6%AD%A4%E5%BF%AB%E6%8D%B7%E9%94%AE%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">Shift + 左键单击在打开的文件名上按此快捷键，可以关闭当前打开文件 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Shift-%E6%BB%9A%E8%BD%AE%E5%89%8D%E5%90%8E%E6%BB%9A%E5%8A%A8%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E7%9A%84%E6%A8%AA%E5%90%91%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%BB%9A%E5%8A%A8-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">3.4.</span> <span class="nav-text">Shift + 滚轮前后滚动当前文件的横向滚动轴滚动 （必备）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%E3%80%81Ctrl-Alt"><span class="nav-number">4.</span> <span class="nav-text">4、Ctrl + Alt:</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Alt-L%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%AF%B9%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E5%92%8C%E6%95%B4%E4%B8%AA%E5%8C%85%E7%9B%AE%E5%BD%95%E4%BD%BF%E7%94%A8-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">Ctrl + Alt + L格式化代码，可以对当前文件和整个包目录使用 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Alt-O%E4%BC%98%E5%8C%96%E5%AF%BC%E5%85%A5%E7%9A%84%E7%B1%BB%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%AF%B9%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E5%92%8C%E6%95%B4%E4%B8%AA%E5%8C%85%E7%9B%AE%E5%BD%95%E4%BD%BF%E7%94%A8-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">4.2.</span> <span class="nav-text">Ctrl + Alt + O优化导入的类，可以对当前文件和整个包目录使用 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Alt-T%E5%AF%B9%E9%80%89%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E5%BC%B9%E5%87%BA%E7%8E%AF%E7%BB%95%E9%80%89%E9%A1%B9%E5%BC%B9%E5%87%BA%E5%B1%82-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">4.3.</span> <span class="nav-text">Ctrl + Alt + T对选中的代码弹出环绕选项弹出层 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Alt-S%E6%89%93%E5%BC%80-IntelliJ-IDEA-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">4.4.</span> <span class="nav-text">Ctrl + Alt + S打开 IntelliJ IDEA 系统设置 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Alt-%E5%B7%A6%E6%96%B9%E5%90%91%E9%94%AE%E9%80%80%E5%9B%9E%E5%88%B0%E4%B8%8A%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E7%9A%84%E5%9C%B0%E6%96%B9-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">4.5.</span> <span class="nav-text">Ctrl + Alt + 左方向键退回到上一个操作的地方 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Alt-%E5%8F%B3%E6%96%B9%E5%90%91%E9%94%AE%E5%89%8D%E8%BF%9B%E5%88%B0%E4%B8%8A%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E7%9A%84%E5%9C%B0%E6%96%B9-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">4.6.</span> <span class="nav-text">Ctrl + Alt + 右方向键前进到上一个操作的地方 （必备）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5%E3%80%81Ctrl-Shift"><span class="nav-number">5.</span> <span class="nav-text">5、Ctrl + Shift:</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-J%E8%87%AA%E5%8A%A8%E5%B0%86%E4%B8%8B%E4%B8%80%E8%A1%8C%E5%90%88%E5%B9%B6%E5%88%B0%E5%BD%93%E5%89%8D%E8%A1%8C%E6%9C%AB%E5%B0%BE-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">Ctrl + Shift + J自动将下一行合并到当前行末尾 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-W%E9%80%92%E8%BF%9B%E5%BC%8F%E5%8F%96%E6%B6%88%E9%80%89%E6%8B%A9%E4%BB%A3%E7%A0%81%E5%9D%97%E3%80%82%E5%8F%AF%E9%80%89%E4%B8%AD%E5%85%89%E6%A0%87%E6%89%80%E5%9C%A8%E7%9A%84%E5%8D%95%E8%AF%8D%E6%88%96%E6%AE%B5%E8%90%BD%EF%BC%8C%E8%BF%9E%E7%BB%AD%E6%8C%89%E4%BC%9A%E5%9C%A8%E5%8E%9F%E6%9C%89%E9%80%89%E4%B8%AD%E7%9A%84%E5%9F%BA%E7%A1%80%E4%B8%8A%E5%86%8D%E6%89%A9%E5%B1%95%E5%8F%96%E6%B6%88%E9%80%89%E4%B8%AD%E8%8C%83%E5%9B%B4-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.2.</span> <span class="nav-text">Ctrl + Shift + W递进式取消选择代码块。可选中光标所在的单词或段落，连续按会在原有选中的基础上再扩展取消选中范围 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-N%E9%80%9A%E8%BF%87%E6%96%87%E4%BB%B6%E5%90%8D%E5%AE%9A%E4%BD%8D-%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6-%E7%9B%AE%E5%BD%95%EF%BC%8C%E6%89%93%E5%BC%80%E7%9B%AE%E5%BD%95%E9%9C%80%E8%A6%81%E5%9C%A8%E8%BE%93%E5%85%A5%E7%9A%84%E5%86%85%E5%AE%B9%E5%90%8E%E9%9D%A2%E5%A4%9A%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%AD%A3%E6%96%9C%E6%9D%A0-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.3.</span> <span class="nav-text">Ctrl + Shift + N通过文件名定位 &#x2F; 打开文件 &#x2F; 目录，打开目录需要在输入的内容后面多加一个正斜杠 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-U%E5%AF%B9%E9%80%89%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E8%BF%9B%E8%A1%8C%E5%A4%A7-%E5%B0%8F%E5%86%99%E8%BD%AE%E6%B5%81%E8%BD%AC%E6%8D%A2-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.4.</span> <span class="nav-text">Ctrl + Shift + U对选中的代码进行大 &#x2F; 小写轮流转换 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-T%E5%AF%B9%E5%BD%93%E5%89%8D%E7%B1%BB%E7%94%9F%E6%88%90%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E7%B1%BB%EF%BC%8C%E5%A6%82%E6%9E%9C%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E7%B1%BB%E5%88%99%E5%8F%AF%E4%BB%A5%E8%BF%9B%E8%A1%8C%E9%80%89%E6%8B%A9-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.5.</span> <span class="nav-text">Ctrl + Shift + T对当前类生成单元测试类，如果已经存在的单元测试类则可以进行选择 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-C%E5%A4%8D%E5%88%B6%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E7%A3%81%E7%9B%98%E8%B7%AF%E5%BE%84%E5%88%B0%E5%89%AA%E8%B4%B4%E6%9D%BF-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.6.</span> <span class="nav-text">Ctrl + Shift + C复制当前文件磁盘路径到剪贴板 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-B%E8%B7%B3%E8%BD%AC%E5%88%B0%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E%E5%A4%84-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.7.</span> <span class="nav-text">Ctrl + Shift + B跳转到类型声明处 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-%E4%BB%A3%E7%A0%81%E5%9D%97%E6%B3%A8%E9%87%8A-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.8.</span> <span class="nav-text">Ctrl + Shift + &#x2F;代码块注释 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-%E9%80%89%E4%B8%AD%E4%BB%8E%E5%85%89%E6%A0%87%E6%89%80%E5%9C%A8%E4%BD%8D%E7%BD%AE%E5%88%B0%E5%AE%83%E7%9A%84%E9%A1%B6%E9%83%A8%E4%B8%AD%E6%8B%AC%E5%8F%B7%E4%BD%8D%E7%BD%AE-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.9.</span> <span class="nav-text">Ctrl + Shift + [选中从光标所在位置到它的顶部中括号位置 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-%E9%80%89%E4%B8%AD%E4%BB%8E%E5%85%89%E6%A0%87%E6%89%80%E5%9C%A8%E4%BD%8D%E7%BD%AE%E5%88%B0%E5%AE%83%E7%9A%84%E5%BA%95%E9%83%A8%E4%B8%AD%E6%8B%AC%E5%8F%B7%E4%BD%8D%E7%BD%AE-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.10.</span> <span class="nav-text">Ctrl + Shift + ]选中从光标所在位置到它的底部中括号位置 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-%E5%B1%95%E5%BC%80%E6%89%80%E6%9C%89%E4%BB%A3%E7%A0%81-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.11.</span> <span class="nav-text">Ctrl + Shift + +展开所有代码 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-%E6%8A%98%E5%8F%A0%E6%89%80%E6%9C%89%E4%BB%A3%E7%A0%81-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.12.</span> <span class="nav-text">Ctrl + Shift + -折叠所有代码 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-F7%E9%AB%98%E4%BA%AE%E6%98%BE%E7%A4%BA%E6%89%80%E6%9C%89%E8%AF%A5%E9%80%89%E4%B8%AD%E6%96%87%E6%9C%AC%EF%BC%8C%E6%8C%89Esc%E9%AB%98%E4%BA%AE%E6%B6%88%E5%A4%B1-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.13.</span> <span class="nav-text">Ctrl + Shift + F7高亮显示所有该选中文本，按Esc高亮消失 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-F12%E7%BC%96%E8%BE%91%E5%99%A8%E6%9C%80%E5%A4%A7%E5%8C%96-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.14.</span> <span class="nav-text">Ctrl + Shift + F12编辑器最大化 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-Enter%E8%87%AA%E5%8A%A8%E7%BB%93%E6%9D%9F%E4%BB%A3%E7%A0%81%EF%BC%8C%E8%A1%8C%E6%9C%AB%E8%87%AA%E5%8A%A8%E6%B7%BB%E5%8A%A0%E5%88%86%E5%8F%B7-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.15.</span> <span class="nav-text">Ctrl + Shift + Enter自动结束代码，行末自动添加分号 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-Backspace%E9%80%80%E5%9B%9E%E5%88%B0%E4%B8%8A%E6%AC%A1%E4%BF%AE%E6%94%B9%E7%9A%84%E5%9C%B0%E6%96%B9-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.16.</span> <span class="nav-text">Ctrl + Shift + Backspace退回到上次修改的地方 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-1-2-3%E2%80%A69%E5%BF%AB%E9%80%9F%E6%B7%BB%E5%8A%A0%E6%8C%87%E5%AE%9A%E6%95%B0%E5%80%BC%E7%9A%84%E4%B9%A6%E7%AD%BE-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.17.</span> <span class="nav-text">Ctrl + Shift + 1,2,3…9快速添加指定数值的书签 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-%E5%B7%A6%E9%94%AE%E5%8D%95%E5%87%BB%E6%8A%8A%E5%85%89%E6%A0%87%E6%94%BE%E5%9C%A8%E6%9F%90%E4%B8%AA%E7%B1%BB%E5%8F%98%E9%87%8F%E4%B8%8A%EF%BC%8C%E6%8C%89%E6%AD%A4%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E5%AE%9A%E4%BD%8D%E5%88%B0%E8%AF%A5%E7%B1%BB%E4%B8%AD-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.18.</span> <span class="nav-text">Ctrl + Shift + 左键单击把光标放在某个类变量上，按此快捷键可以直接定位到该类中 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-%E5%B7%A6%E6%96%B9%E5%90%91%E9%94%AE%E5%9C%A8%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6%E4%B8%8A%EF%BC%8C%E5%85%89%E6%A0%87%E8%B7%B3%E8%BD%AC%E5%88%B0%E5%BD%93%E5%89%8D%E5%8D%95%E8%AF%8D-%E4%B8%AD%E6%96%87%E5%8F%A5%E7%9A%84%E5%B7%A6%E4%BE%A7%E5%BC%80%E5%A4%B4%E4%BD%8D%E7%BD%AE%EF%BC%8C%E5%90%8C%E6%97%B6%E9%80%89%E4%B8%AD%E8%AF%A5%E5%8D%95%E8%AF%8D-%E4%B8%AD%E6%96%87%E5%8F%A5-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.19.</span> <span class="nav-text">Ctrl + Shift + 左方向键在代码文件上，光标跳转到当前单词 &#x2F; 中文句的左侧开头位置，同时选中该单词 &#x2F; 中文句 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-%E5%8F%B3%E6%96%B9%E5%90%91%E9%94%AE%E5%9C%A8%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6%E4%B8%8A%EF%BC%8C%E5%85%89%E6%A0%87%E8%B7%B3%E8%BD%AC%E5%88%B0%E5%BD%93%E5%89%8D%E5%8D%95%E8%AF%8D-%E4%B8%AD%E6%96%87%E5%8F%A5%E7%9A%84%E5%8F%B3%E4%BE%A7%E5%BC%80%E5%A4%B4%E4%BD%8D%E7%BD%AE%EF%BC%8C%E5%90%8C%E6%97%B6%E9%80%89%E4%B8%AD%E8%AF%A5%E5%8D%95%E8%AF%8D-%E4%B8%AD%E6%96%87%E5%8F%A5-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.20.</span> <span class="nav-text">Ctrl + Shift + 右方向键在代码文件上，光标跳转到当前单词 &#x2F; 中文句的右侧开头位置，同时选中该单词 &#x2F; 中文句 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-%E5%89%8D%E6%96%B9%E5%90%91%E9%94%AE%E5%85%89%E6%A0%87%E6%94%BE%E5%9C%A8%E6%96%B9%E6%B3%95%E5%90%8D%E4%B8%8A%EF%BC%8C%E5%B0%86%E6%96%B9%E6%B3%95%E7%A7%BB%E5%8A%A8%E5%88%B0%E4%B8%8A%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%E5%89%8D%E9%9D%A2%EF%BC%8C%E8%B0%83%E6%95%B4%E6%96%B9%E6%B3%95%E6%8E%92%E5%BA%8F-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.21.</span> <span class="nav-text">Ctrl + Shift + 前方向键光标放在方法名上，将方法移动到上一个方法前面，调整方法排序 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Ctrl-Shift-%E5%90%8E%E6%96%B9%E5%90%91%E9%94%AE%E5%85%89%E6%A0%87%E6%94%BE%E5%9C%A8%E6%96%B9%E6%B3%95%E5%90%8D%E4%B8%8A%EF%BC%8C%E5%B0%86%E6%96%B9%E6%B3%95%E7%A7%BB%E5%8A%A8%E5%88%B0%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%E5%89%8D%E9%9D%A2%EF%BC%8C%E8%B0%83%E6%95%B4%E6%96%B9%E6%B3%95%E6%8E%92%E5%BA%8F-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">5.22.</span> <span class="nav-text">Ctrl + Shift + 后方向键光标放在方法名上，将方法移动到下一个方法前面，调整方法排序 （必备）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6%E3%80%81Alt-Shift"><span class="nav-number">6.</span> <span class="nav-text">6、Alt + Shift:</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Alt-Shift-%E5%B7%A6%E9%94%AE%E5%8F%8C%E5%87%BB%E9%80%89%E6%8B%A9%E8%A2%AB%E5%8F%8C%E5%87%BB%E7%9A%84%E5%8D%95%E8%AF%8D-%E4%B8%AD%E6%96%87%E5%8F%A5%EF%BC%8C%E6%8C%89%E4%BD%8F%E4%B8%8D%E6%94%BE%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%90%8C%E6%97%B6%E9%80%89%E6%8B%A9%E5%85%B6%E4%BB%96%E5%8D%95%E8%AF%8D-%E4%B8%AD%E6%96%87%E5%8F%A5-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">6.1.</span> <span class="nav-text">Alt + Shift + 左键双击选择被双击的单词 &#x2F; 中文句，按住不放，可以同时选择其他单词 &#x2F; 中文句 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Alt-Shift-%E5%89%8D%E6%96%B9%E5%90%91%E9%94%AE%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87%E6%89%80%E5%9C%A8%E8%A1%8C%E5%90%91%E4%B8%8A%E7%A7%BB%E5%8A%A8-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">6.2.</span> <span class="nav-text">Alt + Shift + 前方向键移动光标所在行向上移动 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Alt-Shift-%E5%90%8E%E6%96%B9%E5%90%91%E9%94%AE%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87%E6%89%80%E5%9C%A8%E8%A1%8C%E5%90%91%E4%B8%8B%E7%A7%BB%E5%8A%A8-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">6.3.</span> <span class="nav-text">Alt + Shift + 后方向键移动光标所在行向下移动 （必备）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Alt-Shift-N%E9%80%89%E6%8B%A9-%E6%B7%BB%E5%8A%A0-task-%EF%BC%88%E5%BF%85%E5%A4%87%EF%BC%89"><span class="nav-number">6.4.</span> <span class="nav-text">Alt + Shift + N选择 &#x2F; 添加 task （必备）</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xieshanzhong</p>
+  <div class="site-description" itemprop="description">欢迎来到xieshanzhong的技术分享站~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xie1" title="GitHub → https://github.com/xie1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xieshanzhong66@gmail.com" title="E-Mail → mailto:xieshanzhong66@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://xie1.github.io/" title="https://xie1.github.io/" rel="noopener" target="_blank">Title</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.baidu.com/" title="https://www.baidu.com/" rel="noopener" target="_blank">百度搜索</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/" title="https://hexo.io/" rel="noopener" target="_blank">hexo</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xieshanzhong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

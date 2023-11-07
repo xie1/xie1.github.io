@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、资料二、总知识点 1、概念    Object类是Java中所有类的根类，即所有的类都继承了Object类 2、核心方法2.1、public boolean equals(Object obj)    equals方法的通用约定：         自反性：对于任何非null的引用值x，x.equals(x)必须返回true。         对称性：对于任何非null的引用值x和y，当且仅当y">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JDK源码之Object">
+<meta property="og:url" content="http://yoursite.com/2019/03/12/JDK%E6%BA%90%E7%A0%81%E4%B9%8BObject/index.html">
+<meta property="og:site_name" content="XIE&#39;S BLOG">
+<meta property="og:description" content="一、资料二、总知识点 1、概念    Object类是Java中所有类的根类，即所有的类都继承了Object类 2、核心方法2.1、public boolean equals(Object obj)    equals方法的通用约定：         自反性：对于任何非null的引用值x，x.equals(x)必须返回true。         对称性：对于任何非null的引用值x和y，当且仅当y">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.imgur.com/NuQM5N4.png">
+<meta property="article:published_time" content="2019-03-12T14:05:44.000Z">
+<meta property="article:modified_time" content="2023-11-03T08:46:51.438Z">
+<meta property="article:author" content="xieshanzhong">
+<meta property="article:tag" content="源码">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/NuQM5N4.png">
+
+<link rel="canonical" href="http://yoursite.com/2019/03/12/JDK%E6%BA%90%E7%A0%81%E4%B9%8BObject/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>JDK源码之Object | XIE'S BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="XIE'S BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XIE'S BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">xieshanzhong的博客小站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/12/JDK%E6%BA%90%E7%A0%81%E4%B9%8BObject/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xieshanzhong">
+      <meta itemprop="description" content="欢迎来到xieshanzhong的技术分享站~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XIE'S BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JDK源码之Object
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-12 22:05:44" itemprop="dateCreated datePublished" datetime="2019-03-12T22:05:44+08:00">2019-03-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-11-03 16:46:51" itemprop="dateModified" datetime="2023-11-03T16:46:51+08:00">2023-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%BA%90%E7%A0%81%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">源码篇</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="一、资料"><a href="#一、资料" class="headerlink" title="一、资料"></a>一、<em>资料</em></h3><h3 id="二、总知识点"><a href="#二、总知识点" class="headerlink" title="二、总知识点"></a>二、<em>总知识点</em></h3><p><img src="https://i.imgur.com/NuQM5N4.png" alt="Object类的源码"></p>
+<h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3><pre><code>    Object类是Java中所有类的根类，即所有的类都继承了Object类
+</code></pre><h3 id="2、核心方法"><a href="#2、核心方法" class="headerlink" title="2、核心方法"></a>2、核心方法</h3><h4 id="2-1、public-boolean-equals-Object-obj"><a href="#2-1、public-boolean-equals-Object-obj" class="headerlink" title="2.1、public boolean equals(Object obj)"></a>2.1、public boolean equals(Object obj)</h4><pre><code>    equals方法的通用约定：
+        自反性：对于任何非null的引用值x，x.equals(x)必须返回true。
+        对称性：对于任何非null的引用值x和y，当且仅当y.equals(x)返回true时，x.equals(y)必须返回true。
+        传递性：对于任何非null的引用值x、y、z，如果x.equals(y)返回true，并且y.equals(z)返回true，那么x.equals(z)也必须返回ture。
+        一致性：对于任何非null的引用值x和y，只要equals的比较操作在对象中所用的信息没有被修改，多次调用x.equals(y)就会一致的返回ture，或者一致的返回false。
+        非空性：对于任何非null的引用值x，x.equals(null)必须返回false。
+</code></pre><p>  重写equals()方法时，应同时重写hashCode()方法</p>
+<h4 id="2-2、public-native-int-hashCode"><a href="#2-2、public-native-int-hashCode" class="headerlink" title="2.2、public native int hashCode()"></a>2.2、public native int hashCode()</h4><pre><code>    - 在程序相同执行过程中多次调用同个对象，哈希值必须返回相同。但不是相同调用过程则不必相同； 
+    - 如果两个对象调用equals()方法相同，则hashCode()方法返回值必须相同； 
+    - 如果两个对象调用equals()方法不相同，并不需要两个对象的哈希值不相同。但是编程的时候必须意识到，不同的对象产生不同的哈希值可以提高像HashTable这样类的性能
+</code></pre><h4 id="2-3、protected-native-Object-clone-throws-CloneNotSupportedException"><a href="#2-3、protected-native-Object-clone-throws-CloneNotSupportedException" class="headerlink" title="2.3、protected native Object clone() throws CloneNotSupportedException"></a>2.3、protected native Object clone() throws CloneNotSupportedException</h4><pre><code>    创建并且返回一个对象的复制，clone()的正确调用是需要实现Cloneable接口，如果没有实现Cloneable接口，并且子类直接调用Object类的clone()方法，则会抛出CloneNotSupportedException异常。
+ *    x.clone() != x 
+ *    x.clone().getClass() == x.getClass();
+ *    x.clone().equals(x);
+ *    这些表达式一般都为true，但是并不是绝对需要的。
+ *    一般而言，clone()是将这个对象复制一次，变成两个对象，都有着自己的内存空间，而不是只建立一个引用，所以x.clone() != x；为true
+ *    x.clone().getClass() == x.getClass();为true说明两个对象的运行时对象相同
+ *    x.clone.equals(x)；依赖于equals()方法的重写，如果只是调用Object的equals()方法，那么这个表达式返回false，因为Object的equals()
+ * 方法比较的是对象的地址。
+ * 
+ * 深拷贝和浅拷贝：
+ *    浅拷贝是将原始对象中的数据型字段拷贝到新对象中去，将引用型字段的“引用”复制到新对象中去，
+ * 不把“引用的对象”复制进去，所以原始对象和新对象引用同一对象，新对象中的引用型字段发生变化会
+ * 导致原始对象中的对应字段也发生变化。深拷贝是在引用方面不同，深拷贝就是创建一个新的和原始字
+ * 段的内容相同的字段，是两个一样大的数据段，所以两者的引用是不同的，之后的新对象中的引用型字
+ * 段发生改变，不会引起原始对象中的字段发生改变。
+</code></pre><p>详细的clone的浅复制与深复制<a href="https://www.cnblogs.com/Qian123/p/5710533.html" title="浅复制与深复制">https://www.cnblogs.com/Qian123/p/5710533.html</a></p>
+<h4 id="2-4、public-String-toString"><a href="#2-4、public-String-toString" class="headerlink" title="2.4、public String toString()"></a>2.4、public String toString()</h4><pre><code>public String toString() &#123;
+    return getClass().getName() + &quot;@&quot; + Integer.toHexString(hashCode());
+&#125;
+</code></pre><h4 id="2-5、public-final-native-void-notify-public-final-native-void-notifyAll"><a href="#2-5、public-final-native-void-notify-public-final-native-void-notifyAll" class="headerlink" title="2.5、public final native void notify()/public final native void notifyAll()"></a>2.5、public final native void notify()/public final native void notifyAll()</h4><pre><code>     *唤醒正在此对象上等待的一个线程。 如果有多个线程正在等待此对象，则选择其中一个线程被唤醒。 选择是任意的，由JVM实施决定。
+     * 线程通过调用&#123;@code wait&#125;方法等待获取对象。
+     *在当前线程放弃对该对象的锁定之前，唤醒的线程(就绪状态)将无法继续。唤醒的线程将以普通的方式与可能正在竞争同步此对象的任何其他线程
+     * 竞争; 例如，唤醒线程在成为锁定此对象的下一个线程时没有可靠的特权或劣势。
+     * 这个方法只能被对象的所有者线程调用，线程以以下三种方式成为对象的所有者：
+     *     1、通过执行该对象的同步实例方法
+     *     2、通过执行该对象的同步代码块
+     *     3、通过执行该对象的静态同步方法。
+     *同一时刻只能有一个线程持有该对象的锁
+</code></pre><h4 id="2-6、-wait-long-timeout-wait-long-timeout-int-nanos-wait"><a href="#2-6、-wait-long-timeout-wait-long-timeout-int-nanos-wait" class="headerlink" title="2.6、 wait(long timeout)/wait(long timeout, int nanos)/wait();"></a>2.6、 wait(long timeout)/wait(long timeout, int nanos)/wait();</h4><pre><code>     使当前线程进入等待状态，直至其他线程调用notify()或者notifyAll()方法，又或是达到指定时间
+     *   当前线程必须持有该对象的锁。
+     *   这个方法使得当前线程T 进入该对象的等待队列中，直到以下四件事情发生：
+     *      1、有其他线程调用了notify()方法，且线程T正好被选为唤醒的线程
+     *      2、有其他线程调用了notifyAll()方法
+     *      3、其他线程调用了interrupt()方法中断线程T
+     *      4、等待的时间超过了wait制定的时间。但是，如果&#123;@code timeout&#125;为零，则不考虑实时，线程只是等待其他线程唤醒。
+     *   线程被唤醒后就从Object的等待集合中删除，并且能够被重新调度
+     *   同时JDK中说明了线程可以在以上四种情况之外被唤醒，这种情况称为“伪唤醒”。
+     *   解决方法是将判断条件放入while循环中：
+     *              synchronized(obj)&#123;
+     *                 while(condition)&#123; obj.wait(); &#125;
+</code></pre><h3 id="3、其他方法"><a href="#3、其他方法" class="headerlink" title="3、其他方法"></a>3、其他方法</h3><h4 id="3-1、public-final-Class-lt-gt-getClass"><a href="#3-1、public-final-Class-lt-gt-getClass" class="headerlink" title="3.1、public final Class&lt;?&gt; getClass()"></a>3.1、public final Class&lt;?&gt; getClass()</h4><pre><code>    返回此对象运行时的类。返回的类对象是由static锁方法锁住的对象
+</code></pre><h4 id="3-2、protected-void-finalize"><a href="#3-2、protected-void-finalize" class="headerlink" title="3.2、protected void finalize()"></a>3.2、protected void finalize()</h4><pre><code>    当GC（垃圾回收器）确定对象没有任何引用的时候，调用此方法。子类可以重写此方法来释放系统资源或进行其他的清理。
+    JVM虚拟机不能确定哪个线程来调用对象的finalize()方法，但是能确定的是调用finalize()方法的线程不会阻塞用户线程。如果执行方法时抛出异常，则对应对象的finalize()方法终止执行。另外，每个对象都只会执行一次finalize()方法
+</code></pre><h4 id="3-3、private-static-native-void-registerNatives"><a href="#3-3、private-static-native-void-registerNatives" class="headerlink" title="3.3、private static native void registerNatives()"></a>3.3、private static native void registerNatives()</h4><h3 id="三、重点知识点实例"><a href="#三、重点知识点实例" class="headerlink" title="三、重点知识点实例"></a>三、<em>重点知识点实例</em></h3><h3 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h3><p><a href="https://blog.csdn.net/fendianli6830/article/details/81478538">https://blog.csdn.net/fendianli6830/article/details/81478538</a></p>
+<p><a href="http://www.voidcn.com/article/p-amfilqsb-brv.html">http://www.voidcn.com/article/p-amfilqsb-brv.html</a></p>
+<h3 id="五、思维扩展"><a href="#五、思维扩展" class="headerlink" title="五、思维扩展"></a>五、<em>思维扩展</em></h3><h3 id="六、存在疑问"><a href="#六、存在疑问" class="headerlink" title="六、存在疑问"></a>六、<em>存在疑问</em></h3>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%BA%90%E7%A0%81/" rel="tag"># 源码</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/06/%E5%9F%BA%E7%A1%80_Linux%E5%AD%A6%E4%B9%A0/" rel="prev" title="Linux学习">
+      <i class="fa fa-chevron-left"></i> Linux学习
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/13/JDK%E6%BA%90%E7%A0%81%E4%B9%8BString/" rel="next" title="JDK源码之String">
+      JDK源码之String <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%B5%84%E6%96%99"><span class="nav-number">1.</span> <span class="nav-text">一、资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%80%BB%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">二、总知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">3.</span> <span class="nav-text">1、概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">2、核心方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1%E3%80%81public-boolean-equals-Object-obj"><span class="nav-number">4.1.</span> <span class="nav-text">2.1、public boolean equals(Object obj)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2%E3%80%81public-native-int-hashCode"><span class="nav-number">4.2.</span> <span class="nav-text">2.2、public native int hashCode()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3%E3%80%81protected-native-Object-clone-throws-CloneNotSupportedException"><span class="nav-number">4.3.</span> <span class="nav-text">2.3、protected native Object clone() throws CloneNotSupportedException</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4%E3%80%81public-String-toString"><span class="nav-number">4.4.</span> <span class="nav-text">2.4、public String toString()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5%E3%80%81public-final-native-void-notify-public-final-native-void-notifyAll"><span class="nav-number">4.5.</span> <span class="nav-text">2.5、public final native void notify()&#x2F;public final native void notifyAll()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6%E3%80%81-wait-long-timeout-wait-long-timeout-int-nanos-wait"><span class="nav-number">4.6.</span> <span class="nav-text">2.6、 wait(long timeout)&#x2F;wait(long timeout, int nanos)&#x2F;wait();</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%85%B6%E4%BB%96%E6%96%B9%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">3、其他方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1%E3%80%81public-final-Class-lt-gt-getClass"><span class="nav-number">5.1.</span> <span class="nav-text">3.1、public final Class&lt;?&gt; getClass()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2%E3%80%81protected-void-finalize"><span class="nav-number">5.2.</span> <span class="nav-text">3.2、protected void finalize()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3%E3%80%81private-static-native-void-registerNatives"><span class="nav-number">5.3.</span> <span class="nav-text">3.3、private static native void registerNatives()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%87%8D%E7%82%B9%E7%9F%A5%E8%AF%86%E7%82%B9%E5%AE%9E%E4%BE%8B"><span class="nav-number">6.</span> <span class="nav-text">三、重点知识点实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">7.</span> <span class="nav-text">四、参考资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%80%9D%E7%BB%B4%E6%89%A9%E5%B1%95"><span class="nav-number">8.</span> <span class="nav-text">五、思维扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AD%98%E5%9C%A8%E7%96%91%E9%97%AE"><span class="nav-number">9.</span> <span class="nav-text">六、存在疑问</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xieshanzhong</p>
+  <div class="site-description" itemprop="description">欢迎来到xieshanzhong的技术分享站~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xie1" title="GitHub → https://github.com/xie1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xieshanzhong66@gmail.com" title="E-Mail → mailto:xieshanzhong66@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://xie1.github.io/" title="https://xie1.github.io/" rel="noopener" target="_blank">Title</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.baidu.com/" title="https://www.baidu.com/" rel="noopener" target="_blank">百度搜索</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/" title="https://hexo.io/" rel="noopener" target="_blank">hexo</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xieshanzhong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、思维导图1、http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;37b9cf3780060bebda0bfa6ab2900caa2、http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;c534c86874171144be621388f1b10848二、总知识点面向对象之类&#x2F;对象1、类1、概念：类可以被定义为描述对象支持类型的行为、状态的的模板、蓝图 1.1、构造器      无参构造器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_基本特性(二)">
+<meta property="og:url" content="http://yoursite.com/2018/11/21/Java_2_%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/index.html">
+<meta property="og:site_name" content="XIE&#39;S BLOG">
+<meta property="og:description" content="一、思维导图1、http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;37b9cf3780060bebda0bfa6ab2900caa2、http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;c534c86874171144be621388f1b10848二、总知识点面向对象之类&#x2F;对象1、类1、概念：类可以被定义为描述对象支持类型的行为、状态的的模板、蓝图 1.1、构造器      无参构造器">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-11-21T06:17:59.000Z">
+<meta property="article:modified_time" content="2023-11-03T08:46:51.450Z">
+<meta property="article:author" content="xieshanzhong">
+<meta property="article:tag" content="基本特性">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2018/11/21/Java_2_%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>Java_基本特性(二) | XIE'S BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="XIE'S BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XIE'S BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">xieshanzhong的博客小站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/Java_2_%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xieshanzhong">
+      <meta itemprop="description" content="欢迎来到xieshanzhong的技术分享站~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XIE'S BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java_基本特性(二)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-21 14:17:59" itemprop="dateCreated datePublished" datetime="2018-11-21T14:17:59+08:00">2018-11-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-11-03 16:46:51" itemprop="dateModified" datetime="2023-11-03T16:46:51+08:00">2023-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h4><h5 id="1、http-naotu-baidu-com-file-37b9cf3780060bebda0bfa6ab2900caa"><a href="#1、http-naotu-baidu-com-file-37b9cf3780060bebda0bfa6ab2900caa" class="headerlink" title="1、http://naotu.baidu.com/file/37b9cf3780060bebda0bfa6ab2900caa"></a>1、<a href="http://naotu.baidu.com/file/37b9cf3780060bebda0bfa6ab2900caa">http://naotu.baidu.com/file/37b9cf3780060bebda0bfa6ab2900caa</a></h5><h5 id="2、http-naotu-baidu-com-file-c534c86874171144be621388f1b10848"><a href="#2、http-naotu-baidu-com-file-c534c86874171144be621388f1b10848" class="headerlink" title="2、http://naotu.baidu.com/file/c534c86874171144be621388f1b10848"></a>2、<a href="http://naotu.baidu.com/file/c534c86874171144be621388f1b10848">http://naotu.baidu.com/file/c534c86874171144be621388f1b10848</a></h5><h4 id="二、总知识点"><a href="#二、总知识点" class="headerlink" title="二、总知识点"></a>二、<em>总知识点</em></h4><h4 id="面向对象之类-对象"><a href="#面向对象之类-对象" class="headerlink" title="面向对象之类/对象"></a>面向对象之类/对象</h4><h5 id="1、类"><a href="#1、类" class="headerlink" title="1、类"></a>1、类</h5><p>1、概念：类可以被定义为描述对象支持类型的行为、状态的的模板、蓝图</p>
+<pre><code>1.1、构造器
+     无参构造器：默认构造器
+     有参构造器
+1.2、变量
+    1.2.1、成员变量：类中，方法体之外
+    1.2.2、静态变量：类变量也声明在类中，方法体之外，但必须声明为static类型
+    1.2.3、局部变量：方法体内
+    成员变量和静态变量的之间区别：
+        类的每个实例共享一个类变量的单个副本。
+        您可在类本身上调用类方法，而无需拥有实例。
+        实例方法可访问类变量，但类方法无法访问实例变量。
+        类方法只能访问类变量。
+</code></pre><p>2、分类</p>
+<p>​    2.1、抽象类<br>​        概念：如果一个类没有足够的信息来描述一个具体的对象，而需要其他具体的类来支撑它，那么这样的类我们称它为抽象类<br>​        注意事项:<br>​        1、抽象类不能被实例化，实例化的工作应该交由它的子类来完成，它只需要有一个引用即可。<br>​        2、抽象方法必须由子类来进行重写。<br>​        3、只要包含一个抽象方法的抽象类，该方法必须要定义成抽象类，不管是否还包含有其他方法。<br>​        4、抽象类中可以包含具体的方法，当然也可以不包含抽象方法。<br>​        5、子类中的抽象方法不能与父类的抽象方法同名。<br>​        6、abstract 不能与 final 并列修饰同一个类。<br>​        7、abstract 不能与 private、static、final 或 native 并列修饰同一个方法。</p>
+<p>​    2.2、接口<br>​        概念:接口是用来建立类与类之间的协议，它所提供的只是一种形式，而没有具体的实现。同时实现该接口的实现类必须要实现该接口的所有方法，通过使用 implements 关键字，他表示该类在遵循某个或某组特定的接口<br>​<br>​        注意事项:<br>​        1、1个 Interface 的方所有法访问权限自动被声明为 public。确切的说只能为 public，当然你可以显示的声明为 protected、private，但是编译会出错！<br>​        2、接口中可以定义“成员变量”，或者说是不可变的常量，因为接口中的“成员变量”会自动变为为 public static final。可以通过类命名直接访问：ImplementClass.name。<br>​        3、接口中不存在实现的方法。<br>​        4、实现接口的非抽象类必须要实现该接口的所有方法。抽象类可以不用实现。<br>​        5、不能使用 new 操作符实例化一个接口，但可以声明一个接口变量，该变量必须引用 (refer to) 一个实现该接口的类的对象。可以使用 instanceof 检查一个对象是否实现了某个特定的接口。例如：if(anObject instanceof Comparable){}。<br>​        6、在实现多接口的时候一定要避免方法名的重复。</p>
+<p>​    2.3、内部类<br>​        2.3.1、成员内部类<br>​        外围类的一个成员，所以他是可以无限制的访问外围类的所有 成员属性和方法，尽管是 private 的，但是外围类要访问内部类的成员属性和方法则需要通过内部类实例来访问<br>​        第一：成员内部类中不能存在任何 static 的变量和方法；第二：成员内部类是依附于外围类的，所以只有先创建了外围类才能够创建内部类<br>​<br>​        2.3.1、局部内部类<br>​        2.3.1、匿名内部类<br>​        2.3.1、静态内部类</p>
+<h5 id="2、对象"><a href="#2、对象" class="headerlink" title="2、对象"></a>2、对象</h5><p>​    对象具有状态和行为<br>​<br>​    创建一个对象<br>​<br>​    声明：变量声明可以声明其所代表的对象类型。<br>​    实例化：“新的”关键词用来创造对象。<br>​    初始化：“新的”关键词伴随着一个构造器的启用，这个将新的对象初始化。<br>​<br>​    访问实体变量/方法<br>​<br>​    JVM垃圾回收机制回收对象</p>
+<p>​        </p>
+<h4 id="Java基本特性"><a href="#Java基本特性" class="headerlink" title="Java基本特性"></a>Java基本特性</h4><h5 id="1、封装"><a href="#1、封装" class="headerlink" title="1、封装"></a>1、封装</h5><p>1、封装是指隐藏对象的属性和细节，但对外提供公共的访问方式</p>
+<p>2、方法</p>
+<p>​    1、方法重载（方法名称相同，参数项不相同，重载只跟参数有关，与返回类型无关）<br>​        注意：<br>​            使用重载方法时，记住这两条重要的规则：<br>​            不能仅通过更改一个方法的返回类型来重载该方法。<br>​            不能有两个名称和参数列表都相同的方法<br>​    2、构造方法重载<br>​<br>​    3、this关键字（代表对象，this就是所在函数的所属对象的引用）<br>​        a、当成员变量和局部变量重名，可以用关键字this来区分。<br>​        b、this也可以用于在构造函数中调用其它构造函数。（this只能定义在构造函数的第一行，因为初始化动作必须要先执行）</p>
+<h5 id="2、-继承"><a href="#2、-继承" class="headerlink" title="2、 继承"></a>2、 继承</h5><p>1、继承可以被定义为一个对象获取另一个对象属性的过程</p>
+<p>2、方法</p>
+<p> 1、方法覆写</p>
+<p>（1）子类的方法的名称、参数签名和返回类型必须与父类的方法的名称、参数签名和返回类型一致</p>
+<p>（2）子类方法不能缩小父类的访问权限。</p>
+<p>（3）子类方法不能抛出比父类更多的异常</p>
+<p>（4）方法覆盖只存在于子类和父类（包括直接父类和间接父类）之间</p>
+<p>（5）父类的静态方法不能被子类覆盖为非静态方法。</p>
+<p>（6）子类可以定义与父类的静态方法同名的静态方法，以便在子类中隐藏父类的静态方法</p>
+<p>（7）父类的非静态方法不能被子类覆盖为静态方法</p>
+<p>（8）父类的私有方法不能被子类覆盖。</p>
+<p>（9）父类的抽象方法可以被子类通过两种途径覆盖：一是子类实现父类的抽象方法；二是子类重新声明父类的抽象方法（例如，扩大访问权限）</p>
+<p>（10）父类的非抽象方法可以被覆盖为抽象方法</p>
+<p>3、super关键字</p>
+<p>访问成员变量：super.成员变量</p>
+<p>访问构造方法：super（……）</p>
+<p>访问成员方法：super.成员方法()</p>
+<h5 id="3、-多态"><a href="#3、-多态" class="headerlink" title="3、 多态"></a>3、 多态</h5><p>1、多态性是指对象能够有多种形态。在 OOP 中最常用的多态性发生在当父类引用指向孩子类对象时</p>
+<p>2、转型</p>
+<p>向上类型转换（upcast）</p>
+<p>比如说将Cat类型转换为Animal类型，即将子类型转换为父类型</p>
+<p>向下类型转换（downcast）</p>
+<p>比如将Animal类型转换为Cat类型</p>
+<h5 id="4、-抽象"><a href="#4、-抽象" class="headerlink" title="4、 抽象"></a>4、 抽象</h5><p>1、抽象类</p>
+<p>有抽象方法的类就叫抽象类</p>
+<p>2、抽象方法</p>
+<p>在类中没有方法体的方法，就是抽象方法</p>
+<p>3、接口</p>
+<h4 id="三、重点知识点实例"><a href="#三、重点知识点实例" class="headerlink" title="三、重点知识点实例"></a>三、<em>重点知识点实例</em></h4><h4 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h4><h4 id="五、思维扩展"><a href="#五、思维扩展" class="headerlink" title="五、思维扩展"></a>五、<em>思维扩展</em></h4><h4 id="六、存在疑问"><a href="#六、存在疑问" class="headerlink" title="六、存在疑问"></a>六、<em>存在疑问</em></h4><pre><code>1、覆盖父类的方法和子类的方法加载顺序？
+</code></pre>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/" rel="tag"># 基本特性</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/11/21/Java_1_%E8%AF%AD%E6%B3%95/" rel="prev" title="Java_语法(一)">
+      <i class="fa fa-chevron-left"></i> Java_语法(一)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/11/21/Java_3_%E5%B8%B8%E7%94%A8API/" rel="next" title="Java_常用API(四)">
+      Java_常用API(四) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">一、思维导图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81http-naotu-baidu-com-file-37b9cf3780060bebda0bfa6ab2900caa"><span class="nav-number">1.1.</span> <span class="nav-text">1、http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;37b9cf3780060bebda0bfa6ab2900caa</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81http-naotu-baidu-com-file-c534c86874171144be621388f1b10848"><span class="nav-number">1.2.</span> <span class="nav-text">2、http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;c534c86874171144be621388f1b10848</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%80%BB%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">二、总知识点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E7%B1%BB-%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.</span> <span class="nav-text">面向对象之类&#x2F;对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E7%B1%BB"><span class="nav-number">3.1.</span> <span class="nav-text">1、类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.2.</span> <span class="nav-text">2、对象</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">Java基本特性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E5%B0%81%E8%A3%85"><span class="nav-number">4.1.</span> <span class="nav-text">1、封装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81-%E7%BB%A7%E6%89%BF"><span class="nav-number">4.2.</span> <span class="nav-text">2、 继承</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81-%E5%A4%9A%E6%80%81"><span class="nav-number">4.3.</span> <span class="nav-text">3、 多态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%E3%80%81-%E6%8A%BD%E8%B1%A1"><span class="nav-number">4.4.</span> <span class="nav-text">4、 抽象</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%87%8D%E7%82%B9%E7%9F%A5%E8%AF%86%E7%82%B9%E5%AE%9E%E4%BE%8B"><span class="nav-number">5.</span> <span class="nav-text">三、重点知识点实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">四、参考资料</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%80%9D%E7%BB%B4%E6%89%A9%E5%B1%95"><span class="nav-number">7.</span> <span class="nav-text">五、思维扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AD%98%E5%9C%A8%E7%96%91%E9%97%AE"><span class="nav-number">8.</span> <span class="nav-text">六、存在疑问</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xieshanzhong</p>
+  <div class="site-description" itemprop="description">欢迎来到xieshanzhong的技术分享站~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xie1" title="GitHub → https://github.com/xie1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xieshanzhong66@gmail.com" title="E-Mail → mailto:xieshanzhong66@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://xie1.github.io/" title="https://xie1.github.io/" rel="noopener" target="_blank">Title</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.baidu.com/" title="https://www.baidu.com/" rel="noopener" target="_blank">百度搜索</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/" title="https://hexo.io/" rel="noopener" target="_blank">hexo</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xieshanzhong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

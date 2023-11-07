@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="虚拟机内存区域与内存溢出异常    主要关注点：        1、jvm内存结构都是什么        2、对象分配规则    问题分析：    1、理解运行的数据区域划分为几块—&gt;概念    2、每一块区域主要存放的是什么，有什么功能—&gt;特性的理解    3、每一块最有可能出现的问题，例如内存溢出或泄露之类的—&gt;异常    4、如何定位这类问题的出现及解决，如何调整区域的设置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM_虚拟内存结构(二)">
+<meta property="og:url" content="http://yoursite.com/2018/11/18/JVM_2_JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="XIE&#39;S BLOG">
+<meta property="og:description" content="虚拟机内存区域与内存溢出异常    主要关注点：        1、jvm内存结构都是什么        2、对象分配规则    问题分析：    1、理解运行的数据区域划分为几块—&gt;概念    2、每一块区域主要存放的是什么，有什么功能—&gt;特性的理解    3、每一块最有可能出现的问题，例如内存溢出或泄露之类的—&gt;异常    4、如何定位这类问题的出现及解决，如何调整区域的设置">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.imgur.com/2OEJXlr.png">
+<meta property="og:image" content="https://i.imgur.com/2ATxWAC.png">
+<meta property="og:image" content="https://i.imgur.com/TplB2oA.png">
+<meta property="article:published_time" content="2018-11-18T07:02:55.000Z">
+<meta property="article:modified_time" content="2023-11-03T08:46:51.442Z">
+<meta property="article:author" content="xieshanzhong">
+<meta property="article:tag" content="JVM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/2OEJXlr.png">
+
+<link rel="canonical" href="http://yoursite.com/2018/11/18/JVM_2_JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>JVM_虚拟内存结构(二) | XIE'S BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="XIE'S BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XIE'S BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">xieshanzhong的博客小站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/JVM_2_JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xieshanzhong">
+      <meta itemprop="description" content="欢迎来到xieshanzhong的技术分享站~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XIE'S BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JVM_虚拟内存结构(二)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-18 15:02:55" itemprop="dateCreated datePublished" datetime="2018-11-18T15:02:55+08:00">2018-11-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-11-03 16:46:51" itemprop="dateModified" datetime="2023-11-03T16:46:51+08:00">2023-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>虚拟机内存区域与内存溢出异常<br>    主要关注点：<br>        1、jvm内存结构都是什么<br>        2、对象分配规则<br>    问题分析：<br>    1、理解运行的数据区域划分为几块—&gt;概念<br>    2、每一块区域主要存放的是什么，有什么功能—&gt;特性的理解<br>    3、每一块最有可能出现的问题，例如内存溢出或泄露之类的—&gt;异常<br>    4、如何定位这类问题的出现及解决，如何调整区域的设置—&gt;扩展<br>    5、此块区域与其他模块的之间的关系（垃圾回收机制等）—&gt;关系</p>
+<p>​        </p>
+<p>一、<em>思维导图</em><br><a href="http://naotu.baidu.com/file/424e5783104cee1155554921f0ca3cd7">http://naotu.baidu.com/file/424e5783104cee1155554921f0ca3cd7</a><br>二、<em>总知识点</em></p>
+<h3 id="1、运行时的数据区域划分"><a href="#1、运行时的数据区域划分" class="headerlink" title="1、运行时的数据区域划分"></a>1、运行时的数据区域划分</h3><p><img src="https://i.imgur.com/2OEJXlr.png" alt="运行时的数据区域"></p>
+<h4 id="1-1、程序计数器"><a href="#1-1、程序计数器" class="headerlink" title="1.1、程序计数器"></a>1.1、程序计数器</h4><p>​    1、存放内容：正在执行的虚拟机字节码指令的地址<br>​    2、特点：线程私有，每个线程都有自己的程序计数器    </p>
+<h4 id="1-2、Java虚拟机栈"><a href="#1-2、Java虚拟机栈" class="headerlink" title="1.2、Java虚拟机栈"></a>1.2、Java虚拟机栈</h4><p>1、存放内容：虚拟机栈描述的是Java方法执行的内存模型：每个方法被执行的时候都会同时创建一个栈帧（Stack Frame）用于存储局部变量表、操作栈、动态链接、方法出口等信息。每一个方法被调用直至执行完成的过程，就对应着一个栈帧在虚拟机栈中从入栈到出栈的过程<br>    1、描述Java方法执行的内存模型（栈帧）：<br>            1、局部变量表<br>            2、操作数栈<br>                字节码指令，先入后出<br>                调用其它的方法的时候是通过操作数栈来传递参数的<br>            3、动态连接<br>            4、返回地址，方法退出的过程实际上就等于把当前栈帧出栈，退出可能执行的操作<br>                退出种类<br>                执行引擎遇到人员一个方法返回的字节码指令<br>                方法执行过程中遇到了异常，而且这个异常没有在方法体内得到处理<br>    2、局部变量表：<br>            1、存放编译期间可知的各种基本类型，对象引用和returnAdress类型（指向字节码地址）<br>            2、单位64位的long和double占2slots的局部变量空间，其他类型1slot</p>
+<p>2、特点：线程私用<br>3、异常状况<br>        1、请求栈深度大于虚拟机允许的深度，将抛出StackOverflowError异常<br>        2、无法申请到足够的内存，将抛出OutOfMemoryError异常</p>
+<h4 id="1-3、本地方法栈"><a href="#1-3、本地方法栈" class="headerlink" title="1.3、本地方法栈"></a>1.3、本地方法栈</h4><p>​    类似于虚拟机栈，而本地方法则为虚拟机使用到的Native方法服务</p>
+<h4 id="1-4、Java堆"><a href="#1-4、Java堆" class="headerlink" title="1.4、Java堆"></a>1.4、Java堆</h4><p>​    存放对象实例（通过-Xmx（最大值）和-Xms（初始值）控制）<br>​    1、存放内容：对象实例及几乎所有的对象实例和数组都要再堆上分配<br>​    2、分区<br>​        1、新生代<br>​         Eden空间<br>​         From Survivor空间<br>​         To Survivor空间<br>​        2、老年代<br>​    3、特点:线程共享<br>​    4、异常状况：将抛出OutOfMemoryError异常</p>
+<h4 id="1-5、方法区"><a href="#1-5、方法区" class="headerlink" title="1.5、方法区"></a>1.5、方法区</h4><p>​    1、存放内容<br>​        已被虚拟机加载类信息<br>​        常量<br>​        静态变量<br>​        即时编译后的代码<br>​    2、特点 :线程共享,可以选择不实现垃圾收集<br>​    3、异常状况 : 将抛出OutOfMemoryError异常<br>​    4、运行时常量池</p>
+<p>宏观简述一下JVM加载类的工作流程：<br>    1、通过java.exe运行Java3yTest.class，随后被加载到JVM中，元空间存储着类的信息(包括类的名称、方法信息、字段信息..)。<br>    2、然后JVM找到Java3yTest的主函数入口(main)，为main函数创建栈帧，开始执行main函数<br>    3、main函数的第一条命令是Java3y java3y = new Java3y();就是让JVM创建一个Java3y对象，但是这时候方法区中没有Java3y类的信息，所以JVM马上加载Java3y类，把Java3y类的类型信息放到方法区中(元空间)<br>    4、加载完Java3y类之后，Java虚拟机做的第一件事情就是在堆区中为一个新的Java3y实例分配内存, 然后调用构造函数初始化Java3y实例，这个Java3y实例持有着指向方法区的Java3y类的类型信息（其中包含有方法表，java动态绑定的底层实现）的引用<br>    5、当使用java3y.setName(“Java3y”);的时候，JVM根据java3y引用找到Java3y对象，然后根据Java3y对象持有的引用定位到方法区中Java3y类的类型信息的方法表，获得setName()函数的字节码的地址<br>    6、为setName()函数创建栈帧，开始运行setName()函数</p>
+<hr>
+<h3 id="2、HotSpot虚拟机对象"><a href="#2、HotSpot虚拟机对象" class="headerlink" title="2、HotSpot虚拟机对象"></a>2、HotSpot虚拟机对象</h3><p>2.0、对象分配规则<br>        1、对象优先分配在Eden区，如果Eden区没有足够的空间时，虚拟机执行一次Minor GC。<br>        大对象直接进入老年代（大对象是指需要大量连续内存空间的对象）。这样做的目的是避免在Eden区和两个Survivor区之间发生大量的内存拷贝（新生代采用复制算法收集内存）。<br>        长期存活的对象进入老年代。虚拟机为每个对象定义了一个年龄计数器，如果对象经过了1次Minor GC那么对象会进入Survivor区，之后每经过一次Minor GC那么对象的年龄加1，知道达到阀值对象进入老年区。<br>        2、动态判断对象的年龄。如果Survivor区中相同年龄的所有对象大小的总和大于Survivor空间的一半，年龄大于或等于该年龄的对象可以直接进入老年代。<br>        3、空间分配担保。每次进行Minor GC时，JVM会计算Survivor区移至老年区的对象的平均大小，如果这个值大于老年区的剩余值大小则进行一次Full GC，如果小于检查HandlePromotionFailure设置，如果true则只进行Monitor GC,如果false则进行Full GC</p>
+<h4 id="2-1、对象的创建"><a href="#2-1、对象的创建" class="headerlink" title="2.1、对象的创建"></a>2.1、对象的创建</h4><h5 id="2-1-1、第一步"><a href="#2-1-1、第一步" class="headerlink" title="2.1.1、第一步"></a>2.1.1、第一步</h5><p>​    在Java堆上做操作：<br>​    1、检查常量池<br>​    2、检查类加载，解析，初始化<br>​    3、指针策略 :CAS 和 TLAB<br>​    4、空间分配 ：指针碰撞 和 空闲列表<br>​    5、初始化内存空间为零值<br>​    6、设置对象属性<br>​    7、完成对象创建</p>
+<h5 id="2-1-2、第二步"><a href="#2-1-2、第二步" class="headerlink" title="2.1.2、第二步"></a>2.1.2、第二步</h5><p>​    1、设置对象信息<br>​    2、初始化类信息</p>
+<h4 id="2-2、对象的内存布局"><a href="#2-2、对象的内存布局" class="headerlink" title="2.2、对象的内存布局"></a>2.2、对象的内存布局</h4><p>​    1、对象头<br>​        1、自身信息<br>​            1、哈希码<br>​            2、 GC分代年龄<br>​            3、 锁状态标志<br>​            4、 线程持有的锁<br>​            5、 偏向线程ID<br>​            6、 偏向时间戳<br>​        2、类型指针：指向它的类元数据的指针<br>​    2、实例数据<br>​    3、对齐填充</p>
+<h4 id="2-3、对象的访问定位"><a href="#2-3、对象的访问定位" class="headerlink" title="2.3、对象的访问定位"></a>2.3、对象的访问定位</h4><p>​    1、方式<br>​        1、句柄<br>​        2、直接指针</p>
+<p><img src="https://i.imgur.com/2ATxWAC.png" alt><br><img src="https://i.imgur.com/TplB2oA.png" alt></p>
+<hr>
+<h3 id="3、实战：OutOfMemoryError异常"><a href="#3、实战：OutOfMemoryError异常" class="headerlink" title="3、实战：OutOfMemoryError异常"></a>3、实战：OutOfMemoryError异常</h3><p>3.1、Java堆溢出<br>        -Xms : 设置堆的最小值<br>        -Xmx : 设置堆的最大值<br>3.2、虚拟机栈和本地方法栈溢出<br>        1、参数：-Xss<br>        2、单线程： 实际一般抛出的异常都是StackOverflowError<br>        3、多线程<br>            StackOverflowError<br>            OutOfMemoryError</p>
+<p>3.3、方法区和运行时常量池溢出<br>3.4、本机直接内存溢出<br>        -XX：MaxDirectMemorySize<br>        特点</p>
+<p>三、<em>参考资料</em><br><a href="https://juejin.im/post/5b45ef49f265da0f5140489cheading-13">https://juejin.im/post/5b45ef49f265da0f5140489cheading-13</a><br><a href="http://www.cnblogs.com/qiumingcheng/p/5398610.html" title="Java程序编译和运行的过程">http://www.cnblogs.com/qiumingcheng/p/5398610.html</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JVM/" rel="tag"># JVM</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/11/17/%E6%95%B4%E7%90%86hexo-github%E5%BB%BA%E5%8D%9A%E5%AE%A2/" rel="prev" title="整理hexo+github建博客">
+      <i class="fa fa-chevron-left"></i> 整理hexo+github建博客
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/11/18/JVM_3_0_GC%E7%AE%97%E6%B3%95%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/" rel="next" title="JVM_垃圾收集机制(三)">
+      JVM_垃圾收集机制(三) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">1、运行时的数据区域划分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1%E3%80%81%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">1.1、程序计数器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2%E3%80%81Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88"><span class="nav-number">1.2.</span> <span class="nav-text">1.2、Java虚拟机栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3%E3%80%81%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88"><span class="nav-number">1.3.</span> <span class="nav-text">1.3、本地方法栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4%E3%80%81Java%E5%A0%86"><span class="nav-number">1.4.</span> <span class="nav-text">1.4、Java堆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5%E3%80%81%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="nav-number">1.5.</span> <span class="nav-text">1.5、方法区</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81HotSpot%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.</span> <span class="nav-text">2、HotSpot虚拟机对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1%E3%80%81%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、对象的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1%E3%80%81%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1、第一步</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2%E3%80%81%E7%AC%AC%E4%BA%8C%E6%AD%A5"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2、第二步</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2%E3%80%81%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、对象的内存布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3%E3%80%81%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AE%BF%E9%97%AE%E5%AE%9A%E4%BD%8D"><span class="nav-number">2.3.</span> <span class="nav-text">2.3、对象的访问定位</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%AE%9E%E6%88%98%EF%BC%9AOutOfMemoryError%E5%BC%82%E5%B8%B8"><span class="nav-number">3.</span> <span class="nav-text">3、实战：OutOfMemoryError异常</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xieshanzhong</p>
+  <div class="site-description" itemprop="description">欢迎来到xieshanzhong的技术分享站~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xie1" title="GitHub → https://github.com/xie1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xieshanzhong66@gmail.com" title="E-Mail → mailto:xieshanzhong66@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://xie1.github.io/" title="https://xie1.github.io/" rel="noopener" target="_blank">Title</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.baidu.com/" title="https://www.baidu.com/" rel="noopener" target="_blank">百度搜索</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/" title="https://hexo.io/" rel="noopener" target="_blank">hexo</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xieshanzhong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

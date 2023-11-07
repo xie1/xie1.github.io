@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="简介    本站的博文都会采用一种目前统一的记录方式：        一、思维导图        二、总知识点        三、重点知识点实例        四、参考资料        五、思维扩展        六、存在疑问     一、体系思维导图Java知识导图（持续更新）：http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;b468ed58b8af303374308be0a6858e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="构建知识体系（持续更新）">
+<meta property="og:url" content="http://yoursite.com/2018/11/17/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/index.html">
+<meta property="og:site_name" content="XIE&#39;S BLOG">
+<meta property="og:description" content="简介    本站的博文都会采用一种目前统一的记录方式：        一、思维导图        二、总知识点        三、重点知识点实例        四、参考资料        五、思维扩展        六、存在疑问     一、体系思维导图Java知识导图（持续更新）：http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;b468ed58b8af303374308be0a6858e">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-11-17T10:19:51.000Z">
+<meta property="article:modified_time" content="2023-11-03T08:46:51.504Z">
+<meta property="article:author" content="xieshanzhong">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2018/11/17/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>构建知识体系（持续更新） | XIE'S BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="XIE'S BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XIE'S BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">xieshanzhong的博客小站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/17/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xieshanzhong">
+      <meta itemprop="description" content="欢迎来到xieshanzhong的技术分享站~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XIE'S BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          构建知识体系（持续更新）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-17 18:19:51" itemprop="dateCreated datePublished" datetime="2018-11-17T18:19:51+08:00">2018-11-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-11-03 16:46:51" itemprop="dateModified" datetime="2023-11-03T16:46:51+08:00">2023-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/" itemprop="url" rel="index"><span itemprop="name">知识体系</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>简介<br>    本站的博文都会采用一种目前统一的记录方式：<br>        一、思维导图<br>        二、总知识点<br>        三、重点知识点实例<br>        四、参考资料<br>        五、思维扩展<br>        六、存在疑问    </p>
+<h3 id="一、体系思维导图"><a href="#一、体系思维导图" class="headerlink" title="一、体系思维导图"></a>一、<em>体系思维导图</em></h3><p>Java知识导图（持续更新）：<a href="http://naotu.baidu.com/file/b468ed58b8af303374308be0a6858e4b">http://naotu.baidu.com/file/b468ed58b8af303374308be0a6858e4b</a></p>
+<h3 id="二、知识体系知识点"><a href="#二、知识体系知识点" class="headerlink" title="二、知识体系知识点"></a>二、<em>知识体系知识点</em></h3><h4 id="1、基础知识"><a href="#1、基础知识" class="headerlink" title="1、基础知识"></a>1、<em>基础知识</em></h4><h5 id="1-1、计算机基础"><a href="#1-1、计算机基础" class="headerlink" title="1.1、计算机基础"></a>1.1、计算机基础</h5><p>​    1、知识大纲：<br>​    2、知识点</p>
+<h5 id="1-2、编译原理"><a href="#1-2、编译原理" class="headerlink" title="1.2、编译原理"></a>1.2、编译原理</h5><p>​    1、知识大纲：<br>​    2、知识点</p>
+<h5 id="1-3、操作系统"><a href="#1-3、操作系统" class="headerlink" title="1.3、操作系统"></a>1.3、操作系统</h5><p>​    1、知识大纲：<br>​    2、知识点</p>
+<h6 id="1-3-1、Linux系统"><a href="#1-3-1、Linux系统" class="headerlink" title="1.3.1、Linux系统"></a>1.3.1、Linux系统</h6><p>​    1、Linux安装与配置<br>​    2、系统管理与目录管理<br>​    3、用户与用户组管理<br>​    4、Shell编程<br>​    5、服务器配置</p>
+<h5 id="1-4、计算机网络与协议"><a href="#1-4、计算机网络与协议" class="headerlink" title="1.4、计算机网络与协议"></a>1.4、计算机网络与协议</h5><p>​    1、知识大纲：<br>​    2、知识点</p>
+<h5 id="1-5、数据结构及算法"><a href="#1-5、数据结构及算法" class="headerlink" title="1.5、数据结构及算法"></a>1.5、数据结构及算法</h5><p>​    1、知识大纲：<br>​    2、知识点</p>
+<h4 id="2、Java基础"><a href="#2、Java基础" class="headerlink" title="2、Java基础"></a>2、<em>Java基础</em></h4><h5 id="2-1、JVM"><a href="#2-1、JVM" class="headerlink" title="2.1、JVM"></a>2.1、JVM</h5><p>1、知识大纲：<br>    1、运行时数据区<br>    2、垃圾回收机制<br>    3、性能调优<br>    4、类文件结构<br>    5、字节码执行引擎<br>    6、类加载机制<br>    7、虚拟机优化<br>    8、内存模型<br>    9、锁机制</p>
+<p>2、知识点：<br>    JVM内存结构<br>    堆、栈、方法区、直接内存、堆和栈区别</p>
+<pre><code>Java内存模型
+内存可见性、重排序、顺序一致性、volatile、锁、final
+
+垃圾回收
+内存分配策略、垃圾收集器（G1）、GC算法、GC参数、对象存活的判定
+
+JVM参数及调优
+Java对象模型
+oop-klass、对象头
+
+HotSpot
+即时编译器、编译优化
+
+类加载机制
+classLoader、类加载过程、双亲委派（破坏双亲委派）、模块化（jboss modules、osgi、jigsaw）
+
+虚拟机性能监控与故障处理工具
+jps, jstack, jmap、jstat, jconsole, jinfo, jhat, javap, btrace、TProfiler
+
+编译与反编译
+javac 、javap 、jad 、CRF
+</code></pre><h5 id="2-2、JAVA"><a href="#2-2、JAVA" class="headerlink" title="2.2、JAVA"></a>2.2、JAVA</h5><p>1、知识大纲：<br>    0、整体架构<br>    1、语法<br>    2、基本特性<br>    3、常用API<br>    4、数据结构<br>    5、集合框架<br>    6、IO流<br>    7、多线程并发<br>    8、Java网络编程<br>    9、Java高级特性<br>         1、反射<br>         2、泛型<br>          3、枚举及注解<br>         4、异常</p>
+<p>2、知识点 :<br>    阅读源代码<br>    String、Integer、Long、Enum、BigDecimal、ThreadLocal、ClassLoader &amp; URLClassLoader、ArrayList &amp; LinkedList、 HashMap &amp; LinkedHashMap &amp; TreeMap &amp; CouncurrentHashMap、HashSet &amp; LinkedHashSet &amp; TreeSet</p>
+<pre><code>Java中各种变量类型
+熟悉Java String的使用，熟悉String的各种函数
+JDK 6和JDK 7中substring的原理及区别、
+
+replaceFirst、replaceAll、replace区别、
+
+String对“+”的重载、
+
+String.valueOf和Integer.toString的区别、
+
+字符串的不可变性
+
+自动拆装箱
+Integer的缓存机制
+
+熟悉Java中各种关键字
+transient、instanceof、volatile、synchronized、final、static、const 原理及用法。
+
+集合类
+常用集合类的使用、ArrayList和LinkedList和Vector的区别 、SynchronizedList和Vector的区别、HashMap、HashTable、ConcurrentHashMap区别、Java 8中stream相关用法、apache集合处理工具类的使用、不同版本的JDK中HashMap的实现的区别以及原因
+
+枚举
+枚举的用法、枚举与单例、Enum类
+
+Java IO&amp;Java NIO，并学会使用
+bio、nio和aio的区别、三种IO的用法与原理、netty
+
+Java反射与javassist
+反射与工厂模式、 java.lang.reflect.*
+
+Java序列化
+什么是序列化与反序列化、为什么序列化、序列化底层原理、序列化与单例模式、protobuf、为什么说序列化并不安全
+
+注解
+元注解、自定义注解、Java中常用注解使用、注解与反射的结合
+
+JMS
+什么是Java消息服务、JMS消息传送模型
+
+JMX
+java.lang.management.*、 javax.management.*
+
+泛型
+泛型与继承、类型擦除、泛型中K T V E ？ object等的含义、泛型各种用法
+
+单元测试
+junit、mock、mockito、内存数据库（h2）
+
+正则表达式
+java.lang.util.regex.*
+
+常用的Java工具库
+commons.lang, commons.*... guava-libraries netty
+
+什么是API&amp;SPI
+异常
+异常类型、正确处理异常、自定义异常
+
+时间处理
+时区、时令、Java中时间API
+
+编码方式
+解决乱码问题、常用编码方式
+
+语法糖
+Java中语法糖原理、解语法糖
+
+Java并发编程
+什么是线程，与进程的区别
+阅读源代码，并学会使用
+Thread、Runnable、Callable、ReentrantLock、ReentrantReadWriteLock、Atomic*、Semaphore、CountDownLatch、、ConcurrentHashMap、Executors
+
+线程池
+自己设计线程池、submit() 和 execute()
+
+线程安全
+死锁、死锁如何排查、Java线程调度、线程安全和内存模型的关系
+
+锁
+CAS、乐观锁与悲观锁、数据库相关锁机制、分布式锁、偏向锁、轻量级锁、重量级锁、monitor、锁优化、锁消除、锁粗化、自旋锁、可重入锁、阻塞锁、死锁
+
+死锁
+volatile
+happens-before、编译器指令重排和CPU指令重
+
+synchronized
+synchronized是如何实现的？synchronized和lock之间关系、不使用synchronized如何实现一个线程安全的单例
+
+sleep 和 wait
+wait 和 notify
+notify 和 notifyAll
+ThreadLocal
+写一个死锁的程序
+写代码来解决生产者消费者问题
+守护线程
+守护线程和非守护线程的区别以及用法
+</code></pre><h4 id="3、Java进阶"><a href="#3、Java进阶" class="headerlink" title="3、Java进阶"></a>3、<em>Java进阶</em></h4><h5 id="3-1设计模式"><a href="#3-1设计模式" class="headerlink" title="3.1设计模式"></a>3.1设计模式</h5><h6 id="3-1-1、六大原则"><a href="#3-1-1、六大原则" class="headerlink" title="3.1.1、六大原则"></a>3.1.1、六大原则</h6><h6 id="3-1-2、创建型"><a href="#3-1-2、创建型" class="headerlink" title="3.1.2、创建型"></a>3.1.2、创建型</h6><p>​    1、单例模式<br>​    2、工厂模式<br>​    3、建造者模式<br>​    4、原型模式</p>
+<h6 id="3-1-3、结构型"><a href="#3-1-3、结构型" class="headerlink" title="3.1.3、结构型"></a>3.1.3、结构型</h6><p>​    1、代理模式<br>​    2、桥接模式<br>​    3、适配器模式<br>​    4、外观模式<br>​    5、享元模式<br>​    6、装饰模式<br>​    7、组合模式</p>
+<h6 id="3-1-4、行为型"><a href="#3-1-4、行为型" class="headerlink" title="3.1.4、行为型"></a>3.1.4、行为型</h6><p>​    1、备忘录模式<br>​    2、策略模式<br>​    3、观察者模式<br>​    4、模板方法模式<br>​    5、责任链模式<br>​    6、中介者模式<br>​    7、状态模式</p>
+<h4 id="4、Java应用开发扩展"><a href="#4、Java应用开发扩展" class="headerlink" title="4、Java应用开发扩展"></a>4、<em>Java应用开发扩展</em></h4><h5 id="4-1、Javaweb"><a href="#4-1、Javaweb" class="headerlink" title="4.1、Javaweb"></a>4.1、Javaweb</h5><h6 id="4-1-1、Servlet规范"><a href="#4-1-1、Servlet规范" class="headerlink" title="4.1.1、Servlet规范"></a>4.1.1、Servlet规范</h6><p>​    1、概述<br>​    2、Servlet技术<br>​        1、servlet技术实现http协议过程<br>​        2、主要API<br>​        3、Servlet响应请求后3种结果导航<br>​        4、 存放数据的四个web域对象<br>​        5、工作流程及生命周期<br>​        6、 web项目资源路径问题<br>​    3、jsp/el隐含对象（内置对象说明）<br>​    4、Jsp<br>​    5、el表达式<br>​    6、JSTL和自定义标签<br>​    7、filter过滤器<br>​    8、listen监听器<br>​    9、总结及组件设计思想</p>
+<h6 id="4-1-2、Tomcat"><a href="#4-1-2、Tomcat" class="headerlink" title="4.1.2、Tomcat"></a>4.1.2、Tomcat</h6><h5 id="4-2、数据库"><a href="#4-2、数据库" class="headerlink" title="4.2、数据库"></a>4.2、数据库</h5><p>1、SQL</p>
+<p>2、mysql</p>
+<p>3、mongodb</p>
+<h5 id="4-3、框架"><a href="#4-3、框架" class="headerlink" title="4.3、框架"></a>4.3、框架</h5><h6 id="4-3-1、Spring"><a href="#4-3-1、Spring" class="headerlink" title="4.3.1、Spring"></a>4.3.1、Spring</h6><p>​        1、Spring简介和Spring 4的变化<br>​        2、框架原理介绍<br>​        3、框架环境搭建<br>​        4、IOC思想与DI相关概念<br>​        6、Spring父子容器<br>​        7、POJO编程模型<br>​        8、使用Spring MVC构建Web应用程序<br>​        9、使用Spring进行JDBC数据访问<br>​        10、通过Spring使用JPA进行数据访问<br>​        11、使用Spring管理事务<br>​        12、Spring MVC的高级技术<br>​        13、使用NoSQL数据库<br>​        14、Spring Boot简化Spring开发</p>
+<h6 id="4-3-2、SpringMVC"><a href="#4-3-2、SpringMVC" class="headerlink" title="4.3.2、SpringMVC"></a>4.3.2、SpringMVC</h6><h6 id="4-3-3、Springboot"><a href="#4-3-3、Springboot" class="headerlink" title="4.3.3、Springboot"></a>4.3.3、Springboot</h6><h6 id="4-3-4、MyBatis"><a href="#4-3-4、MyBatis" class="headerlink" title="4.3.4、MyBatis"></a>4.3.4、MyBatis</h6><p>​        1、MyBaits入门<br>​        2、基础模块及其生命周期<br>​        3、MyBatis配置介绍<br>​        4、映射器的主要元素及其使用方法<br>​        5、动态SQL<br>​        6、MyBatis的解析和运行原理<br>​        7、插件设计与开发<br>​        8、Spring项目中集成MyBatis<br>​        9、MyBatis的实用场景</p>
+<h5 id="4-4、缓存"><a href="#4-4、缓存" class="headerlink" title="4.4、缓存"></a>4.4、缓存</h5><p>​        1、redis</p>
+<h4 id="5、Java安全基础"><a href="#5、Java安全基础" class="headerlink" title="5、Java安全基础"></a>5、<em>Java安全基础</em></h4><h4 id="6、Java性能基础"><a href="#6、Java性能基础" class="headerlink" title="6、Java性能基础"></a>6、<em>Java性能基础</em></h4><h4 id="7、架构"><a href="#7、架构" class="headerlink" title="7、架构"></a>7、<em>架构</em></h4><h6 id="7-1、微服务"><a href="#7-1、微服务" class="headerlink" title="7.1、微服务"></a>7.1、微服务</h6><p>​    1、springCloud<br>​    2、dubbo<br>​    3、zookeeper</p>
+<p>三、<em>参考资料</em><br><a href="http://www.hollischuang.com/archives/489">http://www.hollischuang.com/archives/489</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2018/11/17/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E6%84%9F/" rel="next" title="个人随感">
+      个人随感 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%93%E7%B3%BB%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">一、体系思维导图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">二、知识体系知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">2.1.</span> <span class="nav-text">1、基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1、计算机基础</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2%E3%80%81%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2、编译原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3%E3%80%81%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3、操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-3-1%E3%80%81Linux%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">1.3.1、Linux系统</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.1.4.</span> <span class="nav-text">1.4、计算机网络与协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5%E3%80%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%8A%E7%AE%97%E6%B3%95"><span class="nav-number">2.1.5.</span> <span class="nav-text">1.5、数据结构及算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81Java%E5%9F%BA%E7%A1%80"><span class="nav-number">2.2.</span> <span class="nav-text">2、Java基础</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1%E3%80%81JVM"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1、JVM</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2%E3%80%81JAVA"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2、JAVA</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81Java%E8%BF%9B%E9%98%B6"><span class="nav-number">2.3.</span> <span class="nav-text">3、Java进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.3.1.</span> <span class="nav-text">3.1设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#3-1-1%E3%80%81%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">3.1.1、六大原则</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-1-2%E3%80%81%E5%88%9B%E5%BB%BA%E5%9E%8B"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">3.1.2、创建型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-1-3%E3%80%81%E7%BB%93%E6%9E%84%E5%9E%8B"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">3.1.3、结构型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-1-4%E3%80%81%E8%A1%8C%E4%B8%BA%E5%9E%8B"><span class="nav-number">2.3.1.4.</span> <span class="nav-text">3.1.4、行为型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81Java%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%A9%E5%B1%95"><span class="nav-number">2.4.</span> <span class="nav-text">4、Java应用开发扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1%E3%80%81Javaweb"><span class="nav-number">2.4.1.</span> <span class="nav-text">4.1、Javaweb</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-1-1%E3%80%81Servlet%E8%A7%84%E8%8C%83"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">4.1.1、Servlet规范</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-1-2%E3%80%81Tomcat"><span class="nav-number">2.4.1.2.</span> <span class="nav-text">4.1.2、Tomcat</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.4.2.</span> <span class="nav-text">4.2、数据库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3%E3%80%81%E6%A1%86%E6%9E%B6"><span class="nav-number">2.4.3.</span> <span class="nav-text">4.3、框架</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-3-1%E3%80%81Spring"><span class="nav-number">2.4.3.1.</span> <span class="nav-text">4.3.1、Spring</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-3-2%E3%80%81SpringMVC"><span class="nav-number">2.4.3.2.</span> <span class="nav-text">4.3.2、SpringMVC</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-3-3%E3%80%81Springboot"><span class="nav-number">2.4.3.3.</span> <span class="nav-text">4.3.3、Springboot</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-3-4%E3%80%81MyBatis"><span class="nav-number">2.4.3.4.</span> <span class="nav-text">4.3.4、MyBatis</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4%E3%80%81%E7%BC%93%E5%AD%98"><span class="nav-number">2.4.4.</span> <span class="nav-text">4.4、缓存</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5%E3%80%81Java%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80"><span class="nav-number">2.5.</span> <span class="nav-text">5、Java安全基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6%E3%80%81Java%E6%80%A7%E8%83%BD%E5%9F%BA%E7%A1%80"><span class="nav-number">2.6.</span> <span class="nav-text">6、Java性能基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7%E3%80%81%E6%9E%B6%E6%9E%84"><span class="nav-number">2.7.</span> <span class="nav-text">7、架构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#7-1%E3%80%81%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.7.0.1.</span> <span class="nav-text">7.1、微服务</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xieshanzhong</p>
+  <div class="site-description" itemprop="description">欢迎来到xieshanzhong的技术分享站~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xie1" title="GitHub → https://github.com/xie1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xieshanzhong66@gmail.com" title="E-Mail → mailto:xieshanzhong66@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://xie1.github.io/" title="https://xie1.github.io/" rel="noopener" target="_blank">Title</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.baidu.com/" title="https://www.baidu.com/" rel="noopener" target="_blank">百度搜索</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/" title="https://hexo.io/" rel="noopener" target="_blank">hexo</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xieshanzhong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

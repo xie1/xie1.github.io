@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、思维导图1、http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;466e142d3ee5bda54f97717d6b939bf8二、总知识点定义就是把Java类结构分解，每一个部分对应着特定的反射类反射机制意义程序可以加载一个运行时才得知名称的class，获悉其完整的构造，可以生成其对象的实体，或对其field设值，或唤醒其methods反射可以做什么1、java对象序列化2、封装框架，提">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_高级特性_反射机制(九)">
+<meta property="og:url" content="http://yoursite.com/2018/11/21/Java_9_%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7_%E5%8F%8D%E5%B0%84/index.html">
+<meta property="og:site_name" content="XIE&#39;S BLOG">
+<meta property="og:description" content="一、思维导图1、http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;466e142d3ee5bda54f97717d6b939bf8二、总知识点定义就是把Java类结构分解，每一个部分对应着特定的反射类反射机制意义程序可以加载一个运行时才得知名称的class，获悉其完整的构造，可以生成其对象的实体，或对其field设值，或唤醒其methods反射可以做什么1、java对象序列化2、封装框架，提">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-11-21T13:17:59.000Z">
+<meta property="article:modified_time" content="2023-11-03T08:46:51.456Z">
+<meta property="article:author" content="xieshanzhong">
+<meta property="article:tag" content="高级特性">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2018/11/21/Java_9_%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7_%E5%8F%8D%E5%B0%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>Java_高级特性_反射机制(九) | XIE'S BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="XIE'S BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XIE'S BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">xieshanzhong的博客小站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/Java_9_%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7_%E5%8F%8D%E5%B0%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xieshanzhong">
+      <meta itemprop="description" content="欢迎来到xieshanzhong的技术分享站~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XIE'S BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java_高级特性_反射机制(九)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-21 21:17:59" itemprop="dateCreated datePublished" datetime="2018-11-21T21:17:59+08:00">2018-11-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-11-03 16:46:51" itemprop="dateModified" datetime="2023-11-03T16:46:51+08:00">2023-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h4><h5 id="1、http-naotu-baidu-com-file-466e142d3ee5bda54f97717d6b939bf8"><a href="#1、http-naotu-baidu-com-file-466e142d3ee5bda54f97717d6b939bf8" class="headerlink" title="1、http://naotu.baidu.com/file/466e142d3ee5bda54f97717d6b939bf8"></a>1、<a href="http://naotu.baidu.com/file/466e142d3ee5bda54f97717d6b939bf8">http://naotu.baidu.com/file/466e142d3ee5bda54f97717d6b939bf8</a></h5><h4 id="二、总知识点"><a href="#二、总知识点" class="headerlink" title="二、总知识点"></a>二、<em>总知识点</em></h4><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><h3 id="就是把Java类结构分解，每一个部分对应着特定的反射类"><a href="#就是把Java类结构分解，每一个部分对应着特定的反射类" class="headerlink" title="就是把Java类结构分解，每一个部分对应着特定的反射类"></a>就是把Java类结构分解，每一个部分对应着特定的反射类</h3><h2 id="反射机制意义"><a href="#反射机制意义" class="headerlink" title="反射机制意义"></a>反射机制意义</h2><h3 id="程序可以加载一个运行时才得知名称的class，获悉其完整的构造，可以生成其对象的实体，或对其field设值，或唤醒其methods"><a href="#程序可以加载一个运行时才得知名称的class，获悉其完整的构造，可以生成其对象的实体，或对其field设值，或唤醒其methods" class="headerlink" title="程序可以加载一个运行时才得知名称的class，获悉其完整的构造，可以生成其对象的实体，或对其field设值，或唤醒其methods"></a>程序可以加载一个运行时才得知名称的class，获悉其完整的构造，可以生成其对象的实体，或对其field设值，或唤醒其methods</h3><h2 id="反射可以做什么"><a href="#反射可以做什么" class="headerlink" title="反射可以做什么"></a>反射可以做什么</h2><h3 id="1、java对象序列化"><a href="#1、java对象序列化" class="headerlink" title="1、java对象序列化"></a>1、java对象序列化</h3><h3 id="2、封装框架，提供通用的功能"><a href="#2、封装框架，提供通用的功能" class="headerlink" title="2、封装框架，提供通用的功能"></a>2、封装框架，提供通用的功能</h3><h3 id="3、内省就是对反射机制的应用"><a href="#3、内省就是对反射机制的应用" class="headerlink" title="3、内省就是对反射机制的应用"></a>3、内省就是对反射机制的应用</h3><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><h3 id="静态编译"><a href="#静态编译" class="headerlink" title="静态编译"></a>静态编译</h3><h4 id="在编译时确定类型，绑定对象，即通过"><a href="#在编译时确定类型，绑定对象，即通过" class="headerlink" title="在编译时确定类型，绑定对象，即通过"></a>在编译时确定类型，绑定对象，即通过</h4><h3 id="动态编译"><a href="#动态编译" class="headerlink" title="动态编译"></a>动态编译</h3><h4 id="运行时确定类型，绑定对象，动态-编译最大限度发挥了java的灵活性，体现多态的应用"><a href="#运行时确定类型，绑定对象，动态-编译最大限度发挥了java的灵活性，体现多态的应用" class="headerlink" title="运行时确定类型，绑定对象，动态 编译最大限度发挥了java的灵活性，体现多态的应用"></a>运行时确定类型，绑定对象，动态 编译最大限度发挥了java的灵活性，体现多态的应用</h4><h2 id="java类结构和对应的反射类"><a href="#java类结构和对应的反射类" class="headerlink" title="java类结构和对应的反射类"></a>java类结构和对应的反射类</h2><h3 id="1、包声明——-Package"><a href="#1、包声明——-Package" class="headerlink" title="1、包声明——-Package"></a>1、包声明——-Package</h3><h3 id="2、类声明———Class"><a href="#2、类声明———Class" class="headerlink" title="2、类声明———Class"></a>2、类声明———Class</h3><h3 id="3、构造函数声明——-Constructor"><a href="#3、构造函数声明——-Constructor" class="headerlink" title="3、构造函数声明——-Constructor"></a>3、构造函数声明——-Constructor</h3><h3 id="4、字段声明——Field"><a href="#4、字段声明——Field" class="headerlink" title="4、字段声明——Field"></a>4、字段声明——Field</h3><h3 id="5、方法声明——-Method"><a href="#5、方法声明——-Method" class="headerlink" title="5、方法声明——-Method"></a>5、方法声明——-Method</h3><h3 id="6、静态代码块和代码块"><a href="#6、静态代码块和代码块" class="headerlink" title="6、静态代码块和代码块"></a>6、静态代码块和代码块</h3><h2 id="四个反射类"><a href="#四个反射类" class="headerlink" title="四个反射类"></a>四个反射类</h2><h3 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h3><h4 id="Class-c1-Code-class"><a href="#Class-c1-Code-class" class="headerlink" title="Class c1 = Code.class"></a>Class c1 = Code.class</h4><h4 id="Class-c2-code1-getClass"><a href="#Class-c2-code1-getClass" class="headerlink" title="Class c2 = code1.getClass()"></a>Class c2 = code1.getClass()</h4><h4 id="Class-c3-Class-forName-“com-reflect-test”"><a href="#Class-c3-Class-forName-“com-reflect-test”" class="headerlink" title="Class c3 = Class.forName(“com.reflect.test”)"></a>Class c3 = Class.forName(“com.reflect.test”)</h4><h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><h4 id="getDeclareMethod-String-name-Class-lt-gt-…parameterTypes"><a href="#getDeclareMethod-String-name-Class-lt-gt-…parameterTypes" class="headerlink" title="getDeclareMethod(String name , Class&lt;?&gt;…parameterTypes)"></a>getDeclareMethod(String name , Class&lt;?&gt;…parameterTypes)</h4><h4 id="getMethod-String-name-Class-lt-gt-…parameterTypes"><a href="#getMethod-String-name-Class-lt-gt-…parameterTypes" class="headerlink" title="getMethod(String name , Class&lt;?&gt;…parameterTypes)"></a>getMethod(String name , Class&lt;?&gt;…parameterTypes)</h4><h3 id="Field"><a href="#Field" class="headerlink" title="Field"></a>Field</h3><h4 id="getDeclareField-String-name"><a href="#getDeclareField-String-name" class="headerlink" title="getDeclareField(String name)"></a>getDeclareField(String name)</h4><h4 id="getDeclareField-String-name-1"><a href="#getDeclareField-String-name-1" class="headerlink" title="getDeclareField(String name)"></a>getDeclareField(String name)</h4><h3 id="Constructor"><a href="#Constructor" class="headerlink" title="Constructor"></a>Constructor</h3><h4 id="getDeclareConstructor-String-name-Class-lt-gt-…parameterTypes"><a href="#getDeclareConstructor-String-name-Class-lt-gt-…parameterTypes" class="headerlink" title="getDeclareConstructor(String name , Class&lt;?&gt;…parameterTypes)"></a>getDeclareConstructor(String name , Class&lt;?&gt;…parameterTypes)</h4><h4 id="getConstructor-String-name-Class-lt-gt-…parameterTypes"><a href="#getConstructor-String-name-Class-lt-gt-…parameterTypes" class="headerlink" title="getConstructor(String name , Class&lt;?&gt;…parameterTypes)"></a>getConstructor(String name , Class&lt;?&gt;…parameterTypes)</h4><h2 id="一个Modifier判断修饰符和类型"><a href="#一个Modifier判断修饰符和类型" class="headerlink" title="一个Modifier判断修饰符和类型"></a>一个Modifier判断修饰符和类型</h2><h2 id="AccessibleObject"><a href="#AccessibleObject" class="headerlink" title="AccessibleObject"></a>AccessibleObject</h2><h3 id="1、取消反射对象Constructor，Field，Method的访问限制"><a href="#1、取消反射对象Constructor，Field，Method的访问限制" class="headerlink" title="1、取消反射对象Constructor，Field，Method的访问限制"></a>1、取消反射对象Constructor，Field，Method的访问限制</h3><h3 id="2、void-setAccessible-boolean-flag"><a href="#2、void-setAccessible-boolean-flag" class="headerlink" title="2、void setAccessible(boolean flag)"></a>2、void setAccessible(boolean flag)</h3><h3 id="3、java对象的序列化会使用到此特性"><a href="#3、java对象的序列化会使用到此特性" class="headerlink" title="3、java对象的序列化会使用到此特性"></a>3、java对象的序列化会使用到此特性</h3><h4 id="三、重点知识点实例"><a href="#三、重点知识点实例" class="headerlink" title="三、重点知识点实例"></a>三、<em>重点知识点实例</em></h4><h4 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h4><h4 id="五、思维扩展"><a href="#五、思维扩展" class="headerlink" title="五、思维扩展"></a>五、<em>思维扩展</em></h4><h4 id="六、存在疑问"><a href="#六、存在疑问" class="headerlink" title="六、存在疑问"></a>六、<em>存在疑问</em></h4>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" rel="tag"># 高级特性</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/11/21/Java_91_%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" rel="prev" title="Java_高级特性(九)">
+      <i class="fa fa-chevron-left"></i> Java_高级特性(九)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/12/21/%E5%B8%B8%E7%94%A8IDEA%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%80%BB%E7%BB%93/" rel="next" title="常用IDEA快捷键使用">
+      常用IDEA快捷键使用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">一、思维导图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81http-naotu-baidu-com-file-466e142d3ee5bda54f97717d6b939bf8"><span class="nav-number">1.1.</span> <span class="nav-text">1、http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;466e142d3ee5bda54f97717d6b939bf8</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%80%BB%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">二、总知识点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number"></span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%B1%E6%98%AF%E6%8A%8AJava%E7%B1%BB%E7%BB%93%E6%9E%84%E5%88%86%E8%A7%A3%EF%BC%8C%E6%AF%8F%E4%B8%80%E4%B8%AA%E9%83%A8%E5%88%86%E5%AF%B9%E5%BA%94%E7%9D%80%E7%89%B9%E5%AE%9A%E7%9A%84%E5%8F%8D%E5%B0%84%E7%B1%BB"><span class="nav-number"></span> <span class="nav-text">就是把Java类结构分解，每一个部分对应着特定的反射类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E6%84%8F%E4%B9%89"><span class="nav-number"></span> <span class="nav-text">反射机制意义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%8F%AF%E4%BB%A5%E5%8A%A0%E8%BD%BD%E4%B8%80%E4%B8%AA%E8%BF%90%E8%A1%8C%E6%97%B6%E6%89%8D%E5%BE%97%E7%9F%A5%E5%90%8D%E7%A7%B0%E7%9A%84class%EF%BC%8C%E8%8E%B7%E6%82%89%E5%85%B6%E5%AE%8C%E6%95%B4%E7%9A%84%E6%9E%84%E9%80%A0%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%94%9F%E6%88%90%E5%85%B6%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%AE%9E%E4%BD%93%EF%BC%8C%E6%88%96%E5%AF%B9%E5%85%B6field%E8%AE%BE%E5%80%BC%EF%BC%8C%E6%88%96%E5%94%A4%E9%86%92%E5%85%B6methods"><span class="nav-number"></span> <span class="nav-text">程序可以加载一个运行时才得知名称的class，获悉其完整的构造，可以生成其对象的实体，或对其field设值，或唤醒其methods</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E5%8F%AF%E4%BB%A5%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-number"></span> <span class="nav-text">反射可以做什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81java%E5%AF%B9%E8%B1%A1%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-number"></span> <span class="nav-text">1、java对象序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%B0%81%E8%A3%85%E6%A1%86%E6%9E%B6%EF%BC%8C%E6%8F%90%E4%BE%9B%E9%80%9A%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number"></span> <span class="nav-text">2、封装框架，提供通用的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%86%85%E7%9C%81%E5%B0%B1%E6%98%AF%E5%AF%B9%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number"></span> <span class="nav-text">3、内省就是对反射机制的应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91"><span class="nav-number"></span> <span class="nav-text">编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E7%BC%96%E8%AF%91"><span class="nav-number"></span> <span class="nav-text">静态编译</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E7%BC%96%E8%AF%91%E6%97%B6%E7%A1%AE%E5%AE%9A%E7%B1%BB%E5%9E%8B%EF%BC%8C%E7%BB%91%E5%AE%9A%E5%AF%B9%E8%B1%A1%EF%BC%8C%E5%8D%B3%E9%80%9A%E8%BF%87"><span class="nav-number">1.</span> <span class="nav-text">在编译时确定类型，绑定对象，即通过</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%BC%96%E8%AF%91"><span class="nav-number"></span> <span class="nav-text">动态编译</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E7%A1%AE%E5%AE%9A%E7%B1%BB%E5%9E%8B%EF%BC%8C%E7%BB%91%E5%AE%9A%E5%AF%B9%E8%B1%A1%EF%BC%8C%E5%8A%A8%E6%80%81-%E7%BC%96%E8%AF%91%E6%9C%80%E5%A4%A7%E9%99%90%E5%BA%A6%E5%8F%91%E6%8C%A5%E4%BA%86java%E7%9A%84%E7%81%B5%E6%B4%BB%E6%80%A7%EF%BC%8C%E4%BD%93%E7%8E%B0%E5%A4%9A%E6%80%81%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">运行时确定类型，绑定对象，动态 编译最大限度发挥了java的灵活性，体现多态的应用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java%E7%B1%BB%E7%BB%93%E6%9E%84%E5%92%8C%E5%AF%B9%E5%BA%94%E7%9A%84%E5%8F%8D%E5%B0%84%E7%B1%BB"><span class="nav-number"></span> <span class="nav-text">java类结构和对应的反射类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%8C%85%E5%A3%B0%E6%98%8E%E2%80%94%E2%80%94-Package"><span class="nav-number"></span> <span class="nav-text">1、包声明——-Package</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E7%B1%BB%E5%A3%B0%E6%98%8E%E2%80%94%E2%80%94%E2%80%94Class"><span class="nav-number"></span> <span class="nav-text">2、类声明———Class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E2%80%94%E2%80%94-Constructor"><span class="nav-number"></span> <span class="nav-text">3、构造函数声明——-Constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%AD%97%E6%AE%B5%E5%A3%B0%E6%98%8E%E2%80%94%E2%80%94Field"><span class="nav-number"></span> <span class="nav-text">4、字段声明——Field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E6%96%B9%E6%B3%95%E5%A3%B0%E6%98%8E%E2%80%94%E2%80%94-Method"><span class="nav-number"></span> <span class="nav-text">5、方法声明——-Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%9D%97%E5%92%8C%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number"></span> <span class="nav-text">6、静态代码块和代码块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E4%B8%AA%E5%8F%8D%E5%B0%84%E7%B1%BB"><span class="nav-number"></span> <span class="nav-text">四个反射类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Class"><span class="nav-number"></span> <span class="nav-text">Class</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Class-c1-Code-class"><span class="nav-number">1.</span> <span class="nav-text">Class c1 &#x3D; Code.class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Class-c2-code1-getClass"><span class="nav-number">2.</span> <span class="nav-text">Class c2 &#x3D; code1.getClass()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Class-c3-Class-forName-%E2%80%9Ccom-reflect-test%E2%80%9D"><span class="nav-number">3.</span> <span class="nav-text">Class c3 &#x3D; Class.forName(“com.reflect.test”)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method"><span class="nav-number"></span> <span class="nav-text">Method</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#getDeclareMethod-String-name-Class-lt-gt-%E2%80%A6parameterTypes"><span class="nav-number">1.</span> <span class="nav-text">getDeclareMethod(String name , Class&lt;?&gt;…parameterTypes)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getMethod-String-name-Class-lt-gt-%E2%80%A6parameterTypes"><span class="nav-number">2.</span> <span class="nav-text">getMethod(String name , Class&lt;?&gt;…parameterTypes)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Field"><span class="nav-number"></span> <span class="nav-text">Field</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#getDeclareField-String-name"><span class="nav-number">1.</span> <span class="nav-text">getDeclareField(String name)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getDeclareField-String-name-1"><span class="nav-number">2.</span> <span class="nav-text">getDeclareField(String name)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructor"><span class="nav-number"></span> <span class="nav-text">Constructor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#getDeclareConstructor-String-name-Class-lt-gt-%E2%80%A6parameterTypes"><span class="nav-number">1.</span> <span class="nav-text">getDeclareConstructor(String name , Class&lt;?&gt;…parameterTypes)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getConstructor-String-name-Class-lt-gt-%E2%80%A6parameterTypes"><span class="nav-number">2.</span> <span class="nav-text">getConstructor(String name , Class&lt;?&gt;…parameterTypes)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AAModifier%E5%88%A4%E6%96%AD%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%92%8C%E7%B1%BB%E5%9E%8B"><span class="nav-number"></span> <span class="nav-text">一个Modifier判断修饰符和类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AccessibleObject"><span class="nav-number"></span> <span class="nav-text">AccessibleObject</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%8F%96%E6%B6%88%E5%8F%8D%E5%B0%84%E5%AF%B9%E8%B1%A1Constructor%EF%BC%8CField%EF%BC%8CMethod%E7%9A%84%E8%AE%BF%E9%97%AE%E9%99%90%E5%88%B6"><span class="nav-number"></span> <span class="nav-text">1、取消反射对象Constructor，Field，Method的访问限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81void-setAccessible-boolean-flag"><span class="nav-number"></span> <span class="nav-text">2、void setAccessible(boolean flag)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81java%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E4%BC%9A%E4%BD%BF%E7%94%A8%E5%88%B0%E6%AD%A4%E7%89%B9%E6%80%A7"><span class="nav-number"></span> <span class="nav-text">3、java对象的序列化会使用到此特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%87%8D%E7%82%B9%E7%9F%A5%E8%AF%86%E7%82%B9%E5%AE%9E%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">三、重点知识点实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">四、参考资料</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%80%9D%E7%BB%B4%E6%89%A9%E5%B1%95"><span class="nav-number">3.</span> <span class="nav-text">五、思维扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AD%98%E5%9C%A8%E7%96%91%E9%97%AE"><span class="nav-number">4.</span> <span class="nav-text">六、存在疑问</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xieshanzhong</p>
+  <div class="site-description" itemprop="description">欢迎来到xieshanzhong的技术分享站~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xie1" title="GitHub → https://github.com/xie1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xieshanzhong66@gmail.com" title="E-Mail → mailto:xieshanzhong66@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://xie1.github.io/" title="https://xie1.github.io/" rel="noopener" target="_blank">Title</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.baidu.com/" title="https://www.baidu.com/" rel="noopener" target="_blank">百度搜索</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/" title="https://hexo.io/" rel="noopener" target="_blank">hexo</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xieshanzhong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

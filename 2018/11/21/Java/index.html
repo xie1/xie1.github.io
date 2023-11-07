@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、思维导图http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;b321382655c8e78fdcc4a5b9a0618b6e?token&#x3D;6f740a500a0f4b9d 二、总知识点1、语法基础1.1、数据类型1.1.1、基本类型整型： byte short int long 浮点型 ： float double 布尔型 ： boolean 字符型 ：char 思维扩展：有基本类型-》他">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_整体结构">
+<meta property="og:url" content="http://yoursite.com/2018/11/21/Java/index.html">
+<meta property="og:site_name" content="XIE&#39;S BLOG">
+<meta property="og:description" content="一、思维导图http:&#x2F;&#x2F;naotu.baidu.com&#x2F;file&#x2F;b321382655c8e78fdcc4a5b9a0618b6e?token&#x3D;6f740a500a0f4b9d 二、总知识点1、语法基础1.1、数据类型1.1.1、基本类型整型： byte short int long 浮点型 ： float double 布尔型 ： boolean 字符型 ：char 思维扩展：有基本类型-》他">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-11-21T02:17:59.000Z">
+<meta property="article:modified_time" content="2023-11-03T08:46:51.447Z">
+<meta property="article:author" content="xieshanzhong">
+<meta property="article:tag" content="结构">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2018/11/21/Java/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>Java_整体结构 | XIE'S BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="XIE'S BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XIE'S BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">xieshanzhong的博客小站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/Java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xieshanzhong">
+      <meta itemprop="description" content="欢迎来到xieshanzhong的技术分享站~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XIE'S BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java_整体结构
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-21 10:17:59" itemprop="dateCreated datePublished" datetime="2018-11-21T10:17:59+08:00">2018-11-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-11-03 16:46:51" itemprop="dateModified" datetime="2023-11-03T16:46:51+08:00">2023-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h2><p><a href="http://naotu.baidu.com/file/b321382655c8e78fdcc4a5b9a0618b6e?token=6f740a500a0f4b9d" title="Java_整体结构脑图">http://naotu.baidu.com/file/b321382655c8e78fdcc4a5b9a0618b6e?token=6f740a500a0f4b9d</a></p>
+<h2 id="二、总知识点"><a href="#二、总知识点" class="headerlink" title="二、总知识点"></a>二、<em>总知识点</em></h2><h3 id="1、语法基础"><a href="#1、语法基础" class="headerlink" title="1、语法基础"></a>1、语法基础</h3><h3 id="1-1、数据类型"><a href="#1-1、数据类型" class="headerlink" title="1.1、数据类型"></a>1.1、数据类型</h3><h4 id="1-1-1、基本类型"><a href="#1-1-1、基本类型" class="headerlink" title="1.1.1、基本类型"></a>1.1.1、基本类型</h4><pre><code>整型： byte short int long
+浮点型 ： float double
+布尔型 ： boolean
+字符型 ：char
+</code></pre><p>思维扩展：有基本类型-》他们的初始值，大小，相互之间可以进行转换-》包装类及相互转换-》合适选择基本类型或包装类-》基本类型/包装类的源码</p>
+<h4 id="1-1-2、引用类型"><a href="#1-1-2、引用类型" class="headerlink" title="1.1.2、引用类型"></a>1.1.2、引用类型</h4><pre><code>类  接口  数组
+</code></pre><p>思维扩展：<br>1、这三者概念<br>2、类主要包括什么类型的类及各有什么特性<br>3、接口有什么特性，接口和类之间的关系是什么</p>
+<h4 id="1-1-3、字符串"><a href="#1-1-3、字符串" class="headerlink" title="1.1.3、字符串"></a>1.1.3、字符串</h4><pre><code>String
+</code></pre><p>思维扩展：<br>1、String、StringBuffer、StringBuilder三者关系<br>2、String的API（重点理解及应用）</p>
+<h3 id="1-2、基本语法"><a href="#1-2、基本语法" class="headerlink" title="1.2、基本语法"></a>1.2、基本语法</h3><h4 id="1-3、运算符"><a href="#1-3、运算符" class="headerlink" title="1.3、运算符"></a>1.3、运算符</h4><pre><code>自增自减
+思维扩展：
+1、i++或者是++i有什么区别
+2、主要在i++在多线程的情况的会出现什么问题，从而如何避免等
+</code></pre><h4 id="1-4、循环条件"><a href="#1-4、循环条件" class="headerlink" title="1.4、循环条件"></a>1.4、循环条件</h4><pre><code>if else while for break
+</code></pre><h3 id="2、基本特性"><a href="#2、基本特性" class="headerlink" title="2、基本特性"></a>2、基本特性</h3><h4 id="2-1、封装"><a href="#2-1、封装" class="headerlink" title="2.1、封装"></a>2.1、封装</h4><pre><code>1、访问控制
+     public private protect 默认
+2、get/set方法
+</code></pre><h4 id="2-2、多态"><a href="#2-2、多态" class="headerlink" title="2.2、多态"></a>2.2、多态</h4><pre><code> 1、同父类
+ 2、同接口
+ 3、理解：工厂模式
+</code></pre><h4 id="2-3、继承"><a href="#2-3、继承" class="headerlink" title="2.3、继承"></a>2.3、继承</h4><pre><code>1、Object类
+     所有对象的根
+     重要方法
+     toString()
+     equals()
+     hashCode()
+     clone()
+2、 单点继承
+3、 覆盖(Overriding)
+4、 终结修饰符final
+5、静态static
+</code></pre><h4 id="2-4、抽象"><a href="#2-4、抽象" class="headerlink" title="2.4、抽象"></a>2.4、抽象</h4><pre><code>abstract
+</code></pre><h4 id="2-5、接口"><a href="#2-5、接口" class="headerlink" title="2.5、接口"></a>2.5、接口</h4><pre><code>interface
+</code></pre><h4 id="2-6、特殊类"><a href="#2-6、特殊类" class="headerlink" title="2.6、特殊类"></a>2.6、特殊类</h4><pre><code>1、局部类
+2、匿名类
+</code></pre><h3 id="3、常用API"><a href="#3、常用API" class="headerlink" title="3、常用API"></a>3、常用API</h3><pre><code> 1、常用工具类
+ 字符串
+     String
+     StringBuilder(优先)
+     StringBuffer(线程安全)
+</code></pre><p> 包装类<br>     8种基本类型包装类<br> Date/Calendar</p>
+<p> SimpleDateFormat<br> Math</p>
+<h3 id="4、数据结构"><a href="#4、数据结构" class="headerlink" title="4、数据结构"></a>4、数据结构</h3><h3 id="5、集合框架"><a href="#5、集合框架" class="headerlink" title="5、集合框架"></a>5、集合框架</h3><h4 id="5-1、collection"><a href="#5-1、collection" class="headerlink" title="5.1、collection"></a>5.1、collection</h4><pre><code> 1、list
+    ArrayList
+ 2、queue
+     LinkedList
+ 3、set
+     HashSet
+</code></pre><h4 id="5-2、map"><a href="#5-2、map" class="headerlink" title="5.2、map"></a>5.2、map</h4><pre><code>HashMap
+</code></pre><h4 id="5-3、collections工具类"><a href="#5-3、collections工具类" class="headerlink" title="5.3、collections工具类"></a>5.3、collections工具类</h4><h4 id="5-4、comparable接口"><a href="#5-4、comparable接口" class="headerlink" title="5.4、comparable接口"></a>5.4、comparable接口</h4><h4 id="5-5、comparator接口"><a href="#5-5、comparator接口" class="headerlink" title="5.5、comparator接口"></a>5.5、comparator接口</h4><h3 id="6、IO流"><a href="#6、IO流" class="headerlink" title="6、IO流"></a>6、IO流</h3><h4 id="6-1、-文件操作"><a href="#6-1、-文件操作" class="headerlink" title="6.1、 文件操作"></a>6.1、 文件操作</h4><pre><code>1、进制转化
+2、IO操作
+     编码问题
+     File类使用
+     RandomAccessFile类
+     字节流使用
+     字符流使用
+3、 XML读写
+     DOM解析
+     SAX解析
+     JDOM解析
+     DOM4J解析
+</code></pre><h4 id="6-2、IO"><a href="#6-2、IO" class="headerlink" title="6.2、IO"></a>6.2、IO</h4><pre><code> 1、 NIO
+    Selector
+    Channel
+ 2、NIO2
+     操作系统级别的并发
+     Rector/Proactor
+     netty/mina
+</code></pre><p> 3、对象序列化<br>    原理<br>    自定义序列化方式</p>
+<h3 id="7、多线程并发"><a href="#7、多线程并发" class="headerlink" title="7、多线程并发"></a>7、多线程并发</h3><p> 1、Excutors</p>
+<pre><code>1、Callable
+
+2、Future
+
+3、线程中断
+
+4、ThreadFactory
+
+5、newFixedThreadPool
+
+6、newCachedThreadPool
+
+7、newScheduledThreadPool
+
+8、ExecutorCompletionService
+
+9、Fork/Join
+</code></pre><p> 2、Actor模式</p>
+<p> 3、线程间安全共享</p>
+<p>​     1、Lock<br>​<br>​     2、Atomic</p>
+<p>​        1、ReentrantLock<br>​<br>​        2、ReadWriteLock<br>​<br>​        3、ReentrantReadWriteLock<br>​<br>​        4、Condition<br>​<br>​    3、volatile的原理</p>
+<p>4、线程内共享</p>
+<p>​    ThreadLocal</p>
+<p>5、concurrent包</p>
+<p>​    Semaphore<br>​<br>​    countdownlatch</p>
+<h3 id="8、Java网络编程"><a href="#8、Java网络编程" class="headerlink" title="8、Java网络编程"></a>8、Java网络编程</h3><h4 id="8-1、-Socket编程"><a href="#8-1、-Socket编程" class="headerlink" title="8.1、 Socket编程"></a>8.1、 Socket编程</h4><pre><code> 网络基础知识
+ InetAddress类
+ URL
+ TCP编程（Sockets）可靠
+     客户端的Socket类
+     服务器的ServerSocket类
+ UDP编程（Datagram）
+</code></pre><h3 id="9、Java高级特性"><a href="#9、Java高级特性" class="headerlink" title="9、Java高级特性"></a>9、Java高级特性</h3><h4 id="9-1、反射"><a href="#9-1、反射" class="headerlink" title="9.1、反射"></a>9.1、反射</h4><pre><code> class.getInstance()
+ getMethod(是否带declare有何区别)
+ getField
+ setAccess
+ method.invoke()
+</code></pre><h4 id="9-2、泛型"><a href="#9-2、泛型" class="headerlink" title="9.2、泛型"></a>9.2、泛型</h4><pre><code> 1、申明在对象上
+</code></pre><p> 2、方法返回值</p>
+<p> 3、方法参数</p>
+<p> 4、泛型的继承</p>
+<p> 5、通配符</p>
+<p> 6、发生在编译时，运行时不存在</p>
+<h4 id="9-3、枚举及注解"><a href="#9-3、枚举及注解" class="headerlink" title="9.3、枚举及注解"></a>9.3、枚举及注解</h4><h4 id="9-4、异常"><a href="#9-4、异常" class="headerlink" title="9.4、异常"></a>9.4、异常</h4><pre><code>1、java异常体系结构(Throwable)
+        Error
+        Exception
+        非检查异常（RuntimeException）
+        检查异常
+2、处理异常
+        try—catch以及try—catch—finally
+        抛出异常
+            throws
+            throw 方法体内抛出
+        自定义异常
+        异常链
+</code></pre><h2 id="三、重点知识点实例"><a href="#三、重点知识点实例" class="headerlink" title="三、重点知识点实例"></a>三、<em>重点知识点实例</em></h2><h2 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h2><h2 id="五、思维扩展"><a href="#五、思维扩展" class="headerlink" title="五、思维扩展"></a>五、<em>思维扩展</em></h2><h3 id="1、JDK7、8区别及特性的变化"><a href="#1、JDK7、8区别及特性的变化" class="headerlink" title="1、JDK7、8区别及特性的变化"></a>1、JDK7、8区别及特性的变化</h3><h2 id="六、存在疑问"><a href="#六、存在疑问" class="headerlink" title="六、存在疑问"></a>六、<em>存在疑问</em></h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BB%93%E6%9E%84/" rel="tag"># 结构</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/11/20/JVM_8_%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E4%B8%8E%E9%94%81%E4%BC%98%E5%8C%96/" rel="prev" title="JVM_线程安全与锁优化(十一)">
+      <i class="fa fa-chevron-left"></i> JVM_线程安全与锁优化(十一)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/11/21/Java_1_%E8%AF%AD%E6%B3%95/" rel="next" title="Java_语法(一)">
+      Java_语法(一) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">一、思维导图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%80%BB%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">二、总知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">1、语法基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">1.1、数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1%E3%80%81%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.1.</span> <span class="nav-text">1.1.1、基本类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2%E3%80%81%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.2.</span> <span class="nav-text">1.1.2、引用类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-3%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">2.2.3.</span> <span class="nav-text">1.1.3、字符串</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2%E3%80%81%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">1.2、基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.3、运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4%E3%80%81%E5%BE%AA%E7%8E%AF%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.3.2.</span> <span class="nav-text">1.4、循环条件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7"><span class="nav-number">2.4.</span> <span class="nav-text">2、基本特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1%E3%80%81%E5%B0%81%E8%A3%85"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.1、封装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2%E3%80%81%E5%A4%9A%E6%80%81"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.2、多态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3%E3%80%81%E7%BB%A7%E6%89%BF"><span class="nav-number">2.4.3.</span> <span class="nav-text">2.3、继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4%E3%80%81%E6%8A%BD%E8%B1%A1"><span class="nav-number">2.4.4.</span> <span class="nav-text">2.4、抽象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5%E3%80%81%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.4.5.</span> <span class="nav-text">2.5、接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6%E3%80%81%E7%89%B9%E6%AE%8A%E7%B1%BB"><span class="nav-number">2.4.6.</span> <span class="nav-text">2.6、特殊类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%B8%B8%E7%94%A8API"><span class="nav-number">2.5.</span> <span class="nav-text">3、常用API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.6.</span> <span class="nav-text">4、数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6"><span class="nav-number">2.7.</span> <span class="nav-text">5、集合框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1%E3%80%81collection"><span class="nav-number">2.7.1.</span> <span class="nav-text">5.1、collection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2%E3%80%81map"><span class="nav-number">2.7.2.</span> <span class="nav-text">5.2、map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3%E3%80%81collections%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="nav-number">2.7.3.</span> <span class="nav-text">5.3、collections工具类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4%E3%80%81comparable%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.7.4.</span> <span class="nav-text">5.4、comparable接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-5%E3%80%81comparator%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.7.5.</span> <span class="nav-text">5.5、comparator接口</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81IO%E6%B5%81"><span class="nav-number">2.8.</span> <span class="nav-text">6、IO流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1%E3%80%81-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">2.8.1.</span> <span class="nav-text">6.1、 文件操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2%E3%80%81IO"><span class="nav-number">2.8.2.</span> <span class="nav-text">6.2、IO</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91"><span class="nav-number">2.9.</span> <span class="nav-text">7、多线程并发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8%E3%80%81Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"><span class="nav-number">2.10.</span> <span class="nav-text">8、Java网络编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-1%E3%80%81-Socket%E7%BC%96%E7%A8%8B"><span class="nav-number">2.10.1.</span> <span class="nav-text">8.1、 Socket编程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9%E3%80%81Java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7"><span class="nav-number">2.11.</span> <span class="nav-text">9、Java高级特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#9-1%E3%80%81%E5%8F%8D%E5%B0%84"><span class="nav-number">2.11.1.</span> <span class="nav-text">9.1、反射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2%E3%80%81%E6%B3%9B%E5%9E%8B"><span class="nav-number">2.11.2.</span> <span class="nav-text">9.2、泛型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-3%E3%80%81%E6%9E%9A%E4%B8%BE%E5%8F%8A%E6%B3%A8%E8%A7%A3"><span class="nav-number">2.11.3.</span> <span class="nav-text">9.3、枚举及注解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-4%E3%80%81%E5%BC%82%E5%B8%B8"><span class="nav-number">2.11.4.</span> <span class="nav-text">9.4、异常</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%87%8D%E7%82%B9%E7%9F%A5%E8%AF%86%E7%82%B9%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">三、重点知识点实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">四、参考资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%80%9D%E7%BB%B4%E6%89%A9%E5%B1%95"><span class="nav-number">5.</span> <span class="nav-text">五、思维扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81JDK7%E3%80%818%E5%8C%BA%E5%88%AB%E5%8F%8A%E7%89%B9%E6%80%A7%E7%9A%84%E5%8F%98%E5%8C%96"><span class="nav-number">5.1.</span> <span class="nav-text">1、JDK7、8区别及特性的变化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AD%98%E5%9C%A8%E7%96%91%E9%97%AE"><span class="nav-number">6.</span> <span class="nav-text">六、存在疑问</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xieshanzhong</p>
+  <div class="site-description" itemprop="description">欢迎来到xieshanzhong的技术分享站~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xie1" title="GitHub → https://github.com/xie1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xieshanzhong66@gmail.com" title="E-Mail → mailto:xieshanzhong66@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://xie1.github.io/" title="https://xie1.github.io/" rel="noopener" target="_blank">Title</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.baidu.com/" title="https://www.baidu.com/" rel="noopener" target="_blank">百度搜索</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/" title="https://hexo.io/" rel="noopener" target="_blank">hexo</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xieshanzhong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
