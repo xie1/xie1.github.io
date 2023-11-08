@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: XieSZ'S BLOG
+title: XIE'S BLOG
 subtitle: xieshanzhong的博客小站
-description: 欢迎来到XieSZ的技术分享站~
+description: 欢迎来到xieshanzhong的技术分享站~
 keywords:
-author: XieSZ
+author: xieshanzhong
 language: zh-Hans
 timezone:
 
@@ -75,9 +75,12 @@ Plugins: hexo-generate-feed
 ## Themes: https://hexo.io/themes/
 theme: next
 
+
+
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/xie1/xie1.github.io.git
+  repo: git@github.com:xie1/xie1.github.io.git
   branch: master
