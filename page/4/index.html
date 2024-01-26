@@ -195,7 +195,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-11-03 16:46:51" itemprop="dateModified" datetime="2023-11-03T16:46:51+08:00">2023-11-03</time>
+                <time title="修改时间：2023-11-24 16:54:39" itemprop="dateModified" datetime="2023-11-24T16:54:39+08:00">2023-11-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -218,58 +218,274 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、<em>思维导图</em></h4><h5 id="1、http-naotu-baidu-com-file-37b9cf3780060bebda0bfa6ab2900caa"><a href="#1、http-naotu-baidu-com-file-37b9cf3780060bebda0bfa6ab2900caa" class="headerlink" title="1、http://naotu.baidu.com/file/37b9cf3780060bebda0bfa6ab2900caa"></a>1、<a href="http://naotu.baidu.com/file/37b9cf3780060bebda0bfa6ab2900caa">http://naotu.baidu.com/file/37b9cf3780060bebda0bfa6ab2900caa</a></h5><h5 id="2、http-naotu-baidu-com-file-c534c86874171144be621388f1b10848"><a href="#2、http-naotu-baidu-com-file-c534c86874171144be621388f1b10848" class="headerlink" title="2、http://naotu.baidu.com/file/c534c86874171144be621388f1b10848"></a>2、<a href="http://naotu.baidu.com/file/c534c86874171144be621388f1b10848">http://naotu.baidu.com/file/c534c86874171144be621388f1b10848</a></h5><h4 id="二、总知识点"><a href="#二、总知识点" class="headerlink" title="二、总知识点"></a>二、<em>总知识点</em></h4><h4 id="面向对象之类-对象"><a href="#面向对象之类-对象" class="headerlink" title="面向对象之类/对象"></a>面向对象之类/对象</h4><h5 id="1、类"><a href="#1、类" class="headerlink" title="1、类"></a>1、类</h5><p>1、概念：类可以被定义为描述对象支持类型的行为、状态的的模板、蓝图</p>
-<pre><code>1.1、构造器
-     无参构造器：默认构造器
-     有参构造器
-1.2、变量
-    1.2.1、成员变量：类中，方法体之外
-    1.2.2、静态变量：类变量也声明在类中，方法体之外，但必须声明为static类型
-    1.2.3、局部变量：方法体内
-    成员变量和静态变量的之间区别：
-        类的每个实例共享一个类变量的单个副本。
+          <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、思维导图</h1><p><a href="https://www.yuque.com/attachments/yuque/0/2023/xmind/227879/1700729226602-526e9370-5496-4951-be9c-4f4a1842018e.xmind">面向对象之类对象.xmind</a></p>
+<h1 id="二、知识点及实践"><a href="#二、知识点及实践" class="headerlink" title="二、知识点及实践"></a>二、知识点及实践</h1><h2 id="1、面向对象之类-对象"><a href="#1、面向对象之类-对象" class="headerlink" title="1、面向对象之类/对象"></a>1、面向对象之类/对象</h2><h3 id="1-1、类"><a href="#1-1、类" class="headerlink" title="1.1、类"></a>1.1、类</h3><ol>
+<li>概念：类可以被定义为描述对象支持类型的行为、状态的的模板、蓝图</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="variable">width</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="variable">height</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> Point origin;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// four constructors</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Rectangle</span><span class="params">()</span> &#123;</span><br><span class="line">        origin = <span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Rectangle</span><span class="params">(Point p)</span> &#123;</span><br><span class="line">        origin = p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Rectangle</span><span class="params">(<span class="type">int</span> w, <span class="type">int</span> h)</span> &#123;</span><br><span class="line">        origin = <span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        width = w;</span><br><span class="line">        height = h;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Rectangle</span><span class="params">(Point p, <span class="type">int</span> w, <span class="type">int</span> h)</span> &#123;</span><br><span class="line">        origin = p;</span><br><span class="line">        width = w;</span><br><span class="line">        height = h;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// a method for moving the rectangle</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">move</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">        origin.x = x;</span><br><span class="line">        origin.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// a method for computing the area of the rectangle</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getArea</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> width * height;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>构造器方法<ol>
+<li>无参构造器：默认构造器</li>
+<li>有参构造器</li>
+</ol>
+</li>
+</ol>
+<p>继承父类的子类，需要实现父类的有参构造器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">Rectangle</span><span class="params">(Point p)</span> &#123;</span><br><span class="line">        origin = p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Rectangle</span><span class="params">(<span class="type">int</span> w, <span class="type">int</span> h)</span> &#123;</span><br><span class="line">        origin = <span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        width = w;</span><br><span class="line">        height = h;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Rectangle</span><span class="params">(Point p, <span class="type">int</span> w, <span class="type">int</span> h)</span> &#123;</span><br><span class="line">        origin = p;</span><br><span class="line">        width = w;</span><br><span class="line">        height = h;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>变量</p>
+<ol>
+<li>成员变量：类中，方法体之外</li>
+<li>静态变量：类变量也声明在类中，方法体之外，但必须声明为static类型</li>
+<li><p>局部变量：方法体内</p>
+<p>成员变量和静态变量的之间区别：</p>
+<pre><code>        类的每个实例共享一个类变量的单个副本。
         您可在类本身上调用类方法，而无需拥有实例。
         实例方法可访问类变量，但类方法无法访问实例变量。
         类方法只能访问类变量。
-</code></pre><p>2、分类</p>
-<p>​    2.1、抽象类<br>​        概念：如果一个类没有足够的信息来描述一个具体的对象，而需要其他具体的类来支撑它，那么这样的类我们称它为抽象类<br>​        注意事项:<br>​        1、抽象类不能被实例化，实例化的工作应该交由它的子类来完成，它只需要有一个引用即可。<br>​        2、抽象方法必须由子类来进行重写。<br>​        3、只要包含一个抽象方法的抽象类，该方法必须要定义成抽象类，不管是否还包含有其他方法。<br>​        4、抽象类中可以包含具体的方法，当然也可以不包含抽象方法。<br>​        5、子类中的抽象方法不能与父类的抽象方法同名。<br>​        6、abstract 不能与 final 并列修饰同一个类。<br>​        7、abstract 不能与 private、static、final 或 native 并列修饰同一个方法。</p>
-<p>​    2.2、接口<br>​        概念:接口是用来建立类与类之间的协议，它所提供的只是一种形式，而没有具体的实现。同时实现该接口的实现类必须要实现该接口的所有方法，通过使用 implements 关键字，他表示该类在遵循某个或某组特定的接口<br>​<br>​        注意事项:<br>​        1、1个 Interface 的方所有法访问权限自动被声明为 public。确切的说只能为 public，当然你可以显示的声明为 protected、private，但是编译会出错！<br>​        2、接口中可以定义“成员变量”，或者说是不可变的常量，因为接口中的“成员变量”会自动变为为 public static final。可以通过类命名直接访问：ImplementClass.name。<br>​        3、接口中不存在实现的方法。<br>​        4、实现接口的非抽象类必须要实现该接口的所有方法。抽象类可以不用实现。<br>​        5、不能使用 new 操作符实例化一个接口，但可以声明一个接口变量，该变量必须引用 (refer to) 一个实现该接口的类的对象。可以使用 instanceof 检查一个对象是否实现了某个特定的接口。例如：if(anObject instanceof Comparable){}。<br>​        6、在实现多接口的时候一定要避免方法名的重复。</p>
-<p>​    2.3、内部类<br>​        2.3.1、成员内部类<br>​        外围类的一个成员，所以他是可以无限制的访问外围类的所有 成员属性和方法，尽管是 private 的，但是外围类要访问内部类的成员属性和方法则需要通过内部类实例来访问<br>​        第一：成员内部类中不能存在任何 static 的变量和方法；第二：成员内部类是依附于外围类的，所以只有先创建了外围类才能够创建内部类<br>​<br>​        2.3.1、局部内部类<br>​        2.3.1、匿名内部类<br>​        2.3.1、静态内部类</p>
-<h5 id="2、对象"><a href="#2、对象" class="headerlink" title="2、对象"></a>2、对象</h5><p>​    对象具有状态和行为<br>​<br>​    创建一个对象<br>​<br>​    声明：变量声明可以声明其所代表的对象类型。<br>​    实例化：“新的”关键词用来创造对象。<br>​    初始化：“新的”关键词伴随着一个构造器的启用，这个将新的对象初始化。<br>​<br>​    访问实体变量/方法<br>​<br>​    JVM垃圾回收机制回收对象</p>
-<p>​        </p>
-<h4 id="Java基本特性"><a href="#Java基本特性" class="headerlink" title="Java基本特性"></a>Java基本特性</h4><h5 id="1、封装"><a href="#1、封装" class="headerlink" title="1、封装"></a>1、封装</h5><p>1、封装是指隐藏对象的属性和细节，但对外提供公共的访问方式</p>
-<p>2、方法</p>
-<p>​    1、方法重载（方法名称相同，参数项不相同，重载只跟参数有关，与返回类型无关）<br>​        注意：<br>​            使用重载方法时，记住这两条重要的规则：<br>​            不能仅通过更改一个方法的返回类型来重载该方法。<br>​            不能有两个名称和参数列表都相同的方法<br>​    2、构造方法重载<br>​<br>​    3、this关键字（代表对象，this就是所在函数的所属对象的引用）<br>​        a、当成员变量和局部变量重名，可以用关键字this来区分。<br>​        b、this也可以用于在构造函数中调用其它构造函数。（this只能定义在构造函数的第一行，因为初始化动作必须要先执行）</p>
-<h5 id="2、-继承"><a href="#2、-继承" class="headerlink" title="2、 继承"></a>2、 继承</h5><p>1、继承可以被定义为一个对象获取另一个对象属性的过程</p>
-<p>2、方法</p>
-<p> 1、方法覆写</p>
-<p>（1）子类的方法的名称、参数签名和返回类型必须与父类的方法的名称、参数签名和返回类型一致</p>
-<p>（2）子类方法不能缩小父类的访问权限。</p>
-<p>（3）子类方法不能抛出比父类更多的异常</p>
-<p>（4）方法覆盖只存在于子类和父类（包括直接父类和间接父类）之间</p>
-<p>（5）父类的静态方法不能被子类覆盖为非静态方法。</p>
-<p>（6）子类可以定义与父类的静态方法同名的静态方法，以便在子类中隐藏父类的静态方法</p>
-<p>（7）父类的非静态方法不能被子类覆盖为静态方法</p>
-<p>（8）父类的私有方法不能被子类覆盖。</p>
-<p>（9）父类的抽象方法可以被子类通过两种途径覆盖：一是子类实现父类的抽象方法；二是子类重新声明父类的抽象方法（例如，扩大访问权限）</p>
-<p>（10）父类的非抽象方法可以被覆盖为抽象方法</p>
-<p>3、super关键字</p>
-<p>访问成员变量：super.成员变量</p>
-<p>访问构造方法：super（……）</p>
-<p>访问成员方法：super.成员方法()</p>
-<h5 id="3、-多态"><a href="#3、-多态" class="headerlink" title="3、 多态"></a>3、 多态</h5><p>1、多态性是指对象能够有多种形态。在 OOP 中最常用的多态性发生在当父类引用指向孩子类对象时</p>
-<p>2、转型</p>
-<p>向上类型转换（upcast）</p>
-<p>比如说将Cat类型转换为Animal类型，即将子类型转换为父类型</p>
-<p>向下类型转换（downcast）</p>
-<p>比如将Animal类型转换为Cat类型</p>
-<h5 id="4、-抽象"><a href="#4、-抽象" class="headerlink" title="4、 抽象"></a>4、 抽象</h5><p>1、抽象类</p>
-<p>有抽象方法的类就叫抽象类</p>
-<p>2、抽象方法</p>
-<p>在类中没有方法体的方法，就是抽象方法</p>
-<p>3、接口</p>
-<h4 id="三、重点知识点实例"><a href="#三、重点知识点实例" class="headerlink" title="三、重点知识点实例"></a>三、<em>重点知识点实例</em></h4><h4 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、<em>参考资料</em></h4><h4 id="五、思维扩展"><a href="#五、思维扩展" class="headerlink" title="五、思维扩展"></a>五、<em>思维扩展</em></h4><h4 id="六、存在疑问"><a href="#六、存在疑问" class="headerlink" title="六、存在疑问"></a>六、<em>存在疑问</em></h4><pre><code>1、覆盖父类的方法和子类的方法加载顺序？
-</code></pre>
+</code></pre></li>
+</ol>
+</li>
+</ol>
+<ol>
+<li><p>方法</p>
+<ol>
+<li><p>分类</p>
+<ol>
+<li><p>抽象类：如果一个类没有足够的信息来描述一个具体的对象，而需要其他具体的类来支撑它，那么这样的类我们称它为抽象类</p>
+<p>注意事项</p>
+<ul>
+<li>抽象类不能被实例化，实例化的工作应该交由它的子类来完成，它只需要有一个引用即可</li>
+<li>抽象方法必须由子类来进行重写</li>
+<li>只要包含一个抽象方法的抽象类，该方法必须要定义成抽象类，不管是否还包含有其他方法</li>
+<li>抽象类中可以包含具体的方法，当然也可以不包含抽象方法</li>
+<li>子类中的抽象方法不能与父类的抽象方法同名</li>
+<li>abstract 不能与 final 并列修饰同一个类</li>
+<li>abstract 不能与 private、static、final 或 native 并列修饰同一个方法</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Bike</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String color;</span><br><span class="line">    <span class="keyword">private</span> String shape;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>接口:接口是用来建立类与类之间的协议，它所提供的只是一种形式，而没有具体的实现。同时实现该接口的实现类必须要实现该接口的所有方法，通过使用 implements 关键字，他表示该类在遵循某个或某组特定的接口</p>
+<p>注意事项:</p>
+<ul>
+<li>1个 Interface 的方所有法访问权限自动被声明为 public。确切的说只能为 public，当然你可以显示的声明为 protected、private，但是编译会出错</li>
+<li>接口中可以定义“成员变量”，或者说是不可变的常量，因为接口中的“成员变量”会自动变为为 public static final。可以通过类命名直接访问：ImplementClass.name</li>
+<li>接口中不存在实现的方法</li>
+<li>实现接口的非抽象类必须要实现该接口的所有方法。抽象类可以不用实现</li>
+<li>不能使用 new 操作符实例化一个接口，但可以声明一个接口变量，该变量必须引用 (refer to) 一个实现该接口的类的对象。可以使用 instanceof 检查一个对象是否实现了某个特定的接口。例如：if(anObject instanceof Comparable){}</li>
+<li>在实现多接口的时候一定要避免方法名的重复</li>
+</ul>
+</li>
+<li><p>内部类</p>
+<p>成员内部类（内部类根据情况分为：非静态嵌套类和静态嵌套类）</p>
+<ul>
+<li>说明：外围类的一个成员，所以他是可以无限制的访问外围类的所有 成员属性和方法，尽管是 private 的，但是外围类要访问内部类的成员属性和方法则需要通过内部类实例来访问</li>
+<li>成员内部类中不能存在任何 static 的变量和方法，成员内部类是依附于外围类的，所以只有先创建了外围类才能够创建内部类</li>
+<li>为什么要使用嵌套类<ul>
+<li>它是一种对仅在一个地方使用的类进行逻辑分组的方法，类之间的有相应的关联</li>
+<li>考虑到封装性，两个类，外部类A和内部类B，外部类A的属性不能访问内部类B，而B可以直接访问外部类A的属性</li>
+<li>更具有可读性和代码易维护，有关联类放于一起</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OuterClass</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">String</span> <span class="variable">outerField</span> <span class="operator">=</span> <span class="string">&quot;Outer field&quot;</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="type">String</span> <span class="variable">staticOuterField</span> <span class="operator">=</span> <span class="string">&quot;Static outer field&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">InnerClass</span> &#123;</span><br><span class="line">        <span class="keyword">void</span> <span class="title function_">accessMembers</span><span class="params">()</span> &#123;</span><br><span class="line">            System.out.println(outerField);</span><br><span class="line">            System.out.println(staticOuterField);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">StaticNestedClass</span> &#123;</span><br><span class="line">        <span class="keyword">void</span> <span class="title function_">accessMembers</span><span class="params">(OuterClass outer)</span> &#123;</span><br><span class="line">            <span class="comment">// Compiler error: Cannot make a static reference to the non-static</span></span><br><span class="line">            <span class="comment">//     field outerField</span></span><br><span class="line">            <span class="comment">// System.out.println(outerField);</span></span><br><span class="line">            System.out.println(outer.outerField);</span><br><span class="line">            System.out.println(staticOuterField);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Inner class:&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;------------&quot;</span>);</span><br><span class="line">        <span class="type">OuterClass</span> <span class="variable">outerObject</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OuterClass</span>();</span><br><span class="line">        OuterClass.<span class="type">InnerClass</span> <span class="variable">innerObject</span> <span class="operator">=</span> outerObject.<span class="keyword">new</span> <span class="title class_">InnerClass</span>();</span><br><span class="line">        innerObject.accessMembers();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;\nStatic nested class:&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;--------------------&quot;</span>);</span><br><span class="line">        <span class="type">StaticNestedClass</span> <span class="variable">staticNestedObject</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StaticNestedClass</span>();</span><br><span class="line">        staticNestedObject.accessMembers(outerObject);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;\nTop-level class:&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;--------------------&quot;</span>);</span><br><span class="line">        <span class="type">TopLevelClass</span> <span class="variable">topLevelObject</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TopLevelClass</span>();</span><br><span class="line">        topLevelObject.accessMembers(outerObject);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TopLevelClass</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">accessMembers</span><span class="params">(OuterClass outer)</span> &#123;</span><br><span class="line">        <span class="comment">// Compiler error: Cannot make a static reference to the non-static</span></span><br><span class="line">        <span class="comment">//     field OuterClass.outerField</span></span><br><span class="line">        <span class="comment">// System.out.println(OuterClass.outerField);</span></span><br><span class="line">        System.out.println(outer.outerField);</span><br><span class="line">        System.out.println(OuterClass.staticOuterField);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>局部内部类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LocalClassExample</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="type">String</span> <span class="variable">regularExpression</span> <span class="operator">=</span> <span class="string">&quot;[^0-9]&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">validatePhoneNumber</span><span class="params">(</span></span><br><span class="line"><span class="params">            String phoneNumber1, String phoneNumber2)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="type">int</span> <span class="variable">numberLength</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Valid in JDK 8 and later:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// int numberLength = 10;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title class_">PhoneNumber</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="type">String</span> <span class="variable">formattedPhoneNumber</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">            PhoneNumber(String phoneNumber)&#123;</span><br><span class="line">                <span class="comment">// numberLength = 7;</span></span><br><span class="line">                <span class="type">String</span> <span class="variable">currentNumber</span> <span class="operator">=</span> phoneNumber.replaceAll(</span><br><span class="line">                        regularExpression, <span class="string">&quot;&quot;</span>);</span><br><span class="line">                <span class="keyword">if</span> (currentNumber.length() == numberLength)</span><br><span class="line">                    formattedPhoneNumber = currentNumber;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    formattedPhoneNumber = <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> String <span class="title function_">getNumber</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> formattedPhoneNumber;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Valid in JDK 8 and later:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//            public void printOriginalNumbers() &#123;</span></span><br><span class="line"><span class="comment">//                System.out.println(&quot;Original numbers are &quot; + phoneNumber1 +</span></span><br><span class="line"><span class="comment">//                    &quot; and &quot; + phoneNumber2);</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">PhoneNumber</span> <span class="variable">myNumber1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PhoneNumber</span>(phoneNumber1);</span><br><span class="line">        <span class="type">PhoneNumber</span> <span class="variable">myNumber2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PhoneNumber</span>(phoneNumber2);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Valid in JDK 8 and later:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        myNumber1.printOriginalNumbers();</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (myNumber1.getNumber() == <span class="literal">null</span>)</span><br><span class="line">            System.out.println(<span class="string">&quot;First number is invalid&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            System.out.println(<span class="string">&quot;First number is &quot;</span> + myNumber1.getNumber());</span><br><span class="line">        <span class="keyword">if</span> (myNumber2.getNumber() == <span class="literal">null</span>)</span><br><span class="line">            System.out.println(<span class="string">&quot;Second number is invalid&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            System.out.println(<span class="string">&quot;Second number is &quot;</span> + myNumber2.getNumber());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 方法中内部类</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sayGoodbyeInEnglish</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">class</span> <span class="title class_">EnglishGoodbye</span> &#123;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">farewell</span> <span class="operator">=</span> <span class="string">&quot;Bye bye&quot;</span>;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sayGoodbye</span><span class="params">()</span> &#123;</span><br><span class="line">                System.out.println(farewell);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">EnglishGoodbye</span> <span class="variable">myEnglishGoodbye</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">EnglishGoodbye</span>();</span><br><span class="line">        myEnglishGoodbye.sayGoodbye();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String... args)</span> &#123;</span><br><span class="line">        validatePhoneNumber(<span class="string">&quot;123-456-7890&quot;</span>, <span class="string">&quot;456-7890&quot;</span>);</span><br><span class="line">        <span class="type">LocalClassExample</span> <span class="variable">localClassExample</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">LocalClassExample</span>();</span><br><span class="line">        localClassExample.sayGoodbyeInEnglish();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>匿名内部类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorldAnonymousClasses</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">interface</span> <span class="title class_">HelloWorld</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">greet</span><span class="params">()</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">greetSomeone</span><span class="params">(String someone)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sayHello</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">class</span> <span class="title class_">EnglishGreeting</span> <span class="keyword">implements</span> <span class="title class_">HelloWorld</span> &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;world&quot;</span>;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">greet</span><span class="params">()</span> &#123;</span><br><span class="line">                greetSomeone(<span class="string">&quot;world&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">greetSomeone</span><span class="params">(String someone)</span> &#123;</span><br><span class="line">                name = someone;</span><br><span class="line">                System.out.println(<span class="string">&quot;Hello &quot;</span> + name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">HelloWorld</span> <span class="variable">englishGreeting</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">EnglishGreeting</span>();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 匿名内部类</span></span><br><span class="line">        <span class="type">HelloWorld</span> <span class="variable">frenchGreeting</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HelloWorld</span>() &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;tout le monde&quot;</span>;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">greet</span><span class="params">()</span> &#123;</span><br><span class="line">                greetSomeone(<span class="string">&quot;tout le monde&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">greetSomeone</span><span class="params">(String someone)</span> &#123;</span><br><span class="line">                name = someone;</span><br><span class="line">                System.out.println(<span class="string">&quot;Salut &quot;</span> + name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//匿名内部类</span></span><br><span class="line">        <span class="type">HelloWorld</span> <span class="variable">spanishGreeting</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HelloWorld</span>() &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;mundo&quot;</span>;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">greet</span><span class="params">()</span> &#123;</span><br><span class="line">                greetSomeone(<span class="string">&quot;mundo&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">greetSomeone</span><span class="params">(String someone)</span> &#123;</span><br><span class="line">                name = someone;</span><br><span class="line">                System.out.println(<span class="string">&quot;Hola, &quot;</span> + name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        englishGreeting.greet();</span><br><span class="line">        frenchGreeting.greetSomeone(<span class="string">&quot;Fred&quot;</span>);</span><br><span class="line">        spanishGreeting.greet();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String... args)</span> &#123;</span><br><span class="line">        <span class="type">HelloWorldAnonymousClasses</span> <span class="variable">myApp</span> <span class="operator">=</span></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">HelloWorldAnonymousClasses</span>();</span><br><span class="line">        myApp.sayHello();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2、对象"><a href="#1-2、对象" class="headerlink" title="1.2、对象"></a>1.2、对象</h3><ol>
+<li>概念：对象具有状态和行为</li>
+<li>使用过程：<ol>
+<li>创建一个对象</li>
+<li>声明：变量声明可以声明其所代表的对象类型</li>
+<li>实例化：“新的”关键词用来创造对象</li>
+<li>初始化：“新的”关键词伴随着一个构造器的启用，这个将新的对象初始化</li>
+<li>访问实体变量/方法</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Rectangle</span> <span class="variable">rect</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Rectangle</span>();</span><br><span class="line"><span class="type">Rectangle</span> <span class="variable">rectTwo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Rectangle</span>(<span class="number">50</span>, <span class="number">100</span>);</span><br><span class="line"><span class="type">int</span> <span class="variable">height</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Rectangle</span>().height;</span><br></pre></td></tr></table></figure>
+<h1 id="三、相关扩展"><a href="#三、相关扩展" class="headerlink" title="三、相关扩展"></a>三、相关扩展</h1><ol>
+<li>JVM垃圾回收机制回收对象过程</li>
+<li>如何选择嵌套类、本地类、匿名类、lambda表达式</li>
+</ol>
+<h1 id="四、参考资料"><a href="#四、参考资料" class="headerlink" title="四、参考资料"></a>四、参考资料</h1><p>[<a href="https://dev.java/learn/classes-objects/">https://dev.java/learn/classes-objects/</a>]</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/Java_2_%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A72/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xieshanzhong">
+      <meta itemprop="description" content="欢迎来到xieshanzhong的技术分享站~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XIE'S BLOG">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/21/Java_2_%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A72/" class="post-title-link" itemprop="url">Java_基本特性(二)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-21 14:17:59" itemprop="dateCreated datePublished" datetime="2018-11-21T14:17:59+08:00">2018-11-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-26 16:20:08" itemprop="dateModified" datetime="2024-01-26T16:20:08+08:00">2024-01-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、思维导图</h1><p><a href="https://www.yuque.com/attachments/yuque/0/2024/xmind/227879/1706239996552-90fccab5-1610-428a-a402-e7f200d59bae.xmind">Java特性.xmind</a></p>
+<h1 id="二、知识点及实践"><a href="#二、知识点及实践" class="headerlink" title="二、知识点及实践"></a>二、知识点及实践</h1><h2 id="1、Java基本特性"><a href="#1、Java基本特性" class="headerlink" title="1、Java基本特性"></a>1、Java基本特性</h2><h3 id="1-1、封装"><a href="#1-1、封装" class="headerlink" title="1.1、封装"></a>1.1、封装</h3><ol>
+<li>封装是指隐藏对象的属性和细节，但对外提供公共的访问方式</li>
+<li>方法<ol>
+<li>方法重载（方法名称相同，参数项不相同，重载只跟参数有关，与返回类型无关）</li>
+</ol>
+</li>
+</ol>
+<p>注意：<br>            使用重载方法时，记住这两条重要的规则：<br>            不能仅通过更改一个方法的返回类型来重载该方法。<br>            不能有两个名称和参数列表都相同的方法</p>
+<p>​            构造方法重载</p>
+<p>​            this关键字（代表对象，this就是所在函数的所属对象的引用）</p>
+<ul>
+<li>当成员变量和局部变量重名，可以用关键字this来区分</li>
+<li>this也可以用于在构造函数中调用其它构造函数。（this只能定义在构造函数的第一行，因为初始化动作必须要先执行）</li>
+</ul>
+<ol>
+<li>封装优势<ul>
+<li>良好的封装能够减少耦合</li>
+<li>类内部的结构可以自由修改</li>
+<li>可以对成员变量进行更精确的控制</li>
+<li>隐藏信息，实现细节</li>
+</ul>
+</li>
+<li>代码</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构造函数、getter和setter方法</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 其他方法，比如一个简单的打招呼方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sayHello</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;你好，我是&quot;</span> + name + <span class="string">&quot;，今年&quot;</span> + age + <span class="string">&quot;岁。&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2、-继承"><a href="#1-2、-继承" class="headerlink" title="1.2、 继承"></a>1.2、 继承</h3><ol>
+<li>继承可以被定义为一个对象获取另一个对象属性的过程</li>
+<li>方法（方法覆写）</li>
+</ol>
+<ul>
+<li>子类的方法的名称、参数签名和返回类型必须与父类的方法的名称、参数签名和返回类型一致</li>
+<li>子类方法不能缩小父类的访问权限</li>
+<li>子类方法不能抛出比父类更多的异常</li>
+<li>方法覆盖只存在于子类和父类（包括直接父类和间接父类）之间</li>
+<li>父类的静态方法不能被子类覆盖为非静态方法</li>
+<li>子类可以定义与父类的静态方法同名的静态方法，以便在子类中隐藏父类的静态方法</li>
+<li>父类的非静态方法不能被子类覆盖为静态方法</li>
+<li>父类的私有方法不能被子类覆盖</li>
+<li>父类的抽象方法可以被子类通过两种途径覆盖：一是子类实现父类的抽象方法；二是子类重新声明父类的抽象方法（例如，扩大访问权限）</li>
+<li>父类的非抽象方法可以被覆盖为抽象方法</li>
+</ul>
+<ol>
+<li>super关键字</li>
+</ol>
+<p>访问成员变量：super.成员变量<br>访问构造方法：super（……）<br>访问成员方法：super.成员方法()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Bicycle</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// the Bicycle class has</span></span><br><span class="line">    <span class="comment">// three fields</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> cadence;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> gear;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> speed;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// the Bicycle class has</span></span><br><span class="line">    <span class="comment">// one constructor</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Bicycle</span><span class="params">(<span class="type">int</span> startCadence, <span class="type">int</span> startSpeed, <span class="type">int</span> startGear)</span> &#123;</span><br><span class="line">        gear = startGear;</span><br><span class="line">        cadence = startCadence;</span><br><span class="line">        speed = startSpeed;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// the Bicycle class has</span></span><br><span class="line">    <span class="comment">// four methods</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setCadence</span><span class="params">(<span class="type">int</span> newValue)</span> &#123;</span><br><span class="line">        cadence = newValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setGear</span><span class="params">(<span class="type">int</span> newValue)</span> &#123;</span><br><span class="line">        gear = newValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">applyBrake</span><span class="params">(<span class="type">int</span> decrement)</span> &#123;</span><br><span class="line">        speed -= decrement;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">speedUp</span><span class="params">(<span class="type">int</span> increment)</span> &#123;</span><br><span class="line">        speed += increment;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">printDescription</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;\nBike is &quot;</span> + <span class="string">&quot;in gear &quot;</span> + <span class="built_in">this</span>.gear</span><br><span class="line">                + <span class="string">&quot; with a cadence of &quot;</span> + <span class="built_in">this</span>.cadence +</span><br><span class="line">                <span class="string">&quot; and travelling at a speed of &quot;</span> + <span class="built_in">this</span>.speed + <span class="string">&quot;. &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MountainBike</span> <span class="keyword">extends</span> <span class="title class_">Bicycle</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MountainBike</span><span class="params">(<span class="type">int</span> startCadence, <span class="type">int</span> startSpeed, <span class="type">int</span> startGear)</span> &#123;</span><br><span class="line">        <span class="comment">// 调用父类的构造方法</span></span><br><span class="line">        <span class="built_in">super</span>(startCadence, startSpeed, startGear);</span><br><span class="line">        <span class="comment">// MountainBike特有的初始化代码</span></span><br><span class="line">        seatHeight = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> seatHeight;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSeatHeight</span><span class="params">(<span class="type">int</span> newSeatHeight)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.seatHeight = newSeatHeight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">bikeSum</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol>
+<li>继承父类的子类的可以做什么<ul>
+<li>子类的构造方法与父类的构造方法关系<ul>
+<li>子类是不继承父类的构造器（构造方法或者构造函数）的，它只是调用（隐式或显式）。如果父类的构造器带有参数，则必须在子类的构造器中显式地通过 <strong>super</strong> 关键字调用父类的构造器并配以适当的参数列表。如果父类构造器没有参数，则在子类的构造器中不需要使用 <strong>super</strong> 关键字调用父类构造器，系统会自动调用父类的无参构造器</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SuperClass</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">int</span> n;</span><br><span class="line">  SuperClass()&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;SuperClass()&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  SuperClass(<span class="type">int</span> n) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;SuperClass(int n)&quot;</span>);</span><br><span class="line">    <span class="built_in">this</span>.n = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// SubClass 类继承</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SubClass</span> <span class="keyword">extends</span> <span class="title class_">SuperClass</span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">int</span> n;</span><br><span class="line">  </span><br><span class="line">  SubClass()&#123; <span class="comment">// 自动调用父类的无参数构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass&quot;</span>);</span><br><span class="line">  &#125;  </span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">SubClass</span><span class="params">(<span class="type">int</span> n)</span>&#123; </span><br><span class="line">    <span class="built_in">super</span>(<span class="number">300</span>);  <span class="comment">// 调用父类中带有参数的构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass(int n):&quot;</span>+n);</span><br><span class="line">    <span class="built_in">this</span>.n = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// SubClass2 类继承</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SubClass2</span> <span class="keyword">extends</span> <span class="title class_">SuperClass</span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">int</span> n;</span><br><span class="line">  </span><br><span class="line">  SubClass2()&#123;</span><br><span class="line">    <span class="built_in">super</span>(<span class="number">300</span>);  <span class="comment">// 调用父类中带有参数的构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass2&quot;</span>);</span><br><span class="line">  &#125;  </span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">SubClass2</span><span class="params">(<span class="type">int</span> n)</span>&#123; <span class="comment">// 自动调用父类的无参数构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass2(int n):&quot;</span>+n);</span><br><span class="line">    <span class="built_in">this</span>.n = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestSuperSub</span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String args[])</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;------SubClass 类继承------&quot;</span>);</span><br><span class="line">    <span class="type">SubClass</span> <span class="variable">sc1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SubClass</span>();</span><br><span class="line">    <span class="type">SubClass</span> <span class="variable">sc2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SubClass</span>(<span class="number">100</span>); </span><br><span class="line">    System.out.println(<span class="string">&quot;------SubClass2 类继承------&quot;</span>);</span><br><span class="line">    <span class="type">SubClass2</span> <span class="variable">sc3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SubClass2</span>();</span><br><span class="line">    <span class="type">SubClass2</span> <span class="variable">sc4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SubClass2</span>(<span class="number">200</span>); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>子类方法与父类方法关系<ul>
+<li>实例方法</li>
+<li>静态方法</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3、-多态"><a href="#1-3、-多态" class="headerlink" title="1.3、 多态"></a>1.3、 多态</h3><ol>
+<li>多态性是指对象能够有多种形态。多态就是同一个接口，使用不同的实例而执行不同操作</li>
+<li>必要三个条件：继承、重写、父类引用指向子类对象：<strong>Parent p = new Child()</strong></li>
+<li>转型</li>
+</ol>
+<p>向上类型转换（upcast）：<br>比如说将Cat类型转换为Animal类型，即将子类型转换为父类型<br>向下类型转换（downcast）：<br>比如将Animal类型转换为Cat类型</p>
+<ol>
+<li>优点：<ul>
+<li>消除类型之间的耦合关系</li>
+<li>可替换性</li>
+<li>可扩充性</li>
+<li>接口性</li>
+<li>灵活性</li>
+</ul>
+</li>
+<li>代码</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MountainBike</span> <span class="keyword">extends</span> <span class="title class_">Bicycle</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String suspension;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MountainBike</span><span class="params">(<span class="type">int</span> startCadence, <span class="type">int</span> startSpeed, <span class="type">int</span> startGear, String suspension)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(startCadence, startSpeed, startGear);</span><br><span class="line">        <span class="built_in">this</span>.suspension = suspension;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getSuspension</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.suspension;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSuspension</span><span class="params">(String suspensionType)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.suspension = suspensionType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">printDescription</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.printDescription();</span><br><span class="line">        System.out.println(<span class="string">&quot;The &quot;</span> + <span class="string">&quot;MountainBike has a&quot;</span> +</span><br><span class="line">                getSuspension() + <span class="string">&quot; suspension.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RoadBike</span> <span class="keyword">extends</span> <span class="title class_">Bicycle</span> &#123;</span><br><span class="line">    <span class="comment">// In millimeters (mm</span></span><br><span class="line">    <span class="comment">// )</span></span><br><span class="line">    <span class="comment">//  This is a property specific to a RoadBike.</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> tireWidth;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">RoadBike</span><span class="params">(<span class="type">int</span> startCadence,</span></span><br><span class="line"><span class="params">                    <span class="type">int</span> startSpeed,</span></span><br><span class="line"><span class="params">                    <span class="type">int</span> startGear,</span></span><br><span class="line"><span class="params">                    <span class="type">int</span> newTireWidth)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(startCadence,</span><br><span class="line">                startSpeed,</span><br><span class="line">                startGear);</span><br><span class="line">        <span class="built_in">this</span>.setTireWidth(newTireWidth);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getTireWidth</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.tireWidth;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setTireWidth</span><span class="params">(<span class="type">int</span> newTireWidth)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.tireWidth = newTireWidth;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">printDescription</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>.printDescription();</span><br><span class="line">        System.out.println(<span class="string">&quot;The RoadBike&quot;</span> + <span class="string">&quot; has &quot;</span> + getTireWidth() +</span><br><span class="line">                <span class="string">&quot; MM tires.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestBikes</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Bicycle bicycle1 , bicycle2</span><br><span class="line">                , bicycle3;</span><br><span class="line"></span><br><span class="line">        bicycle1 = <span class="keyword">new</span> <span class="title class_">Bicycle</span>(<span class="number">20</span>,<span class="number">10</span>,<span class="number">1</span>);</span><br><span class="line">        bicycle2 = <span class="keyword">new</span> <span class="title class_">MountainBike</span>(<span class="number">20</span>,<span class="number">10</span>,<span class="number">1</span>,<span class="string">&quot;moutain&quot;</span>);</span><br><span class="line">        bicycle3 = <span class="keyword">new</span> <span class="title class_">RoadBike</span>(<span class="number">20</span>,<span class="number">10</span>,<span class="number">1</span>,<span class="number">11</span>);</span><br><span class="line">        bicycle1.printDescription();</span><br><span class="line">        bicycle2.printDescription();</span><br><span class="line">        bicycle3.printDescription();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-4、-抽象"><a href="#1-4、-抽象" class="headerlink" title="1.4、 抽象"></a>1.4、 抽象</h3><ol>
+<li>抽象类,有抽象方法的类就叫抽象类</li>
+<li>抽象方法:在类中没有方法体的方法，就是抽象方法</li>
+<li>接口与抽象类之间不同及如何选择</li>
+</ol>
+<h1 id="三、相关扩展"><a href="#三、相关扩展" class="headerlink" title="三、相关扩展"></a>三、相关扩展</h1><ol>
+<li>参考资料：</li>
+</ol>
+<ul>
+<li><a href="https://dev.java/learn/">https://dev.java/learn/</a></li>
+<li><a href="https://www.runoob.com/java/java-encapsulation.html">https://www.runoob.com/java/java-encapsulation.html</a></li>
+</ul>
+
       
     </div>
 
@@ -1188,79 +1404,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_%E8%A1%8C%E4%B8%BA%E5%9E%8B_%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="xieshanzhong">
-      <meta itemprop="description" content="欢迎来到xieshanzhong的技术分享站~">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XIE'S BLOG">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_%E8%A1%8C%E4%B8%BA%E5%9E%8B_%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">设计模式_行为型_备忘录模式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-11-19 14:36:59" itemprop="dateCreated datePublished" datetime="2018-11-19T14:36:59+08:00">2018-11-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-11-03 16:46:51" itemprop="dateModified" datetime="2023-11-03T16:46:51+08:00">2023-11-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E8%BF%9B%E9%98%B6/" itemprop="url" rel="index"><span itemprop="name">Java进阶</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1330,7 +1473,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">94</span>
+          <span class="site-state-item-count">95</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1395,7 +1538,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

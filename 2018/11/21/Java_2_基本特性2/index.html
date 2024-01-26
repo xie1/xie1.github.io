@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、思维导图Java特性.xmind 二、知识点及实践1、Java基本特性1.1、封装 封装是指隐藏对象的属性和细节，但对外提供公共的访问方式 方法 方法重载（方法名称相同，参数项不相同，重载只跟参数有关，与返回类型无关）    注意：            使用重载方法时，记住这两条重要的规则：            不能仅通过更改一个方法的返回类型来重载该方法。            不能有两">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_基本特性(二)">
+<meta property="og:url" content="http://yoursite.com/2018/11/21/Java_2_%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A72/index.html">
+<meta property="og:site_name" content="XIE&#39;S BLOG">
+<meta property="og:description" content="一、思维导图Java特性.xmind 二、知识点及实践1、Java基本特性1.1、封装 封装是指隐藏对象的属性和细节，但对外提供公共的访问方式 方法 方法重载（方法名称相同，参数项不相同，重载只跟参数有关，与返回类型无关）    注意：            使用重载方法时，记住这两条重要的规则：            不能仅通过更改一个方法的返回类型来重载该方法。            不能有两">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-11-21T06:17:59.000Z">
+<meta property="article:modified_time" content="2024-01-26T08:20:08.130Z">
+<meta property="article:author" content="xieshanzhong">
+<meta property="article:tag" content="基本特性">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2018/11/21/Java_2_%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A72/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>Java_基本特性(二) | XIE'S BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="XIE'S BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XIE'S BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">xieshanzhong的博客小站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/Java_2_%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A72/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xieshanzhong">
+      <meta itemprop="description" content="欢迎来到xieshanzhong的技术分享站~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XIE'S BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java_基本特性(二)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-21 14:17:59" itemprop="dateCreated datePublished" datetime="2018-11-21T14:17:59+08:00">2018-11-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-26 16:20:08" itemprop="dateModified" datetime="2024-01-26T16:20:08+08:00">2024-01-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、思维导图</h1><p><a href="https://www.yuque.com/attachments/yuque/0/2024/xmind/227879/1706239996552-90fccab5-1610-428a-a402-e7f200d59bae.xmind">Java特性.xmind</a></p>
+<h1 id="二、知识点及实践"><a href="#二、知识点及实践" class="headerlink" title="二、知识点及实践"></a>二、知识点及实践</h1><h2 id="1、Java基本特性"><a href="#1、Java基本特性" class="headerlink" title="1、Java基本特性"></a>1、Java基本特性</h2><h3 id="1-1、封装"><a href="#1-1、封装" class="headerlink" title="1.1、封装"></a>1.1、封装</h3><ol>
+<li>封装是指隐藏对象的属性和细节，但对外提供公共的访问方式</li>
+<li>方法<ol>
+<li>方法重载（方法名称相同，参数项不相同，重载只跟参数有关，与返回类型无关）</li>
+</ol>
+</li>
+</ol>
+<p>注意：<br>            使用重载方法时，记住这两条重要的规则：<br>            不能仅通过更改一个方法的返回类型来重载该方法。<br>            不能有两个名称和参数列表都相同的方法</p>
+<p>​            构造方法重载</p>
+<p>​            this关键字（代表对象，this就是所在函数的所属对象的引用）</p>
+<ul>
+<li>当成员变量和局部变量重名，可以用关键字this来区分</li>
+<li>this也可以用于在构造函数中调用其它构造函数。（this只能定义在构造函数的第一行，因为初始化动作必须要先执行）</li>
+</ul>
+<ol>
+<li>封装优势<ul>
+<li>良好的封装能够减少耦合</li>
+<li>类内部的结构可以自由修改</li>
+<li>可以对成员变量进行更精确的控制</li>
+<li>隐藏信息，实现细节</li>
+</ul>
+</li>
+<li>代码</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构造函数、getter和setter方法</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 其他方法，比如一个简单的打招呼方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sayHello</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;你好，我是&quot;</span> + name + <span class="string">&quot;，今年&quot;</span> + age + <span class="string">&quot;岁。&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2、-继承"><a href="#1-2、-继承" class="headerlink" title="1.2、 继承"></a>1.2、 继承</h3><ol>
+<li>继承可以被定义为一个对象获取另一个对象属性的过程</li>
+<li>方法（方法覆写）</li>
+</ol>
+<ul>
+<li>子类的方法的名称、参数签名和返回类型必须与父类的方法的名称、参数签名和返回类型一致</li>
+<li>子类方法不能缩小父类的访问权限</li>
+<li>子类方法不能抛出比父类更多的异常</li>
+<li>方法覆盖只存在于子类和父类（包括直接父类和间接父类）之间</li>
+<li>父类的静态方法不能被子类覆盖为非静态方法</li>
+<li>子类可以定义与父类的静态方法同名的静态方法，以便在子类中隐藏父类的静态方法</li>
+<li>父类的非静态方法不能被子类覆盖为静态方法</li>
+<li>父类的私有方法不能被子类覆盖</li>
+<li>父类的抽象方法可以被子类通过两种途径覆盖：一是子类实现父类的抽象方法；二是子类重新声明父类的抽象方法（例如，扩大访问权限）</li>
+<li>父类的非抽象方法可以被覆盖为抽象方法</li>
+</ul>
+<ol>
+<li>super关键字</li>
+</ol>
+<p>访问成员变量：super.成员变量<br>访问构造方法：super（……）<br>访问成员方法：super.成员方法()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Bicycle</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// the Bicycle class has</span></span><br><span class="line">    <span class="comment">// three fields</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> cadence;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> gear;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> speed;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// the Bicycle class has</span></span><br><span class="line">    <span class="comment">// one constructor</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Bicycle</span><span class="params">(<span class="type">int</span> startCadence, <span class="type">int</span> startSpeed, <span class="type">int</span> startGear)</span> &#123;</span><br><span class="line">        gear = startGear;</span><br><span class="line">        cadence = startCadence;</span><br><span class="line">        speed = startSpeed;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// the Bicycle class has</span></span><br><span class="line">    <span class="comment">// four methods</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setCadence</span><span class="params">(<span class="type">int</span> newValue)</span> &#123;</span><br><span class="line">        cadence = newValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setGear</span><span class="params">(<span class="type">int</span> newValue)</span> &#123;</span><br><span class="line">        gear = newValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">applyBrake</span><span class="params">(<span class="type">int</span> decrement)</span> &#123;</span><br><span class="line">        speed -= decrement;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">speedUp</span><span class="params">(<span class="type">int</span> increment)</span> &#123;</span><br><span class="line">        speed += increment;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">printDescription</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;\nBike is &quot;</span> + <span class="string">&quot;in gear &quot;</span> + <span class="built_in">this</span>.gear</span><br><span class="line">                + <span class="string">&quot; with a cadence of &quot;</span> + <span class="built_in">this</span>.cadence +</span><br><span class="line">                <span class="string">&quot; and travelling at a speed of &quot;</span> + <span class="built_in">this</span>.speed + <span class="string">&quot;. &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MountainBike</span> <span class="keyword">extends</span> <span class="title class_">Bicycle</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MountainBike</span><span class="params">(<span class="type">int</span> startCadence, <span class="type">int</span> startSpeed, <span class="type">int</span> startGear)</span> &#123;</span><br><span class="line">        <span class="comment">// 调用父类的构造方法</span></span><br><span class="line">        <span class="built_in">super</span>(startCadence, startSpeed, startGear);</span><br><span class="line">        <span class="comment">// MountainBike特有的初始化代码</span></span><br><span class="line">        seatHeight = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> seatHeight;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSeatHeight</span><span class="params">(<span class="type">int</span> newSeatHeight)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.seatHeight = newSeatHeight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">bikeSum</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol>
+<li>继承父类的子类的可以做什么<ul>
+<li>子类的构造方法与父类的构造方法关系<ul>
+<li>子类是不继承父类的构造器（构造方法或者构造函数）的，它只是调用（隐式或显式）。如果父类的构造器带有参数，则必须在子类的构造器中显式地通过 <strong>super</strong> 关键字调用父类的构造器并配以适当的参数列表。如果父类构造器没有参数，则在子类的构造器中不需要使用 <strong>super</strong> 关键字调用父类构造器，系统会自动调用父类的无参构造器</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SuperClass</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">int</span> n;</span><br><span class="line">  SuperClass()&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;SuperClass()&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  SuperClass(<span class="type">int</span> n) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;SuperClass(int n)&quot;</span>);</span><br><span class="line">    <span class="built_in">this</span>.n = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// SubClass 类继承</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SubClass</span> <span class="keyword">extends</span> <span class="title class_">SuperClass</span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">int</span> n;</span><br><span class="line">  </span><br><span class="line">  SubClass()&#123; <span class="comment">// 自动调用父类的无参数构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass&quot;</span>);</span><br><span class="line">  &#125;  </span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">SubClass</span><span class="params">(<span class="type">int</span> n)</span>&#123; </span><br><span class="line">    <span class="built_in">super</span>(<span class="number">300</span>);  <span class="comment">// 调用父类中带有参数的构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass(int n):&quot;</span>+n);</span><br><span class="line">    <span class="built_in">this</span>.n = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// SubClass2 类继承</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SubClass2</span> <span class="keyword">extends</span> <span class="title class_">SuperClass</span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">int</span> n;</span><br><span class="line">  </span><br><span class="line">  SubClass2()&#123;</span><br><span class="line">    <span class="built_in">super</span>(<span class="number">300</span>);  <span class="comment">// 调用父类中带有参数的构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass2&quot;</span>);</span><br><span class="line">  &#125;  </span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">SubClass2</span><span class="params">(<span class="type">int</span> n)</span>&#123; <span class="comment">// 自动调用父类的无参数构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass2(int n):&quot;</span>+n);</span><br><span class="line">    <span class="built_in">this</span>.n = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestSuperSub</span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String args[])</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;------SubClass 类继承------&quot;</span>);</span><br><span class="line">    <span class="type">SubClass</span> <span class="variable">sc1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SubClass</span>();</span><br><span class="line">    <span class="type">SubClass</span> <span class="variable">sc2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SubClass</span>(<span class="number">100</span>); </span><br><span class="line">    System.out.println(<span class="string">&quot;------SubClass2 类继承------&quot;</span>);</span><br><span class="line">    <span class="type">SubClass2</span> <span class="variable">sc3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SubClass2</span>();</span><br><span class="line">    <span class="type">SubClass2</span> <span class="variable">sc4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SubClass2</span>(<span class="number">200</span>); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>子类方法与父类方法关系<ul>
+<li>实例方法</li>
+<li>静态方法</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3、-多态"><a href="#1-3、-多态" class="headerlink" title="1.3、 多态"></a>1.3、 多态</h3><ol>
+<li>多态性是指对象能够有多种形态。多态就是同一个接口，使用不同的实例而执行不同操作</li>
+<li>必要三个条件：继承、重写、父类引用指向子类对象：<strong>Parent p = new Child()</strong></li>
+<li>转型</li>
+</ol>
+<p>向上类型转换（upcast）：<br>比如说将Cat类型转换为Animal类型，即将子类型转换为父类型<br>向下类型转换（downcast）：<br>比如将Animal类型转换为Cat类型</p>
+<ol>
+<li>优点：<ul>
+<li>消除类型之间的耦合关系</li>
+<li>可替换性</li>
+<li>可扩充性</li>
+<li>接口性</li>
+<li>灵活性</li>
+</ul>
+</li>
+<li>代码</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MountainBike</span> <span class="keyword">extends</span> <span class="title class_">Bicycle</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String suspension;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MountainBike</span><span class="params">(<span class="type">int</span> startCadence, <span class="type">int</span> startSpeed, <span class="type">int</span> startGear, String suspension)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(startCadence, startSpeed, startGear);</span><br><span class="line">        <span class="built_in">this</span>.suspension = suspension;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getSuspension</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.suspension;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSuspension</span><span class="params">(String suspensionType)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.suspension = suspensionType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">printDescription</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.printDescription();</span><br><span class="line">        System.out.println(<span class="string">&quot;The &quot;</span> + <span class="string">&quot;MountainBike has a&quot;</span> +</span><br><span class="line">                getSuspension() + <span class="string">&quot; suspension.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RoadBike</span> <span class="keyword">extends</span> <span class="title class_">Bicycle</span> &#123;</span><br><span class="line">    <span class="comment">// In millimeters (mm</span></span><br><span class="line">    <span class="comment">// )</span></span><br><span class="line">    <span class="comment">//  This is a property specific to a RoadBike.</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> tireWidth;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">RoadBike</span><span class="params">(<span class="type">int</span> startCadence,</span></span><br><span class="line"><span class="params">                    <span class="type">int</span> startSpeed,</span></span><br><span class="line"><span class="params">                    <span class="type">int</span> startGear,</span></span><br><span class="line"><span class="params">                    <span class="type">int</span> newTireWidth)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(startCadence,</span><br><span class="line">                startSpeed,</span><br><span class="line">                startGear);</span><br><span class="line">        <span class="built_in">this</span>.setTireWidth(newTireWidth);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getTireWidth</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.tireWidth;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setTireWidth</span><span class="params">(<span class="type">int</span> newTireWidth)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.tireWidth = newTireWidth;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">printDescription</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>.printDescription();</span><br><span class="line">        System.out.println(<span class="string">&quot;The RoadBike&quot;</span> + <span class="string">&quot; has &quot;</span> + getTireWidth() +</span><br><span class="line">                <span class="string">&quot; MM tires.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestBikes</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Bicycle bicycle1 , bicycle2</span><br><span class="line">                , bicycle3;</span><br><span class="line"></span><br><span class="line">        bicycle1 = <span class="keyword">new</span> <span class="title class_">Bicycle</span>(<span class="number">20</span>,<span class="number">10</span>,<span class="number">1</span>);</span><br><span class="line">        bicycle2 = <span class="keyword">new</span> <span class="title class_">MountainBike</span>(<span class="number">20</span>,<span class="number">10</span>,<span class="number">1</span>,<span class="string">&quot;moutain&quot;</span>);</span><br><span class="line">        bicycle3 = <span class="keyword">new</span> <span class="title class_">RoadBike</span>(<span class="number">20</span>,<span class="number">10</span>,<span class="number">1</span>,<span class="number">11</span>);</span><br><span class="line">        bicycle1.printDescription();</span><br><span class="line">        bicycle2.printDescription();</span><br><span class="line">        bicycle3.printDescription();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-4、-抽象"><a href="#1-4、-抽象" class="headerlink" title="1.4、 抽象"></a>1.4、 抽象</h3><ol>
+<li>抽象类,有抽象方法的类就叫抽象类</li>
+<li>抽象方法:在类中没有方法体的方法，就是抽象方法</li>
+<li>接口与抽象类之间不同及如何选择</li>
+</ol>
+<h1 id="三、相关扩展"><a href="#三、相关扩展" class="headerlink" title="三、相关扩展"></a>三、相关扩展</h1><ol>
+<li>参考资料：</li>
+</ol>
+<ul>
+<li><a href="https://dev.java/learn/">https://dev.java/learn/</a></li>
+<li><a href="https://www.runoob.com/java/java-encapsulation.html">https://www.runoob.com/java/java-encapsulation.html</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/" rel="tag"># 基本特性</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/11/21/Java_1_%E8%AF%AD%E6%B3%95/" rel="prev" title="Java_语法(一)">
+      <i class="fa fa-chevron-left"></i> Java_语法(一)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/11/21/Java_2_%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/" rel="next" title="Java_基本特性(二)">
+      Java_基本特性(二) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">一、思维导图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%9F%A5%E8%AF%86%E7%82%B9%E5%8F%8A%E5%AE%9E%E8%B7%B5"><span class="nav-number">2.</span> <span class="nav-text">二、知识点及实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81Java%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7"><span class="nav-number">2.1.</span> <span class="nav-text">1、Java基本特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1%E3%80%81%E5%B0%81%E8%A3%85"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1、封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2%E3%80%81-%E7%BB%A7%E6%89%BF"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2、 继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3%E3%80%81-%E5%A4%9A%E6%80%81"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3、 多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4%E3%80%81-%E6%8A%BD%E8%B1%A1"><span class="nav-number">2.1.4.</span> <span class="nav-text">1.4、 抽象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%9B%B8%E5%85%B3%E6%89%A9%E5%B1%95"><span class="nav-number">3.</span> <span class="nav-text">三、相关扩展</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xieshanzhong</p>
+  <div class="site-description" itemprop="description">欢迎来到xieshanzhong的技术分享站~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">95</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xie1" title="GitHub → https://github.com/xie1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xieshanzhong66@gmail.com" title="E-Mail → mailto:xieshanzhong66@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://xie1.github.io/" title="https://xie1.github.io/" rel="noopener" target="_blank">Title</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.baidu.com/" title="https://www.baidu.com/" rel="noopener" target="_blank">百度搜索</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/" title="https://hexo.io/" rel="noopener" target="_blank">hexo</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xieshanzhong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
